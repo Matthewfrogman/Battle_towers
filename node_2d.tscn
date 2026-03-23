@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://6hkgvxmj0xvq"]
+
+[node name="Node2D" type="Node2D" unique_id=1699660541]
+
+[node name="Label" type="Label" parent="." unique_id=1212617214]
+offset_left = 437.00003
+offset_top = 49.0
+offset_right = 544.0
+offset_bottom = 72.0
+scale = Vector2(1.8199999, 1.88)
+text = "Battle Towers"
