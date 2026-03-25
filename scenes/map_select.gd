@@ -1,5 +1,5 @@
 extends Control
-
+#change placeholder maps (refer to discord for tutorial)
 const MAPS = ["Map 1", "Map 2", "Map 3"]
 const MAP_IMAGES = [
 	"res://scenes/mapsforselect/plains.png",
