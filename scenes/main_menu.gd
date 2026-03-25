@@ -50,7 +50,6 @@ func _make_button(label_text: String) -> Button:
 	var btn = Button.new()
 	btn.text = label_text
 	btn.custom_minimum_size = Vector2(220, 60)
-
 	var style = StyleBoxFlat.new()
 	style.bg_color = Color(0.15, 0.15, 0.22)
 	style.border_color = Color(1.0, 0.92, 0.4, 0.7)
@@ -80,7 +79,8 @@ func _process(delta: float) -> void:
 
 
 func _on_play_pressed() -> void:
-	print("start map select scene")
+	get_tree().change_scene_to_file("res://scenes/map_select.tscn")
+
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
