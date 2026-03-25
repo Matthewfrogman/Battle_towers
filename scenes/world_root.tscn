@@ -1,7 +1,35 @@
 [gd_scene format=3 uid="uid://cjbqyrtwhecmc"]
 
-[ext_resource type="PackedScene" uid="uid://p14wp3x6gafg" path="res://Map_1.tscn" id="1_ycrkx"]
+[ext_resource type="PackedScene" path="res://Map_1.tscn" id="1_ycrkx"]
+[ext_resource type="PackedScene" uid="uid://dbkme0dbpyj5u" path="res://scenes/enemy_direction_collider.tscn" id="2_psreq"]
+[ext_resource type="PackedScene" uid="uid://cfamatig7kjw2" path="res://scenes/enemy_base.tscn" id="3_t21ho"]
 
 [node name="world_root" type="Node2D" unique_id=310671566]
 
 [node name="TileMap" parent="." unique_id=832691158 instance=ExtResource("1_ycrkx")]
+
+[node name="enemy_direction_collider" parent="." unique_id=283984963 instance=ExtResource("2_psreq")]
+position = Vector2(590, 204)
+send_direction = 4
+
+[node name="enemy_direction_collider2" parent="." unique_id=1909949172 instance=ExtResource("2_psreq")]
+position = Vector2(551, 530)
+send_direction = 1
+
+[node name="enemy_direction_collider3" parent="." unique_id=1069434146 instance=ExtResource("2_psreq")]
+position = Vector2(811, 501)
+
+[node name="enemy_direction_collider4" parent="." unique_id=345405683 instance=ExtResource("2_psreq")]
+position = Vector2(780, 164)
+send_direction = 1
+
+[node name="enemy_direction_collider5" parent="." unique_id=1921038550 instance=ExtResource("2_psreq")]
+position = Vector2(1041, 193)
+send_direction = 4
+
+[node name="enemy_direction_collider6" parent="." unique_id=370042678 instance=ExtResource("2_psreq")]
+position = Vector2(1019, 518)
+send_direction = 1
+
+[node name="enemy" parent="." unique_id=1334610211 instance=ExtResource("3_t21ho")]
+position = Vector2(-39, 190)
