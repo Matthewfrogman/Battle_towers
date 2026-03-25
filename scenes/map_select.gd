@@ -1,11 +1,17 @@
 extends Control
-#change placeholder maps (refer to discord for tutorial)
+#placeholder images
 const MAPS = ["Map 1", "Map 2", "Map 3"]
 const MAP_IMAGES = [
 	"res://scenes/mapsforselect/plains.png",
 	"res://scenes/mapsforselect/volcano.png",
 	"res://scenes/mapsforselect/chaos.png"
 ]
+const MAP_SCENES = [
+	"res://Map_1.tscn",
+	"res://Map_2.tscn",
+	"res://Map_3.tscn"
+]
+
 const BUTTON_HOVER  = 1.12
 const TWEEN_SPEED   = 0.15
 const BREATHE_SCALE = 0.04
@@ -147,7 +153,12 @@ func _on_right() -> void:
 
 
 func _on_play() -> void:
-	print("Launch map: ", MAPS[current_index])
+	var scene_path = MAP_SCENES[current_index]
+	
+	if ResourceLoader.exists(scene_path):
+		get_tree().change_scene_to_file(scene_path)
+	else:
+		print("Map not found or named incorrectly")
 
 
 func _on_back() -> void:
