@@ -1,0 +1,21 @@
+extends CharacterBody2D
+
+@export var speed = 67
+@export var hp = 100
+@export var direction = 1
+
+func _ready():
+	pass
+	
+func _process(delta):
+	if direction == 1:
+		position.x += delta*speed
+	elif direction == 2:
+		position.y -= delta*speed
+	elif direction == 3:
+		position.x -= delta*speed
+	elif direction == 4:
+		position.y += delta*speed
+
+func lose_hp(dmg):
+	pass
