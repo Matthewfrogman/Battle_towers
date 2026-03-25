@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 			mode = "placed"
 	if mode == "placed":
 		#get the difference between x and y coords with the closest enemy
-		#gives us an angle
+		#gives us an angle in radians!!
 		var angle: float
 		if canshoot == true:
 			shoot(delta, 10, angle, "straight")
@@ -42,20 +42,25 @@ func _process(delta: float) -> void:
 #of each bullet, and also the angles
 #whereas shoot2(eventually some other name) actually instantiates the bullets
 func shoot(delta: float, speed: int, angle: float, angle_mode: String):
-	#ideas for parameters: amount, angle, bullet speed
-	#the ability to shoot and go in different directions, or shoot in the same direction
+	#straight will shoot the bullets parallel, and angled wont
 	if angle_mode == "straight":
+		#same vector
+		
+		var adj = speed * cos(angle)
+		var opp = speed * sin(angle)
+		
 		for shots in 5:
 			print("blast")
-			shoot2(Vector2(1*delta, 2*delta))
+			shoot2(Vector2(adj*delta, opp*delta), position)
 		#change the mode AGAIN based on if its even or odd
 	
 	if angle_mode == "angled":
 		pass
 
-func shoot2(move: Vector2):
+func shoot2(move: Vector2, pos: Vector2):
 	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
+	bullet.position = pos
 	bullet.damage = attack
 	bullet.move = move
 	canshoot = false
