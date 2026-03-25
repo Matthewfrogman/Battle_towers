@@ -1,9 +1,8 @@
 class_name Bullet extends Area2D
 
-var hspeed: float
-var vspeed: float
+var move: Vector2
 var damage: int
 
 func _process(delta: float) -> void:
-	position += Vector2(hspeed*delta, vspeed*delta)
+	position += move
 	#if it hits an enemy, deal damage and expire

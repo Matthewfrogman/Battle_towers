@@ -7,7 +7,7 @@
 size = Vector2(58, 57)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovc7u"]
-radius = 67.26812
+radius = 28.0
 
 [node name="Tower" type="Area2D" unique_id=598119214]
 script = ExtResource("1_ovc7u")
