@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ca7x6q7tdhmms"]
+[gd_scene format=3 uid="uid://dvu4duev0k6b8"]
 
 [ext_resource type="Texture2D" uid="uid://csdtypqdl02hh" path="res://sheets/CaveTilemap.png" id="1_2fvdr"]
 [ext_resource type="Texture2D" uid="uid://cuc3gf3gcx4m5" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/4 Stone/4.png" id="2_g7x5b"]
