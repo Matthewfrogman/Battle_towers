@@ -21,11 +21,11 @@ var mode = "hover"
 func _ready() -> void:
 	timer.wait_time = cooldown
 	mode = "hover"
-	position = get_global_mouse_position()
+	global_position = get_global_mouse_position()
 func _process(delta: float) -> void:
 	#if there is an enemy in range, and cooldown is less/equal to 0, shoot
 	if mode == "hover":
-		position = get_global_mouse_position()
+		global_position = get_global_mouse_position()
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			mode = "placed"
 			print(position)
