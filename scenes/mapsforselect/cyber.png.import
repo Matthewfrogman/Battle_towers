@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnvtx5ufbdabv"
-path="res://.godot/imported/chaos.png-a9ba20a0967ff58211295cd071d79e79.ctex"
+uid="uid://dd7dacik32n3c"
+path="res://.godot/imported/cyber.png-269c3dd5158ee51cd09cd0e01de17297.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/mapsforselect/chaos.png"
-dest_files=["res://.godot/imported/chaos.png-a9ba20a0967ff58211295cd071d79e79.ctex"]
+source_file="res://scenes/mapsforselect/cyber.png"
+dest_files=["res://.godot/imported/cyber.png-269c3dd5158ee51cd09cd0e01de17297.ctex"]
 
 [params]
 

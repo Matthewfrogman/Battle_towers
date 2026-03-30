@@ -4,7 +4,7 @@ const MAPS = ["Map 1", "Map 2", "Map 3"]
 const MAP_IMAGES = [
 	"res://scenes/mapsforselect/plains.png",
 	"res://scenes/mapsforselect/volcano.png",
-	"res://scenes/mapsforselect/chaos.png"
+	"res://scenes/mapsforselect/cyber.png"
 ]
 const MAP_SCENES = [
 	"res://Map_1.tscn",
