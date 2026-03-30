@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bhiygippb8pto" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Dirt6.png" id="15_ta7la"]
 [ext_resource type="Texture2D" uid="uid://btc5xn6t3pmx0" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/8 Camp/5.png" id="16_x0e3w"]
 [ext_resource type="Texture2D" uid="uid://tllohv1u1iwo" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Lamp6.png" id="17_1s4kh"]
+[ext_resource type="PackedScene" uid="uid://7c5fgd6cuy2o" path="res://scenes/shop.tscn" id="18_g7x5b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xcv32"]
 texture = ExtResource("1_2fvdr")
@@ -1018,3 +1019,5 @@ self_modulate = Color(0.103743516, 0.10374353, 0.103743516, 1)
 z_index = -1
 position = Vector2(-3, 2)
 texture = ExtResource("17_1s4kh")
+
+[node name="CanvasLayer" parent="." unique_id=444425766 instance=ExtResource("18_g7x5b")]
