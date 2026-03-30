@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://cjbqyrtwhecmc"]
 
 [ext_resource type="PackedScene" uid="uid://dytg75fv2w3ci" path="res://Map_1.tscn" id="1_ycrkx"]
-[ext_resource type="PackedScene" path="res://scenes/enemy_direction_collider.tscn" id="2_psreq"]
+[ext_resource type="PackedScene" uid="uid://cnfjfb58e7bov" path="res://scenes/enemy_direction_collider.tscn" id="2_psreq"]
 [ext_resource type="PackedScene" path="res://scenes/enemy_base.tscn" id="3_t21ho"]
+[ext_resource type="PackedScene" uid="uid://7c5fgd6cuy2o" path="res://scenes/shop.tscn" id="4_ltld7"]
 
 [node name="world_root" type="Node2D" unique_id=310671566]
 
@@ -33,3 +34,5 @@ send_direction = 1
 
 [node name="enemy" parent="." unique_id=1334610211 instance=ExtResource("3_t21ho")]
 position = Vector2(-39, 190)
+
+[node name="CanvasLayer" parent="." unique_id=444425766 instance=ExtResource("4_ltld7")]
