@@ -574,6 +574,7 @@ texture = ExtResource("14_kspwc")
 
 [node name="80" type="Sprite2D" parent="36" unique_id=852355848]
 modulate = Color(0.23753911, 0.23753914, 0.23753911, 1)
+z_index = -1
 position = Vector2(4, -1.5000038)
 scale = Vector2(1.3271698, 0.97943604)
 skew = 0.46600282
@@ -618,6 +619,7 @@ texture = ExtResource("15_ub0k3")
 
 [node name="Box2" type="Sprite2D" parent="Box1" unique_id=792026936]
 modulate = Color(0.17283267, 0.17283267, 0.17283261, 1)
+z_index = -1
 position = Vector2(4, 0)
 scale = Vector2(0.948531, 0.9375009)
 texture = ExtResource("15_ub0k3")
