@@ -187,17 +187,6 @@ z_index = -1
 position = Vector2(-2, 1)
 texture = ExtResource("10_60kng")
 
-[node name="Lamp3" type="Sprite2D" parent="." unique_id=1201053886]
-z_index = 1
-position = Vector2(17, 109)
-texture = ExtResource("10_60kng")
-
-[node name="Lamp2" type="Sprite2D" parent="Lamp3" unique_id=1393683061]
-self_modulate = Color(0, 0, 0, 1)
-z_index = -1
-position = Vector2(-2, 1)
-texture = ExtResource("10_60kng")
-
 [node name="Box1" type="Sprite2D" parent="." unique_id=1520979785]
 z_index = 1
 position = Vector2(302, 22)
