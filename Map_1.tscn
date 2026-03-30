@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bpasimqt0hjpa" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/1 Tiles/FieldsTileset.png" id="2_yqntx"]
 [ext_resource type="Texture2D" uid="uid://cg8o1agawjihe" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/5 Grass/1.png" id="3_3l7mr"]
 [ext_resource type="Texture2D" uid="uid://eds2x3rp56xq" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Tree1.png" id="4_4an23"]
-[ext_resource type="Texture2D" uid="uid://bn2bdfetbbvy5" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Log1.png" id="5_q8o5l"]
 [ext_resource type="Texture2D" uid="uid://c881lr1oi5qff" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Tree2.png" id="6_n74g1"]
 [ext_resource type="Texture2D" uid="uid://cddi5b1lxnwah" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/9 Bush/1.png" id="7_y04xp"]
 [ext_resource type="Texture2D" uid="uid://ierikeg3b2dq" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/8 Camp/1.png" id="8_o5bvu"]
@@ -16,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://bchfhmoeq7axg" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/2 Fence/8.png" id="14_kspwc"]
 [ext_resource type="Texture2D" uid="uid://jrau81n06y0d" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Box1.png" id="15_ub0k3"]
 [ext_resource type="Texture2D" uid="uid://b50j7efquabte" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/3 Animated Objects/2 Campfire/2.png" id="16_iipn5"]
-[ext_resource type="Texture2D" uid="uid://cg82miarwx43c" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/1 Shadow/4.png" id="17_jtfls"]
 [ext_resource type="Texture2D" uid="uid://btv4jfmohou40" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/3 Animated Objects/1 Flag/1.png" id="18_r50bh"]
 [ext_resource type="Texture2D" uid="uid://dr07045i6ohw7" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/6 Flower/3.png" id="19_7ptvj"]
 [ext_resource type="Texture2D" uid="uid://dqgtjqhdjy5jv" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/6 Flower/9.png" id="20_qshex"]
@@ -415,7 +413,6 @@ texture = ExtResource("4_4an23")
 
 [node name="Log1" type="Sprite2D" parent="." unique_id=1413066317]
 position = Vector2(112, 246)
-texture = ExtResource("5_q8o5l")
 
 [node name="Tree2" type="Sprite2D" parent="." unique_id=1651360415]
 z_index = 1
@@ -574,11 +571,11 @@ z_index = 1
 position = Vector2(205, 79)
 texture = ExtResource("14_kspwc")
 
-[node name="80" type="Sprite2D" parent="." unique_id=852355848]
+[node name="80" type="Sprite2D" parent="36" unique_id=852355848]
 modulate = Color(0.23753911, 0.23753914, 0.23753911, 1)
-position = Vector2(209, 77.5)
-scale = Vector2(1.3271698, 0.9794361)
-skew = 0.4660029
+position = Vector2(4, -1.5000038)
+scale = Vector2(1.3271698, 0.97943604)
+skew = 0.46600282
 texture = ExtResource("14_kspwc")
 
 [node name="37" type="Sprite2D" parent="." unique_id=1316400542]
@@ -618,9 +615,9 @@ z_index = 1
 position = Vector2(276, 278)
 texture = ExtResource("15_ub0k3")
 
-[node name="Box2" type="Sprite2D" parent="." unique_id=792026936]
+[node name="Box2" type="Sprite2D" parent="Box1" unique_id=792026936]
 modulate = Color(0.17283267, 0.17283267, 0.17283261, 1)
-position = Vector2(280, 278)
+position = Vector2(4, 0)
 scale = Vector2(0.948531, 0.9375009)
 texture = ExtResource("15_ub0k3")
 
@@ -634,7 +631,6 @@ frame_progress = 0.27764642
 
 [node name="45" type="Sprite2D" parent="." unique_id=92599427]
 position = Vector2(49, 263)
-texture = ExtResource("17_jtfls")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1896376389]
 position = Vector2(14.69446, 47.66668)
