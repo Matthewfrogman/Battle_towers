@@ -1,7 +1,7 @@
 class_name Bullet extends Area2D
 
 var move: Vector2
-var damage: int = 51
+var damage: int
 
 func _ready() -> void:
 	#print("test")
