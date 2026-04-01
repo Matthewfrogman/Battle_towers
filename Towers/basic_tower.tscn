@@ -19,3 +19,5 @@ offset = Vector2(1, 18)
 
 [node name="Marker2D" type="Marker2D" parent="Cannon" index="0" unique_id=1608389440]
 position = Vector2(0, 66)
+
+[connection signal="body_entered" from="Range" to="." method="_body_entered"]

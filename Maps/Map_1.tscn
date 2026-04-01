@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cqe62olbslc4r" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/6 Flower/7.png" id="26_ha0t5"]
 [ext_resource type="Texture2D" uid="uid://b0mmlh1bo6kkb" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/1 Shadow/3.png" id="27_yrcjl"]
 [ext_resource type="Texture2D" uid="uid://bmai44na21eku" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/2 Fence/6.png" id="28_kin0c"]
+[ext_resource type="PackedScene" uid="uid://cnfjfb58e7bov" path="res://scenes/enemy_direction_collider.tscn" id="28_yqntx"]
 [ext_resource type="PackedScene" uid="uid://7c5fgd6cuy2o" path="res://scenes/shop.tscn" id="29_yqntx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aiixn"]
@@ -779,3 +780,27 @@ position = Vector2(259, 262)
 texture = ExtResource("28_kin0c")
 
 [node name="CanvasLayer" parent="." unique_id=444425766 instance=ExtResource("29_yqntx")]
+
+[node name="enemy_direction_collider2" parent="." unique_id=283984963 instance=ExtResource("28_yqntx")]
+position = Vector2(190.27776, 243.88187)
+scale = Vector2(0.15123457, 0.22733176)
+send_direction = 1
+
+[node name="enemy_direction_collider" parent="." unique_id=127310141 instance=ExtResource("28_yqntx")]
+position = Vector2(209.72221, 100.00001)
+scale = Vector2(0.3888889, 0.47679323)
+send_direction = 4
+
+[node name="enemy_direction_collider3" parent="." unique_id=1796027712 instance=ExtResource("28_yqntx")]
+position = Vector2(288.19446, 222.78482)
+scale = Vector2(0.15123457, 0.22733176)
+
+[node name="enemy_direction_collider4" parent="." unique_id=1810959571 instance=ExtResource("28_yqntx")]
+position = Vector2(271.875, 76.371315)
+scale = Vector2(0.15123457, 0.22733176)
+send_direction = 1
+
+[node name="enemy_direction_collider5" parent="." unique_id=1948394320 instance=ExtResource("28_yqntx")]
+position = Vector2(374.6528, 95.7806)
+scale = Vector2(0.3888889, 0.47679323)
+send_direction = 4
