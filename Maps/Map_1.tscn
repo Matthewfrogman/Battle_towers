@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://b0mmlh1bo6kkb" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/1 Shadow/3.png" id="27_yrcjl"]
 [ext_resource type="Texture2D" uid="uid://bmai44na21eku" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/2 Fence/6.png" id="28_kin0c"]
 [ext_resource type="PackedScene" uid="uid://cnfjfb58e7bov" path="res://scenes/enemy_direction_collider.tscn" id="28_yqntx"]
+[ext_resource type="PackedScene" uid="uid://cfamatig7kjw2" path="res://scenes/enemy_base.tscn" id="29_3l7mr"]
 [ext_resource type="PackedScene" uid="uid://7c5fgd6cuy2o" path="res://scenes/shop.tscn" id="29_yqntx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aiixn"]
@@ -809,3 +810,6 @@ send_direction = 4
 position = Vector2(352.77777, 243.88187)
 scale = Vector2(0.15123457, 0.22733176)
 send_direction = 1
+
+[node name="enemy" parent="." unique_id=1334610211 instance=ExtResource("29_3l7mr")]
+position = Vector2(7.9861107, 94.93671)
