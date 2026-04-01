@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bs885t7hk4eqn"
-path="res://.godot/imported/camo_head.png-917d5e845dff5d2004a73001825418d3.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Towers/Images/camo_head.png"
-dest_files=["res://.godot/imported/camo_head.png-917d5e845dff5d2004a73001825418d3.ctex"]
 
 [params]
 
