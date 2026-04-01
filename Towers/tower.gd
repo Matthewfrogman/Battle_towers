@@ -14,6 +14,7 @@ var bullet_scene: PackedScene = preload("res://Towers/Bullets/bullet.tscn")
 @export var attack: int = 5
 #num of bullets. this number should ALWAYS be odd so it looks good.
 @export var projectiles: int = 5
+@export var bullet_speed: int = 100
 @export var sees_camo: bool = false
 
 var canshoot = false
@@ -38,7 +39,7 @@ func _process(delta: float) -> void:
 		#get the difference between x and y coords with the closest enemy
 		#gives us an angle in radians!!
 		if canshoot == true:
-			shoot(delta, 50, angle, "angled", 5)
+			shoot(delta, bullet_speed, angle, "angled", 5)
 
 
 #PLANS FOR THIS:
