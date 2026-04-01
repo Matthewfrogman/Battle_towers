@@ -804,3 +804,8 @@ send_direction = 1
 position = Vector2(374.6528, 95.7806)
 scale = Vector2(0.3888889, 0.47679323)
 send_direction = 4
+
+[node name="enemy_direction_collider6" parent="." unique_id=41188123 instance=ExtResource("28_yqntx")]
+position = Vector2(352.77777, 243.88187)
+scale = Vector2(0.15123457, 0.22733176)
+send_direction = 1
