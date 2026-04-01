@@ -5,14 +5,15 @@ class_name Tower extends Area2D
 @onready var range_scene = get_node("Range")
 #a reference to the bullet/projectile it instantiates
 var bullet_scene: PackedScene = preload("res://Towers/Bullets/bullet.tscn")
+
 # VVV things that'll change between towers VVV
 #the radius of where it can shoot
 @export var range: int
-#the time it takes to shoot
 @export var cooldown: float = 5.0
 @export var attack: int = 5
 #num of bullets. this number should ALWAYS be odd so it looks good.
 @export var projectiles: int = 5
+@export var sees_camo: bool = false
 
 var canshoot = false
 #either hover or placed. If its hovering itll follow the mouse, otherwise itll shoot
