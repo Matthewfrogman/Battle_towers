@@ -6,9 +6,9 @@ const MAP_IMAGES = [
 	"res://scenes/mapsforselect/cyber.png"
 ]
 const MAP_SCENES = [
-	"res://Map_1.tscn",
-	"res://Map_2.tscn",
-	"res://Map_3.tscn"
+	"res://Maps/Map_1.tscn",
+	"res://Maps/Map_2.tscn",
+	"res://Maps/Map_3.tscn"
 ]
 const BG_IMAGE      = "res://scenes/mapsforselect/mainmenuart/mainmenubg.png"
 const BUTTON_IMAGE  = "res://scenes/mapsforselect/mainmenuart/button.png"
