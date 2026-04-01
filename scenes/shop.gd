@@ -66,7 +66,8 @@ func _on_buy_tower_btn_pressed():
 		money -= 200
 		update_money_label()
 		var tower = tower_scene.instantiate()
-		get_tree().current_scene.add_child(tower)
+		#get_tree().current_scene.add_child(tower)
+		get_tree().root.add_child(tower)
 		tower.global_position = tower.get_global_mouse_position()
 
 func update_money_label():
