@@ -8,6 +8,9 @@
 [node name="Basic_Tower" unique_id=598119214 instance=ExtResource("1_qv87q")]
 script = ExtResource("2_3uhwj")
 
+[node name="Footprint" parent="." index="0" unique_id=2093572891]
+position = Vector2(-1, 0.5)
+
 [node name="Base" type="Sprite2D" parent="." index="3" unique_id=202278920]
 texture = ExtResource("2_2rreo")
 
