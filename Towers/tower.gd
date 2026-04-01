@@ -18,6 +18,8 @@ var canshoot = false
 #either hover or placed. If its hovering itll follow the mouse, otherwise itll shoot
 var mode = "hover"
 var angle: float = 0
+#all the enemies in the range V
+var enemies = []
 
 func _ready() -> void:
 	timer.wait_time = cooldown
@@ -55,7 +57,6 @@ func shoot(delta: float, speed: int, angle: float, angle_mode: String, bnum: int
 			else:
 				aIncrement = 0.1*(i+1)
 			bulletShoot(Vector2(speed*cos(angle+aIncrement), speed*sin(angle+aIncrement)), position)
-		
 
 func bulletShoot(move: Vector2, pos: Vector2):
 	var bullet = bullet_scene.instantiate()
@@ -67,3 +68,9 @@ func bulletShoot(move: Vector2, pos: Vector2):
 	
 func _timer_timeout() -> void:
 	canshoot = true
+
+
+
+func _on_body_entered(body: Node2D) -> void:
+	enemies.append(body)
+	print(body.position)
