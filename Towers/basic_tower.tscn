@@ -16,9 +16,9 @@ texture = ExtResource("2_2rreo")
 
 [node name="Cannon" parent="." index="4" unique_id=1115548727]
 texture = ExtResource("3_3uhwj")
-offset = Vector2(1, 17)
+offset = Vector2(0, 16)
 
 [node name="Marker2D" parent="Cannon" index="0" unique_id=1260253367]
-position = Vector2(0, 66)
+position = Vector2(0, 67)
 
 [connection signal="body_entered" from="Range" to="." method="_body_entered"]
