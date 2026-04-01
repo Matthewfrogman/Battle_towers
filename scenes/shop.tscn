@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://7c5fgd6cuy2o"]
 
 [ext_resource type="Script" uid="uid://1ab0bg0ycdun" path="res://scenes/shop.gd" id="1_lx5au"]
+[ext_resource type="Texture2D" uid="uid://dnufllpevmtkr" path="res://Towers/Images/Firecracker_Base.png" id="2_1l46r"]
+[ext_resource type="Texture2D" uid="uid://fqy2ybb60teh" path="res://Towers/Images/Firecracker_Cannon.png" id="3_032fp"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=444425766]
 script = ExtResource("1_lx5au")
@@ -30,5 +32,15 @@ offset_right = 138.875
 offset_bottom = 132.0
 scale = Vector2(1, 1.56)
 text = "Tower- $200"
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel" unique_id=704301060]
+position = Vector2(150.0625, 52.726563)
+scale = Vector2(0.30859378, 0.3664551)
+texture = ExtResource("2_1l46r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Panel" unique_id=2052660228]
+position = Vector2(150.06248, 64.72656)
+scale = Vector2(0.35351563, 0.35351563)
+texture = ExtResource("3_032fp")
 
 [connection signal="pressed" from="Panel/BuyTowerBtn" to="." method="_on_buy_tower_btn_pressed"]
