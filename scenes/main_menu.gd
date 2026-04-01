@@ -4,7 +4,7 @@ const BUTTON_HOVER  = 1.12
 const TWEEN_SPEED   = 0.15
 const BREATHE_SCALE = 0.04
 const BREATHE_SPEED = 2.0
-const BG_IMAGE      = "res://scenes/mapsforselect/mainmenuart/mainmenubg.png"
+const BG_IMAGE      = "res://scenes/mapsforselect/mainmenuart/pathway_image.jpg"
 const BUTTON_IMAGE  = "res://scenes/mapsforselect/mainmenuart/button.png"
 var title_label : Label
 var breathe_time := 0.0
