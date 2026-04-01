@@ -16,6 +16,10 @@ func _process(delta):
 		position.x -= delta*speed
 	elif direction == 4:
 		position.y += delta*speed
+	
+	if hp <= 0:
+		queue_free()
 
 func lose_hp(dmg):
-	pass
+	hp -= dmg
+	

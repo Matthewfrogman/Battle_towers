@@ -1,0 +1,781 @@
+[gd_scene format=3 uid="uid://p14wp3x6gafg"]
+
+[ext_resource type="Texture2D" uid="uid://ds3o22reo44iy" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/1 Tiles/FieldsTile_38.png" id="1_dgbw2"]
+[ext_resource type="Texture2D" uid="uid://bpasimqt0hjpa" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/1 Tiles/FieldsTileset.png" id="2_yqntx"]
+[ext_resource type="Texture2D" uid="uid://cg8o1agawjihe" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/5 Grass/1.png" id="3_3l7mr"]
+[ext_resource type="Texture2D" uid="uid://eds2x3rp56xq" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Tree1.png" id="4_4an23"]
+[ext_resource type="Texture2D" uid="uid://c881lr1oi5qff" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Tree2.png" id="6_n74g1"]
+[ext_resource type="Texture2D" uid="uid://cddi5b1lxnwah" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/9 Bush/1.png" id="7_y04xp"]
+[ext_resource type="Texture2D" uid="uid://ierikeg3b2dq" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/8 Camp/1.png" id="8_o5bvu"]
+[ext_resource type="Texture2D" uid="uid://1qdolw2r3x58" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/5 Grass/6.png" id="9_yyurn"]
+[ext_resource type="Texture2D" uid="uid://bjeloi612omta" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/5 Grass/5.png" id="10_k3qg0"]
+[ext_resource type="Texture2D" uid="uid://cqw7c1bmihhh8" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/5 Grass/4.png" id="11_nryd3"]
+[ext_resource type="Texture2D" uid="uid://dkwji6uep3eg" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/5 Grass/3.png" id="12_nssvf"]
+[ext_resource type="Texture2D" uid="uid://c5go3ub8klaq4" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/5 Grass/2.png" id="13_27ebp"]
+[ext_resource type="Texture2D" uid="uid://bchfhmoeq7axg" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/2 Fence/8.png" id="14_kspwc"]
+[ext_resource type="Texture2D" uid="uid://jrau81n06y0d" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Box1.png" id="15_ub0k3"]
+[ext_resource type="Texture2D" uid="uid://b50j7efquabte" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/3 Animated Objects/2 Campfire/2.png" id="16_iipn5"]
+[ext_resource type="Texture2D" uid="uid://btv4jfmohou40" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/3 Animated Objects/1 Flag/1.png" id="18_r50bh"]
+[ext_resource type="Texture2D" uid="uid://dr07045i6ohw7" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/6 Flower/3.png" id="19_7ptvj"]
+[ext_resource type="Texture2D" uid="uid://dqgtjqhdjy5jv" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/6 Flower/9.png" id="20_qshex"]
+[ext_resource type="Texture2D" uid="uid://b5kox3vvcqoc8" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/6 Flower/6.png" id="21_nwi8y"]
+[ext_resource type="Texture2D" uid="uid://ciows4x7hmf67" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/6 Flower/4.png" id="22_53qsk"]
+[ext_resource type="Texture2D" uid="uid://dx6emnmlknebx" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/6 Flower/2.png" id="23_lyy6p"]
+[ext_resource type="Texture2D" uid="uid://c8qyqk66tnqw3" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/6 Flower/12.png" id="24_aheg4"]
+[ext_resource type="Texture2D" uid="uid://un2l1dbkswx" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/6 Flower/1.png" id="25_0xs6e"]
+[ext_resource type="Texture2D" uid="uid://cqe62olbslc4r" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/6 Flower/7.png" id="26_ha0t5"]
+[ext_resource type="Texture2D" uid="uid://b0mmlh1bo6kkb" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/1 Shadow/3.png" id="27_yrcjl"]
+[ext_resource type="Texture2D" uid="uid://bmai44na21eku" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/2 Fence/6.png" id="28_kin0c"]
+[ext_resource type="PackedScene" uid="uid://7c5fgd6cuy2o" path="res://scenes/shop.tscn" id="29_yqntx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aiixn"]
+texture = ExtResource("1_dgbw2")
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7j7ta"]
+texture = ExtResource("2_yqntx")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+15:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+14:14/0 = 0
+15:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+12:15/0 = 0
+13:15/0 = 0
+14:15/0 = 0
+15:15/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_shlsu"]
+texture = ExtResource("3_3l7mr")
+
+[sub_resource type="TileSet" id="TileSet_a55ak"]
+sources/0 = SubResource("TileSetAtlasSource_aiixn")
+sources/1 = SubResource("TileSetAtlasSource_7j7ta")
+sources/2 = SubResource("TileSetAtlasSource_shlsu")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bde1"]
+atlas = ExtResource("16_iipn5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfj0i"]
+atlas = ExtResource("16_iipn5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0lta"]
+atlas = ExtResource("16_iipn5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58uhv"]
+atlas = ExtResource("16_iipn5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywjpr"]
+atlas = ExtResource("16_iipn5")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xckv6"]
+atlas = ExtResource("16_iipn5")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rx3jx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bde1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfj0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0lta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58uhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywjpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xckv6")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sx6y"]
+atlas = ExtResource("18_r50bh")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jixj"]
+atlas = ExtResource("18_r50bh")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddrsw"]
+atlas = ExtResource("18_r50bh")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agv0l"]
+atlas = ExtResource("18_r50bh")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qeldt"]
+atlas = ExtResource("18_r50bh")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2wju"]
+atlas = ExtResource("18_r50bh")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pi7t0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sx6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jixj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddrsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agv0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qeldt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2wju")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Map_1" type="TileMap" unique_id=832691158]
+position = Vector2(0, -37)
+scale = Vector2(2.88, 2.37)
+tile_set = SubResource("TileSet_a55ak")
+format = 2
+layer_0/tile_data = PackedInt32Array(65536, 655361, 8, 131072, 655361, 8, 196608, 655361, 8, 262144, 655361, 8, 327680, 1, 14, 393216, 1, 15, 458752, 655361, 8, 524288, 655361, 8, 589824, 655361, 8, 655360, 655361, 8, 720896, 655361, 8, 786432, 655361, 8, 851968, 655361, 8, 917504, 655361, 8, 983040, 655361, 8, 1048576, 655361, 8, 1114112, 655361, 8, 65537, 720897, 8, 131073, 720897, 8, 196609, 720897, 8, 262145, 720897, 8, 327681, 65537, 14, 393217, 65537, 15, 458753, 720897, 8, 524289, 720897, 8, 589825, 720897, 8, 655361, 720897, 8, 720897, 720897, 8, 786433, 720897, 8, 851969, 655361, 8, 917505, 655361, 8, 983041, 720897, 8, 1048577, 720897, 8, 1114113, 720897, 8, 65538, 720897, 8, 131074, 720897, 8, 196610, 720897, 8, 262146, 720897, 8, 327682, 1, 14, 393218, 1, 15, 458754, 720897, 8, 524290, 720897, 8, 589826, 720897, 8, 655362, 720897, 8, 720898, 720897, 8, 786434, 655361, 8, 851970, 655361, 8, 917506, 655361, 8, 983042, 720897, 8, 1048578, 720897, 8, 1114114, 720897, 8, 65539, 720897, 8, 131075, 720897, 8, 196611, 720897, 8, 262147, 720897, 8, 327683, 65537, 14, 393219, 65537, 15, 458755, 720897, 8, 524291, 720897, 8, 589827, 720897, 8, 655363, 720897, 8, 720899, 720897, 8, 786435, 655361, 8, 851971, 655361, 8, 917507, 655361, 8, 983043, 720897, 8, 1048579, 720897, 8, 1114115, 720897, 8, 65540, 720897, 8, 131076, 720897, 8, 196612, 720897, 8, 262148, 720897, 8, 327684, 131073, 14, 393220, 131073, 15, 458756, 720897, 8, 524292, 720897, 8, 589828, 720897, 8, 655364, 720897, 8, 720900, 720897, 8, 786436, 720897, 8, 851972, 720897, 8, 917508, 720897, 8, 983044, 720897, 8, 1048580, 720897, 8, 1114116, 720897, 8, 65541, 720897, 8, 131077, 720897, 8, 196613, 720897, 8, 262149, 720897, 8, 327685, 196609, 14, 393221, 196609, 15, 458757, 720897, 8, 524293, 720897, 8, 589829, 720897, 8, 655365, 720897, 8, 720901, 720897, 8, 786437, 720897, 8, 851973, 720897, 8, 917509, 720897, 8, 983045, 720897, 8, 1048581, 720897, 8, 1114117, 720897, 8, 65542, 720897, 8, 131078, 720897, 8, 196614, 720897, 8, 262150, 720897, 8, 327686, 262145, 14, 393222, 262145, 15, 458758, 720897, 8, 524294, 720897, 8, 589830, 720897, 8, 655366, 720897, 8, 720902, 720897, 8, 786438, 720897, 8, 851974, 720897, 8, 917510, 720897, 8, 983046, 720897, 8, 1048582, 720897, 8, 1114118, 720897, 8, 65543, 720897, 8, 131079, 720897, 8, 196615, 720897, 8, 262151, 720897, 8, 327687, 327681, 14, 393223, 327681, 15, 458759, 720897, 8, 524295, 720897, 8, 589831, 720897, 8, 655367, 720897, 8, 720903, 720897, 8, 786439, 720897, 8, 851975, 720897, 8, 917511, 720897, 8, 983047, 720897, 8, 1048583, 720897, 8, 1114119, 720897, 8, 65544, 720897, 8, 131080, 720897, 8, 196616, 720897, 8, 262152, 720897, 8, 327688, 131073, 268435456, 393224, 393217, 15, 458760, 720897, 8, 524296, 720897, 8, 589832, 720897, 8, 655368, 720897, 8, 720904, 720897, 8, 786440, 720897, 8, 851976, 720897, 8, 917512, 720897, 8, 983048, 720897, 8, 1048584, 720897, 8, 1114120, 720897, 8, 65545, 720897, 8, 131081, 720897, 8, 196617, 720897, 8, 262153, 720897, 8, 327689, 262145, 2, 393225, 262145, 3, 458761, 720897, 8, 524297, 720897, 8, 589833, 720897, 8, 655369, 720897, 8, 720905, 720897, 8, 786441, 720897, 8, 851977, 720897, 8, 917513, 720897, 8, 983049, 720897, 8, 1048585, 720897, 8, 1114121, 720897, 8, 65546, 720897, 8, 131082, 720897, 8, 196618, 720897, 8, 262154, 720897, 8, 327690, 786433, 268435456, 393226, 786433, 268435457, 458762, 720897, 8, 524298, 720897, 8, 589834, 720897, 8, 655370, 720897, 8, 720906, 720897, 8, 786442, 720897, 8, 851978, 720897, 8, 917514, 720897, 8, 983050, 720897, 8, 1048586, 720897, 8, 1114122, 720897, 8, 65547, 720897, 8, 131083, 720897, 8, 196619, 720897, 8, 262155, 720897, 8, 327691, 720897, 268435456, 393227, 720897, 268435457, 458763, 1, 1342177280, 524299, 1, 1610612736, 589835, 1, 0, 655371, 1, 1, 720907, 1, 0, 786443, 1, 1, 851979, 1, 14, 917515, 1, 15, 983051, 720897, 8, 1048587, 720897, 8, 1114123, 720897, 8, 65548, 720897, 8, 131084, 720897, 8, 196620, 720897, 8, 262156, 720897, 8, 327692, 655361, 268435456, 393228, 655361, 268435457, 458764, 786433, 268435458, 524300, 65537, 1, 589836, 65537, 0, 655372, 65537, 1, 720908, 65537, 0, 786444, 65537, 1, 851980, 65537, 14, 917516, 65537, 15, 983052, 720897, 8, 1048588, 720897, 8, 1114124, 720897, 8, 65549, 720897, 8, 131085, 720897, 8, 196621, 720897, 8, 262157, 720897, 8, 327693, 655361, 8, 393229, 655361, 9, 458765, 655361, 9, 524301, 655361, 8, 589837, 655361, 9, 655373, 720897, 8, 720909, 720897, 8, 786445, 720897, 8, 851981, 131073, 14, 917517, 131073, 15, 983053, 720897, 8, 1048589, 720897, 8, 1114125, 720897, 8, 65550, 720897, 8, 131086, 720897, 8, 196622, 720897, 8, 262158, 720897, 8, 327694, 720897, 8, 393230, 720897, 8, 458766, 720897, 8, 524302, 720897, 8, 589838, 720897, 8, 655374, 720897, 8, 720910, 720897, 8, 786446, 720897, 8, 851982, 196609, 14, 917518, 196609, 15, 983054, 720897, 8, 1048590, 720897, 8, 1114126, 720897, 8, 65551, 720897, 8, 131087, 720897, 8, 196623, 720897, 8, 262159, 720897, 8, 327695, 720897, 8, 393231, 720897, 8, 458767, 720897, 8, 524303, 720897, 8, 589839, 720897, 8, 655375, 720897, 8, 720911, 720897, 8, 786447, 720897, 8, 851983, 262145, 14, 917519, 262145, 15, 983055, 720897, 8, 1048591, 720897, 8, 1114127, 720897, 8, 65552, 720897, 8, 131088, 720897, 8, 196624, 720897, 8, 262160, 720897, 8, 327696, 1, 14, 393232, 1, 15, 458768, 327681, 9, 524304, 1, 1073741824, 589840, 65537, 1073741824, 655376, 131073, 1073741824, 720912, 196609, 1073741824, 786448, 262145, 1073741824, 851984, 327681, 14, 917520, 327681, 15, 983056, 720897, 8, 1048592, 720897, 8, 1114128, 720897, 8, 65553, 720897, 8, 131089, 720897, 8, 196625, 720897, 8, 262161, 720897, 8, 327697, 65537, 14, 393233, 65537, 15, 458769, 327681, 9, 524305, 393217, 1610612736, 589841, 327681, 1610612736, 655377, 262145, 1610612736, 720913, 196609, 1610612736, 786449, 131073, 1610612736, 851985, 393217, 14, 917521, 393217, 15, 983057, 720897, 8, 1048593, 720897, 8, 1114129, 720897, 8, 65554, 720897, 8, 131090, 720897, 8, 196626, 720897, 8, 262162, 720897, 8, 327698, 131073, 14, 393234, 131073, 15, 458770, 720897, 8, 524306, 720897, 8, 589842, 720897, 8, 655378, 720897, 8, 720914, 720897, 8, 786450, 720897, 8, 851986, 720897, 8, 917522, 720897, 8, 983058, 720897, 8, 1048594, 720897, 8, 1114130, 720897, 8, 65555, 720897, 8, 131091, 720897, 8, 196627, 720897, 8, 262163, 720897, 8, 327699, 196609, 14, 393235, 196609, 15, 458771, 720897, 8, 524307, 720897, 8, 589843, 720897, 8, 655379, 720897, 8, 720915, 720897, 8, 786451, 720897, 8, 851987, 720897, 8, 917523, 720897, 8, 983059, 720897, 8, 1048595, 720897, 8, 1114131, 720897, 8, 65556, 720897, 8, 131092, 720897, 8, 196628, 720897, 8, 262164, 720897, 8, 327700, 262145, 14, 393236, 262145, 15, 458772, 720897, 8, 524308, 720897, 8, 589844, 720897, 8, 655380, 720897, 8, 720916, 720897, 8, 786452, 720897, 8, 851988, 720897, 8, 917524, 720897, 8, 983060, 720897, 8, 1048596, 720897, 8, 1114132, 720897, 8, 65557, 720897, 8, 131093, 720897, 8, 196629, 720897, 8, 262165, 720897, 8, 327701, 327681, 14, 393237, 327681, 15, 458773, 393217, 1610612736, 524309, 327681, 1610612736, 589845, 262145, 1610612736, 655381, 196609, 1610612736, 720917, 131073, 1610612736, 786453, 65537, 1610612736, 851989, 458753, 805306371, 917525, 458753, 805306370, 983061, 720897, 8, 1048597, 720897, 8, 1114133, 720897, 8, 65558, 720897, 8, 131094, 720897, 8, 196630, 720897, 8, 262166, 720897, 8, 327702, 393217, 14, 393238, 393217, 15, 458774, 327681, 1879048192, 524310, 262145, 1879048192, 589846, 196609, 1879048192, 655382, 131073, 1879048192, 720918, 65537, 1879048192, 786454, 1, 1879048192, 851990, 393217, 805306371, 917526, 393217, 805306370, 983062, 720897, 8, 1048598, 720897, 8, 1114134, 720897, 8, 65559, 720897, 8, 131095, 720897, 8, 196631, 720897, 8, 262167, 720897, 8, 327703, 720897, 8, 393239, 720897, 8, 458775, 720897, 8, 524311, 720897, 8, 589847, 720897, 8, 655383, 720897, 8, 720919, 720897, 8, 786455, 720897, 8, 851991, 1, 0, 917527, 262145, 0, 983063, 720897, 8, 1048599, 720897, 8, 1114135, 720897, 8, 65560, 655361, 9, 131096, 655361, 9, 196632, 655361, 9, 262168, 655361, 9, 327704, 655361, 9, 393240, 655361, 9, 458776, 655361, 9, 524312, 655361, 9, 589848, 655361, 9, 655384, 655361, 9, 720920, 655361, 9, 786456, 655361, 9, 851992, 1, 268435456, 917528, 1, 805306368, 983064, 655361, 9, 1048600, 655361, 9, 1114136, 655361, 9)
+
+[node name="Tree1" type="Sprite2D" parent="." unique_id=715473800]
+z_index = 1
+position = Vector2(47, 233)
+texture = ExtResource("4_4an23")
+
+[node name="Log1" type="Sprite2D" parent="." unique_id=1413066317]
+position = Vector2(112, 246)
+
+[node name="Tree2" type="Sprite2D" parent="." unique_id=1651360415]
+z_index = 1
+position = Vector2(344, 37)
+texture = ExtResource("6_n74g1")
+
+[node name="1" type="Sprite2D" parent="." unique_id=922758497]
+z_index = 1
+position = Vector2(101, 58)
+texture = ExtResource("7_y04xp")
+
+[node name="2" type="Sprite2D" parent="." unique_id=779658257]
+z_index = 1
+position = Vector2(315, 266)
+texture = ExtResource("8_o5bvu")
+
+[node name="81" type="Sprite2D" parent="." unique_id=1101606268]
+modulate = Color(0.11119685, 0.11119684, 0.11119684, 1)
+position = Vector2(317, 265)
+texture = ExtResource("8_o5bvu")
+
+[node name="6" type="Sprite2D" parent="." unique_id=1395661871]
+position = Vector2(35, 130)
+texture = ExtResource("9_yyurn")
+
+[node name="7" type="Sprite2D" parent="." unique_id=1381522626]
+position = Vector2(103, 146)
+texture = ExtResource("9_yyurn")
+
+[node name="8" type="Sprite2D" parent="." unique_id=1886554583]
+position = Vector2(16, 181)
+texture = ExtResource("9_yyurn")
+
+[node name="5" type="Sprite2D" parent="." unique_id=1956433510]
+position = Vector2(118, 184)
+texture = ExtResource("10_k3qg0")
+
+[node name="4" type="Sprite2D" parent="." unique_id=2043067056]
+position = Vector2(75, 170)
+texture = ExtResource("11_nryd3")
+
+[node name="9" type="Sprite2D" parent="." unique_id=336332928]
+position = Vector2(147, 212)
+texture = ExtResource("11_nryd3")
+
+[node name="10" type="Sprite2D" parent="." unique_id=1287401480]
+position = Vector2(143, 137)
+texture = ExtResource("10_k3qg0")
+
+[node name="11" type="Sprite2D" parent="." unique_id=555238933]
+position = Vector2(157, 248)
+texture = ExtResource("10_k3qg0")
+
+[node name="3" type="Sprite2D" parent="." unique_id=1948073376]
+position = Vector2(209, 176)
+texture = ExtResource("12_nssvf")
+
+[node name="12" type="Sprite2D" parent="." unique_id=1032204417]
+position = Vector2(176, 143)
+texture = ExtResource("12_nssvf")
+
+[node name="13" type="Sprite2D" parent="." unique_id=1018042455]
+position = Vector2(223, 135)
+texture = ExtResource("11_nryd3")
+
+[node name="14" type="Sprite2D" parent="." unique_id=558332138]
+position = Vector2(223, 185)
+texture = ExtResource("10_k3qg0")
+
+[node name="15" type="Sprite2D" parent="." unique_id=444219902]
+position = Vector2(240, 154)
+texture = ExtResource("10_k3qg0")
+
+[node name="16" type="Sprite2D" parent="." unique_id=1772832992]
+position = Vector2(237, 100)
+texture = ExtResource("9_yyurn")
+
+[node name="17" type="Sprite2D" parent="." unique_id=351391926]
+position = Vector2(228, 260)
+texture = ExtResource("9_yyurn")
+
+[node name="18" type="Sprite2D" parent="." unique_id=952637418]
+position = Vector2(183, 268)
+texture = ExtResource("10_k3qg0")
+
+[node name="19" type="Sprite2D" parent="." unique_id=2071193486]
+position = Vector2(264, 249)
+texture = ExtResource("11_nryd3")
+
+[node name="20" type="Sprite2D" parent="." unique_id=369118463]
+position = Vector2(57, 61)
+texture = ExtResource("10_k3qg0")
+
+[node name="21" type="Sprite2D" parent="." unique_id=143509465]
+position = Vector2(127, 57)
+texture = ExtResource("11_nryd3")
+
+[node name="22" type="Sprite2D" parent="." unique_id=99392692]
+position = Vector2(79, 35)
+texture = ExtResource("10_k3qg0")
+
+[node name="23" type="Sprite2D" parent="." unique_id=757412267]
+position = Vector2(171, 67)
+texture = ExtResource("11_nryd3")
+
+[node name="24" type="Sprite2D" parent="." unique_id=300141419]
+position = Vector2(218, 32)
+texture = ExtResource("11_nryd3")
+
+[node name="25" type="Sprite2D" parent="." unique_id=552167860]
+position = Vector2(166, 32)
+texture = ExtResource("10_k3qg0")
+
+[node name="26" type="Sprite2D" parent="." unique_id=864656475]
+position = Vector2(232, 68)
+texture = ExtResource("9_yyurn")
+
+[node name="27" type="Sprite2D" parent="." unique_id=1636993086]
+position = Vector2(275, 37)
+texture = ExtResource("9_yyurn")
+
+[node name="28" type="Sprite2D" parent="." unique_id=1255124997]
+position = Vector2(275, 65)
+texture = ExtResource("10_k3qg0")
+
+[node name="29" type="Sprite2D" parent="." unique_id=745928366]
+position = Vector2(321, 66)
+texture = ExtResource("11_nryd3")
+
+[node name="30" type="Sprite2D" parent="." unique_id=932315203]
+position = Vector2(304, 33)
+texture = ExtResource("9_yyurn")
+
+[node name="31" type="Sprite2D" parent="." unique_id=1758711417]
+position = Vector2(86, 268)
+texture = ExtResource("13_27ebp")
+
+[node name="32" type="Sprite2D" parent="." unique_id=1653335895]
+position = Vector2(8, 248)
+texture = ExtResource("13_27ebp")
+
+[node name="33" type="Sprite2D" parent="." unique_id=193458049]
+position = Vector2(19, 275)
+texture = ExtResource("13_27ebp")
+
+[node name="34" type="Sprite2D" parent="." unique_id=476261089]
+position = Vector2(19, 51)
+texture = ExtResource("3_3l7mr")
+
+[node name="35" type="Sprite2D" parent="." unique_id=1771796301]
+position = Vector2(36, 25)
+texture = ExtResource("3_3l7mr")
+
+[node name="36" type="Sprite2D" parent="." unique_id=1506281160]
+z_index = 1
+position = Vector2(205, 79)
+texture = ExtResource("14_kspwc")
+
+[node name="80" type="Sprite2D" parent="36" unique_id=852355848]
+modulate = Color(0.23753911, 0.23753914, 0.23753911, 1)
+z_index = -1
+position = Vector2(4, -1.5000038)
+scale = Vector2(1.3271698, 0.97943604)
+skew = 0.46600282
+texture = ExtResource("14_kspwc")
+
+[node name="37" type="Sprite2D" parent="." unique_id=1316400542]
+position = Vector2(302, 128)
+texture = ExtResource("11_nryd3")
+
+[node name="38" type="Sprite2D" parent="." unique_id=1902960784]
+position = Vector2(320, 162)
+texture = ExtResource("10_k3qg0")
+
+[node name="39" type="Sprite2D" parent="." unique_id=810244864]
+position = Vector2(305, 197)
+texture = ExtResource("9_yyurn")
+
+[node name="40" type="Sprite2D" parent="." unique_id=407104148]
+position = Vector2(326, 122)
+texture = ExtResource("10_k3qg0")
+
+[node name="41" type="Sprite2D" parent="." unique_id=1494011299]
+position = Vector2(325, 220)
+texture = ExtResource("11_nryd3")
+
+[node name="42" type="Sprite2D" parent="." unique_id=288989386]
+position = Vector2(365, 249)
+texture = ExtResource("11_nryd3")
+
+[node name="43" type="Sprite2D" parent="." unique_id=410288584]
+position = Vector2(354, 274)
+texture = ExtResource("10_k3qg0")
+
+[node name="44" type="Sprite2D" parent="." unique_id=1872648164]
+position = Vector2(259, 274)
+texture = ExtResource("9_yyurn")
+
+[node name="Box1" type="Sprite2D" parent="." unique_id=531381071]
+z_index = 1
+position = Vector2(276, 278)
+texture = ExtResource("15_ub0k3")
+
+[node name="Box2" type="Sprite2D" parent="Box1" unique_id=792026936]
+modulate = Color(0.17283267, 0.17283267, 0.17283261, 1)
+z_index = -1
+position = Vector2(4, 0)
+scale = Vector2(0.948531, 0.9375009)
+texture = ExtResource("15_ub0k3")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1749076062]
+position = Vector2(242, 266.99997)
+scale = Vector2(1, 0.99999994)
+sprite_frames = SubResource("SpriteFrames_rx3jx")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.27764642
+
+[node name="45" type="Sprite2D" parent="." unique_id=92599427]
+position = Vector2(49, 263)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1896376389]
+position = Vector2(14.69446, 47.66668)
+scale = Vector2(0.8, 0.79999995)
+sprite_frames = SubResource("SpriteFrames_pi7t0")
+autoplay = "default"
+frame_progress = 0.30586764
+
+[node name="46" type="Sprite2D" parent="." unique_id=1006581761]
+position = Vector2(385, 193)
+texture = ExtResource("10_k3qg0")
+
+[node name="47" type="Sprite2D" parent="." unique_id=975088075]
+position = Vector2(375, 172)
+texture = ExtResource("11_nryd3")
+
+[node name="48" type="Sprite2D" parent="." unique_id=924775752]
+position = Vector2(394, 161)
+texture = ExtResource("9_yyurn")
+
+[node name="49" type="Sprite2D" parent="." unique_id=1537453181]
+position = Vector2(387, 137)
+texture = ExtResource("11_nryd3")
+
+[node name="50" type="Sprite2D" parent="." unique_id=954679507]
+position = Vector2(377, 110)
+texture = ExtResource("10_k3qg0")
+
+[node name="51" type="Sprite2D" parent="." unique_id=1415910302]
+position = Vector2(393, 83)
+texture = ExtResource("10_k3qg0")
+
+[node name="52" type="Sprite2D" parent="." unique_id=1922200948]
+position = Vector2(364, 64)
+texture = ExtResource("11_nryd3")
+
+[node name="53" type="Sprite2D" parent="." unique_id=244279942]
+position = Vector2(380, 38)
+texture = ExtResource("11_nryd3")
+
+[node name="54" type="Sprite2D" parent="." unique_id=1859544611]
+position = Vector2(39, 161)
+texture = ExtResource("11_nryd3")
+
+[node name="55" type="Sprite2D" parent="." unique_id=1274257790]
+position = Vector2(68, 137)
+texture = ExtResource("9_yyurn")
+
+[node name="56" type="Sprite2D" parent="." unique_id=354792178]
+position = Vector2(117, 128)
+texture = ExtResource("10_k3qg0")
+
+[node name="57" type="Sprite2D" parent="." unique_id=1967378756]
+position = Vector2(155, 182)
+texture = ExtResource("11_nryd3")
+
+[node name="58" type="Sprite2D" parent="." unique_id=1978494864]
+position = Vector2(156, 155)
+texture = ExtResource("9_yyurn")
+
+[node name="59" type="Sprite2D" parent="." unique_id=2042078277]
+position = Vector2(108, 216)
+texture = ExtResource("10_k3qg0")
+
+[node name="60" type="Sprite2D" parent="." unique_id=1102370635]
+position = Vector2(80, 190)
+texture = ExtResource("11_nryd3")
+
+[node name="61" type="Sprite2D" parent="." unique_id=441470456]
+position = Vector2(135, 276)
+texture = ExtResource("9_yyurn")
+
+[node name="62" type="Sprite2D" parent="." unique_id=697443937]
+position = Vector2(135, 251)
+texture = ExtResource("19_7ptvj")
+
+[node name="63" type="Sprite2D" parent="." unique_id=1861907717]
+position = Vector2(138, 256)
+texture = ExtResource("20_qshex")
+
+[node name="64" type="Sprite2D" parent="." unique_id=1337850814]
+position = Vector2(118, 164)
+texture = ExtResource("20_qshex")
+
+[node name="65" type="Sprite2D" parent="." unique_id=2136803557]
+position = Vector2(115, 160)
+texture = ExtResource("21_nwi8y")
+
+[node name="66" type="Sprite2D" parent="." unique_id=1350801732]
+position = Vector2(121, 160)
+texture = ExtResource("22_53qsk")
+
+[node name="67" type="Sprite2D" parent="." unique_id=139192010]
+position = Vector2(142, 251)
+texture = ExtResource("23_lyy6p")
+
+[node name="68" type="Sprite2D" parent="." unique_id=1381506682]
+position = Vector2(254, 52)
+texture = ExtResource("24_aheg4")
+
+[node name="69" type="Sprite2D" parent="." unique_id=1594510040]
+position = Vector2(250, 48)
+texture = ExtResource("22_53qsk")
+
+[node name="70" type="Sprite2D" parent="." unique_id=1605882013]
+position = Vector2(258, 48)
+texture = ExtResource("23_lyy6p")
+
+[node name="71" type="Sprite2D" parent="." unique_id=61961298]
+position = Vector2(307, 164)
+texture = ExtResource("24_aheg4")
+
+[node name="72" type="Sprite2D" parent="." unique_id=636284668]
+position = Vector2(311, 160)
+texture = ExtResource("21_nwi8y")
+
+[node name="73" type="Sprite2D" parent="." unique_id=1748435004]
+position = Vector2(304, 160)
+texture = ExtResource("25_0xs6e")
+
+[node name="74" type="Sprite2D" parent="." unique_id=339760238]
+position = Vector2(13, 147)
+texture = ExtResource("26_ha0t5")
+
+[node name="75" type="Sprite2D" parent="." unique_id=1409445051]
+position = Vector2(9, 143)
+texture = ExtResource("21_nwi8y")
+
+[node name="76" type="Sprite2D" parent="." unique_id=947033939]
+position = Vector2(17, 143)
+texture = ExtResource("19_7ptvj")
+
+[node name="77" type="Sprite2D" parent="." unique_id=1256383863]
+position = Vector2(103, 60)
+texture = ExtResource("27_yrcjl")
+
+[node name="78" type="Sprite2D" parent="." unique_id=1537497360]
+position = Vector2(352, 37)
+texture = ExtResource("27_yrcjl")
+
+[node name="79" type="Sprite2D" parent="." unique_id=1089521552]
+position = Vector2(259, 262)
+texture = ExtResource("28_kin0c")
+
+[node name="CanvasLayer" parent="." unique_id=444425766 instance=ExtResource("29_yqntx")]
