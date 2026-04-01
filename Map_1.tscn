@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dytg75fv2w3ci"]
+[gd_scene format=3 uid="uid://p14wp3x6gafg"]
 
 [ext_resource type="Texture2D" uid="uid://ds3o22reo44iy" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/1 Tiles/FieldsTile_38.png" id="1_dgbw2"]
 [ext_resource type="Texture2D" uid="uid://bpasimqt0hjpa" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/1 Tiles/FieldsTileset.png" id="2_yqntx"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://b0mmlh1bo6kkb" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/1 Shadow/3.png" id="27_yrcjl"]
 [ext_resource type="Texture2D" uid="uid://bmai44na21eku" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/2 Fence/6.png" id="28_kin0c"]
 [ext_resource type="PackedScene" uid="uid://cnfjfb58e7bov" path="res://scenes/enemy_direction_collider.tscn" id="28_yqntx"]
+[ext_resource type="PackedScene" path="res://scenes/enemy_base.tscn" id="29_3l7mr"]
 [ext_resource type="PackedScene" uid="uid://7c5fgd6cuy2o" path="res://scenes/shop.tscn" id="29_yqntx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aiixn"]
@@ -791,6 +792,10 @@ position = Vector2(209.72221, 100.00001)
 scale = Vector2(0.3888889, 0.47679323)
 send_direction = 4
 
+[node name="enemy" parent="." unique_id=1334610211 instance=ExtResource("29_3l7mr")]
+position = Vector2(117.01388, 95.35866)
+speed = 33
+
 [node name="enemy_direction_collider3" parent="." unique_id=1796027712 instance=ExtResource("28_yqntx")]
 position = Vector2(288.19446, 222.78482)
 scale = Vector2(0.15123457, 0.22733176)
@@ -799,8 +804,3 @@ scale = Vector2(0.15123457, 0.22733176)
 position = Vector2(271.875, 76.371315)
 scale = Vector2(0.15123457, 0.22733176)
 send_direction = 1
-
-[node name="enemy_direction_collider5" parent="." unique_id=1948394320 instance=ExtResource("28_yqntx")]
-position = Vector2(374.6528, 95.7806)
-scale = Vector2(0.3888889, 0.47679323)
-send_direction = 4

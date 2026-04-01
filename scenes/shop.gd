@@ -1,6 +1,6 @@
 extends CanvasLayer
 var money = 500
-var tower_scene = preload("res://Towers/tower.tscn")
+var tower_scene = preload("res://Towers/basic_tower.tscn")
 var fast_forward = false
 var ff_button = null
 
