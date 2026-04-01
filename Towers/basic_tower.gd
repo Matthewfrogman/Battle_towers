@@ -1,8 +1,6 @@
 extends Tower
 
-@onready var cannon_sprite = get_node("Cannon")
-
 func _process(delta: float) -> void:
 	super(delta)
 	if mode == "placed":
-		cannon_sprite.rotation = angle
+		cannon_scene.rotation = deg_to_rad(angle-90)

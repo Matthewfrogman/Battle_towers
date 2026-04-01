@@ -23,5 +23,9 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=1624539430]
 shape = SubResource("CircleShape2D_ovc7u")
 
+[node name="Cannon" type="Sprite2D" parent="." unique_id=1115548727]
+
+[node name="Marker2D" type="Marker2D" parent="Cannon" unique_id=1260253367]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Cooldown Timer" to="." method="_timer_timeout"]
