@@ -17,6 +17,8 @@ func _process(delta):
 	elif direction == 4:
 		position.y += delta*speed
 	
+	print(hp)
+	
 	if hp <= 0:
 		queue_free()
 
