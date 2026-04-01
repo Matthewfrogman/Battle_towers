@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bykqnehxqsnsn"]
+
+[ext_resource type="PackedScene" uid="uid://dxugluqdqx6w5" path="res://Towers/Bullets/bullet.tscn" id="1_ujyci"]
+[ext_resource type="Texture2D" uid="uid://dhacnwc3xum2w" path="res://Towers/Bullets/Images/Fireball.png" id="2_0orgu"]
+
+[node name="Bullet" unique_id=901331464 instance=ExtResource("1_ujyci")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=2013745526]
+texture = ExtResource("2_0orgu")

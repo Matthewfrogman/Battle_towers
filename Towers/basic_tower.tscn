@@ -4,9 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://dnufllpevmtkr" path="res://Towers/Images/Firecracker_Base.png" id="2_2rreo"]
 [ext_resource type="Script" uid="uid://cads5qf172tum" path="res://Towers/basic_tower.gd" id="2_3uhwj"]
 [ext_resource type="Texture2D" uid="uid://fqy2ybb60teh" path="res://Towers/Images/Firecracker_Cannon.png" id="3_3uhwj"]
+[ext_resource type="PackedScene" uid="uid://bykqnehxqsnsn" path="res://Towers/Bullets/fireball.tscn" id="3_5l8tq"]
 
 [node name="Basic_Tower" unique_id=598119214 instance=ExtResource("1_qv87q")]
 script = ExtResource("2_3uhwj")
+bullet_scene = ExtResource("3_5l8tq")
 
 [node name="Footprint" parent="." index="0" unique_id=2093572891]
 position = Vector2(-1, 0.5)
@@ -16,9 +18,9 @@ texture = ExtResource("2_2rreo")
 
 [node name="Cannon" parent="." index="4" unique_id=1115548727]
 texture = ExtResource("3_3uhwj")
-offset = Vector2(1, 17)
+offset = Vector2(0, 16)
 
 [node name="Marker2D" parent="Cannon" index="0" unique_id=1260253367]
-position = Vector2(0, 66)
+position = Vector2(0, 67)
 
 [connection signal="body_entered" from="Range" to="." method="_body_entered"]
