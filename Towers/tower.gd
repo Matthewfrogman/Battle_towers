@@ -1,8 +1,9 @@
 class_name Tower extends Area2D
-#the cooldown timer
+
 @onready var timer = get_node("Cooldown Timer")
-#the range area2D
 @onready var range_scene = get_node("Range")
+@onready var cannon_scene = get_node("Cannon")
+@onready var marker_scene = get_node("Cannon/Marker2D")
 #a reference to the bullet/projectile it instantiates
 var bullet_scene: PackedScene = preload("res://Towers/Bullets/bullet.tscn")
 
@@ -62,15 +63,13 @@ func shoot(delta: float, speed: int, angle: float, angle_mode: String, bnum: int
 func bulletShoot(move: Vector2, pos: Vector2):
 	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
-	bullet.global_position = pos
+	bullet.global_position = marker_scene.global_position
 	bullet.damage = attack
 	bullet.move = move
 	canshoot = false
 	
 func _timer_timeout() -> void:
 	canshoot = true
-
-
 
 func _on_body_entered(body: Node2D) -> void:
 	enemies.append(body)

@@ -8,18 +8,28 @@
 [node name="Tower" unique_id=598119214 instance=ExtResource("1_d3qwo")]
 script = ExtResource("2_p54iu")
 
-[node name="Base" type="Sprite2D" parent="." index="3" unique_id=202278920]
+[node name="Footprint" parent="." index="0" unique_id=2093572891]
+position = Vector2(23, 0)
+
+[node name="CollisionShape2D" parent="Range" parent_id_path=PackedInt32Array(2002503009) index="0" unique_id=1624539430]
+position = Vector2(22, -6)
+
+[node name="camo_base" type="Sprite2D" parent="." index="3" unique_id=202278920]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_kwly8")
 
-[node name="Cannon" type="Sprite2D" parent="." index="4" unique_id=725065622]
+[node name="camo_cannon" type="Sprite2D" parent="." index="4" unique_id=725065622]
 z_index = 1
 position = Vector2(13.000002, -16)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("4_gensx")
 offset = Vector2(1, 18)
 
-[node name="Marker2D" type="Marker2D" parent="Cannon" index="0" unique_id=1608389440]
-position = Vector2(0, 66)
+[node name="Marker2D2" type="Marker2D" parent="camo_cannon" index="0" unique_id=1608389440]
+position = Vector2(-17.333336, 109.333336)
+scale = Vector2(1.3333334, 1.3333334)
+
+[node name="Cannon" parent="." index="5" unique_id=1115548727]
+visible = false
 
 [connection signal="body_entered" from="Range" to="." method="_body_entered"]
