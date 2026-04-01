@@ -5,7 +5,7 @@ class_name Tower extends Area2D
 @onready var cannon_scene = get_node("Cannon")
 @onready var marker_scene = get_node("Cannon/Marker2D")
 #a reference to the bullet/projectile it instantiates
-var bullet_scene: PackedScene = preload("res://Towers/Bullets/bullet.tscn")
+#var bullet_scene: PackedScene = preload("res://Towers/Bullets/bullet.tscn")
 
 # VVV things that'll change between towers VVV
 #the radius of where it can shoot
@@ -16,6 +16,7 @@ var bullet_scene: PackedScene = preload("res://Towers/Bullets/bullet.tscn")
 @export var projectiles: int = 5
 @export var bullet_speed: int = 100
 @export var sees_camo: bool = false
+@export var bullet_scene: PackedScene
 
 var canshoot = false
 #either hover or placed. If its hovering itll follow the mouse, otherwise itll shoot

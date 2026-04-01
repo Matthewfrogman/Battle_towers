@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cddi5b1lxnwah" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/9 Bush/1.png" id="2_biqqm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mibcj"]
-radius = 13.038404
+radius = 9.0
 
 [node name="Bullet" type="Area2D" unique_id=901331464]
 script = ExtResource("1_v7mvq")
