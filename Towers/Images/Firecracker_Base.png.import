@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6at8ot4vx3pd"
-path="res://.godot/imported/New Piskel.png-f5c2d6920dbc7ca46354d69fe4e005af.ctex"
+uid="uid://dnufllpevmtkr"
+path="res://.godot/imported/Firecracker_Base.png-5e98e348b4ef2fb0782f684685a60c40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/New Piskel.png"
-dest_files=["res://.godot/imported/New Piskel.png-f5c2d6920dbc7ca46354d69fe4e005af.ctex"]
+source_file="res://Towers/Images/Firecracker_Base.png"
+dest_files=["res://.godot/imported/Firecracker_Base.png-5e98e348b4ef2fb0782f684685a60c40.ctex"]
 
 [params]
 

@@ -17,6 +17,7 @@ var bullet_scene: PackedScene = preload("res://Towers/Bullets/bullet.tscn")
 var canshoot = false
 #either hover or placed. If its hovering itll follow the mouse, otherwise itll shoot
 var mode = "hover"
+var angle: float = 0
 
 func _ready() -> void:
 	timer.wait_time = cooldown
@@ -29,11 +30,9 @@ func _process(delta: float) -> void:
 		global_position = get_global_mouse_position()
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			mode = "placed"
-			print(position)
 	if mode == "placed":
 		#get the difference between x and y coords with the closest enemy
 		#gives us an angle in radians!!
-		var angle: float = 0.0
 		if canshoot == true:
 			shoot(delta, 50, angle, "angled", 5)
 
