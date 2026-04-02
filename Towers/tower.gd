@@ -29,6 +29,7 @@ func _ready() -> void:
 	timer.wait_time = cooldown
 	mode = "hover"
 	global_position = get_global_mouse_position()
+	range_scene.scale = Vector2(range, range)
 	
 func _process(delta: float) -> void:
 	#if there is an enemy in range, and cooldown is less/equal to 0, shoot
@@ -39,6 +40,15 @@ func _process(delta: float) -> void:
 	if mode == "placed":
 		#get the difference between x and y coords with the closest enemy
 		#gives us an angle in radians!!
+		#print(range_scene.get_overlapping_bodies())
+		for enemy in range_scene.get_overlapping_bodies():
+			var adj = position.x - enemy.position.x
+			var opp = position.y - enemy.position.y
+			print(enemy.position)
+			var hyp = (adj**2 + opp**2)**0.5
+			angle = atan2(-opp, adj)
+			#print(-opp, " ", adj)
+			#print(hyp)
 		if canshoot == true:
 			shoot(delta, bullet_speed, angle, "angled", 5)
 
@@ -72,7 +82,3 @@ func bulletShoot(move: Vector2, pos: Vector2):
 	
 func _timer_timeout() -> void:
 	canshoot = true
-
-func _on_body_entered(body: Node2D) -> void:
-	enemies.append(body)
-	print(body.position)

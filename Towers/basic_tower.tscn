@@ -8,6 +8,7 @@
 
 [node name="Basic_Tower" unique_id=598119214 instance=ExtResource("1_qv87q")]
 script = ExtResource("2_3uhwj")
+range = 5
 bullet_scene = ExtResource("3_5l8tq")
 
 [node name="Footprint" parent="." index="0" unique_id=2093572891]
@@ -22,5 +23,3 @@ offset = Vector2(0, 16)
 
 [node name="Marker2D" parent="Cannon" index="0" unique_id=1260253367]
 position = Vector2(0, 67)
-
-[connection signal="body_entered" from="Range" to="." method="_body_entered"]
