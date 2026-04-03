@@ -18,6 +18,9 @@ class_name Tower extends Area2D
 @export var sees_camo: bool = false
 @export var bullet_scene: PackedScene
 
+var sees_enemy: bool
+#the position of the enemy its looking at V
+var lookingat: Vector2
 var canshoot = false
 #either hover or placed. If its hovering itll follow the mouse, otherwise itll shoot
 var mode = "hover"
@@ -40,17 +43,19 @@ func _process(delta: float) -> void:
 	if mode == "placed":
 		#get the difference between x and y coords with the closest enemy
 		#gives us an angle in radians!!
-		#print(range_scene.get_overlapping_bodies())
 		for enemy in range_scene.get_overlapping_bodies():
-			var adj = position.x - enemy.position.x
-			var opp = position.y - enemy.position.y
-			print(enemy.position)
+			var adj = global_position.x - enemy.global_position.x
+			var opp = global_position.y - enemy.global_position.y
 			var hyp = (adj**2 + opp**2)**0.5
-			angle = atan2(-opp, adj)
-			#print(-opp, " ", adj)
-			#print(hyp)
-		if canshoot == true:
-			shoot(delta, bullet_speed, angle, "angled", 5)
+			angle = atan2(-opp, -adj)
+			lookingat = enemy.global_position
+		
+		if len(range_scene.get_overlapping_bodies()) > 0: 
+			sees_enemy = true
+			#timer.start()
+		else: sees_enemy = false
+		
+		if canshoot and sees_enemy: shoot(delta, bullet_speed, angle, "angled", projectiles)
 
 
 #PLANS FOR THIS:
