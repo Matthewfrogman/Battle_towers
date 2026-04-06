@@ -17,14 +17,15 @@ class_name Tower extends Area2D
 #a reference to the bullet/projectile it instantiates
 @export var bullet_scene: PackedScene
 
+var canshoot = false
 var sees_enemy: bool
 #the position of the enemy its looking at V
 var lookingat: Vector2
-var canshoot = false
 #either hover or placed. If its hovering itll follow the mouse, otherwise itll shoot
-var mode = "hover"
+var mode: String = "hover"
+var target: String = "first"
 var angle: float = 0
-#all the enemies in the range V
+#will contain the enemies with the four+ target attacks
 var enemies = []
 
 func _ready() -> void:
@@ -44,12 +45,29 @@ func _process(delta: float) -> void:
 		#an extra option if needed, in position
 		#cannon_scene.look_at(lookingat)
 		
+		#see which enemy is first, closest, last, etc
+		#checks all the enemies 
+		#make a loop of all the enemies, and choose the one that matches
+		#the thing its currently looking for
+		
+		#two loops? one that looks at all the enemies, and gathers their position and health
+		#and then adds them to a seperate loop, and then that loop will find the one with the
+		#highest of one stat
+		
+		#have a temp value of zero, and check if the health/position is higher than itself
+		#or the previous one
+		
+		var temp = 0
+		
 		for enemy in range_scene.get_overlapping_bodies():
 			var adj = global_position.x - enemy.global_position.x
 			var opp = global_position.y - enemy.global_position.y
+			#whichever hyp is lowest, thats the closest enemy
 			var hyp = (adj**2 + opp**2)**0.5
 			#gives us an angle in radians!!
-			angle = atan2(-opp, -adj)
+			
+			if target == "first": angle = atan2(-opp, -adj)
+			#if target == "closest": angle = hyp
 			lookingat = enemy.global_position
 		
 		if len(range_scene.get_overlapping_bodies()) > 0: 
