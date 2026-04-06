@@ -899,3 +899,9 @@ texture = ExtResource("28_kin0c")
 
 [node name="enemy" parent="." unique_id=1334610211 instance=ExtResource("29_3l7mr")]
 position = Vector2(13.194444, 95.780594)
+
+[node name="enemy2" parent="." unique_id=366299201 instance=ExtResource("29_3l7mr")]
+position = Vector2(30.555553, 95.780594)
+
+[node name="enemy3" parent="." unique_id=833910253 instance=ExtResource("29_3l7mr")]
+position = Vector2(48.958332, 95.780594)
