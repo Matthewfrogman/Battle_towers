@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Battle_Towers"
-run/main_scene="uid://7vd1hu60bn7b"
+run/main_scene="uid://6hkgvxmj0xvq"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+<<<<<<<Updatedupstreamrun/main_scene="uid://7vd1hu60bn7b"
 
 [physics]
 

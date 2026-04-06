@@ -13,15 +13,15 @@ func _ready():
 
 func _process(delta):
 	progress += 1 * delta
-	
-	if direction == 1:
-		position.x += delta * speed
-	elif direction == 2:
-		position.y -= delta * speed
-	elif direction == 3:
-		position.x -= delta * speed
-	elif direction == 4:
-		position.y += delta * speed
+
+	if direction == 1:#Right
+		position.x += delta*speed
+	elif direction == 2:#Up
+		position.y -= delta*speed
+	elif direction == 3:#Left
+		position.x -= delta*speed
+	elif direction == 4:#Down
+		position.y += delta*speed
 
 	if hp <= 100:
 		$sprite.modulate = Color(hp / 100.0, hp / 100.0, hp / 100.0)

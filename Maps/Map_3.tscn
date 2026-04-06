@@ -4,7 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://cmwwgmby8mjk0" path="res://sheets/Robot Warfare Asset Pack 24-11-21/Robot Warfare Asset Pack 22-11-24/Obstacles and Objects/obstacles-and-objects.png" id="2_r4fia"]
 [ext_resource type="Texture2D" uid="uid://ckdgqfhn4yrpa" path="res://sheets/Robot Warfare Asset Pack 24-11-21/Robot Warfare Asset Pack 22-11-24/Effects/small-fragments.png" id="3_adcqa"]
 [ext_resource type="Texture2D" uid="uid://w4pjx32vfghk" path="res://sheets/Robot Warfare Asset Pack 24-11-21/Robot Warfare Asset Pack 22-11-24/Effects/smoke.png" id="4_14663"]
+[ext_resource type="PackedScene" uid="uid://cpantiukf4nhx" path="res://scenes/end_area_collider.tscn" id="5_65s4p"]
 [ext_resource type="PackedScene" uid="uid://7c5fgd6cuy2o" path="res://scenes/shop.tscn" id="5_r4fia"]
+[ext_resource type="PackedScene" uid="uid://cnfjfb58e7bov" path="res://scenes/enemy_direction_collider.tscn" id="7_ggagh"]
+[ext_resource type="PackedScene" uid="uid://bkq4uuhdd0nop" path="res://scenes/edc_splitte_Map3.tscn" id="8_ggagh"]
+[ext_resource type="PackedScene" uid="uid://cfamatig7kjw2" path="res://scenes/enemy_base.tscn" id="9_j32nj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ud3xj"]
 texture = ExtResource("1_24ala")
@@ -502,4 +506,41 @@ sprite_frames = SubResource("SpriteFrames_eeha6")
 autoplay = "default"
 frame_progress = 0.067941524
 
+[node name="end_area_collider" parent="." unique_id=1152088850 instance=ExtResource("5_65s4p")]
+position = Vector2(335.37738, 434.56796)
+scale = Vector2(1, 1.0000001)
+
+[node name="enemy_direction_collider" parent="." unique_id=283984963 instance=ExtResource("7_ggagh")]
+position = Vector2(439.62265, 114.19753)
+scale = Vector2(0.285, 0.64)
+send_direction = 4
+
+[node name="enemy_direction_collider2" parent="." unique_id=61129167 instance=ExtResource("7_ggagh")]
+position = Vector2(432.54715, 312.96295)
+scale = Vector2(0.48, 0.3)
+send_direction = 3
+
+[node name="enemy_direction_collider3" parent="." unique_id=1227469939 instance=ExtResource("7_ggagh")]
+position = Vector2(242.92455, 319.75308)
+scale = Vector2(0.55, 0.385)
+send_direction = 1
+
+[node name="enemy_direction_collider4" parent="." unique_id=79870989 instance=ExtResource("7_ggagh")]
+position = Vector2(336.79248, 263.58023)
+scale = Vector2(0.12, 1)
+send_direction = 4
+
 [node name="CanvasLayer" parent="." unique_id=444425766 instance=ExtResource("5_r4fia")]
+
+[node name="EDC_splitter" parent="." unique_id=847203412 instance=ExtResource("8_ggagh")]
+position = Vector2(247.64156, 90.12346)
+scale = Vector2(0.265, 0.625)
+
+[node name="enemy" parent="." unique_id=1334610211 instance=ExtResource("9_j32nj")]
+position = Vector2(8.018868, 109.87655)
+
+[node name="enemy2" parent="." unique_id=821642557 instance=ExtResource("9_j32nj")]
+position = Vector2(25.4717, 109.25927)
+
+[node name="enemy3" parent="." unique_id=1281100769 instance=ExtResource("9_j32nj")]
+position = Vector2(44.339626, 108.0247)
