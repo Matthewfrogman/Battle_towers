@@ -4,8 +4,6 @@ class_name Tower extends Area2D
 @onready var range_scene = get_node("Range")
 @onready var cannon_scene = get_node("Cannon")
 @onready var marker_scene = get_node("Cannon/Marker2D")
-#a reference to the bullet/projectile it instantiates
-#var bullet_scene: PackedScene = preload("res://Towers/Bullets/bullet.tscn")
 
 # VVV things that'll change between towers VVV
 #the radius of where it can shoot
@@ -16,6 +14,7 @@ class_name Tower extends Area2D
 @export var projectiles: int = 5
 @export var bullet_speed: int = 100
 @export var sees_camo: bool = false
+#a reference to the bullet/projectile it instantiates
 @export var bullet_scene: PackedScene
 
 var sees_enemy: bool
@@ -42,7 +41,7 @@ func _process(delta: float) -> void:
 			
 	if mode == "placed":
 		cannon_scene.rotation = angle
-		#an extra option if needed
+		#an extra option if needed, in position
 		#cannon_scene.look_at(lookingat)
 		
 		for enemy in range_scene.get_overlapping_bodies():
