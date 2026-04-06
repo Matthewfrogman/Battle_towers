@@ -24,15 +24,6 @@ scale = Vector2(0.7981589, 1.4972688)
 theme_override_font_sizes/font_size = 16
 text = "Money: $150"
 
-[node name="BuyTowerBtn" type="Button" parent="Panel" unique_id=51804235]
-layout_mode = 0
-offset_left = 36.875
-offset_top = 100.99999
-offset_right = 138.875
-offset_bottom = 132.0
-scale = Vector2(1, 1.56)
-text = "Tower- $200"
-
 [node name="Sprite2D" type="Sprite2D" parent="Panel" unique_id=704301060]
 position = Vector2(150.0625, 52.726563)
 scale = Vector2(0.30859378, 0.3664551)
@@ -42,5 +33,3 @@ texture = ExtResource("2_1l46r")
 position = Vector2(150.06248, 64.72656)
 scale = Vector2(0.35351563, 0.35351563)
 texture = ExtResource("3_032fp")
-
-[connection signal="pressed" from="Panel/BuyTowerBtn" to="." method="_on_buy_tower_btn_pressed"]

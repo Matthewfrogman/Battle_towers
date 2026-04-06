@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 @export var speed = 35
 @export var hp = 100
 @export var direction = 1
@@ -18,11 +17,17 @@ func _process(delta):
 		position.y += delta*speed
 	
 	if hp <= 100:
-		$sprite.modulate = Color(hp/100.0,hp/100.0,hp/100.0)
+		$sprite.modulate = Color(hp/100.0, hp/100.0, hp/100.0)
 	
 	if hp <= 0:
-		queue_free()
+		die()
 	
 func lose_hp(dmg):
 	hp -= dmg
-	
+
+func die():
+	# Add money to UI
+	var ui = get_tree().root.get_node_or_null("UI")
+	if ui and ui.has_method("add_money"):
+		ui.add_money(20)
+	queue_free()
