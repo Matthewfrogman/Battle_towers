@@ -4,8 +4,6 @@ class_name Tower extends Area2D
 @onready var range_scene = get_node("Range")
 @onready var cannon_scene = get_node("Cannon")
 @onready var marker_scene = get_node("Cannon/Marker2D")
-#a reference to the bullet/projectile it instantiates
-#var bullet_scene: PackedScene = preload("res://Towers/Bullets/bullet.tscn")
 
 # VVV things that'll change between towers VVV
 #the radius of where it can shoot
@@ -16,6 +14,7 @@ class_name Tower extends Area2D
 @export var projectiles: int = 5
 @export var bullet_speed: int = 100
 @export var sees_camo: bool = false
+#a reference to the bullet/projectile it instantiates
 @export var bullet_scene: PackedScene
 
 var sees_enemy: bool
@@ -35,7 +34,6 @@ func _ready() -> void:
 	range_scene.scale = Vector2(range, range)
 	
 func _process(delta: float) -> void:
-	#if there is an enemy in range, and cooldown is less/equal to 0, shoot
 	if mode == "hover":
 		global_position = get_global_mouse_position()
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -43,23 +41,27 @@ func _process(delta: float) -> void:
 			
 	if mode == "placed":
 		cannon_scene.rotation = angle
-		#an extra option if needed
+		#an extra option if needed, in position
 		#cannon_scene.look_at(lookingat)
 		
-		#get the difference between x and y coords with the closest enemy
-		#gives us an angle in radians!!
 		for enemy in range_scene.get_overlapping_bodies():
 			var adj = global_position.x - enemy.global_position.x
 			var opp = global_position.y - enemy.global_position.y
 			var hyp = (adj**2 + opp**2)**0.5
+			#gives us an angle in radians!!
 			angle = atan2(-opp, -adj)
 			lookingat = enemy.global_position
 		
-		
 		if len(range_scene.get_overlapping_bodies()) > 0: 
 			sees_enemy = true
-			#timer.start()
-		else: sees_enemy = false
+			timer.paused = false
+
+		else: 
+			sees_enemy = false
+			if timer.time_left <= 0.1:
+				#pauses so the cooldown doesnt get to low, and 
+				timer.paused = true
+				
 		
 		if canshoot and sees_enemy: shoot(delta, bullet_speed, angle, "angled", projectiles)
 

@@ -903,3 +903,8 @@ position = Vector2(13.194444, 95.780594)
 
 [node name="end_area_collider" parent="." unique_id=1152088850 instance=ExtResource("30_cufw0")]
 position = Vector2(440.9722, 224.89452)
+[node name="enemy2" parent="." unique_id=366299201 instance=ExtResource("29_3l7mr")]
+position = Vector2(30.555553, 95.780594)
+
+[node name="enemy3" parent="." unique_id=833910253 instance=ExtResource("29_3l7mr")]
+position = Vector2(48.958332, 95.780594)

@@ -5,14 +5,14 @@ var tower_scenes = {
 	"Basic": "res://Towers/basic_tower.tscn",
 	"Sniper": "res://Towers/sniper_tower.tscn",
 	"Camo": "res://Towers/camo_tower.tscn",
-	"Ice": "res://Towers/ice_tower.tscn",
+	"Speed": "res://Towers/speed_tower.tscn",
 	"Lightning": "res://Towers/lightning_tower.tscn"
 }
 var tower_costs = {
 	"Basic": 200,
 	"Sniper": 350,
 	"Camo": 400,
-	"Ice": 300,
+	"Speed": 300,
 	"Lightning": 500
 }
 var fast_forward = false
@@ -32,7 +32,7 @@ func _ready():
 	
 	# Create 5 tower buttons
 	var y_offset = 35
-	var button_height = 40
+	var button_height = 50
 	var button_spacing = 5
 	var button_width = 150
 	
@@ -44,7 +44,7 @@ func _ready():
 		btn.text = tower_name + " - $" + str(cost)
 		btn.custom_minimum_size = Vector2(button_width, button_height)
 		btn.position = Vector2(10, y_offset + (i * (button_height + button_spacing)))
-		btn.add_theme_font_size_override("font_size", 13)
+		btn.add_theme_font_size_override("font_size", 18)
 		btn.pressed.connect(_on_tower_button_pressed.bind(tower_name))
 		panel.add_child(btn)
 	
@@ -52,7 +52,7 @@ func _ready():
 	ff_button = Button.new()
 	ff_button.text = "▶▶"
 	ff_button.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
-	ff_button.custom_minimum_size = Vector2(150, 50)
+	ff_button.custom_minimum_size = Vector2(150, 25)
 	ff_button.offset_left = 10
 	ff_button.offset_bottom = -10
 	ff_button.add_theme_font_size_override("font_size", 18)
