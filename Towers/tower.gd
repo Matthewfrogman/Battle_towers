@@ -40,6 +40,7 @@ func _process(delta: float) -> void:
 		global_position = get_global_mouse_position()
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			mode = "placed"
+			
 	if mode == "placed":
 		#get the difference between x and y coords with the closest enemy
 		#gives us an angle in radians!!
