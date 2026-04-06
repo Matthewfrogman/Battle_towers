@@ -34,7 +34,7 @@ func lose_hp(dmg):
 
 func die():
 	# Add money to UI
-	var ui = get_tree().root.get_node_or_null("UI")
+	var ui = get_tree().root.get_node_or_null("CanvasLayer/CanvasLayer")
 	if ui and ui.has_method("add_money"):
 		ui.add_money(20)
 	queue_free()
