@@ -10,7 +10,7 @@ const MAP_SCENES = [
 	"res://Maps/Map_2.tscn",
 	"res://Maps/Map_3.tscn"
 ]
-const BG_IMAGE      = "res://scenes/mapsforselect/mainmenuart/mainmenubg.png"
+const BG_IMAGE      = "res://scenes/mapsforselect/mainmenuart/pathway_imagine.jpg.png"
 const BUTTON_IMAGE  = "res://scenes/mapsforselect/mainmenuart/button.png"
 const BUTTON_HOVER  = 1.12
 const TWEEN_SPEED   = 0.15
