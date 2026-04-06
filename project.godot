@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Battle_Towers"
-run/main_scene="uid://7c5fgd6cuy2o"
+run/main_scene="uid://7vd1hu60bn7b"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
