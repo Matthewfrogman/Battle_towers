@@ -24,12 +24,14 @@ scale = Vector2(0.7981589, 1.4972688)
 theme_override_font_sizes/font_size = 16
 text = "Money: $150"
 
-[node name="Sprite2D" type="Sprite2D" parent="Panel" unique_id=704301060]
-position = Vector2(150.0625, 52.726563)
-scale = Vector2(0.30859378, 0.3664551)
+[node name="cannon" type="Node2D" parent="." unique_id=1091392193]
+
+[node name="Sprite2D" type="Sprite2D" parent="cannon" unique_id=704301060]
+position = Vector2(240.10002, 52.726563)
+scale = Vector2(0.4937501, 0.3664551)
 texture = ExtResource("2_1l46r")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Panel" unique_id=2052660228]
-position = Vector2(150.06248, 64.72656)
-scale = Vector2(0.35351563, 0.35351563)
+[node name="Sprite2D2" type="Sprite2D" parent="cannon" unique_id=2052660228]
+position = Vector2(240.09999, 64.72656)
+scale = Vector2(0.5656251, 0.35351563)
 texture = ExtResource("3_032fp")
