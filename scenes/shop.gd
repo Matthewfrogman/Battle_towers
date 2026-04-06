@@ -10,10 +10,10 @@ var tower_scenes = {
 }
 var tower_costs = {
 	"Basic": 200,
-	"Sniper": 350,
-	"Camo": 400,
-	"Speed": 300,
-	"Tesla": 500
+	"Sniper": 600,
+	"Camo": 800,
+	"Speed": 250,
+	"Tesla": 1000
 }
 var fast_forward = false
 var ff_button = null
