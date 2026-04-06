@@ -7,18 +7,27 @@
 [ext_resource type="Texture2D" uid="uid://bs885t7hk4eqn" path="res://Towers/Images/camo_head.png" id="5_8r1wq"]
 [ext_resource type="Texture2D" uid="uid://csqiuxmrj13mo" path="res://Towers/Images/speedtower.png" id="6_ajxib"]
 [ext_resource type="Texture2D" uid="uid://bna63qbsmfinq" path="res://Towers/Images/speedtower_guns.png" id="7_y6sft"]
+[ext_resource type="Script" path="res://scenes/control.gd" id="8_y6sft"]
+[ext_resource type="Texture2D" uid="uid://byxfvnhcq7bj3" path="res://Towers/Images/tesla.png" id="9_m4ofw"]
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=444425766]
+[node name="Control" type="Control" unique_id=1070400202]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_y6sft")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=444425766]
 script = ExtResource("1_lx5au")
 
-[node name="Panel" type="Panel" parent="." unique_id=458875383]
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=458875383]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 180.0
 grow_vertical = 2
 scale = Vector2(1.6000001, 1)
 
-[node name="MoneyLabel" type="Label" parent="Panel" unique_id=1939384034]
+[node name="MoneyLabel" type="Label" parent="CanvasLayer/Panel" unique_id=1939384034]
 layout_mode = 0
 offset_left = 53.124996
 offset_top = 6.0
@@ -28,38 +37,49 @@ scale = Vector2(0.7981589, 1.4972688)
 theme_override_font_sizes/font_size = 16
 text = "Money: $150"
 
-[node name="cannon" type="Node2D" parent="." unique_id=1091392193]
+[node name="cannon" type="Node2D" parent="CanvasLayer" unique_id=1091392193]
+position = Vector2(0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="cannon" unique_id=704301060]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/cannon" unique_id=704301060]
 position = Vector2(240.10002, 52.726563)
 scale = Vector2(0.404, 0.253)
 texture = ExtResource("2_1l46r")
 
-[node name="Sprite2D2" type="Sprite2D" parent="cannon" unique_id=2052660228]
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/cannon" unique_id=2052660228]
 position = Vector2(240, 58.000004)
 scale = Vector2(0.404, 0.253)
 texture = ExtResource("3_032fp")
 
-[node name="camo_tower" type="Node2D" parent="." unique_id=821899877]
+[node name="camo_tower" type="Node2D" parent="CanvasLayer" unique_id=821899877]
+position = Vector2(0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="camo_tower" unique_id=1176803442]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/camo_tower" unique_id=1176803442]
 position = Vector2(234.25, 171.49086)
 scale = Vector2(0.11209067, 0.11209067)
 texture = ExtResource("4_2fc2m")
 
-[node name="Sprite2D2" type="Sprite2D" parent="camo_tower" unique_id=949104921]
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/camo_tower" unique_id=949104921]
 position = Vector2(236.75, 171.55197)
 scale = Vector2(0.19332495, 0.19332495)
 texture = ExtResource("5_8r1wq")
 
-[node name="speed_tower" type="Node2D" parent="." unique_id=1229061688]
+[node name="speed_tower" type="Node2D" parent="CanvasLayer" unique_id=1229061688]
+position = Vector2(0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="speed_tower" unique_id=883156649]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/speed_tower" unique_id=883156649]
 position = Vector2(239.75, 235.36429)
 scale = Vector2(0.12531486, 0.12531486)
 texture = ExtResource("6_ajxib")
 
-[node name="Sprite2D2" type="Sprite2D" parent="speed_tower" unique_id=472978915]
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/speed_tower" unique_id=472978915]
 position = Vector2(245.74998, 225.3643)
 scale = Vector2(0.18840581, 0.1884058)
 texture = ExtResource("7_y6sft")
+
+[node name="tesla" type="Node2D" parent="CanvasLayer" unique_id=1259949139]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/tesla" unique_id=1961449958]
+position = Vector2(239.99998, 300)
+scale = Vector2(0.095, 0.095000006)
+texture = ExtResource("9_m4ofw")

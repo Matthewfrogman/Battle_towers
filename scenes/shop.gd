@@ -5,15 +5,15 @@ var tower_scenes = {
 	"Basic": "res://Towers/basic_tower.tscn",
 	"Sniper": "res://Towers/sniper_tower.tscn",
 	"Camo": "res://Towers/camo_tower.tscn",
-	"Speed": "res://Towers/speed_tower.tscn",
-	"Lightning": "res://Towers/lightning_tower.tscn"
+	"Speed": "res://Towers/ice_tower.tscn",
+	"Tesla": "res://Towers/tesla.tscn"
 }
 var tower_costs = {
 	"Basic": 200,
-	"Sniper": 350,
-	"Camo": 400,
-	"Speed": 300,
-	"Lightning": 500
+	"Sniper": 600,
+	"Camo": 800,
+	"Speed": 250,
+	"Tesla": 1000
 }
 var fast_forward = false
 var ff_button = null

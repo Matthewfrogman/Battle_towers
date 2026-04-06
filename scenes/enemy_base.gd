@@ -1,12 +1,17 @@
-extends CharacterBody2D
+class_name Enemy extends CharacterBody2D
 @export var speed = 35
 @export var hp = 100
 @export var direction = 1
+
+#sees the progress of the enemy across the track
+var progress = 0
 
 func _ready():
 	pass
 	
 func _process(delta):
+	progress += 1*delta
+	
 	if direction == 1:
 		position.x += delta*speed
 	elif direction == 2:
