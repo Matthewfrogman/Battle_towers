@@ -1,32 +1,34 @@
-class_name Enemy extends CharacterBody2D
+extends CharacterBody2D
+class_name Enemy
+
 @export var speed = 35
 @export var hp = 100
 @export var direction = 1
 
-#sees the progress of the enemy across the track
+# sees the progress of the enemy across the track
 var progress = 0
 
 func _ready():
 	pass
-	
+
 func _process(delta):
-	progress += 1*delta
+	progress += 1 * delta
 	
 	if direction == 1:
-		position.x += delta*speed
+		position.x += delta * speed
 	elif direction == 2:
-		position.y -= delta*speed
+		position.y -= delta * speed
 	elif direction == 3:
-		position.x -= delta*speed
+		position.x -= delta * speed
 	elif direction == 4:
-		position.y += delta*speed
-	
+		position.y += delta * speed
+
 	if hp <= 100:
-		$sprite.modulate = Color(hp/100.0, hp/100.0, hp/100.0)
-	
+		$sprite.modulate = Color(hp / 100.0, hp / 100.0, hp / 100.0)
+
 	if hp <= 0:
 		die()
-	
+
 func lose_hp(dmg):
 	hp -= dmg
 
