@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bs885t7hk4eqn" path="res://Towers/Images/camo_head.png" id="5_8r1wq"]
 [ext_resource type="Texture2D" uid="uid://csqiuxmrj13mo" path="res://Towers/Images/speedtower.png" id="6_ajxib"]
 [ext_resource type="Texture2D" uid="uid://bna63qbsmfinq" path="res://Towers/Images/speedtower_guns.png" id="7_y6sft"]
-[ext_resource type="Script" uid="uid://dkspbanfbcqvp" path="res://scenes/control.gd" id="8_y6sft"]
+[ext_resource type="Script" path="res://scenes/control.gd" id="8_y6sft"]
+[ext_resource type="Texture2D" uid="uid://byxfvnhcq7bj3" path="res://Towers/Images/tesla.png" id="9_m4ofw"]
 
 [node name="Control" type="Control" unique_id=1070400202]
 layout_mode = 3
@@ -37,6 +38,7 @@ theme_override_font_sizes/font_size = 16
 text = "Money: $150"
 
 [node name="cannon" type="Node2D" parent="CanvasLayer" unique_id=1091392193]
+position = Vector2(0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/cannon" unique_id=704301060]
 position = Vector2(240.10002, 52.726563)
@@ -49,6 +51,7 @@ scale = Vector2(0.404, 0.253)
 texture = ExtResource("3_032fp")
 
 [node name="camo_tower" type="Node2D" parent="CanvasLayer" unique_id=821899877]
+position = Vector2(0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/camo_tower" unique_id=1176803442]
 position = Vector2(234.25, 171.49086)
@@ -61,6 +64,7 @@ scale = Vector2(0.19332495, 0.19332495)
 texture = ExtResource("5_8r1wq")
 
 [node name="speed_tower" type="Node2D" parent="CanvasLayer" unique_id=1229061688]
+position = Vector2(0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/speed_tower" unique_id=883156649]
 position = Vector2(239.75, 235.36429)
@@ -71,3 +75,11 @@ texture = ExtResource("6_ajxib")
 position = Vector2(245.74998, 225.3643)
 scale = Vector2(0.18840581, 0.1884058)
 texture = ExtResource("7_y6sft")
+
+[node name="tesla" type="Node2D" parent="CanvasLayer" unique_id=1259949139]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/tesla" unique_id=1961449958]
+position = Vector2(239.99998, 300)
+scale = Vector2(0.095, 0.095000006)
+texture = ExtResource("9_m4ofw")
