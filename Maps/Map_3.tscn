@@ -507,7 +507,7 @@ autoplay = "default"
 frame_progress = 0.067941524
 
 [node name="end_area_collider" parent="." unique_id=1152088850 instance=ExtResource("5_65s4p")]
-position = Vector2(335.37738, 434.56796)
+position = Vector2(335.8491, 446.2963)
 scale = Vector2(1, 1.0000001)
 
 [node name="enemy_direction_collider" parent="." unique_id=283984963 instance=ExtResource("7_ggagh")]

@@ -139,7 +139,7 @@ position = Vector2(313.33334, 304.1237)
 scale = Vector2(0.24, 0.495)
 
 [node name="end_area_collider" parent="." unique_id=1152088850 instance=ExtResource("5_uwrl3")]
-position = Vector2(201.85184, 374.2268)
+position = Vector2(201.1111, 385.05154)
 
 [node name="sheet" type="Node2D" parent="." unique_id=2053008079]
 
