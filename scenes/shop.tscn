@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bs885t7hk4eqn" path="res://Towers/Images/camo_head.png" id="5_8r1wq"]
 [ext_resource type="Texture2D" uid="uid://csqiuxmrj13mo" path="res://Towers/Images/speedtower.png" id="6_ajxib"]
 [ext_resource type="Texture2D" uid="uid://bna63qbsmfinq" path="res://Towers/Images/speedtower_guns.png" id="7_y6sft"]
-[ext_resource type="Script" path="res://scenes/control.gd" id="8_y6sft"]
+[ext_resource type="Script" uid="uid://dkspbanfbcqvp" path="res://scenes/control.gd" id="8_y6sft"]
 [ext_resource type="Texture2D" uid="uid://byxfvnhcq7bj3" path="res://Towers/Images/tesla.png" id="9_m4ofw"]
 
 [node name="Control" type="Control" unique_id=1070400202]

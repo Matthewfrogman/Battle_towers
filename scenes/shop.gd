@@ -5,7 +5,7 @@ var tower_scenes = {
 	"Basic": "res://Towers/basic_tower.tscn",
 	"Sniper": "res://Towers/sniper_tower.tscn",
 	"Camo": "res://Towers/camo_tower.tscn",
-	"Speed": "res://Towers/ice_tower.tscn",
+	"Speed": "res://Towers/speed_tower.tscn",
 	"Tesla": "res://Towers/tesla.tscn"
 }
 var tower_costs = {
