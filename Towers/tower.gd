@@ -40,7 +40,12 @@ func _process(delta: float) -> void:
 		global_position = get_global_mouse_position()
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			mode = "placed"
+			
 	if mode == "placed":
+		cannon_scene.rotation = angle
+		#an extra option if needed
+		#cannon_scene.look_at(lookingat)
+		
 		#get the difference between x and y coords with the closest enemy
 		#gives us an angle in radians!!
 		for enemy in range_scene.get_overlapping_bodies():
@@ -49,6 +54,7 @@ func _process(delta: float) -> void:
 			var hyp = (adj**2 + opp**2)**0.5
 			angle = atan2(-opp, -adj)
 			lookingat = enemy.global_position
+		
 		
 		if len(range_scene.get_overlapping_bodies()) > 0: 
 			sees_enemy = true
