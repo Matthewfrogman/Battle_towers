@@ -1,5 +1,7 @@
 class_name Tower extends Area2D
 
+@warning_ignore("integer_division")
+
 @onready var timer = get_node("Cooldown Timer")
 @onready var range_scene = get_node("Range")
 @onready var cannon_scene = get_node("Cannon")
@@ -7,13 +9,15 @@ class_name Tower extends Area2D
 
 # VVV things that'll change between towers VVV
 #the radius of where it can shoot
-@export var range: int
+@export var sees_camo: bool = false
 @export var cooldown: float = 5.0
+@export var bullet_spread: float = 0.1
+@export var attack_range: int
 @export var attack: int = 5
+@export var bullet_speed: int = 100
+@export var pierce: int = 3
 #num of bullets. this number should ALWAYS be odd so it looks good.
 @export var projectiles: int = 5
-@export var bullet_speed: int = 100
-@export var sees_camo: bool = false
 #a reference to the bullet/projectile it instantiates
 @export var bullet_scene: PackedScene
 
@@ -32,9 +36,9 @@ func _ready() -> void:
 	timer.wait_time = cooldown
 	mode = "hover"
 	global_position = get_global_mouse_position()
-	range_scene.scale = Vector2(range, range)
+	range_scene.scale = Vector2(attack_range, attack_range)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if mode == "hover":
 		global_position = get_global_mouse_position()
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -97,34 +101,40 @@ func _process(delta: float) -> void:
 				timer.paused = true
 				
 		
-		if canshoot and sees_enemy: shoot(delta, bullet_speed, angle, "angled", projectiles)
+		if canshoot and sees_enemy: shoot(bullet_speed, "angled", projectiles)
 
 
 #PLANS FOR THIS:
 #shoot controls the direction and amount of each bullet, and also the angles
+<<<<<<< Updated upstream
 #whereas bulletShoot actually instantiates the bullets and stuff
 func shoot(delta: float, speed: int, angle: float, angle_mode: String, bnum: int):
+=======
+#whereas bulletShoot actually instantiates the bullets
+func shoot(speed: int, angle_mode: String, bnum: int):
+>>>>>>> Stashed changes
 	if angle_mode == "straight":
 		#doesn't do anything with multiple projectiles rn
-		bulletShoot(Vector2(speed*cos(angle), speed*sin(angle)), position)
+		bulletShoot(Vector2(speed*cos(angle), speed*sin(angle)))
 		
 	if angle_mode == "angled":
-		bulletShoot(Vector2(speed*cos(angle), speed*sin(angle)), position)
+		bulletShoot(Vector2(speed*cos(angle), speed*sin(angle)))
 		var aIncrement = 0
 		for i in bnum-1:
 			#error for integer division
-			if i > (bnum-1)/2-1:
-				aIncrement = -0.1*(i+1-((bnum-1)/2))
+			if i > (bnum-1)/2.0-1:
+				aIncrement = -bullet_spread*(i+1-((bnum-1)/2.0))
 			else:
-				aIncrement = 0.1*(i+1)
-			bulletShoot(Vector2(speed*cos(angle+aIncrement), speed*sin(angle+aIncrement)), position)
+				aIncrement = bullet_spread*(i+1)
+			bulletShoot(Vector2(speed*cos(angle+aIncrement), speed*sin(angle+aIncrement)))
 
-func bulletShoot(move: Vector2, pos: Vector2):
+func bulletShoot(move: Vector2):
 	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
 	bullet.global_position = marker_scene.global_position
 	bullet.damage = attack
 	bullet.move = move
+	bullet.pierce = pierce
 	canshoot = false
 	
 func _timer_timeout() -> void:

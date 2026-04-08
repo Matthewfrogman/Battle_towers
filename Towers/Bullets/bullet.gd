@@ -2,6 +2,7 @@ class_name Bullet extends Area2D
 
 var move: Vector2
 var damage: int
+var pierce: int
 
 func _process(delta: float) -> void:
 	position += Vector2(move[0]*delta, move[1]*delta)
@@ -10,4 +11,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("lose_hp"):
 		body.lose_hp(damage)
-		queue_free()
+		if pierce <= 0:
+			queue_free()
+		else:
+			pierce -= 1
