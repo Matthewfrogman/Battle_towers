@@ -25,7 +25,7 @@ func _process(delta):
 		position.y += delta*speed
 
 	if hp <= 100:
-		$sprite.modulate = Color(hp / 100.0, hp / 100.0, hp / 100.0)
+		modulate = Color(hp / 100.0, hp / 100.0, hp / 100.0)
 
 	if hp <= 0:
 		die()
