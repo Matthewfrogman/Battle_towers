@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://7c5fgd6cuy2o"]
+
+[ext_resource type="Script" uid="uid://1ab0bg0ycdun" path="res://scenes/shop.gd" id="1_lx5au"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=444425766]
+script = ExtResource("1_lx5au")
+
+[node name="Panel" type="Panel" parent="." unique_id=458875383]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 180.0
+grow_vertical = 2
+scale = Vector2(1.6000001, 1)
+
+[node name="MoneyLabel" type="Label" parent="Panel" unique_id=1939384034]
+layout_mode = 0
+offset_left = 53.124996
+offset_top = 6.0
+offset_right = 151.125
+offset_bottom = 29.0
+scale = Vector2(0.7981589, 1.4972688)
+theme_override_font_sizes/font_size = 16
+text = "Money: $150"
+
+[node name="BuyTowerBtn" type="Button" parent="Panel" unique_id=51804235]
+layout_mode = 0
+offset_left = 36.875
+offset_top = 100.99999
+offset_right = 138.875
+offset_bottom = 132.0
+scale = Vector2(1, 1.56)
+text = "Tower- $200"
+
+[connection signal="pressed" from="Panel/BuyTowerBtn" to="." method="_on_buy_tower_btn_pressed"]
