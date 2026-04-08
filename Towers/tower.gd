@@ -59,22 +59,32 @@ func _process(delta: float) -> void:
 		
 		
 		for enemy in range_scene.get_overlapping_bodies():
-			if enemy is Enemy:
-				var adj = global_position.x - enemy.global_position.x
-				var opp = global_position.y - enemy.global_position.y
-				angle = atan2(-opp, -adj)
-				#whichever hyp is lowest, thats the closest enemy
-				var hyp = (adj**2 + opp**2)**0.5
-				
-				#current issue is that whenever the enemy is added
-				#you cant compare them anymore, and i need this so it can start for the first time
-				#change it so that it only works when there are enemoes...
-				if enemy.progress > enemies["first"]:
-				# or enemy.progress > enemies["first"].progress:
-					enemies["first"] = [enemy, hyp]
+			if enemy is Enemy: pass
+			else: break
 			
-			if target == "first":
-				lookingat = enemies["first"][0].position
+			var adj = global_position.x - enemy.global_position.x
+			var opp = global_position.y - enemy.global_position.y
+			angle = atan2(-opp, -adj)
+			#whichever hyp is lowest, thats the closest enemy
+			var hyp = (adj**2 + opp**2)**0.5
+			
+			#current issue is that whenever the enemy is added
+			#you cant compare them anymore, and i need this so it can start for the first time
+			#change it so that it only works when there are enemoes...
+			
+			
+			#really long solution but I got it
+			#print(enemies["first"])
+			if enemies["first"] is int: 
+				enemies["first"] = [enemy, hyp]
+			elif enemies["first"][0] is Enemy and enemy.progress > enemies["first"][0].progress:
+				enemies["first"] = [enemy, hyp]
+			else:
+				enemies["first"] = 0
+			
+			if target == "first" and enemies["first"] is Enemy:
+				lookingat = enemies["first"][0].global_position
+				
 		
 		if len(range_scene.get_overlapping_bodies()) > 0: 
 			sees_enemy = true
