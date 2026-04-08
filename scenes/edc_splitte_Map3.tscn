@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bkq4uuhdd0nop"]
+
+[ext_resource type="PackedScene" uid="uid://cnfjfb58e7bov" path="res://scenes/enemy_direction_collider.tscn" id="1_e210k"]
+[ext_resource type="Script" uid="uid://c7kgty0eeeljm" path="res://enemy_direction_collider.gd" id="2_5a176"]
+
+[node name="EDC_splitter" unique_id=283984963 instance=ExtResource("1_e210k")]
+script = ExtResource("2_5a176")
+send_direction1 = 1
+send_direction2 = 4
+send_direction = 1

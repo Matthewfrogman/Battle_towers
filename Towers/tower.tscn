@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c86a6pav5hv4v"]
+
+[ext_resource type="Script" uid="uid://bnobshsif0nbo" path="res://Towers/tower.gd" id="1_ovc7u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u1pd"]
+size = Vector2(58, 57)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ovc7u"]
+radius = 28.0
+
+[node name="Tower" type="Area2D" unique_id=598119214]
+script = ExtResource("1_ovc7u")
+
+[node name="Footprint" type="CollisionShape2D" parent="." unique_id=2093572891]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_2u1pd")
+
+[node name="Cooldown Timer" type="Timer" parent="." unique_id=59212212]
+autostart = true
+
+[node name="Range" type="Area2D" parent="." unique_id=2002503009]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=1624539430]
+shape = SubResource("CircleShape2D_ovc7u")
+
+[node name="Cannon" type="Sprite2D" parent="." unique_id=1115548727]
+
+[node name="Marker2D" type="Marker2D" parent="Cannon" unique_id=1260253367]
+
+[connection signal="timeout" from="Cooldown Timer" to="." method="_timer_timeout"]
