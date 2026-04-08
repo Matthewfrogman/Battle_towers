@@ -72,22 +72,21 @@ func _process(_delta: float) -> void:
 			#whichever hyp is lowest, thats the closest enemy
 			var hyp = (adj**2 + opp**2)**0.5
 			
-			#current issue is that whenever the enemy is added
-			#you cant compare them anymore, and i need this so it can start for the first time
-			#change it so that it only works when there are enemoes...
+			if target == "first" and enemies["first"] is Array and is_instance_valid(enemies["first"][0]):
+				lookingat = enemies["first"][0].global_position
+				#this isn't calling once the first enemy dies
 			
 			
 			#really long solution but I got it
 			#print(enemies["first"])
 			if enemies["first"] is int: 
 				enemies["first"] = [enemy, hyp]
-			elif enemies["first"][0] is Enemy and enemy.progress > enemies["first"][0].progress:
+			elif (is_instance_valid(enemies["first"][0]) and 
+			enemies["first"][0] is Enemy and 
+			enemy.progress > enemies["first"][0].progress):
 				enemies["first"] = [enemy, hyp]
-			else:
-				enemies["first"] = 0
-			
-			if target == "first" and enemies["first"] is Enemy:
-				lookingat = enemies["first"][0].global_position
+			elif not is_instance_valid(enemies["first"][0]):
+				enemies["first"] = [enemy, hyp]
 				
 		
 		if len(range_scene.get_overlapping_bodies()) > 0: 
@@ -106,16 +105,8 @@ func _process(_delta: float) -> void:
 
 #PLANS FOR THIS:
 #shoot controls the direction and amount of each bullet, and also the angles
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
->>>>>>> parent of f274cdb (Finally fixed tower)
-#whereas bulletShoot actually instantiates the bullets and stuff
-func shoot(delta: float, speed: int, angle: float, angle_mode: String, bnum: int):
-=======
 #whereas bulletShoot actually instantiates the bullets
 func shoot(speed: int, angle_mode: String, bnum: int):
->>>>>>> Stashed changes
 	if angle_mode == "straight":
 		#doesn't do anything with multiple projectiles rn
 		bulletShoot(Vector2(speed*cos(angle), speed*sin(angle)))
