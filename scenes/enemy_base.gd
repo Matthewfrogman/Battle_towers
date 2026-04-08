@@ -4,6 +4,7 @@ class_name Enemy
 @export var speed = 35
 @export var hp = 100
 @export var direction = 1
+@export var dmg_to_player = 50
 
 # sees the progress of the enemy across the track
 var progress = 0

@@ -1,5 +1,6 @@
-extends Area2D
+extends TileMap
 
+@export var player_hp = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,8 +9,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if player_hp <= 0:
+		game_over()
 
-func _on_body_entered(body: Node2D) -> void:
-	get_parent().player_hp -= body.dmg_to_player
-	body.queue_free()
+func game_over():
+	print("u ded 67")
