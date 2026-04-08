@@ -9,7 +9,7 @@
 [node name="Basic_Tower" unique_id=598119214 instance=ExtResource("1_qv87q")]
 script = ExtResource("2_3uhwj")
 range = 5
-cooldown = 0.5
+cooldown = 1.0
 attack = 10
 bullet_speed = 200
 bullet_scene = ExtResource("3_5l8tq")

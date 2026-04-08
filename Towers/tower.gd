@@ -26,7 +26,7 @@ var mode: String = "hover"
 var target: String = "first"
 var angle: float = 0
 #will contain the enemies with the four+ target attacks
-var enemies = []
+var enemies = {"first": 0, "closest": 0, "last": 0, "strongest": 0}
 
 func _ready() -> void:
 	timer.wait_time = cooldown
@@ -41,9 +41,9 @@ func _process(delta: float) -> void:
 			mode = "placed"
 			
 	if mode == "placed":
-		cannon_scene.rotation = angle
+		#cannon_scene.rotation = angle
 		#an extra option if needed, in position
-		#cannon_scene.look_at(lookingat)
+		cannon_scene.look_at(lookingat)
 		
 		#see which enemy is first, closest, last, etc
 		#checks all the enemies 
@@ -57,18 +57,24 @@ func _process(delta: float) -> void:
 		#have a temp value of zero, and check if the health/position is higher than itself
 		#or the previous one
 		
-		var temp = 0
 		
 		for enemy in range_scene.get_overlapping_bodies():
-			var adj = global_position.x - enemy.global_position.x
-			var opp = global_position.y - enemy.global_position.y
-			#whichever hyp is lowest, thats the closest enemy
-			var hyp = (adj**2 + opp**2)**0.5
-			#gives us an angle in radians!!
+			if enemy is Enemy:
+				var adj = global_position.x - enemy.global_position.x
+				var opp = global_position.y - enemy.global_position.y
+				angle = atan2(-opp, -adj)
+				#whichever hyp is lowest, thats the closest enemy
+				var hyp = (adj**2 + opp**2)**0.5
+				
+				#current issue is that whenever the enemy is added
+				#you cant compare them anymore, and i need this so it can start for the first time
+				#change it so that it only works when there are enemoes...
+				if enemy.progress > enemies["first"]:
+				# or enemy.progress > enemies["first"].progress:
+					enemies["first"] = [enemy, hyp]
 			
-			if target == "first": angle = atan2(-opp, -adj)
-			#if target == "closest": angle = hyp
-			lookingat = enemy.global_position
+			if target == "first":
+				lookingat = enemies["first"][0].position
 		
 		if len(range_scene.get_overlapping_bodies()) > 0: 
 			sees_enemy = true
