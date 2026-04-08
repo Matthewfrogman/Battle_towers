@@ -44,18 +44,7 @@ func _process(delta: float) -> void:
 		#cannon_scene.rotation = angle
 		#an extra option if needed, in position
 		cannon_scene.look_at(lookingat)
-		
-		#see which enemy is first, closest, last, etc
-		#checks all the enemies 
-		#make a loop of all the enemies, and choose the one that matches
-		#the thing its currently looking for
-		
-		#two loops? one that looks at all the enemies, and gathers their position and health
-		#and then adds them to a seperate loop, and then that loop will find the one with the
-		#highest of one stat
-		
-		#have a temp value of zero, and check if the health/position is higher than itself
-		#or the previous one
+		angle = cannon_scene.rotation
 		
 		
 		for enemy in range_scene.get_overlapping_bodies():
@@ -64,32 +53,29 @@ func _process(delta: float) -> void:
 			
 			var adj = global_position.x - enemy.global_position.x
 			var opp = global_position.y - enemy.global_position.y
-			angle = atan2(-opp, -adj)
+			#angle = atan2(-opp, -adj)
 			#whichever hyp is lowest, thats the closest enemy
 			var hyp = (adj**2 + opp**2)**0.5
 			
-			#current issue is that whenever the enemy is added
-			#you cant compare them anymore, and i need this so it can start for the first time
-			#change it so that it only works when there are enemoes...
 			
+			if target == "first" and enemies["first"] is Array and is_instance_valid(enemies["first"][0]):
+				lookingat = enemies["first"][0].global_position
+				#this isn't calling once the first enemy dies
 			
-			#really long solution but I got it
-			#print(enemies["first"])
 			if enemies["first"] is int: 
 				enemies["first"] = [enemy, hyp]
-			elif enemies["first"][0] is Enemy and enemy.progress > enemies["first"][0].progress:
+			elif (is_instance_valid(enemies["first"][0]) and 
+			enemies["first"][0] is Enemy and 
+			enemy.progress > enemies["first"][0].progress):
 				enemies["first"] = [enemy, hyp]
-			else:
-				enemies["first"] = 0
+			elif not is_instance_valid(enemies["first"][0]):
+				enemies["first"] = [enemy, hyp]
 			
-			if target == "first" and enemies["first"] is Enemy:
-				lookingat = enemies["first"][0].global_position
-				
+		
 		
 		if len(range_scene.get_overlapping_bodies()) > 0: 
 			sees_enemy = true
 			timer.paused = false
-
 		else: 
 			sees_enemy = false
 			if timer.time_left <= 0.1:
@@ -100,9 +86,8 @@ func _process(delta: float) -> void:
 		if canshoot and sees_enemy: shoot(delta, bullet_speed, angle, "angled", projectiles)
 
 
-#PLANS FOR THIS:
 #shoot controls the direction and amount of each bullet, and also the angles
-#whereas bulletShoot actually instantiates the bullets and stuff
+#whereas bulletShoot actually instantiates the bullets
 func shoot(delta: float, speed: int, angle: float, angle_mode: String, bnum: int):
 	if angle_mode == "straight":
 		#doesn't do anything with multiple projectiles rn
