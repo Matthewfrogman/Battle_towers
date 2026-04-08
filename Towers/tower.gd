@@ -44,6 +44,7 @@ func _process(delta: float) -> void:
 		#cannon_scene.rotation = angle
 		#an extra option if needed, in position
 		cannon_scene.look_at(lookingat)
+<<<<<<< HEAD
 		
 		#see which enemy is first, closest, last, etc
 		#checks all the enemies 
@@ -56,6 +57,9 @@ func _process(delta: float) -> void:
 		
 		#have a temp value of zero, and check if the health/position is higher than itself
 		#or the previous one
+=======
+		angle = cannon_scene.rotation
+>>>>>>> 6e507bd20e927fc484a670d551e60c8415afd52b
 		
 		
 		for enemy in range_scene.get_overlapping_bodies():
@@ -64,6 +68,7 @@ func _process(delta: float) -> void:
 			
 			var adj = global_position.x - enemy.global_position.x
 			var opp = global_position.y - enemy.global_position.y
+<<<<<<< HEAD
 			angle = atan2(-opp, -adj)
 			#whichever hyp is lowest, thats the closest enemy
 			var hyp = (adj**2 + opp**2)**0.5
@@ -85,11 +90,35 @@ func _process(delta: float) -> void:
 			if target == "first" and enemies["first"] is Enemy:
 				lookingat = enemies["first"][0].global_position
 				
+=======
+			#angle = atan2(-opp, -adj)
+			#whichever hyp is lowest, thats the closest enemy
+			var hyp = (adj**2 + opp**2)**0.5
+			
+			#changes to the enemy the tower is looking at
+			if target == "first" and enemies["first"] is Array and is_instance_valid(enemies["first"][0]):
+				lookingat = enemies["first"][0].global_position
+			
+			#if the value is an int, lower progression, or dead, it replaces it
+			if enemies["first"] is int: 
+				enemies["first"] = [enemy, hyp]
+			elif (is_instance_valid(enemies["first"][0]) and 
+			enemies["first"][0] is Enemy and 
+			enemy.progress > enemies["first"][0].progress):
+				enemies["first"] = [enemy, hyp]
+			elif not is_instance_valid(enemies["first"][0]):
+				enemies["first"] = [enemy, hyp]
+			
+		
+>>>>>>> 6e507bd20e927fc484a670d551e60c8415afd52b
 		
 		if len(range_scene.get_overlapping_bodies()) > 0: 
 			sees_enemy = true
 			timer.paused = false
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6e507bd20e927fc484a670d551e60c8415afd52b
 		else: 
 			sees_enemy = false
 			if timer.time_left <= 0.1:
@@ -100,9 +129,14 @@ func _process(delta: float) -> void:
 		if canshoot and sees_enemy: shoot(delta, bullet_speed, angle, "angled", projectiles)
 
 
+<<<<<<< HEAD
 #PLANS FOR THIS:
 #shoot controls the direction and amount of each bullet, and also the angles
 #whereas bulletShoot actually instantiates the bullets and stuff
+=======
+#shoot controls the direction and amount of each bullet, and also the angles
+#whereas bulletShoot actually instantiates the bullets
+>>>>>>> 6e507bd20e927fc484a670d551e60c8415afd52b
 func shoot(delta: float, speed: int, angle: float, angle_mode: String, bnum: int):
 	if angle_mode == "straight":
 		#doesn't do anything with multiple projectiles rn
