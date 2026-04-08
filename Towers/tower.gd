@@ -106,7 +106,10 @@ func _process(_delta: float) -> void:
 
 #PLANS FOR THIS:
 #shoot controls the direction and amount of each bullet, and also the angles
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+>>>>>>> parent of f274cdb (Finally fixed tower)
 #whereas bulletShoot actually instantiates the bullets and stuff
 func shoot(delta: float, speed: int, angle: float, angle_mode: String, bnum: int):
 =======
