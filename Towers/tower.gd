@@ -57,11 +57,11 @@ func _process(delta: float) -> void:
 			#whichever hyp is lowest, thats the closest enemy
 			var hyp = (adj**2 + opp**2)**0.5
 			
-			
+			#changes to the enemy the tower is looking at
 			if target == "first" and enemies["first"] is Array and is_instance_valid(enemies["first"][0]):
 				lookingat = enemies["first"][0].global_position
-				#this isn't calling once the first enemy dies
 			
+			#if the value is an int, lower progression, or dead, it replaces it
 			if enemies["first"] is int: 
 				enemies["first"] = [enemy, hyp]
 			elif (is_instance_valid(enemies["first"][0]) and 
