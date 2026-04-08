@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bpasimqt0hjpa" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/1 Tiles/FieldsTileset.png" id="2_yqntx"]
 [ext_resource type="Texture2D" uid="uid://cg8o1agawjihe" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/5 Grass/1.png" id="3_3l7mr"]
 [ext_resource type="Texture2D" uid="uid://eds2x3rp56xq" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Tree1.png" id="4_4an23"]
-[ext_resource type="Script" uid="uid://fdkt2esy035t" path="res://Maps/map_1.gd" id="4_pum3p"]
+[ext_resource type="Script" path="res://Maps/map_1.gd" id="4_pum3p"]
 [ext_resource type="Texture2D" uid="uid://c881lr1oi5qff" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Tree2.png" id="6_n74g1"]
 [ext_resource type="Texture2D" uid="uid://cddi5b1lxnwah" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/9 Bush/1.png" id="7_y04xp"]
 [ext_resource type="Texture2D" uid="uid://ierikeg3b2dq" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/8 Camp/1.png" id="8_o5bvu"]
