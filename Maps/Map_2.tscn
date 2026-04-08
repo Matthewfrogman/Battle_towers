@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://btc5xn6t3pmx0" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/8 Camp/5.png" id="16_x0e3w"]
 [ext_resource type="Texture2D" uid="uid://tllohv1u1iwo" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Lamp6.png" id="17_1s4kh"]
 [ext_resource type="PackedScene" uid="uid://7c5fgd6cuy2o" path="res://scenes/shop.tscn" id="18_g7x5b"]
-[ext_resource type="PackedScene" uid="uid://cfamatig7kjw2" path="res://scenes/enemy_base.tscn" id="21_odt4x"]
+[ext_resource type="PackedScene" uid="uid://bekds5usu03lj" path="res://EnemySpawner/enemy_spawner.tscn" id="23_odt4x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xcv32"]
 texture = ExtResource("1_2fvdr")
@@ -1056,17 +1056,8 @@ z_index = -1
 position = Vector2(-3, 2)
 texture = ExtResource("17_1s4kh")
 
-[node name="enemy" parent="." unique_id=1334610211 instance=ExtResource("21_odt4x")]
-position = Vector2(10, 85.051544)
-
 [node name="end_area_collider2" parent="." unique_id=1964396827 instance=ExtResource("5_uwrl3")]
 position = Vector2(467.4074, 279.8969)
 
-[node name="enemy2" parent="." unique_id=1037025837 instance=ExtResource("21_odt4x")]
-position = Vector2(26.296295, 85.051544)
-
-[node name="enemy3" parent="." unique_id=781111540 instance=ExtResource("21_odt4x")]
-position = Vector2(44.074074, 85.051544)
-
-[node name="enemy4" parent="." unique_id=1862367443 instance=ExtResource("21_odt4x")]
-position = Vector2(60.740738, 85.051544)
+[node name="EnemySpawner" parent="." unique_id=433532294 instance=ExtResource("23_odt4x")]
+position = Vector2(-17.777777, 89.175255)
