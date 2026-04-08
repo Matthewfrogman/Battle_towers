@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cchko0s7e0ljx"]
 
 [ext_resource type="Texture2D" uid="uid://r8qk2j02n80v" path="res://Map1_assets/speeder.png" id="1_2apkp"]
+[ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://scenes/enemy_base.gd" id="1_70fql"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obg72"]
 
@@ -27,6 +28,9 @@ animations = [{
 }]
 
 [node name="speeder_body" type="CharacterBody2D" unique_id=2128506826]
+script = ExtResource("1_70fql")
+speed = 45
+hp = 75
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=185210415]
 shape = SubResource("CapsuleShape2D_obg72")

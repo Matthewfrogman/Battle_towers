@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://df3fakosalosc"]
 
+[ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://scenes/enemy_base.gd" id="1_0gxuc"]
 [ext_resource type="Texture2D" uid="uid://ua3ln3totm8f" path="res://Map1_assets/camo.png" id="1_ev3xy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oqysh"]
@@ -29,6 +30,7 @@ animations = [{
 }]
 
 [node name="camo_enemy" type="CharacterBody2D" unique_id=602651657]
+script = ExtResource("1_0gxuc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=543339992]
 shape = SubResource("CapsuleShape2D_oqysh")
