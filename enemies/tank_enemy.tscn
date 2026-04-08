@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c0c7nkqq8nfaj"]
+
+[ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://scenes/enemy_base.gd" id="1_dk7ln"]
+[ext_resource type="Texture2D" uid="uid://ce51hquxkyy16" path="res://Map1_assets/Tank.png" id="1_xv40v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3oi6"]
+radius = 13.0
+height = 34.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58050"]
+atlas = ExtResource("1_xv40v")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwpbi"]
+atlas = ExtResource("1_xv40v")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ifx1b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58050")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwpbi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Tank_enemy" type="CharacterBody2D" unique_id=1919435059]
+script = ExtResource("1_dk7ln")
+speed = 30
+hp = 125
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2051384667]
+shape = SubResource("CapsuleShape2D_a3oi6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1384555196]
+position = Vector2(1, -2)
+sprite_frames = SubResource("SpriteFrames_ifx1b")
+autoplay = "default"

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dxugluqdqx6w5"]
+
+[ext_resource type="Script" uid="uid://beoefx2ynxdhs" path="res://Towers/Bullets/bullet.gd" id="1_v7mvq"]
+[ext_resource type="Texture2D" uid="uid://cddi5b1lxnwah" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/9 Bush/1.png" id="2_biqqm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mibcj"]
+radius = 9.0
+
+[node name="Bullet" type="Area2D" unique_id=901331464]
+script = ExtResource("1_v7mvq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2013745526]
+texture = ExtResource("2_biqqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1175390010]
+shape = SubResource("CircleShape2D_mibcj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

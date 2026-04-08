@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cupdlf1geuuas"]
+
+[ext_resource type="PackedScene" uid="uid://c86a6pav5hv4v" path="res://Towers/tower.tscn" id="1_d3qwo"]
+[ext_resource type="Script" uid="uid://cads5qf172tum" path="res://Towers/basic_tower.gd" id="2_p54iu"]
+[ext_resource type="Texture2D" uid="uid://cm84n0bvn8tkb" path="res://Towers/Images/camo_base.png" id="3_kwly8"]
+[ext_resource type="Texture2D" uid="uid://bs885t7hk4eqn" path="res://Towers/Images/camo_head.png" id="4_gensx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3qwo"]
+size = Vector2(88, 78)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p54iu"]
+radius = 60.40695
+
+[node name="Tower" unique_id=598119214 instance=ExtResource("1_d3qwo")]
+script = ExtResource("2_p54iu")
+
+[node name="Footprint" parent="." index="0" unique_id=2093572891]
+position = Vector2(22, -6)
+shape = SubResource("RectangleShape2D_d3qwo")
+
+[node name="CollisionShape2D" parent="Range" parent_id_path=PackedInt32Array(2002503009) index="0" unique_id=1624539430]
+position = Vector2(22, -6)
+shape = SubResource("CircleShape2D_p54iu")
+
+[node name="camo_base" type="Sprite2D" parent="." index="3" unique_id=202278920]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_kwly8")
+
+[node name="camo_cannon" type="Sprite2D" parent="." index="4" unique_id=725065622]
+z_index = 1
+position = Vector2(13.000002, -16)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_gensx")
+offset = Vector2(1, 18)
+
+[node name="Marker2D2" type="Marker2D" parent="camo_cannon" index="0" unique_id=1608389440]
+position = Vector2(-17.333336, 109.333336)
+scale = Vector2(1.3333334, 1.3333334)
+
+[node name="Cannon" parent="." index="5" unique_id=1115548727]
+visible = false
+
+[connection signal="body_entered" from="Range" to="." method="_body_entered"]
