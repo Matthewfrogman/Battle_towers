@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dbhb0t8fkvbv8" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/4 Stone/11.png" id="3_40lrr"]
 [ext_resource type="PackedScene" uid="uid://cnfjfb58e7bov" path="res://scenes/enemy_direction_collider.tscn" id="3_u8j2o"]
 [ext_resource type="Texture2D" uid="uid://bchuh76wdy748" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/4 Stone/16.png" id="4_87cfn"]
-[ext_resource type="PackedScene" uid="uid://bi64jp13was5x" path="res://scenes/edc_splitter_Map2.tscn" id="4_uwrl3"]
+[ext_resource type="PackedScene" path="res://scenes/edc_splitter_Map2.tscn" id="4_uwrl3"]
 [ext_resource type="Texture2D" uid="uid://dtt4f8vhb5a0g" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/4 Stone/13.png" id="5_2gdyy"]
 [ext_resource type="PackedScene" uid="uid://cpantiukf4nhx" path="res://scenes/end_area_collider.tscn" id="5_uwrl3"]
 [ext_resource type="Texture2D" uid="uid://fuqgv8sqisve" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/4 Stone/9.png" id="6_8vdni"]
@@ -1057,8 +1057,14 @@ texture = ExtResource("17_1s4kh")
 [node name="enemy" parent="." unique_id=1334610211 instance=ExtResource("21_odt4x")]
 position = Vector2(10, 85.051544)
 
-[node name="enemy2" parent="." unique_id=1801655528 instance=ExtResource("21_odt4x")]
-position = Vector2(29.999998, 85.051544)
-
 [node name="end_area_collider2" parent="." unique_id=1964396827 instance=ExtResource("5_uwrl3")]
 position = Vector2(467.4074, 279.8969)
+
+[node name="enemy2" parent="." unique_id=1037025837 instance=ExtResource("21_odt4x")]
+position = Vector2(26.296295, 85.051544)
+
+[node name="enemy3" parent="." unique_id=781111540 instance=ExtResource("21_odt4x")]
+position = Vector2(44.074074, 85.051544)
+
+[node name="enemy4" parent="." unique_id=1862367443 instance=ExtResource("21_odt4x")]
+position = Vector2(60.740738, 85.051544)
