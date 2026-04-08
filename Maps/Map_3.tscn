@@ -9,11 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://7c5fgd6cuy2o" path="res://scenes/shop.tscn" id="5_r4fia"]
 [ext_resource type="PackedScene" uid="uid://cnfjfb58e7bov" path="res://scenes/enemy_direction_collider.tscn" id="7_ggagh"]
 [ext_resource type="PackedScene" uid="uid://bkq4uuhdd0nop" path="res://scenes/edc_splitte_Map3.tscn" id="8_ggagh"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://cfamatig7kjw2" path="res://scenes/enemy_base.tscn" id="9_j32nj"]
-=======
-[ext_resource type="PackedScene" uid="uid://bekds5usu03lj" path="res://EnemySpawner/enemy_spawner.tscn" id="10_j67qv"]
->>>>>>> 6e507bd20e927fc484a670d551e60c8415afd52b
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ud3xj"]
 texture = ExtResource("1_24ala")
@@ -517,7 +513,6 @@ position = Vector2(335.8491, 446.2963)
 scale = Vector2(1, 1.0000001)
 
 [node name="enemy_direction_collider" parent="." unique_id=283984963 instance=ExtResource("7_ggagh")]
-<<<<<<< HEAD
 position = Vector2(442.9246, 96.29628)
 rotation = -0.7853982
 scale = Vector2(0.235, 0.995)
@@ -533,20 +528,6 @@ send_direction = 3
 position = Vector2(228.30191, 317.28397)
 rotation = 0.7853982
 scale = Vector2(1.13, 0.27)
-=======
-position = Vector2(439.62265, 114.19753)
-scale = Vector2(0.285, 0.64)
-send_direction = 4
-
-[node name="enemy_direction_collider2" parent="." unique_id=61129167 instance=ExtResource("7_ggagh")]
-position = Vector2(432.54715, 312.96295)
-scale = Vector2(0.48, 0.3)
-send_direction = 3
-
-[node name="enemy_direction_collider3" parent="." unique_id=1227469939 instance=ExtResource("7_ggagh")]
-position = Vector2(242.92455, 319.75308)
-scale = Vector2(0.55, 0.385)
->>>>>>> 6e507bd20e927fc484a670d551e60c8415afd52b
 send_direction = 1
 
 [node name="enemy_direction_collider4" parent="." unique_id=79870989 instance=ExtResource("7_ggagh")]
@@ -560,7 +541,6 @@ send_direction = 4
 position = Vector2(247.64156, 90.12346)
 scale = Vector2(0.265, 0.625)
 
-<<<<<<< HEAD
 [node name="enemy" parent="." unique_id=1334610211 instance=ExtResource("9_j32nj")]
 position = Vector2(8.018868, 109.87655)
 
@@ -569,7 +549,3 @@ position = Vector2(25.4717, 109.25927)
 
 [node name="enemy3" parent="." unique_id=1281100769 instance=ExtResource("9_j32nj")]
 position = Vector2(44.339626, 108.0247)
-=======
-[node name="EnemySpawner" parent="." unique_id=433532294 instance=ExtResource("10_j67qv")]
-position = Vector2(-21.226418, 110.493835)
->>>>>>> 6e507bd20e927fc484a670d551e60c8415afd52b

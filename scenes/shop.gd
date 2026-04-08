@@ -67,12 +67,6 @@ func _ready():
 	ff_button.pressed.connect(_on_ff_pressed)
 	panel.add_child(ff_button)
 
-<<<<<<< HEAD
-=======
-func _process(delta: float) -> void:
-	update_hp_label()
-
->>>>>>> 6e507bd20e927fc484a670d551e60c8415afd52b
 func _on_ff_pressed():
 	fast_forward = !fast_forward
 	if fast_forward:
@@ -111,12 +105,6 @@ func _on_tower_button_pressed(tower_name):
 func update_money_label():
 	$Panel/MoneyLabel.text = "Money: $" + str(money)
 
-<<<<<<< HEAD
-=======
-func update_hp_label():
-	$Panel/HPLabel.text = "Health: " + str(get_parent().get_parent().player_hp)
-
->>>>>>> 6e507bd20e927fc484a670d551e60c8415afd52b
 func add_money(amount):
 	money += amount
 	update_money_label()

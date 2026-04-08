@@ -108,17 +108,12 @@ script = ExtResource("2_odt4x")
 [node name="CanvasLayer" parent="." unique_id=444425766 instance=ExtResource("18_g7x5b")]
 
 [node name="enemy_direction_collider" parent="." unique_id=283984963 instance=ExtResource("3_u8j2o")]
-<<<<<<< HEAD
 position = Vector2(95.92592, 69.072174)
 rotation = -0.7853982
-=======
-position = Vector2(112.22223, 89.175255)
->>>>>>> 6e507bd20e927fc484a670d551e60c8415afd52b
 scale = Vector2(0.235, 0.82)
 send_direction = 4
 
 [node name="enemy_direction_collider2" parent="." unique_id=472476854 instance=ExtResource("3_u8j2o")]
-<<<<<<< HEAD
 position = Vector2(80.000015, 198.96906)
 rotation = 0.7853982
 scale = Vector2(0.94, 0.18)
@@ -132,38 +127,18 @@ scale = Vector2(0.19, 1)
 [node name="enemy_direction_collider4" parent="." unique_id=1102371470 instance=ExtResource("3_u8j2o")]
 position = Vector2(209.99998, 65.46391)
 rotation = -0.7853982
-=======
-position = Vector2(89.25926, 209.27835)
-scale = Vector2(0.965, 0.405)
-send_direction = 1
-
-[node name="enemy_direction_collider3" parent="." unique_id=1029629524 instance=ExtResource("3_u8j2o")]
-position = Vector2(240, 184.02061)
-scale = Vector2(0.19, 1)
-
-[node name="enemy_direction_collider4" parent="." unique_id=1102371470 instance=ExtResource("3_u8j2o")]
-position = Vector2(210, 65.97938)
->>>>>>> 6e507bd20e927fc484a670d551e60c8415afd52b
 scale = Vector2(1, 0.34)
 send_direction = 1
 
 [node name="enemy_direction_collider5" parent="." unique_id=1639327789 instance=ExtResource("3_u8j2o")]
-<<<<<<< HEAD
 position = Vector2(319.25922, 62.886597)
 rotation = -0.7853982
-=======
-position = Vector2(336.2963, 92.26804)
->>>>>>> 6e507bd20e927fc484a670d551e60c8415afd52b
 scale = Vector2(0.29, 1)
 send_direction = 4
 
 [node name="enemy_direction_collider6" parent="." unique_id=514269167 instance=ExtResource("3_u8j2o")]
-<<<<<<< HEAD
 position = Vector2(191.11107, 259.27832)
 rotation = 0.7853982
-=======
-position = Vector2(176.66669, 285.567)
->>>>>>> 6e507bd20e927fc484a670d551e60c8415afd52b
 scale = Vector2(0.33, 1)
 send_direction = 4
 
