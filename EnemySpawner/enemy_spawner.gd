@@ -66,7 +66,7 @@ func _ready() -> void:
 	get_tree().get_root().size_changed.connect(_reposition_button)
 
 func _try_load_scenes() -> void:
-	var paths := {"basic": PATH_BASIC, "speeder": PATH_SPEEDER, "tank": PATH_TANK}
+	var paths := {"basic": PATH_BASIC, "speeder": PATH_SPEEDER, "tank": PATH_TANK, "camo": PATH_CAMO}
 	for key in paths:
 		if ResourceLoader.exists(paths[key]):
 			_scenes[key] = load(paths[key])
