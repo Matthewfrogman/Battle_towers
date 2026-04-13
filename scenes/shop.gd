@@ -2,17 +2,17 @@ extends CanvasLayer
 var money = 5000
 var tower_scenes = {
 	"Basic": "res://Towers/basic_tower.tscn",
-	"Sniper": "res://Towers/sniper_tower.tscn",
+	"Sniper": "res://Towers/sniper.tscn",
 	"Camo": "res://Towers/camo_tower.tscn",
 	"Speed": "res://Towers/speed_tower.tscn",
 	"Tesla": "res://Towers/tesla.tscn"
 }
 var tower_costs = {
 	"Basic": 200,
-	"Sniper": 600,
-	"Camo": 800,
+	"Sniper": 800,
+	"Camo": 1000,
 	"Speed": 250,
-	"Tesla": 1000
+	"Tesla": 1250
 }
 var fast_forward = false
 var ff_button = null
