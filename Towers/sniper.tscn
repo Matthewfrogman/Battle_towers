@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://baexphdao0ak5"]
+[gd_scene format=3 uid="uid://0hcb7j153xrt"]
 
 [ext_resource type="PackedScene" uid="uid://c86a6pav5hv4v" path="res://Towers/tower.tscn" id="1_s4nn4"]
-[ext_resource type="Script" uid="uid://bo78ncko2b5sr" path="res://Towers/Scripts/sniper.gd" id="2_s4nn4"]
+[ext_resource type="Script" path="res://Towers/Scripts/sniper.gd" id="2_s4nn4"]
 [ext_resource type="Texture2D" uid="uid://dwij5ve3e7ojh" path="res://Towers/Images/sniper_base.png" id="3_lilev"]
 [ext_resource type="Texture2D" uid="uid://deuno3awvnj2j" path="res://Towers/Images/sniper_gun.png" id="4_nml5a"]
 

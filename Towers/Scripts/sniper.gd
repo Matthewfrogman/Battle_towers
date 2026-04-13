@@ -4,7 +4,6 @@ extends Tower
 func _process(_delta: float) -> void:
 	super(_delta)
 	if canshoot and sees_enemy:
-		if enemies["first"] is Array: 
-			print("does")
+		if enemies["first"] is Array:
 			enemies["first"][0].hp -= attack
 			canshoot = false
