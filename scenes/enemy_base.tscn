@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cusxjs3mawfhx" path="res://Map1_assets/basic.png" id="2_sw0xa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sw0xa"]
+radius = 13.0
+height = 48.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1ss0"]
 atlas = ExtResource("2_sw0xa")
@@ -34,6 +36,7 @@ script = ExtResource("1_fr7lv")
 shape = SubResource("CapsuleShape2D_sw0xa")
 
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1659861200]
-position = Vector2(2, 15)
+position = Vector2(5, 29)
+scale = Vector2(1.8, 1.8)
 sprite_frames = SubResource("SpriteFrames_lxe82")
 autoplay = "default"
