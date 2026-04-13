@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://scenes/enemy_base.gd" id="1_70fql"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obg72"]
-radius = 21.0
-height = 44.0
+radius = 15.0
+height = 36.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ycak7"]
 atlas = ExtResource("1_2apkp")
@@ -41,3 +41,4 @@ shape = SubResource("CapsuleShape2D_obg72")
 position = Vector2(1, 4)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_u5ova")
+autoplay = "default"

@@ -13,6 +13,7 @@ radius = 22.0
 
 [node name="Tower" unique_id=598119214 instance=ExtResource("1_58jxk")]
 script = ExtResource("2_gjwx0")
+cooldown = 3.0
 
 [node name="Footprint" parent="." index="0" unique_id=2093572891]
 position = Vector2(22, -5)
