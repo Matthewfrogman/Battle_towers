@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var money = 500
+var money = 5000
 var tower_scenes = {
 	"Basic": "res://Towers/basic_tower.tscn",
 	"Sniper": "res://Towers/sniper_tower.tscn",
@@ -23,7 +23,7 @@ func _ready():
 	
 	# Money label
 	var label = $Panel/MoneyLabel
-	label.text = "Money: $500"
+	label.text = "Money: $5000"
 	label.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
 	label.offset_left = 10
 	label.offset_top = 10
