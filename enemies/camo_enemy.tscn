@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ua3ln3totm8f" path="res://Map1_assets/camo.png" id="1_ev3xy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oqysh"]
-radius = 30.0
-height = 60.0
+radius = 18.0
+height = 40.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p2t3m"]
 atlas = ExtResource("1_ev3xy")
@@ -37,6 +37,6 @@ shape = SubResource("CapsuleShape2D_oqysh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=987943212]
 position = Vector2(1, -2)
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ln7mm")
 autoplay = "default"
