@@ -1,4 +1,4 @@
-extends Button
+extends Label
 
 
 # Called when the node enters the scene tree for the first time.
@@ -8,10 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	update_hp_label()
 
-
-func _on_pressed() -> void:
-	#var filename = get_parent().get_parent().name
-	#get_tree().change_scene_to_file("res://Maps/" + filename + ".tscn")
-	get_tree().reload_current_scene()
+func update_hp_label():
+	text = "❤️Health: " + str(get_parent().player_hp)

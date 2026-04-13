@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://55fdroowqy2k"]
+
+[ext_resource type="Script" uid="uid://dvlk7pvpkf0fc" path="res://scenes/hp_counter.gd" id="1_b2caa"]
+
+[node name="HPCounter" type="Label" unique_id=637118537]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_b2caa")

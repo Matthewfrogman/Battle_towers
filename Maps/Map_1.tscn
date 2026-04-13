@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://7c5fgd6cuy2o" path="res://scenes/shop.tscn" id="29_yqntx"]
 [ext_resource type="PackedScene" uid="uid://cpantiukf4nhx" path="res://scenes/end_area_collider.tscn" id="30_cufw0"]
 [ext_resource type="PackedScene" uid="uid://bekds5usu03lj" path="res://EnemySpawner/enemy_spawner.tscn" id="30_pum3p"]
+[ext_resource type="PackedScene" uid="uid://55fdroowqy2k" path="res://scenes/hp_counter.tscn" id="32_hrqd3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aiixn"]
 texture = ExtResource("1_dgbw2")
@@ -912,3 +913,10 @@ position = Vector2(440.9722, 224.89452)
 [node name="EnemySpawner" parent="." unique_id=433532294 instance=ExtResource("30_pum3p")]
 position = Vector2(-14.583333, 98.31224)
 spawner_path = NodePath(".")
+
+[node name="HPCounter" parent="." unique_id=637118537 instance=ExtResource("32_hrqd3")]
+z_index = 1
+offset_left = 280.2083
+offset_top = 17.29958
+offset_right = 320.2083
+offset_bottom = 40.299583

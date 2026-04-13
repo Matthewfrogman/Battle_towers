@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://0p8leltyjb15" path="res://scenes/button_2.gd" id="1_ylnw1"]
 
 [node name="deathscreen" type="Control" unique_id=1569556438]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
