@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c86a6pav5hv4v" path="res://Towers/tower.tscn" id="1_qv87q"]
 [ext_resource type="Texture2D" uid="uid://dnufllpevmtkr" path="res://Towers/Images/Firecracker_Base.png" id="2_2rreo"]
-[ext_resource type="Script" uid="uid://cads5qf172tum" path="res://Towers/basic_tower.gd" id="2_3uhwj"]
+[ext_resource type="Script" uid="uid://cads5qf172tum" path="res://Towers/Scripts/basic_tower.gd" id="2_3uhwj"]
 [ext_resource type="PackedScene" uid="uid://bykqnehxqsnsn" path="res://Towers/Bullets/fireball.tscn" id="3_5l8tq"]
 [ext_resource type="Texture2D" uid="uid://fqy2ybb60teh" path="res://Towers/Images/Firecracker_Cannon.png" id="5_5l8tq"]
 
