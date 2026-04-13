@@ -1,7 +1,5 @@
 class_name Tower extends Area2D
 
-@warning_ignore("integer_division")
-
 @onready var timer = get_node("Cooldown Timer")
 @onready var range_scene = get_node("Range")
 @onready var cannon_scene = get_node("Cannon")
@@ -10,14 +8,17 @@ class_name Tower extends Area2D
 # VVV things that'll change between towers VVV
 #the radius of where it can shoot
 @export var sees_camo: bool = false
+#time between attacks
 @export var cooldown: float = 5.0
+#angle in radians between bullets
 @export var bullet_spread: float = 0.1
 @export var attack_range: int
 @export var attack: int = 5
 @export var bullet_speed: int = 100
-@export var pierce: int = 3
+#the amount of enemies the bullet can pass through before it expires
+@export var pierce: int = 1
 #num of bullets. this number should ALWAYS be odd so it looks good.
-@export var projectiles: int = 5
+@export var projectiles: int = 1
 #a reference to the bullet/projectile it instantiates
 @export var bullet_scene: PackedScene
 
@@ -61,7 +62,6 @@ func _process(_delta: float) -> void:
 			
 			if target == "first" and enemies["first"] is Array and is_instance_valid(enemies["first"][0]):
 				lookingat = enemies["first"][0].global_position
-				#this isn't calling once the first enemy dies
 			
 			
 			if enemies["first"] is int: 
@@ -81,14 +81,14 @@ func _process(_delta: float) -> void:
 		else: 
 			sees_enemy = false
 			if timer.time_left <= 0.1:
-				#pauses so the cooldown doesnt get to low, and 
+				#pauses so the cooldown doesnt get to low
 				timer.paused = true
 				
 		
 		if canshoot and sees_enemy: shoot(bullet_speed, "angled", projectiles)
 
 
-#shoot controls the direction and amount of each bullet, and also the angles
+#shoot controls the direction and amount of each bullet
 func shoot(speed: int, angle_mode: String, bnum: int):
 	if angle_mode == "straight":
 		#doesn't do anything with multiple projectiles rn
