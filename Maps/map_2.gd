@@ -1,7 +1,6 @@
 extends TileMap
 
 @export var player_hp = 100
-var deathscene: PackedScene = preload("res://scenes/deathscreen.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,5 +13,4 @@ func _process(delta: float) -> void:
 		game_over()
 
 func game_over():
-	var death_screen = deathscene.instantiate()
-	add_child(death_screen)
+	print("u ded 67")

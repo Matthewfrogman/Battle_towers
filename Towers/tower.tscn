@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://bnobshsif0nbo" path="res://Towers/tower.gd" id="1_ovc7u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2u1pd"]
-size = Vector2(58, 57)
+size = Vector2(64, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovc7u"]
-radius = 28.0
+radius = 32.0
 
 [node name="Tower" type="Area2D" unique_id=598119214]
 script = ExtResource("1_ovc7u")
