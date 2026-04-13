@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ce51hquxkyy16" path="res://Map1_assets/Tank.png" id="1_xv40v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3oi6"]
-radius = 13.0
-height = 34.0
+radius = 36.0
+height = 72.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58050"]
 atlas = ExtResource("1_xv40v")
@@ -38,6 +38,7 @@ hp = 125
 shape = SubResource("CapsuleShape2D_a3oi6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1384555196]
-position = Vector2(1, -2)
+position = Vector2(2, -6.9999995)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ifx1b")
 autoplay = "default"
