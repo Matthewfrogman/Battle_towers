@@ -14,7 +14,6 @@ attack_range = 10
 attack = 10
 bullet_speed = 200
 pierce = 10
-projectiles = 11
 bullet_scene = ExtResource("3_5l8tq")
 
 [node name="Footprint" parent="." index="1" unique_id=2093572891]
