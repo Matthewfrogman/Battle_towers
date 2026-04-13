@@ -1,5 +1,4 @@
 extends CanvasLayer
-
 var money = 5000
 var tower_scenes = {
 	"Basic": "res://Towers/basic_tower.tscn",
@@ -19,8 +18,11 @@ var fast_forward = false
 var ff_button = null
 
 func _ready():
+	# Register this node so enemies can find it reliably from anywhere in the tree
+	add_to_group("shop_ui")
+
 	var panel = $Panel
-	
+
 	# Money label
 	var label = $Panel/MoneyLabel
 	label.text = "Money: $5000"
@@ -29,17 +31,17 @@ func _ready():
 	label.offset_top = 10
 	label.add_theme_font_size_override("font_size", 14)
 	label.add_theme_color_override("font_color", Color(0, 0, 0, 1))
-	
+
 	# Create 5 tower buttons
 	var y_offset = 35
 	var button_height = 50
 	var button_spacing = 5
 	var button_width = 150
-	
+
 	for i in range(5):
 		var tower_name = tower_scenes.keys()[i]
 		var cost = tower_costs[tower_name]
-		
+
 		var btn = Button.new()
 		btn.text = tower_name + " - $" + str(cost)
 		btn.custom_minimum_size = Vector2(button_width, button_height)
@@ -47,7 +49,7 @@ func _ready():
 		btn.add_theme_font_size_override("font_size", 18)
 		btn.pressed.connect(_on_tower_button_pressed.bind(tower_name))
 		panel.add_child(btn)
-	
+
 	# Fast forward button at bottom
 	ff_button = Button.new()
 	ff_button.text = "▶▶"
@@ -56,7 +58,7 @@ func _ready():
 	ff_button.offset_left = 10
 	ff_button.offset_bottom = -10
 	ff_button.add_theme_font_size_override("font_size", 18)
-	
+
 	var ff_style = StyleBoxFlat.new()
 	ff_style.bg_color = Color(0.1, 0.5, 0.1, 1)
 	ff_style.set_corner_radius_all(6)
@@ -90,7 +92,7 @@ func _on_tower_button_pressed(tower_name):
 	var cost = tower_costs[tower_name]
 	if money >= cost:
 		var tower_path = tower_scenes[tower_name]
-		
+
 		# Check if file exists
 		if ResourceLoader.exists(tower_path):
 			money -= cost
