@@ -97,7 +97,7 @@ texture = ExtResource("1_2fvdr")
 [sub_resource type="TileSet" id="TileSet_v3cbb"]
 sources/0 = SubResource("TileSetAtlasSource_xcv32")
 
-[node name="TileMap" type="TileMap" unique_id=549878597]
+[node name="Map_2" type="TileMap" unique_id=549878597]
 self_modulate = Color(0.8346143, 0.8346143, 0.8346143, 1)
 scale = Vector2(2.7, 1.94)
 tile_set = SubResource("TileSet_v3cbb")

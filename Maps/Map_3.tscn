@@ -477,7 +477,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="TileMap" type="TileMap" unique_id=491781259]
+[node name="Map_3" type="TileMap" unique_id=491781259]
 scale = Vector2(2.12, 1.62)
 tile_set = SubResource("TileSet_lyupv")
 format = 2
