@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c86a6pav5hv4v" path="res://Towers/tower.tscn" id="1_d3qwo"]
 [ext_resource type="Script" uid="uid://cads5qf172tum" path="res://Towers/basic_tower.gd" id="2_p54iu"]
 [ext_resource type="Texture2D" uid="uid://cm84n0bvn8tkb" path="res://Towers/Images/camo_base.png" id="3_kwly8"]
+[ext_resource type="PackedScene" uid="uid://dxugluqdqx6w5" path="res://Towers/Bullets/bullet.tscn" id="3_p54iu"]
 [ext_resource type="Texture2D" uid="uid://bs885t7hk4eqn" path="res://Towers/Images/camo_head.png" id="4_gensx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3qwo"]
@@ -13,6 +14,9 @@ radius = 29.427877
 
 [node name="Tower" unique_id=598119214 instance=ExtResource("1_d3qwo")]
 script = ExtResource("2_p54iu")
+sees_camo = true
+attack_range = 10
+bullet_scene = ExtResource("3_p54iu")
 
 [node name="Footprint" parent="." index="0" unique_id=2093572891]
 position = Vector2(0.5, -0.5)
