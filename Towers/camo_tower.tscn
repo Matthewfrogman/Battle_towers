@@ -27,7 +27,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_kwly8")
 
 [node name="Cannon" parent="." index="4" unique_id=1115548727]
-position = Vector2(-3.9999998, 0.99999994)
+position = Vector2(6, 3)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_gensx")
 
