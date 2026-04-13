@@ -108,36 +108,36 @@ script = ExtResource("2_odt4x")
 [node name="CanvasLayer" parent="." unique_id=444425766 instance=ExtResource("18_g7x5b")]
 
 [node name="enemy_direction_collider" parent="." unique_id=283984963 instance=ExtResource("3_u8j2o")]
-position = Vector2(97.03704, 77.83506)
+position = Vector2(101.851845, 76.804115)
 rotation = -0.7853982
 scale = Vector2(0.235, 0.82)
 send_direction = 4
 
 [node name="enemy_direction_collider2" parent="." unique_id=472476854 instance=ExtResource("3_u8j2o")]
-position = Vector2(82.22224, 193.29897)
+position = Vector2(78.518524, 197.93814)
 rotation = 0.7853982
 scale = Vector2(0.94, 0.18)
 send_direction = 1
 
 [node name="enemy_direction_collider3" parent="." unique_id=1029629524 instance=ExtResource("3_u8j2o")]
-position = Vector2(228.51852, 191.75255)
+position = Vector2(230.74072, 196.39171)
 rotation = 0.7853982
 scale = Vector2(0.19, 1)
 
 [node name="enemy_direction_collider4" parent="." unique_id=1102371470 instance=ExtResource("3_u8j2o")]
-position = Vector2(209.99998, 65.46391)
+position = Vector2(205.92592, 66.49485)
 rotation = -0.7853982
 scale = Vector2(1, 0.34)
 send_direction = 1
 
 [node name="enemy_direction_collider5" parent="." unique_id=1639327789 instance=ExtResource("3_u8j2o")]
-position = Vector2(328.14816, 75.25772)
+position = Vector2(328.88892, 72.680405)
 rotation = -0.7853982
 scale = Vector2(0.29, 1)
 send_direction = 4
 
 [node name="enemy_direction_collider6" parent="." unique_id=514269167 instance=ExtResource("3_u8j2o")]
-position = Vector2(191.85185, 263.40204)
+position = Vector2(185.18517, 261.85565)
 rotation = 0.7853982
 scale = Vector2(0.33, 1)
 send_direction = 4
