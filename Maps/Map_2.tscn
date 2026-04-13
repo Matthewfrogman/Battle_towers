@@ -108,19 +108,19 @@ script = ExtResource("2_odt4x")
 [node name="CanvasLayer" parent="." unique_id=444425766 instance=ExtResource("18_g7x5b")]
 
 [node name="enemy_direction_collider" parent="." unique_id=283984963 instance=ExtResource("3_u8j2o")]
-position = Vector2(95.92592, 69.072174)
+position = Vector2(97.03704, 77.83506)
 rotation = -0.7853982
 scale = Vector2(0.235, 0.82)
 send_direction = 4
 
 [node name="enemy_direction_collider2" parent="." unique_id=472476854 instance=ExtResource("3_u8j2o")]
-position = Vector2(80.000015, 198.96906)
+position = Vector2(82.22224, 193.29897)
 rotation = 0.7853982
 scale = Vector2(0.94, 0.18)
 send_direction = 1
 
 [node name="enemy_direction_collider3" parent="." unique_id=1029629524 instance=ExtResource("3_u8j2o")]
-position = Vector2(220.37038, 202.06183)
+position = Vector2(228.51852, 191.75255)
 rotation = 0.7853982
 scale = Vector2(0.19, 1)
 
@@ -131,20 +131,20 @@ scale = Vector2(1, 0.34)
 send_direction = 1
 
 [node name="enemy_direction_collider5" parent="." unique_id=1639327789 instance=ExtResource("3_u8j2o")]
-position = Vector2(319.25922, 62.886597)
+position = Vector2(328.14816, 75.25772)
 rotation = -0.7853982
 scale = Vector2(0.29, 1)
 send_direction = 4
 
 [node name="enemy_direction_collider6" parent="." unique_id=514269167 instance=ExtResource("3_u8j2o")]
-position = Vector2(191.11107, 259.27832)
+position = Vector2(191.85185, 263.40204)
 rotation = 0.7853982
 scale = Vector2(0.33, 1)
 send_direction = 4
 
 [node name="EDC_splitter" parent="." unique_id=349872254 instance=ExtResource("4_uwrl3")]
 position = Vector2(313.33334, 304.1237)
-scale = Vector2(0.24, 0.495)
+scale = Vector2(0.6399991, 0.495)
 
 [node name="end_area_collider" parent="." unique_id=1152088850 instance=ExtResource("5_uwrl3")]
 position = Vector2(201.1111, 385.05154)
@@ -1066,4 +1066,5 @@ texture = ExtResource("17_1s4kh")
 position = Vector2(467.4074, 279.8969)
 
 [node name="EnemySpawner" parent="." unique_id=433532294 instance=ExtResource("23_odt4x")]
-position = Vector2(-17.777777, 89.175255)
+position = Vector2(-17.777779, 89.175255)
+spawner_path = NodePath(".")

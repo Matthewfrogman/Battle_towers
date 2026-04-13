@@ -4,14 +4,20 @@ extends Node2D
 const PATH_BASIC   = "res://scenes/enemy_base.tscn"
 const PATH_SPEEDER = "res://enemies/speeder_body.tscn"
 const PATH_TANK    = "res://enemies/tank_enemy.tscn"
+const PATH_CAMO    = "res://enemies/camo_enemy.tscn"
 
-# --- Spawner node path (easy to change) ---
-const SPAWNER_PATH = "res://EnemySpawner/enemy_spawner.tscn"
+# --- Placeholder enemies ---
+const PATH_HEAVY   = "res://enemies/heavy_enemy.tscn"
+const PATH_BOSS    = "res://enemies/boss_enemy.tscn"
+const PATH_FLYER   = "res://enemies/flyer_enemy.tscn"
 
-# --- Time between individual enemy spawns in seconds ---
+# --- Spawner NODE path (NOT res://) ---
+@export var spawner_path: NodePath
+
+# --- Time between individual enemy spawns ---
 var spawn_interval: float = 0.4
 
-# --- Button appearance (easy to change) ---
+# --- Button appearance ---
 var button_size    := Vector2(64, 64)
 var button_color   := Color(0.18, 0.72, 0.22)   # green fill
 var outline_normal := Color(0.05, 0.05, 0.05)    # black outline  (single-wave mode)
@@ -27,6 +33,8 @@ var current_wave: int = 0
 
 var _scenes      := {}
 var _spawner     : Node2D
+var _spawner_start_pos: Vector2
+
 var _spawn_queue : Array = []
 var _spawn_timer : float = 0.0
 var _spawning    : bool  = false
@@ -44,8 +52,16 @@ var _wave_click_count: int = 0
 #  Setup
 
 func _ready() -> void:
+	randomize()
+
 	_try_load_scenes()
-	_spawner = get_node_or_null(SPAWNER_PATH)
+
+	_spawner = get_node_or_null(spawner_path)
+	if _spawner == null:
+		push_error("Spawner not found! Assign it in the inspector.")
+	else:
+		_spawner_start_pos = _spawner.global_position
+
 	_build_button()
 	get_tree().get_root().size_changed.connect(_reposition_button)
 
@@ -128,6 +144,7 @@ func _set_outline(col: Color) -> void:
 	_style_hover.border_color  = col
 	_style_press.border_color  = col
 
+# Waves
 #  Wave data
 
 const WAVES: Array = [
@@ -195,12 +212,16 @@ func _on_wave_finished() -> void:
 func _spawn_next() -> void:
 	var type: String = _spawn_queue.pop_front()
 
-	if _scenes[type] != null:
-		var instance = _scenes[type].instantiate()
-		if _spawner != null:
-			_spawner.add_child(instance)
-			instance.global_position = _spawner.global_position
-		else:
-			add_child(instance)
-	else:
-		print("Wave Manager: spawning ", type, " (scene not found, placeholder)")
+	if _scenes[type] == null:
+		print("Missing scene for ", type)
+		return
+
+	# Move spawner randomly on Y based on ORIGINAL position
+	var y_offset := randf_range(-25.0, 25.0)
+	var spawn_pos = _spawner_start_pos + Vector2(0, y_offset)
+
+	var instance = _scenes[type].instantiate()
+
+	# Add to the scene root or an enemies container, not the spawner
+	get_tree().get_root().add_child(instance)
+	instance.global_position = spawn_pos
