@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://gl1wv8ba3vc"]
+[gd_scene format=3 uid="uid://baexphdao0ak5"]
 
 [ext_resource type="PackedScene" uid="uid://c86a6pav5hv4v" path="res://Towers/tower.tscn" id="1_s4nn4"]
-[ext_resource type="PackedScene" uid="uid://bykqnehxqsnsn" path="res://Towers/Bullets/fireball.tscn" id="2_ra4cn"]
+[ext_resource type="Script" uid="uid://bo78ncko2b5sr" path="res://Towers/Scripts/sniper.gd" id="2_s4nn4"]
 [ext_resource type="Texture2D" uid="uid://dwij5ve3e7ojh" path="res://Towers/Images/sniper_base.png" id="3_lilev"]
 [ext_resource type="Texture2D" uid="uid://deuno3awvnj2j" path="res://Towers/Images/sniper_gun.png" id="4_nml5a"]
 
@@ -12,32 +12,33 @@ size = Vector2(47, 45)
 radius = 25.079872
 
 [node name="Tower" unique_id=598119214 instance=ExtResource("1_s4nn4")]
-cooldown = 0.5
-attack_range = 10
-attack = 7
-bullet_speed = 300
-bullet_scene = ExtResource("2_ra4cn")
+script = ExtResource("2_s4nn4")
+cooldown = 2.0
+bullet_spread = 0.0
+attack_range = 1000
+attack = 50
+bullet_speed = 0
+pierce = 0
+projectiles = 0
 
 [node name="Footprint" parent="." index="1" unique_id=2093572891]
-position = Vector2(0.5, -0.5)
+position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_d3qwo")
 
 [node name="CollisionShape2D" parent="Range" parent_id_path=PackedInt32Array(2002503009) index="0" unique_id=1624539430]
-position = Vector2(-2, 1)
 shape = SubResource("CircleShape2D_wuvjc")
 
 [node name="sniper_base" type="Sprite2D" parent="." index="3" unique_id=202278920]
-position = Vector2(5.9999995, -2.999998)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_lilev")
+offset = Vector2(26.666668, -13.333333)
 
 [node name="Cannon" parent="." index="4" unique_id=1115548727]
-position = Vector2(11, 16)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_nml5a")
-offset = Vector2(69.99999, -5.960464e-07)
+offset = Vector2(93.33333, 50)
 
 [node name="Marker2D" parent="Cannon" index="0" unique_id=1260253367]
-position = Vector2(134.99998, -2.4999998)
+position = Vector2(110, -49.999996)
 
 [connection signal="body_entered" from="Range" to="." method="_body_entered"]

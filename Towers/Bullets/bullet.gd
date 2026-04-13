@@ -10,7 +10,7 @@ func _process(delta: float) -> void:
 	#if it hits an enemy, deal damage and expire
 	
 func _on_body_entered(body: Node2D) -> void:
-	if body.has_method("lose_hp"):
+	if body is Enemy and (not body.camo or body.camo and sees_camo):
 		body.lose_hp(damage)
 		if pierce <= 0:
 			queue_free()

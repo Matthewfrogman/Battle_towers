@@ -73,7 +73,8 @@ func _process(_delta: float) -> void:
 			if target == "first" and enemies["first"] is Array and is_instance_valid(enemies["first"][0]):
 				lookingat = enemies["first"][0].global_position
 			
-			
+			#replaces the null enemy value, or the previous enemy, or 
+			#if the enemy is dead
 			if enemies["first"] is int: 
 				enemies["first"] = [enemy, hyp]
 			elif (is_instance_valid(enemies["first"][0]) and 
@@ -103,7 +104,7 @@ func shoot(speed: int, angle_mode: String, bnum: int):
 		bulletShoot(Vector2(speed*cos(angle), speed*sin(angle)))
 		
 	if angle_mode == "angled":
-		bulletShoot(Vector2(speed*cos(angle), speed*sin(angle)))
+		if not bnum == 0: bulletShoot(Vector2(speed*cos(angle), speed*sin(angle)))
 		var aIncrement = 0
 		for i in bnum-1:
 			#error for integer division
