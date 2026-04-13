@@ -15,8 +15,8 @@ attack = 10
 bullet_speed = 200
 bullet_scene = ExtResource("3_5l8tq")
 
-[node name="Footprint" parent="." index="0" unique_id=2093572891]
-position = Vector2(-0.5, -0.5)
+[node name="Footprint" parent="." index="1" unique_id=2093572891]
+position = Vector2(0, 0)
 
 [node name="Base" type="Sprite2D" parent="." index="3" unique_id=202278920]
 scale = Vector2(0.8, 0.8)

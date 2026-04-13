@@ -22,8 +22,10 @@ class_name Tower extends Area2D
 #a reference to the bullet/projectile it instantiates
 @export var bullet_scene: PackedScene
 
-var canshoot = false
+var selected: bool = false
+var canshoot: bool = false
 var sees_enemy: bool
+var mpos: Vector2
 #the position of the enemy its looking at V
 var lookingat: Vector2
 #either hover or placed. If its hovering itll follow the mouse, otherwise itll shoot
@@ -38,17 +40,25 @@ func _ready() -> void:
 	mode = "hover"
 	global_position = get_global_mouse_position()
 	range_scene.scale = Vector2(attack_range, attack_range)
-	
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				if mode == "hover": mode = "placed"
+				else:
+					#if the mouse is close enough, set selected to true
+					var madj = mpos[0] - global_position.x
+					var mopp = mpos[1] - global_position.y
+					var mhyp = (madj**2 + mopp**2)**0.5
+					if mhyp <= 50: selected = !selected
+
 func _process(_delta: float) -> void:
-	if mode == "hover":
-		global_position = get_global_mouse_position()
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			mode = "placed"
-			
+	mpos = get_global_mouse_position()
+
 	if mode == "placed":
 		cannon_scene.look_at(lookingat)
 		angle = cannon_scene.rotation
-		
 
 		for enemy in range_scene.get_overlapping_bodies():
 			if enemy is Enemy: pass
@@ -72,24 +82,22 @@ func _process(_delta: float) -> void:
 				enemies["first"] = [enemy, hyp]
 			elif not is_instance_valid(enemies["first"][0]):
 				enemies["first"] = [enemy, hyp]
-				
 		
 		if len(range_scene.get_overlapping_bodies()) > 0: 
 			sees_enemy = true
 			timer.paused = false
-
 		else: 
 			sees_enemy = false
 			if timer.time_left <= 0.1:
 				#pauses so the cooldown doesnt get to low
 				timer.paused = true
-				
 		
 		if canshoot and sees_enemy: shoot(bullet_speed, "angled", projectiles)
+	else:
+		position = get_global_mouse_position()
 
-
-#shoot controls the direction and amount of each bullet
 func shoot(speed: int, angle_mode: String, bnum: int):
+	#shoot controls the direction and amount of each bullet
 	if angle_mode == "straight":
 		#doesn't do anything with multiple projectiles rn
 		bulletShoot(Vector2(speed*cos(angle), speed*sin(angle)))
@@ -105,15 +113,20 @@ func shoot(speed: int, angle_mode: String, bnum: int):
 				aIncrement = bullet_spread*(i+1)
 			bulletShoot(Vector2(speed*cos(angle+aIncrement), speed*sin(angle+aIncrement)))
 
-#instantiated bullets and gives them the correct stats
 func bulletShoot(move: Vector2):
+	#instantiated bullets and gives them the correct stats
 	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
 	bullet.global_position = marker_scene.global_position
 	bullet.damage = attack
 	bullet.move = move
 	bullet.pierce = pierce
+	bullet.sees_camo = sees_camo
 	canshoot = false
-	
+
 func _timer_timeout() -> void:
 	canshoot = true
+
+func upgrade(path: int):
+	#overwritten by extended classes
+	pass

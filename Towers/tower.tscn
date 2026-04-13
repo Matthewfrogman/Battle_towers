@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bnobshsif0nbo" path="res://Towers/Scripts/tower.gd" id="1_ovc7u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2u1pd"]
-size = Vector2(64, 64)
+size = Vector2(52, 52)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovc7u"]
 radius = 32.0
