@@ -9,7 +9,7 @@
 size = Vector2(47, 45)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wuvjc"]
-radius = 27.0
+radius = 25.079872
 
 [node name="Tower" unique_id=598119214 instance=ExtResource("1_0cntj")]
 cooldown = 0.5
@@ -18,7 +18,7 @@ attack = 7
 bullet_speed = 300
 bullet_scene = ExtResource("2_wuvjc")
 
-[node name="Footprint" parent="." index="0" unique_id=2093572891]
+[node name="Footprint" parent="." index="1" unique_id=2093572891]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_d3qwo")
 
