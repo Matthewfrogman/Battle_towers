@@ -6,7 +6,7 @@ class_name Enemy
 @export var dmg_to_player = 50
 # sees the progress of the enemy across the track
 var progress: int = 0
-var camo: bool = false
+@export var camo: bool = false
 
 func _ready():
 	pass
