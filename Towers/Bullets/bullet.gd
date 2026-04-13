@@ -3,6 +3,7 @@ class_name Bullet extends Area2D
 var move: Vector2
 var damage: int
 var pierce: int
+var sees_camo: bool
 
 func _process(delta: float) -> void:
 	position += Vector2(move[0]*delta, move[1]*delta)
