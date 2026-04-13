@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bq18tu1f2sxmi"]
 
 [ext_resource type="PackedScene" uid="uid://c86a6pav5hv4v" path="res://Towers/tower.tscn" id="1_58jxk"]
-[ext_resource type="Script" uid="uid://cads5qf172tum" path="res://Towers/basic_tower.gd" id="2_gjwx0"]
+[ext_resource type="Script" uid="uid://cads5qf172tum" path="res://Towers/Scripts/basic_tower.gd" id="2_gjwx0"]
 [ext_resource type="Texture2D" uid="uid://csqiuxmrj13mo" path="res://Towers/Images/speedtower.png" id="3_akdh4"]
+[ext_resource type="PackedScene" uid="uid://dxugluqdqx6w5" path="res://Towers/Bullets/bullet.tscn" id="3_gjwx0"]
 [ext_resource type="Texture2D" uid="uid://byxfvnhcq7bj3" path="res://Towers/Images/tesla.png" id="4_f6kqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3qwo"]
@@ -13,33 +14,29 @@ radius = 22.0
 
 [node name="Tower" unique_id=598119214 instance=ExtResource("1_58jxk")]
 script = ExtResource("2_gjwx0")
+attack_range = 10
+bullet_scene = ExtResource("3_gjwx0")
 
-[node name="Footprint" parent="." index="0" unique_id=2093572891]
-position = Vector2(22, -5)
+[node name="Footprint" parent="." index="1" unique_id=2093572891]
+position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_d3qwo")
 
 [node name="CollisionShape2D" parent="Range" parent_id_path=PackedInt32Array(2002503009) index="0" unique_id=1624539430]
-position = Vector2(22, -6)
 shape = SubResource("CircleShape2D_g8aik")
 
 [node name="tesla" type="Sprite2D" parent="." index="3" unique_id=202278920]
 visible = false
-position = Vector2(20, 29)
+position = Vector2(1.9073486e-06, 31)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_akdh4")
 
-[node name="tesla2" type="Sprite2D" parent="." index="4" unique_id=725065622]
-z_index = 1
-position = Vector2(19, 4.000001)
-scale = Vector2(0.2, 0.2)
+[node name="Cannon" parent="." index="4" unique_id=1115548727]
+position = Vector2(0, -5.9604645e-08)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_f6kqh")
-offset = Vector2(1, 18)
+offset = Vector2(-12.499998, 62.499996)
 
-[node name="Marker2D2" type="Marker2D" parent="tesla2" index="0" unique_id=1608389440]
-position = Vector2(-17.333336, 109.333336)
-scale = Vector2(1.3333334, 1.3333334)
-
-[node name="Cannon" parent="." index="5" unique_id=1115548727]
-visible = false
+[node name="Marker2D" parent="Cannon" index="0" unique_id=1260253367]
+position = Vector2(2.3841858e-07, -365)
 
 [connection signal="body_entered" from="Range" to="." method="_body_entered"]
