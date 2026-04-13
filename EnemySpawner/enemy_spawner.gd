@@ -5,9 +5,7 @@ const PATH_BASIC   = "res://scenes/enemy_base.tscn"
 const PATH_SPEEDER = "res://enemies/speeder_body.tscn"
 const PATH_TANK    = "res://enemies/tank_enemy.tscn"
 const PATH_CAMO    = "res://enemies/camo_enemy.tscn"
-
 # --- Placeholder enemies ---
-const PATH_HEAVY   = "res://enemies/heavy_enemy.tscn"
 const PATH_BOSS    = "res://enemies/boss_enemy.tscn"
 const PATH_FLYER   = "res://enemies/flyer_enemy.tscn"
 
@@ -66,7 +64,15 @@ func _ready() -> void:
 	get_tree().get_root().size_changed.connect(_reposition_button)
 
 func _try_load_scenes() -> void:
-	var paths := {"basic": PATH_BASIC, "speeder": PATH_SPEEDER, "tank": PATH_TANK, "camo": PATH_CAMO}
+	var paths := {
+		"basic": PATH_BASIC,
+		"speeder": PATH_SPEEDER,
+		"tank": PATH_TANK,
+		"camo": PATH_CAMO,
+		"boss": PATH_BOSS,
+		"flyer": PATH_FLYER
+	}
+
 	for key in paths:
 		if ResourceLoader.exists(paths[key]):
 			_scenes[key] = load(paths[key])
