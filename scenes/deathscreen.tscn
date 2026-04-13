@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://b1rwx8yeqt5mx"]
 
+[ext_resource type="Script" uid="uid://b14aj8mwe02uh" path="res://scenes/retry_button.gd" id="1_uurjc"]
+[ext_resource type="Script" uid="uid://0p8leltyjb15" path="res://scenes/button_2.gd" id="1_ylnw1"]
+
 [node name="deathscreen" type="Control" unique_id=1569556438]
 layout_mode = 3
 anchors_preset = 15
@@ -13,7 +16,33 @@ top_level = true
 z_index = 1
 layout_mode = 0
 offset_right = 1152.0
-offset_bottom = 648.0
-text = "Game Over 67"
+offset_bottom = 391.0
+theme_override_font_sizes/font_size = 38
+text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RetryButton" type="Button" parent="." unique_id=2143907313]
+top_level = true
+layout_mode = 0
+offset_left = 465.0
+offset_top = 266.0
+offset_right = 682.0
+offset_bottom = 370.0
+theme_override_font_sizes/font_size = 28
+text = "Retry"
+script = ExtResource("1_uurjc")
+
+[node name="ExitButton" type="Button" parent="." unique_id=866794867]
+top_level = true
+layout_mode = 0
+offset_left = 464.0
+offset_top = 379.0
+offset_right = 684.0
+offset_bottom = 489.0
+theme_override_font_sizes/font_size = 28
+text = "Exit"
+script = ExtResource("1_ylnw1")
+
+[connection signal="pressed" from="RetryButton" to="RetryButton" method="_on_pressed"]
+[connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_pressed"]
