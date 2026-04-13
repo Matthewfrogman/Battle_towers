@@ -45,8 +45,6 @@ func _process(_delta: float) -> void:
 			mode = "placed"
 			
 	if mode == "placed":
-		#cannon_scene.rotation = angle
-		#an extra option if needed, in position
 		cannon_scene.look_at(lookingat)
 		angle = cannon_scene.rotation
 		
@@ -66,8 +64,6 @@ func _process(_delta: float) -> void:
 				#this isn't calling once the first enemy dies
 			
 			
-			#really long solution but I got it
-			#print(enemies["first"])
 			if enemies["first"] is int: 
 				enemies["first"] = [enemy, hyp]
 			elif (is_instance_valid(enemies["first"][0]) and 
@@ -92,9 +88,7 @@ func _process(_delta: float) -> void:
 		if canshoot and sees_enemy: shoot(bullet_speed, "angled", projectiles)
 
 
-#PLANS FOR THIS:
 #shoot controls the direction and amount of each bullet, and also the angles
-#whereas bulletShoot actually instantiates the bullets
 func shoot(speed: int, angle_mode: String, bnum: int):
 	if angle_mode == "straight":
 		#doesn't do anything with multiple projectiles rn
@@ -111,6 +105,7 @@ func shoot(speed: int, angle_mode: String, bnum: int):
 				aIncrement = bullet_spread*(i+1)
 			bulletShoot(Vector2(speed*cos(angle+aIncrement), speed*sin(angle+aIncrement)))
 
+#instantiated bullets and gives them the correct stats
 func bulletShoot(move: Vector2):
 	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
