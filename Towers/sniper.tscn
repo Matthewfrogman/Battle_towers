@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://0hcb7j153xrt"]
 
 [ext_resource type="PackedScene" uid="uid://c86a6pav5hv4v" path="res://Towers/tower.tscn" id="1_s4nn4"]
-[ext_resource type="Script" path="res://Towers/Scripts/sniper.gd" id="2_s4nn4"]
+[ext_resource type="Script" uid="uid://bo78ncko2b5sr" path="res://Towers/Scripts/sniper.gd" id="2_s4nn4"]
 [ext_resource type="Texture2D" uid="uid://dwij5ve3e7ojh" path="res://Towers/Images/sniper_base.png" id="3_lilev"]
 [ext_resource type="Texture2D" uid="uid://deuno3awvnj2j" path="res://Towers/Images/sniper_gun.png" id="4_nml5a"]
 
@@ -10,6 +10,9 @@ size = Vector2(47, 45)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wuvjc"]
 radius = 25.079872
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s4nn4"]
+load_path = "res://.godot/imported/muzzle-flashes.png-091ccd84a33ba98103991dc8e3206823.ctex"
 
 [node name="Tower" unique_id=598119214 instance=ExtResource("1_s4nn4")]
 script = ExtResource("2_s4nn4")
@@ -40,5 +43,13 @@ offset = Vector2(93.33333, 50)
 
 [node name="Marker2D" parent="Cannon" index="0" unique_id=1260253367]
 position = Vector2(110, -49.999996)
+
+[node name="muzzleflash" type="Sprite2D" parent="Cannon" index="1" unique_id=574985302]
+position = Vector2(136.66666, 0)
+scale = Vector2(10, 10)
+texture = SubResource("CompressedTexture2D_s4nn4")
+offset = Vector2(4.000103, 0.45000002)
+hframes = 4
+frame = 3
 
 [connection signal="body_entered" from="Range" to="." method="_body_entered"]
