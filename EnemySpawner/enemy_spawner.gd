@@ -10,7 +10,6 @@ const PATH_BOSS2   = "res://enemies/Boss_2.tscn"
 const PATH_BOSS3   = "res://enemies/Boss_3.tscn"
 
 @export_enum("boss1", "boss2", "boss3") var selected_boss: String = "boss1"
-
 @export var spawner_path: NodePath
 
 var spawn_interval: float = 0.4
@@ -42,6 +41,7 @@ var _style_hover: StyleBoxFlat
 var _style_press: StyleBoxFlat
 
 var _wave_click_count: int = 0
+var _alive_enemies: int = 0
 
 func _ready() -> void:
 	randomize()
@@ -128,13 +128,13 @@ func _on_button_pressed() -> void:
 	if not _spawning:
 		_launch_current_wave()
 
-func _process(delta: float) -> void:
-	_handle_spawning(delta)
-
 func _set_outline(col: Color) -> void:
 	_style_normal.border_color = col
 	_style_hover.border_color = col
 	_style_press.border_color = col
+
+func _process(delta: float) -> void:
+	_handle_spawning(delta)
 
 const WAVES: Array = [
 	[["basic", 20]],
@@ -148,51 +148,90 @@ const WAVES: Array = [
 	[["tank", 30]],
 	[["basic", 25], ["speeder", 45], ["tank", 5]],
 
+	# wave 11
 	#[["basic", 20], ["tank", 20], ["camo", 10]],
+	# wave 12
 	#[["speeder", 35], ["camo", 15]],
+	# wave 13
 	#[["tank", 30]],
+	# wave 14
 	#[["basic", 25], ["speeder", 25], ["camo", 20]],
+	# wave 15
 	#[["basic", 30], ["tank", 20]],
 
+	# wave 16
 	#[["tank", 35], ["camo", 20]],
+	# wave 17
 	#[["speeder", 50]],
+	# wave 18
 	#[["basic", 40], ["tank", 25]],
+	# wave 19
 	#[["camo", 40]],
+	# wave 20
 	#[["tank", 40], ["speeder", 40]],
 
+	# wave 21
 	#[["basic", 50]],
+	# wave 22
 	#[["tank", 45]],
+	# wave 23
 	#[["speeder", 60]],
+	# wave 24
 	#[["camo", 50]],
+	# wave 25
 	#[["basic", 40], ["tank", 40]],
 
+	# wave 26
 	#[["speeder", 70]],
+	# wave 27
 	#[["camo", 60]],
+	# wave 28
 	#[["tank", 55]],
+	# wave 29
 	#[["basic", 60], ["speeder", 40]],
+	# wave 30
 	#[["tank", 60], ["camo", 40]],
 
+	# wave 31
 	#[["speeder", 80]],
+	# wave 32
 	#[["camo", 70]],
+	# wave 33
 	#[["tank", 70]],
+	# wave 34
 	#[["basic", 80]],
+	# wave 35
 	#[["tank", 80], ["camo", 60]],
 
+	# wave 36
 	#[["speeder", 90]],
+	# wave 37
 	#[["camo", 80]],
+	# wave 38
 	#[["tank", 85]],
+	# wave 39
 	#[["basic", 100]],
+	# wave 40
 	#[["tank", 90], ["camo", 70]],
 
+	# wave 41
 	#[["speeder", 100]],
+	# wave 42
 	#[["camo", 100]],
+	# wave 43
 	#[["tank", 100]],
+	# wave 44
 	#[["basic", 120]],
+	# wave 45
 	#[["tank", 120]],
 
+	# wave 46
 	#[["speeder", 120]],
+	# wave 47
 	#[["camo", 120]],
+	# wave 48
 	#[["tank", 130]],
+	# wave 49
 	#[["basic", 140]],
 
 	[["boss", 1]]
@@ -247,7 +286,7 @@ func _on_wave_finished() -> void:
 		_set_outline(outline_normal)
 		return
 
-	if _auto_mode:
+	if _auto_mode and _alive_enemies == 0:
 		_launch_current_wave()
 
 func _spawn_next() -> void:
@@ -262,3 +301,14 @@ func _spawn_next() -> void:
 	var instance = _scenes[type].instantiate()
 	get_tree().get_root().add_child(instance)
 	instance.global_position = spawn_pos
+
+	_alive_enemies += 1
+	instance.tree_exited.connect(_on_enemy_died)
+
+func _on_enemy_died() -> void:
+	_alive_enemies -= 1
+	if _alive_enemies < 0:
+		_alive_enemies = 0
+
+	if _auto_mode and not _spawning and _spawn_queue.is_empty() and _alive_enemies == 0:
+		_launch_current_wave()
