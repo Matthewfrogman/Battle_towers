@@ -4,7 +4,7 @@ class_name Tower extends Area2D
 @onready var range_scene = get_node("Range")
 @onready var cannon_scene = get_node("Cannon")
 @onready var marker_scene = get_node("Cannon/Marker2D")
-
+var nobuildscene: PackedScene = preload("res://Towers/no_build_zone.tscn")
 # VVV things that'll change between towers VVV
 #the radius of where it can shoot
 @export var sees_camo: bool = false
@@ -94,6 +94,8 @@ func _process(_delta: float) -> void:
 			$Range/range_ring.visible = false
 		else:
 			$Range/range_ring.visible = true
+		var nobuildzone = nobuildscene.instantiate()
+		add_child(nobuildzone)
 
 		for enemy in range_scene.get_overlapping_bodies():
 			if enemy is Enemy: pass
