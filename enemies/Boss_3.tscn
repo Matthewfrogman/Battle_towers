@@ -95,12 +95,13 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phgsi"]
-radius = 111.0
-height = 346.0
+radius = 68.0
+height = 188.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1080303871]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=45721686]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_lo7n1")
 autoplay = "default"
 
