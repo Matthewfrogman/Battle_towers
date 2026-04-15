@@ -43,5 +43,6 @@ sprite_frames = SubResource("SpriteFrames_lxe82")
 autoplay = "default"
 
 [node name="Debuff" type="Sprite2D" parent="." unique_id=1217385082]
+visible = false
 scale = Vector2(3, 3)
 texture = ExtResource("3_j1ss0")
