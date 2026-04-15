@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://7c5fgd6cuy2o" path="res://scenes/shop.tscn" id="18_g7x5b"]
 [ext_resource type="PackedScene" uid="uid://bekds5usu03lj" path="res://EnemySpawner/enemy_spawner.tscn" id="23_odt4x"]
 [ext_resource type="PackedScene" uid="uid://bassaekmhxqic" path="res://scenes/hp_counter.tscn" id="24_n3vrx"]
+[ext_resource type="PackedScene" uid="uid://bulfkm3x86i3l" path="res://Towers/no_build_zone.tscn" id="25_gr5aj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xcv32"]
 texture = ExtResource("1_2fvdr")
@@ -1080,3 +1081,67 @@ offset_right = 338.8889
 offset_bottom = 24.546396
 
 [node name="NoBuildZone" type="Node2D" parent="." unique_id=77835659]
+
+[node name="NoBuildZone" parent="NoBuildZone" unique_id=1270061029 instance=ExtResource("25_gr5aj")]
+position = Vector2(41.481483, 87.1134)
+scale = Vector2(6.941231, 2.133088)
+
+[node name="NoBuildZone3" parent="NoBuildZone" unique_id=2133318462 instance=ExtResource("25_gr5aj")]
+position = Vector2(168.51852, 184.0206)
+scale = Vector2(6.941231, 2.133088)
+
+[node name="NoBuildZone4" parent="NoBuildZone" unique_id=809253143 instance=ExtResource("25_gr5aj")]
+position = Vector2(246.66667, 278.86597)
+scale = Vector2(6.941231, 2.133088)
+
+[node name="NoBuildZone5" parent="NoBuildZone" unique_id=1037251233 instance=ExtResource("25_gr5aj")]
+position = Vector2(363.33337, 278.86597)
+scale = Vector2(6.941231, 2.133088)
+
+[node name="NoBuildZone6" parent="NoBuildZone" unique_id=497104904 instance=ExtResource("25_gr5aj")]
+position = Vector2(264.07407, 86.08249)
+scale = Vector2(6.941231, 2.133088)
+
+[node name="NoBuildZone2" parent="NoBuildZone" unique_id=47999353 instance=ExtResource("25_gr5aj")]
+position = Vector2(88.888885, 139.17526)
+rotation = -1.5774443
+scale = Vector2(6.941231, 2.133088)
+
+[node name="NoBuildZone7" parent="NoBuildZone" unique_id=1239178780 instance=ExtResource("25_gr5aj")]
+position = Vector2(215.55554, 131.95877)
+rotation = -1.5774443
+scale = Vector2(6.941231, 2.133088)
+
+[node name="NoBuildZone11" parent="NoBuildZone" unique_id=52999418 instance=ExtResource("25_gr5aj")]
+position = Vector2(402.2223, 199.48451)
+rotation = -1.5774443
+scale = Vector2(2.4960165, 2.133088)
+
+[node name="NoBuildZone12" parent="NoBuildZone" unique_id=1854803020 instance=ExtResource("25_gr5aj")]
+position = Vector2(397.03702, 43.298965)
+rotation = -1.5774443
+scale = Vector2(2.4960165, 2.133088)
+
+[node name="NoBuildZone13" parent="NoBuildZone" unique_id=1461240830 instance=ExtResource("25_gr5aj")]
+position = Vector2(152.22221, 45.36083)
+rotation = -1.5774443
+scale = Vector2(1.3531314, 1.3721411)
+
+[node name="NoBuildZone14" parent="NoBuildZone" unique_id=1998838223 instance=ExtResource("25_gr5aj")]
+position = Vector2(303.33334, 24.226805)
+rotation = -1.5774443
+scale = Vector2(1.3531314, 1.3721411)
+
+[node name="NoBuildZone8" parent="NoBuildZone" unique_id=275094133 instance=ExtResource("25_gr5aj")]
+position = Vector2(311.85187, 180.92784)
+rotation = -1.5774443
+scale = Vector2(7.370431, 2.133088)
+
+[node name="NoBuildZone9" parent="NoBuildZone" unique_id=1426811946 instance=ExtResource("25_gr5aj")]
+position = Vector2(201.11108, 375.2577)
+rotation = -1.5774443
+scale = Vector2(7.370431, 2.133088)
+
+[node name="NoBuildZone10" parent="NoBuildZone" unique_id=855134694 instance=ExtResource("25_gr5aj")]
+position = Vector2(112.22221, 221.134)
+scale = Vector2(5.0036573, 3.2187138)
