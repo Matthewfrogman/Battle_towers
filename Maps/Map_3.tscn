@@ -544,6 +544,7 @@ scale = Vector2(0.265, 0.625)
 
 [node name="EnemySpawner" parent="." unique_id=433532294 instance=ExtResource("10_j67qv")]
 position = Vector2(-11.792454, 110.493835)
+selected_boss = "boss3"
 spawner_path = NodePath(".")
 
 [node name="NoBuildZone" type="Node2D" parent="." unique_id=788214676]

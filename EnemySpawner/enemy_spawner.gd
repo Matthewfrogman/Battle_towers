@@ -1,69 +1,38 @@
 extends Node2D
 
-# --- Enemy scene paths (easy to change) ---
 const PATH_BASIC   = "res://scenes/enemy_base.tscn"
 const PATH_SPEEDER = "res://enemies/speeder_body.tscn"
 const PATH_TANK    = "res://enemies/tank_enemy.tscn"
 const PATH_CAMO    = "res://enemies/camo_enemy.tscn"
-# --- Placeholder enemies ---
-const PATH_BOSS    = "res://enemies/Boss_1.tscn"
-const PATH_FLYER   = "res://enemies/flyer_enemy.tscn"
 
-# --- Spawner NODE path (NOT res://) ---
+const PATH_BOSS    = "res://enemies/Boss_1.tscn"
+const PATH_BOSS2   = "res://enemies/Boss_2.tscn"
+const PATH_BOSS3   = "res://enemies/Boss_3.tscn"
+
+@export_enum("boss1", "boss2", "boss3") var selected_boss: String = "boss1"
+
 @export var spawner_path: NodePath
 
-# --- Time between individual enemy spawns ---
 var spawn_interval: float = 0.4
 
-# --- Button appearance ---
-var button_size    := Vector2(64, 64)
-var button_color   := Color(0.18, 0.72, 0.22)
-var outline_normal := Color(0.05, 0.05, 0.05)
-var outline_auto   := Color(1.0,  0.85, 0.0)
-var outline_width  : float = 5.0
-var corner_radius  : float = 10.0
-
-var button_margin  : int = 16
-
-# --- Current wave ---
 var current_wave: int = 0
-var wave: int = 1  # <-- added
+var wave: int = 1
 
-var _scenes      := {}
-var _spawner     : Node2D
+var _scenes := {}
+var _spawner: Node2D
 var _spawner_start_pos: Vector2
 
-var _spawn_queue : Array = []
-var _spawn_timer : float = 0.0
-var _spawning    : bool  = false
-var _auto_mode   : bool  = false
-
-var _btn         : Button
-var _canvas      : CanvasLayer
-var _style_normal: StyleBoxFlat
-var _style_hover : StyleBoxFlat
-var _style_press : StyleBoxFlat
-
-var _wave_click_count: int = 0
-
-# NEW: track alive enemies
-var _alive_enemies: int = 0
-
-#  Setup
+var _spawn_queue: Array = []
+var _spawn_timer: float = 0.0
+var _spawning: bool = false
+var _auto_mode: bool = false
 
 func _ready() -> void:
 	randomize()
-
 	_try_load_scenes()
-
 	_spawner = get_node_or_null(spawner_path)
-	if _spawner == null:
-		push_error("Spawner not found! Assign it in the inspector.")
-	else:
+	if _spawner:
 		_spawner_start_pos = _spawner.global_position
-
-	_build_button()
-	get_tree().get_root().size_changed.connect(_reposition_button)
 
 func _try_load_scenes() -> void:
 	var paths := {
@@ -71,8 +40,9 @@ func _try_load_scenes() -> void:
 		"speeder": PATH_SPEEDER,
 		"tank": PATH_TANK,
 		"camo": PATH_CAMO,
-		"Boss1": PATH_BOSS,
-		"flyer": PATH_FLYER
+		"boss1": PATH_BOSS,
+		"boss2": PATH_BOSS2,
+		"boss3": PATH_BOSS3
 	}
 
 	for key in paths:
@@ -80,118 +50,100 @@ func _try_load_scenes() -> void:
 			_scenes[key] = load(paths[key])
 		else:
 			_scenes[key] = null
-			print("Wave Manager: could not find scene for '", key, "' at ", paths[key])
-
-func _build_button() -> void:
-	_btn = Button.new()
-	_btn.custom_minimum_size = button_size
-	_btn.size                = button_size
-	_btn.text                = ">"
-
-	_style_normal = _make_style(outline_normal)
-	_style_hover  = _make_style(outline_normal,  0.12)
-	_style_press  = _make_style(outline_normal, -0.10)
-
-	_btn.add_theme_stylebox_override("normal",  _style_normal)
-	_btn.add_theme_stylebox_override("hover",   _style_hover)
-	_btn.add_theme_stylebox_override("pressed", _style_press)
-	_btn.add_theme_stylebox_override("focus",   _make_style(outline_normal))
-	_btn.add_theme_color_override("font_color", Color.WHITE)
-	_btn.add_theme_font_size_override("font_size", 28)
-
-	_btn.pressed.connect(_on_button_pressed)
-
-	_canvas = CanvasLayer.new()
-	_canvas.layer = 10
-	add_child(_canvas)
-	_canvas.add_child(_btn)
-
-	_reposition_button()
-
-func _make_style(outline_col: Color, brightness_offset: float = 0.0) -> StyleBoxFlat:
-	var s := StyleBoxFlat.new()
-	s.bg_color     = button_color.lightened(brightness_offset)
-	s.border_color = outline_col
-	s.set_border_width_all(int(outline_width))
-	s.set_corner_radius_all(int(corner_radius))
-	return s
-
-func _reposition_button() -> void:
-	var vp := get_tree().get_root().get_visible_rect().size
-	_btn.position = Vector2(
-		vp.x - button_size.x - button_margin,
-		vp.y - button_size.y - button_margin
-	)
-
-#  Click handling
-
-func _on_button_pressed() -> void:
-	_wave_click_count += 1
-
-	if _auto_mode:
-		_auto_mode = false
-		_set_outline(outline_normal)
-		_wave_click_count = 0
-		return
-
-	if _wave_click_count >= 2:
-		_auto_mode = true
-		_set_outline(outline_auto)
-
-	# NEW: only allow starting if no enemies alive
-	if not _spawning and _alive_enemies == 0:
-		_launch_current_wave()
-
-func _process(delta: float) -> void:
-	_handle_spawning(delta)
-
-func _set_outline(col: Color) -> void:
-	_style_normal.border_color = col
-	_style_hover.border_color  = col
-	_style_press.border_color  = col
-
-# Waves
 
 const WAVES: Array = [
 	[["basic", 20]],
-	[["basic", 35]],
-	[["basic", 30], ["speeder", 5]],
-	[["basic", 35], ["speeder", 15]],
-	[["basic", 10], ["speeder", 25]],
-	[["basic", 15], ["speeder", 10], ["tank", 10],["camo", 10]],
-	[["basic", 20], ["speeder", 20], ["tank", 15],["camo", 15]],
-	[["basic", 15], ["speeder", 25], ["tank", 20]],
+	[["basic", 30]],
+	[["basic", 25], ["speeder", 10]],
+	[["basic", 30], ["speeder", 15]],
+	[["basic", 20], ["speeder", 25]],
+	[["basic", 15], ["tank", 10]],
+	[["basic", 20], ["tank", 15]],
+	[["speeder", 40]],
+	[["tank", 25]],
+	[["basic", 30], ["speeder", 30]],
+
+	[["basic", 20], ["tank", 20], ["camo", 10]],
+	[["speeder", 35], ["camo", 15]],
 	[["tank", 30]],
-	[["basic", 25], ["speeder", 45], ["tank", 5]],
+	[["basic", 25], ["speeder", 25], ["camo", 20]],
+	[["basic", 30], ["tank", 20]],
+
+	[["tank", 35], ["camo", 20]],
+	[["speeder", 50]],
+	[["basic", 40], ["tank", 25]],
+	[["camo", 40]],
+	[["tank", 40], ["speeder", 40]],
+
+	[["basic", 50]],
+	[["tank", 45]],
+	[["speeder", 60]],
+	[["camo", 50]],
+	[["basic", 40], ["tank", 40]],
+
+	[["speeder", 70]],
+	[["camo", 60]],
+	[["tank", 55]],
+	[["basic", 60], ["speeder", 40]],
+	[["tank", 60], ["camo", 40]],
+
+	[["speeder", 80]],
+	[["camo", 70]],
+	[["tank", 70]],
+	[["basic", 80]],
+	[["tank", 80], ["camo", 60]],
+
+	[["speeder", 90]],
+	[["camo", 80]],
+	[["tank", 85]],
+	[["basic", 100]],
+	[["tank", 90], ["camo", 70]],
+
+	[["speeder", 100]],
+	[["camo", 100]],
+	[["tank", 100]],
+	[["basic", 120]],
+	[["tank", 120]],
+
+	[["speeder", 120]],
+	[["camo", 120]],
+	[["tank", 130]],
+	[["basic", 140]],
+
+	[["boss", 1]]
 ]
 
-#  Spawning
+func _process(delta: float) -> void:
+	_handle_spawning(delta)
 
 func _launch_current_wave() -> void:
 	start_wave(current_wave)
 
 func start_wave(wave_index: int) -> void:
 	if wave_index < 0 or wave_index >= WAVES.size():
-		push_error("Wave Manager: invalid wave index " + str(wave_index))
 		return
 
 	_spawn_queue.clear()
 
 	for group in WAVES[wave_index]:
-		var type : String = group[0]
-		var count: int    = group[1]
+		var type: String = group[0]
+		var count: int = group[1]
+
+		if type == "boss":
+			type = selected_boss
+
 		for i in count:
 			_spawn_queue.append(type)
 
 	_spawn_timer = 0.0
-	_spawning    = true
+	_spawning = true
 
 func _handle_spawning(delta: float) -> void:
 	if not _spawning:
 		return
 
 	_spawn_timer -= delta
-	if _spawn_timer > 0.0:
+	if _spawn_timer > 0:
 		return
 
 	if _spawn_queue.is_empty():
@@ -203,26 +155,17 @@ func _handle_spawning(delta: float) -> void:
 	_spawn_timer = spawn_interval
 
 func _on_wave_finished() -> void:
-	current_wave      += 1
-	wave = current_wave + 1  # <-- keep updated
-	_wave_click_count  = 0
+	current_wave += 1
+	wave = current_wave + 1
 
 	if current_wave >= WAVES.size():
 		current_wave = 0
 		wave = 1
-		_auto_mode   = false
-		_set_outline(outline_normal)
-		return
-
-	# NEW: auto mode waits for enemies to be gone
-	if _auto_mode and _alive_enemies == 0:
-		_launch_current_wave()
 
 func _spawn_next() -> void:
 	var type: String = _spawn_queue.pop_front()
 
 	if _scenes[type] == null:
-		print("Missing scene for ", type)
 		return
 
 	var y_offset := randf_range(-25.0, 25.0)
@@ -231,18 +174,3 @@ func _spawn_next() -> void:
 	var instance = _scenes[type].instantiate()
 	get_tree().get_root().add_child(instance)
 	instance.global_position = spawn_pos
-
-	# NEW: track alive enemies
-	_alive_enemies += 1
-
-	# assume enemies emit "tree_exited" when removed
-	instance.tree_exited.connect(_on_enemy_died)
-
-func _on_enemy_died() -> void:
-	_alive_enemies -= 1
-	if _alive_enemies < 0:
-		_alive_enemies = 0
-
-	# if auto mode is on and wave finished spawning, start next
-	if _auto_mode and not _spawning and _alive_enemies == 0:
-		_launch_current_wave()

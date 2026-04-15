@@ -1068,4 +1068,5 @@ position = Vector2(467.4074, 279.8969)
 [node name="EnemySpawner" parent="." unique_id=433532294 instance=ExtResource("23_odt4x")]
 unique_name_in_owner = true
 position = Vector2(-17.777779, 89.175255)
+selected_boss = "boss2"
 spawner_path = NodePath(".")
