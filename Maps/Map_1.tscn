@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bpasimqt0hjpa" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/1 Tiles/FieldsTileset.png" id="2_yqntx"]
 [ext_resource type="Texture2D" uid="uid://cg8o1agawjihe" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/5 Grass/1.png" id="3_3l7mr"]
 [ext_resource type="Texture2D" uid="uid://eds2x3rp56xq" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Tree1.png" id="4_4an23"]
-[ext_resource type="Script" uid="uid://fdkt2esy035t" path="res://Maps/map_1.gd" id="4_pum3p"]
+[ext_resource type="Script" path="res://Maps/map_1.gd" id="4_pum3p"]
 [ext_resource type="Texture2D" uid="uid://c881lr1oi5qff" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Tree2.png" id="6_n74g1"]
 [ext_resource type="Texture2D" uid="uid://cddi5b1lxnwah" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/9 Bush/1.png" id="7_y04xp"]
 [ext_resource type="Texture2D" uid="uid://ierikeg3b2dq" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/8 Camp/1.png" id="8_o5bvu"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://cpantiukf4nhx" path="res://scenes/end_area_collider.tscn" id="30_cufw0"]
 [ext_resource type="PackedScene" uid="uid://bekds5usu03lj" path="res://EnemySpawner/enemy_spawner.tscn" id="30_pum3p"]
 [ext_resource type="PackedScene" uid="uid://bassaekmhxqic" path="res://scenes/hp_counter.tscn" id="32_hrqd3"]
+[ext_resource type="PackedScene" uid="uid://cvj160dymtppm" path="res://scenes/wave_counter.tscn" id="33_d4add"]
 [ext_resource type="PackedScene" uid="uid://bulfkm3x86i3l" path="res://Towers/no_build_zone.tscn" id="33_gac6i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aiixn"]
@@ -921,6 +922,13 @@ offset_left = 280.2083
 offset_top = 17.29958
 offset_right = 320.2083
 offset_bottom = 40.299583
+
+[node name="WaveCounter" parent="." unique_id=1049581642 instance=ExtResource("33_d4add")]
+z_index = 1
+offset_left = 303.0
+offset_top = 38.66
+offset_right = 343.0
+offset_bottom = 61.66
 
 [node name="NoBuilding" type="Node2D" parent="." unique_id=549241840]
 

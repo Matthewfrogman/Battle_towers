@@ -4,7 +4,7 @@ class_name Enemy
 @export var max_hp: int
 @export var hp = 100
 @export var direction = 1
-@export var dmg_to_player = 50
+@export var dmg_to_player = 1
 @export var camo: bool = false
 # sees the progress of the enemy across the track
 var progress: int = 0

@@ -31,6 +31,7 @@ animations = [{
 
 [node name="camo_enemy" type="CharacterBody2D" unique_id=602651657]
 script = ExtResource("1_0gxuc")
+dmg_to_player = 2
 camo = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=543339992]
