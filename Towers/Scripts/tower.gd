@@ -161,6 +161,8 @@ func _timer_timeout() -> void:
 
 func upgrade(path: int):
 	#gets replaced by the real towers, here for convenience
+	#FIX THIS
+	#timer.wait_time = cooldown
 	pass
 
 func upg_attack(enemy: Enemy):
