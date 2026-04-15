@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://csdtypqdl02hh" path="res://sheets/CaveTilemap.png" id="1_2fvdr"]
 [ext_resource type="Texture2D" uid="uid://cuc3gf3gcx4m5" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/4 Stone/4.png" id="2_g7x5b"]
-[ext_resource type="Script" uid="uid://dcg3u3ov0xsiq" path="res://Maps/map_2.gd" id="2_odt4x"]
+[ext_resource type="Script" path="res://Maps/map_2.gd" id="2_odt4x"]
 [ext_resource type="Texture2D" uid="uid://dbhb0t8fkvbv8" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/4 Stone/11.png" id="3_40lrr"]
 [ext_resource type="PackedScene" uid="uid://cnfjfb58e7bov" path="res://scenes/enemy_direction_collider.tscn" id="3_u8j2o"]
 [ext_resource type="Texture2D" uid="uid://bchuh76wdy748" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/4 Stone/16.png" id="4_87cfn"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://tllohv1u1iwo" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Lamp6.png" id="17_1s4kh"]
 [ext_resource type="PackedScene" uid="uid://7c5fgd6cuy2o" path="res://scenes/shop.tscn" id="18_g7x5b"]
 [ext_resource type="PackedScene" uid="uid://bekds5usu03lj" path="res://EnemySpawner/enemy_spawner.tscn" id="23_odt4x"]
+[ext_resource type="PackedScene" uid="uid://bassaekmhxqic" path="res://scenes/hp_counter.tscn" id="24_n3vrx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xcv32"]
 texture = ExtResource("1_2fvdr")
@@ -1069,3 +1070,10 @@ position = Vector2(467.4074, 279.8969)
 unique_name_in_owner = true
 position = Vector2(-17.777779, 89.175255)
 spawner_path = NodePath(".")
+
+[node name="HPCounter" parent="." unique_id=637118537 instance=ExtResource("24_n3vrx")]
+z_index = 1
+offset_left = 298.8889
+offset_top = 1.5463924
+offset_right = 338.8889
+offset_bottom = 24.546396
