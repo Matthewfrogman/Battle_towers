@@ -28,11 +28,9 @@ func upgrade(upg_path: int):
 
 func upg_attack(enemy: Enemy):
 	if path[0] == 2:
-		enemy.hp -= #max hp
-		pass
+		enemy.hp -= roundi(enemy.max_hp/50.0)
 	elif path[1] == 2:
-		#some kind of DoT
-		pass
+		enemy.debuff(2, 0.1, 5)
 	elif path[2] == 2:
-		#does extra damage against camo bloons
-		pass
+		if enemy.camo == true:
+			enemy.hp -= 10
