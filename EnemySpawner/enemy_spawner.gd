@@ -6,7 +6,7 @@ const PATH_SPEEDER = "res://enemies/speeder_body.tscn"
 const PATH_TANK    = "res://enemies/tank_enemy.tscn"
 const PATH_CAMO    = "res://enemies/camo_enemy.tscn"
 # --- Placeholder enemies ---
-const PATH_BOSS    = "res://enemies/boss_enemy.tscn"
+const PATH_BOSS    = "res://enemies/Boss_1.tscn"
 const PATH_FLYER   = "res://enemies/flyer_enemy.tscn"
 
 # --- Spawner NODE path (NOT res://) ---
@@ -69,7 +69,7 @@ func _try_load_scenes() -> void:
 		"speeder": PATH_SPEEDER,
 		"tank": PATH_TANK,
 		"camo": PATH_CAMO,
-		"boss": PATH_BOSS,
+		"Boss1": PATH_BOSS,
 		"flyer": PATH_FLYER
 	}
 
@@ -154,7 +154,7 @@ func _set_outline(col: Color) -> void:
 #  Wave data
 
 const WAVES: Array = [
-	[["basic", 20]],
+	[["basic", 20], ["Boss1", 1]],
 	[["basic", 35]],
 	[["basic", 30], ["speeder", 5]],
 	[["basic", 35], ["speeder", 15]],
