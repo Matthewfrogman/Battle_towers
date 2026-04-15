@@ -32,7 +32,7 @@ var lookingat: Vector2
 var mode: String = "hover"
 var target: String = "first"
 var angle: float = 0
-var path: int = 0
+var path: Array = [0, 0, 0]
 #will contain the enemies with the four+ target attacks
 var enemies = {"first": 0, "closest": 0, "last": 0, "strongest": 0}
 
