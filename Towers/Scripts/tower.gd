@@ -69,6 +69,17 @@ func _input(event: InputEvent) -> void:
 					var mopp = mpos[1] - global_position.y
 					var mhyp = (madj**2 + mopp**2)**0.5
 					if mhyp <= 50: selected = !selected
+	elif event.is_action_pressed("test_1"):
+		upgrade(1)
+		print(path)
+		if not upgrade(1) == null:
+			print("upgrade oned")
+	elif event.is_action_pressed("test_2"):
+		upgrade(2)
+		print("upgrade twoed")
+	elif event.is_action_pressed("test_3"):
+		upgrade(3)
+		print("upgrade threed")
 
 func _process(_delta: float) -> void:
 	mpos = get_global_mouse_position()
