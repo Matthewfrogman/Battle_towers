@@ -8,6 +8,8 @@ class_name Enemy
 @export var camo: bool = false
 # sees the progress of the enemy across the track
 var progress: int = 0
+# checks to see if the enemy is debuffed or not before applying one
+var debuffed: bool = false
 
 func _ready():
 	max_hp = hp
@@ -38,6 +40,9 @@ func die():
 	queue_free()
 
 func debuff(debuff_dmg: int, interval: float, intervals: int):
+	#creates a debuff on the enemy if it doesnt have one already
+	if debuffed == true:
+		return null
 	for i in intervals:
 		await get_tree().create_timer(interval).timeout
 		hp -= debuff_dmg
