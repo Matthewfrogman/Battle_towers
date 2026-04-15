@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 			muzzle_sprite.visible = false
 
 func upgrade(upg_path: int):
-	#based on the path given
+	#for all the simple upgrades, and actually upgrades the tower
 	if path[upg_path-1] == 2:
 		return null
 	path[upg_path-1]+=1
@@ -28,9 +28,12 @@ func upgrade(upg_path: int):
 
 func upg_attack(enemy: Enemy):
 	if path[0] == 2:
+		#deals extra damage based on the enemies max_hp
 		enemy.hp -= roundi(enemy.max_hp/50.0)
 	elif path[1] == 2:
+		#gives the enemy a debuff
 		enemy.debuff(2, 0.1, 5)
 	elif path[2] == 2:
+		#deals more damage if the enemy is camo
 		if enemy.camo == true:
 			enemy.hp -= 10
