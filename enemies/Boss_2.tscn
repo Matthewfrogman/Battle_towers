@@ -284,7 +284,7 @@ height = 164.0
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=300668268]
 script = ExtResource("1_qj7a1")
 speed = 15
-hp = 15000
+hp = 20000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1808934838]
 scale = Vector2(0.3, 0.3)
