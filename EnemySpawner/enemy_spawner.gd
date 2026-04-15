@@ -17,17 +17,17 @@ var spawn_interval: float = 0.4
 
 # --- Button appearance ---
 var button_size    := Vector2(64, 64)
-var button_color   := Color(0.18, 0.72, 0.22)   # green fill
-var outline_normal := Color(0.05, 0.05, 0.05)    # black outline  (single-wave mode)
-var outline_auto   := Color(1.0,  0.85, 0.0)     # yellow outline (auto mode)
+var button_color   := Color(0.18, 0.72, 0.22)
+var outline_normal := Color(0.05, 0.05, 0.05)
+var outline_auto   := Color(1.0,  0.85, 0.0)
 var outline_width  : float = 5.0
 var corner_radius  : float = 10.0
 
-# --- Bottom-corner button margin from screen edges (easy to change) ---
 var button_margin  : int = 16
 
-# --- Current wave (0-indexed internally) ---
+# --- Current wave ---
 var current_wave: int = 0
+var wave: int = 1  # <-- added
 
 var _scenes      := {}
 var _spawner     : Node2D
@@ -44,8 +44,10 @@ var _style_normal: StyleBoxFlat
 var _style_hover : StyleBoxFlat
 var _style_press : StyleBoxFlat
 
-# clicks counted during the current wave; resets when a new wave begins
 var _wave_click_count: int = 0
+
+# NEW: track alive enemies
+var _alive_enemies: int = 0
 
 #  Setup
 
@@ -99,7 +101,6 @@ func _build_button() -> void:
 
 	_btn.pressed.connect(_on_button_pressed)
 
-	# CanvasLayer keeps the button drawn on top of the game world
 	_canvas = CanvasLayer.new()
 	_canvas.layer = 10
 	add_child(_canvas)
@@ -127,19 +128,18 @@ func _reposition_button() -> void:
 func _on_button_pressed() -> void:
 	_wave_click_count += 1
 
-	# If already in auto mode → turn it OFF
 	if _auto_mode:
 		_auto_mode = false
 		_set_outline(outline_normal)
 		_wave_click_count = 0
 		return
 
-	# If not in auto mode → check if we should turn it ON
 	if _wave_click_count >= 2:
 		_auto_mode = true
 		_set_outline(outline_auto)
 
-	if not _spawning:
+	# NEW: only allow starting if no enemies alive
+	if not _spawning and _alive_enemies == 0:
 		_launch_current_wave()
 
 func _process(delta: float) -> void:
@@ -151,7 +151,6 @@ func _set_outline(col: Color) -> void:
 	_style_press.border_color  = col
 
 # Waves
-#  Wave data
 
 const WAVES: Array = [
 	[["basic", 20]],
@@ -177,6 +176,7 @@ func start_wave(wave_index: int) -> void:
 		return
 
 	_spawn_queue.clear()
+
 	for group in WAVES[wave_index]:
 		var type : String = group[0]
 		var count: int    = group[1]
@@ -200,19 +200,22 @@ func _handle_spawning(delta: float) -> void:
 		return
 
 	_spawn_next()
-	_spawn_timer = spawn_interval  # time between spawns
+	_spawn_timer = spawn_interval
 
 func _on_wave_finished() -> void:
 	current_wave      += 1
-	_wave_click_count  = 0  # reset click counter for the next wave
+	wave = current_wave + 1  # <-- keep updated
+	_wave_click_count  = 0
 
 	if current_wave >= WAVES.size():
 		current_wave = 0
+		wave = 1
 		_auto_mode   = false
 		_set_outline(outline_normal)
 		return
 
-	if _auto_mode:
+	# NEW: auto mode waits for enemies to be gone
+	if _auto_mode and _alive_enemies == 0:
 		_launch_current_wave()
 
 func _spawn_next() -> void:
@@ -222,12 +225,24 @@ func _spawn_next() -> void:
 		print("Missing scene for ", type)
 		return
 
-	# Move spawner randomly on Y based on ORIGINAL position
 	var y_offset := randf_range(-25.0, 25.0)
 	var spawn_pos = _spawner_start_pos + Vector2(0, y_offset)
 
 	var instance = _scenes[type].instantiate()
-
-	# Add to the scene root or an enemies container, not the spawner
 	get_tree().get_root().add_child(instance)
 	instance.global_position = spawn_pos
+
+	# NEW: track alive enemies
+	_alive_enemies += 1
+
+	# assume enemies emit "tree_exited" when removed
+	instance.tree_exited.connect(_on_enemy_died)
+
+func _on_enemy_died() -> void:
+	_alive_enemies -= 1
+	if _alive_enemies < 0:
+		_alive_enemies = 0
+
+	# if auto mode is on and wave finished spawning, start next
+	if _auto_mode and not _spawning and _alive_enemies == 0:
+		_launch_current_wave()
