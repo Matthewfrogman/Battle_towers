@@ -36,3 +36,8 @@ func die():
 	if ui_nodes.size() > 0:
 		ui_nodes[0].add_money(20)
 	queue_free()
+
+func debuff(debuff_dmg: int, interval: float, intervals: int):
+	for i in intervals:
+		await get_tree().create_timer(interval).timeout
+		hp -= debuff_dmg
