@@ -154,7 +154,7 @@ func _set_outline(col: Color) -> void:
 #  Wave data
 
 const WAVES: Array = [
-	[["basic", 20], ["Boss1", 1]],
+	[["basic", 20]],
 	[["basic", 35]],
 	[["basic", 30], ["speeder", 5]],
 	[["basic", 35], ["speeder", 15]],
