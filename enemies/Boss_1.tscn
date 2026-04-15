@@ -39,7 +39,7 @@ height = 140.0
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=2058883378]
 script = ExtResource("1_eusoj")
 speed = 10
-hp = 5000
+hp = 15000
 dmg_to_player = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1784368160]

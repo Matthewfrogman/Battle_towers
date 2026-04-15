@@ -1,5 +1,6 @@
-[gd_scene format=3 uid="uid://72spktr3a6r8"]
+[gd_scene format=3 uid="uid://bhaguyaeq0sur"]
 
+[ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://scenes/enemy_base.gd" id="1_qj7a1"]
 [ext_resource type="Texture2D" uid="uid://crocd51y1metf" path="res://Map1_assets/Boss_2.png" id="1_r1ygt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qj7a1"]
@@ -281,6 +282,9 @@ radius = 66.0
 height = 164.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=300668268]
+script = ExtResource("1_qj7a1")
+speed = 15
+hp = 15000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1808934838]
 scale = Vector2(0.3, 0.3)
