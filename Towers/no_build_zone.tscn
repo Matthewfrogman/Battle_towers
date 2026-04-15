@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bulfkm3x86i3l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yufeu"]
+
+[node name="NoBuildZone" type="Area2D" unique_id=1270061029 groups=["no_build"]]
+scale = Vector2(4.7814345, 4.3321157)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1679514473]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0, 0.47058824)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1055018788]
+shape = SubResource("RectangleShape2D_yufeu")

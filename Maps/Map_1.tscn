@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://cpantiukf4nhx" path="res://scenes/end_area_collider.tscn" id="30_cufw0"]
 [ext_resource type="PackedScene" uid="uid://bekds5usu03lj" path="res://EnemySpawner/enemy_spawner.tscn" id="30_pum3p"]
 [ext_resource type="PackedScene" uid="uid://55fdroowqy2k" path="res://scenes/hp_counter.tscn" id="32_hrqd3"]
+[ext_resource type="PackedScene" uid="uid://bulfkm3x86i3l" path="res://Towers/no_build_zone.tscn" id="33_gac6i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aiixn"]
 texture = ExtResource("1_dgbw2")
@@ -405,7 +406,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Map_1" type="TileMap" unique_id=832691158]
+[node name="Map_1" type="TileMap" unique_id=832691158 groups=["no_build"]]
 position = Vector2(0, -37)
 scale = Vector2(2.88, 2.37)
 tile_set = SubResource("TileSet_a55ak")
@@ -920,3 +921,38 @@ offset_left = 280.2083
 offset_top = 17.29958
 offset_right = 320.2083
 offset_bottom = 40.299583
+
+[node name="NoBuilding" type="Node2D" parent="." unique_id=549241840]
+
+[node name="NoBuildZone" parent="NoBuilding" unique_id=1270061029 instance=ExtResource("33_gac6i")]
+position = Vector2(86.11112, 96.20253)
+scale = Vector2(11.878657, 1.6148157)
+
+[node name="NoBuildZone2" parent="NoBuilding" unique_id=1322629870 instance=ExtResource("33_gac6i")]
+position = Vector2(192.70831, 162.02531)
+rotation = 1.5782913
+scale = Vector2(7.6726494, 1.6148157)
+
+[node name="NoBuildZone3" parent="NoBuilding" unique_id=1492259424 instance=ExtResource("33_gac6i")]
+position = Vector2(234.02777, 224.05066)
+rotation = -0.009821057
+scale = Vector2(5.3102684, 1.6148157)
+
+[node name="NoBuildZone4" parent="NoBuilding" unique_id=1360101602 instance=ExtResource("33_gac6i")]
+position = Vector2(271.87497, 146.4135)
+rotation = -1.5766921
+scale = Vector2(6.5885115, 1.6148157)
+
+[node name="NoBuildZone5" parent="NoBuilding" unique_id=1368164457 instance=ExtResource("33_gac6i")]
+position = Vector2(318.05554, 96.20253)
+scale = Vector2(4.961991, 1.6148157)
+
+[node name="NoBuildZone6" parent="NoBuilding" unique_id=1725675700 instance=ExtResource("33_gac6i")]
+position = Vector2(352.43054, 171.72997)
+rotation = -1.5766921
+scale = Vector2(6.5885115, 1.6148157)
+
+[node name="NoBuildZone7" parent="NoBuilding" unique_id=1431172999 instance=ExtResource("33_gac6i")]
+position = Vector2(392.7083, 222.36287)
+rotation = -0.009821057
+scale = Vector2(5.3102684, 1.6148157)
