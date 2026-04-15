@@ -48,6 +48,7 @@ func can_place(pos):
 	return true
 
 func _ready() -> void:
+	lookingat = Vector2(100000, 0)
 	timer.wait_time = cooldown
 	mode = "hover"
 	global_position = get_global_mouse_position()
@@ -140,4 +141,9 @@ func _timer_timeout() -> void:
 	canshoot = true
 
 func upgrade(path: int):
+	#gets replaced by the real towers, here for convenience
+	pass
+
+func upg_attack(enemy: Enemy):
+	#gets replaced by the real towers, here for convenience
 	pass

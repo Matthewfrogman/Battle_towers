@@ -6,7 +6,8 @@ extends Tower
 func _process(_delta: float) -> void:
 	super(_delta)
 	if canshoot and sees_enemy:
-		if enemies["first"] is Array:
+		if enemies["first"] is Array and (
+			not enemies["first"][0].camo or enemies["first"][0].camo and sees_camo):
 			muzzle_sprite.visible = true
 			enemies["first"][0].hp -= attack
 			upg_attack(enemies["first"][0])
