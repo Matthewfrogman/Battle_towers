@@ -23,8 +23,8 @@ var outline_width := 5.0
 var corner_radius := 10.0
 var button_margin := 16
 
-var current_wave: int = 0
-var wave: int = 1
+@export var current_wave: int = 0
+@export var wave: int = 1
 
 var _scenes := {}
 var _spawner: Node2D

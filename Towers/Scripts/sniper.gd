@@ -26,6 +26,7 @@ func upgrade(upg_path: int):
 		cooldown -= 1
 	elif upg_path == 3 and path[upg_path-1] == 3:
 		sees_camo = true
+	return "its real"
 
 func upg_attack(enemy: Enemy):
 	if path[0] == 2:

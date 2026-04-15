@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c86a6pav5hv4v"]
 
 [ext_resource type="Script" uid="uid://bnobshsif0nbo" path="res://Towers/Scripts/tower.gd" id="1_ovc7u"]
+[ext_resource type="Texture2D" uid="uid://b36wlh7eeppuj" path="res://sheets/Neon-Circle-Transparent.png" id="2_egfuc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2u1pd"]
 size = Vector2(52, 52)
@@ -22,6 +23,10 @@ shape = SubResource("RectangleShape2D_2u1pd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=1624539430]
 shape = SubResource("CircleShape2D_ovc7u")
+
+[node name="range_ring" type="Sprite2D" parent="Range" unique_id=499731560]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_egfuc")
 
 [node name="Cannon" type="Sprite2D" parent="." unique_id=1115548727]
 
