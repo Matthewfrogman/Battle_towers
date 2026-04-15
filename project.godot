@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 <<<<<<<Updatedupstreamrun/main_scene="uid://6hkgvxmj0xvq"
 
+[global_group]
+
+no_build=""
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
