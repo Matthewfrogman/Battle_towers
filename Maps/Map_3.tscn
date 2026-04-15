@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cnfjfb58e7bov" path="res://scenes/enemy_direction_collider.tscn" id="7_ggagh"]
 [ext_resource type="PackedScene" uid="uid://bkq4uuhdd0nop" path="res://scenes/edc_splitte_Map3.tscn" id="8_ggagh"]
 [ext_resource type="PackedScene" uid="uid://bekds5usu03lj" path="res://EnemySpawner/enemy_spawner.tscn" id="10_j67qv"]
+[ext_resource type="PackedScene" uid="uid://bulfkm3x86i3l" path="res://Towers/no_build_zone.tscn" id="11_xi3ud"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ud3xj"]
 texture = ExtResource("1_24ala")
@@ -544,3 +545,106 @@ scale = Vector2(0.265, 0.625)
 [node name="EnemySpawner" parent="." unique_id=433532294 instance=ExtResource("10_j67qv")]
 position = Vector2(-11.792454, 110.493835)
 spawner_path = NodePath(".")
+
+[node name="NoBuildZone" type="Node2D" parent="." unique_id=788214676]
+
+[node name="NoBuildZone" parent="NoBuildZone" unique_id=1270061029 instance=ExtResource("11_xi3ud")]
+position = Vector2(48.113205, 110.49383)
+scale = Vector2(4.7814345, 1.6407576)
+
+[node name="NoBuildZone2" parent="NoBuildZone" unique_id=880433199 instance=ExtResource("11_xi3ud")]
+position = Vector2(143.86792, 110.49383)
+scale = Vector2(4.7814345, 1.6407576)
+
+[node name="NoBuildZone3" parent="NoBuildZone" unique_id=1143388081 instance=ExtResource("11_xi3ud")]
+position = Vector2(239.62265, 110.49383)
+scale = Vector2(4.7814345, 1.6407576)
+
+[node name="NoBuildZone6" parent="NoBuildZone" unique_id=715163300 instance=ExtResource("11_xi3ud")]
+position = Vector2(240.09433, 175.30865)
+rotation = -1.5801548
+scale = Vector2(4.7814345, 1.6407576)
+
+[node name="NoBuildZone11" parent="NoBuildZone" unique_id=150648315 instance=ExtResource("11_xi3ud")]
+position = Vector2(333.4906, 359.25928)
+rotation = -1.5801548
+scale = Vector2(4.7814345, 1.6407576)
+
+[node name="NoBuildZone7" parent="NoBuildZone" unique_id=937172439 instance=ExtResource("11_xi3ud")]
+position = Vector2(432.07553, 172.22221)
+rotation = -1.5801548
+scale = Vector2(4.7814345, 1.6407576)
+
+[node name="NoBuildZone8" parent="NoBuildZone" unique_id=1980409416 instance=ExtResource("11_xi3ud")]
+position = Vector2(433.01886, 265.43207)
+rotation = -1.5801548
+scale = Vector2(4.7814345, 1.6407576)
+
+[node name="NoBuildZone9" parent="NoBuildZone" unique_id=1311077835 instance=ExtResource("11_xi3ud")]
+position = Vector2(241.03769, 269.75308)
+rotation = -1.5801548
+scale = Vector2(4.7814345, 1.6407576)
+
+[node name="NoBuildZone4" parent="NoBuildZone" unique_id=359868448 instance=ExtResource("11_xi3ud")]
+position = Vector2(336.32074, 110.49383)
+scale = Vector2(4.7814345, 1.6407576)
+
+[node name="NoBuildZone10" parent="NoBuildZone" unique_id=560267954 instance=ExtResource("11_xi3ud")]
+position = Vector2(336.32074, 304.321)
+scale = Vector2(8.611624, 1.6407576)
+
+[node name="NoBuildZone5" parent="NoBuildZone" unique_id=1033722436 instance=ExtResource("11_xi3ud")]
+position = Vector2(416.9811, 110.49383)
+scale = Vector2(3.3852081, 1.6407576)
+
+[node name="NoBuildZone12" parent="NoBuildZone" unique_id=1796716696 instance=ExtResource("11_xi3ud")]
+position = Vector2(18.396227, 75.925934)
+scale = Vector2(1.7650309, -2.1343613)
+
+[node name="NoBuildZone13" parent="NoBuildZone" unique_id=1676359505 instance=ExtResource("11_xi3ud")]
+position = Vector2(64.62264, 64.197525)
+scale = Vector2(1.7650309, -2.1343613)
+
+[node name="NoBuildZone14" parent="NoBuildZone" unique_id=31109239 instance=ExtResource("11_xi3ud")]
+position = Vector2(464.62268, 159.87654)
+scale = Vector2(1.7650309, -2.1343613)
+
+[node name="NoBuildZone15" parent="NoBuildZone" unique_id=1947103086 instance=ExtResource("11_xi3ud")]
+position = Vector2(398.58496, 158.64197)
+scale = Vector2(1.7650309, -2.1343613)
+
+[node name="NoBuildZone16" parent="NoBuildZone" unique_id=611294126 instance=ExtResource("11_xi3ud")]
+position = Vector2(400.94342, 268.5185)
+scale = Vector2(1.7650309, -2.1343613)
+
+[node name="NoBuildZone17" parent="NoBuildZone" unique_id=626722460 instance=ExtResource("11_xi3ud")]
+position = Vector2(465.56607, 267.28394)
+scale = Vector2(1.7650309, -2.1343613)
+
+[node name="NoBuildZone18" parent="NoBuildZone" unique_id=1988099858 instance=ExtResource("11_xi3ud")]
+position = Vector2(274.52835, 267.90125)
+scale = Vector2(1.7650309, -2.1343613)
+
+[node name="NoBuildZone19" parent="NoBuildZone" unique_id=1100192588 instance=ExtResource("11_xi3ud")]
+position = Vector2(272.16986, 154.93825)
+scale = Vector2(1.7650309, -2.1343613)
+
+[node name="NoBuildZone20" parent="NoBuildZone" unique_id=1966290899 instance=ExtResource("11_xi3ud")]
+position = Vector2(205.18872, 157.4074)
+scale = Vector2(1.7650309, -2.1343613)
+
+[node name="NoBuildZone21" parent="NoBuildZone" unique_id=1081975490 instance=ExtResource("11_xi3ud")]
+position = Vector2(207.07549, 266.66666)
+scale = Vector2(1.7650309, -2.1343613)
+
+[node name="NoBuildZone22" parent="NoBuildZone" unique_id=43487962 instance=ExtResource("11_xi3ud")]
+position = Vector2(304.2453, 377.1605)
+scale = Vector2(1.7650309, -2.1343613)
+
+[node name="NoBuildZone23" parent="NoBuildZone" unique_id=217474212 instance=ExtResource("11_xi3ud")]
+position = Vector2(366.03775, 377.1605)
+scale = Vector2(1.7650309, -2.1343613)
+
+[node name="NoBuildZone24" parent="NoBuildZone" unique_id=1476204686 instance=ExtResource("11_xi3ud")]
+position = Vector2(18.86795, 141.35803)
+scale = Vector2(1.7650309, -2.1343613)
