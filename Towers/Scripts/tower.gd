@@ -53,6 +53,7 @@ func _ready() -> void:
 	mode = "hover"
 	global_position = get_global_mouse_position()
 	range_scene.scale = Vector2(attack_range, attack_range)
+	$Range/range_ring.scale *= attack_range*0.0607
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -76,6 +77,7 @@ func _process(_delta: float) -> void:
 	if mode == "placed":
 		cannon_scene.look_at(lookingat)
 		angle = cannon_scene.rotation
+		$Range/range_ring.visible = false
 
 		for enemy in range_scene.get_overlapping_bodies():
 			if enemy is Enemy: pass
