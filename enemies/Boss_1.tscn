@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bcgcrw104pb7m"]
+
+[ext_resource type="Texture2D" uid="uid://l70k8odw81qn" path="res://Map1_assets/claudio-silva-robot-2-walk (1).png" id="1_w6rkk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eusoj"]
+atlas = ExtResource("1_w6rkk")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atxe7"]
+atlas = ExtResource("1_w6rkk")
+region = Rect2(1000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp6w2"]
+atlas = ExtResource("1_w6rkk")
+region = Rect2(0, 1000, 1000, 1000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mauvm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eusoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atxe7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp6w2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ws5w"]
+radius = 70.0
+height = 140.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=2058883378]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1784368160]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_mauvm")
+autoplay = "default"
+frame_progress = 0.026630012
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=750358474]
+shape = SubResource("CapsuleShape2D_0ws5w")
