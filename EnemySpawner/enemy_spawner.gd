@@ -245,6 +245,10 @@ func _on_wave_finished() -> void:
 		wave = 1
 		_auto_mode = false
 		_set_outline(outline_normal)
+		return
+
+	if _auto_mode:
+		_launch_current_wave()
 
 func _spawn_next() -> void:
 	var type: String = _spawn_queue.pop_front()
