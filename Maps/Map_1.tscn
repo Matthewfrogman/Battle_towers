@@ -956,3 +956,39 @@ scale = Vector2(6.5885115, 1.6148157)
 position = Vector2(392.7083, 222.36287)
 rotation = -0.009821057
 scale = Vector2(5.3102684, 1.6148157)
+
+[node name="NoBuildZone8" parent="NoBuilding" unique_id=938191107 instance=ExtResource("33_gac6i")]
+position = Vector2(48.26388, 238.39664)
+scale = Vector2(4.7814345, 5.1759973)
+
+[node name="NoBuildZone9" parent="NoBuilding" unique_id=1105367886 instance=ExtResource("33_gac6i")]
+position = Vector2(240.9722, 272.57385)
+scale = Vector2(-1.2432027, 1.2308173)
+
+[node name="NoBuildZone10" parent="NoBuilding" unique_id=1152615296 instance=ExtResource("33_gac6i")]
+position = Vector2(278.47223, 277.63715)
+scale = Vector2(-1.2432027, 1.2308173)
+
+[node name="NoBuildZone13" parent="NoBuilding" unique_id=1551106176 instance=ExtResource("33_gac6i")]
+position = Vector2(342.36108, 37.974716)
+scale = Vector2(-1.2432027, 1.2308173)
+
+[node name="NoBuildZone14" parent="NoBuilding" unique_id=1386596341 instance=ExtResource("33_gac6i")]
+position = Vector2(205.20836, 82.27847)
+scale = Vector2(-1.2432027, 1.2308173)
+
+[node name="NoBuildZone15" parent="NoBuilding" unique_id=69686834 instance=ExtResource("33_gac6i")]
+position = Vector2(100.69444, 60.759506)
+scale = Vector2(-1.2432027, 1.2308173)
+
+[node name="NoBuildZone16" parent="NoBuilding" unique_id=552866905 instance=ExtResource("33_gac6i")]
+position = Vector2(15.277794, 60.759506)
+scale = Vector2(-1.2432027, 1.2308173)
+
+[node name="NoBuildZone11" parent="NoBuilding" unique_id=701878043 instance=ExtResource("33_gac6i")]
+position = Vector2(256.5972, 262.44727)
+scale = Vector2(-1.2432027, 1.2308173)
+
+[node name="NoBuildZone12" parent="NoBuilding" unique_id=522802373 instance=ExtResource("33_gac6i")]
+position = Vector2(315.97223, 261.60336)
+scale = Vector2(-2.7104938, 1.7414858)
