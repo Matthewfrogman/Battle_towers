@@ -88,7 +88,10 @@ func _process(_delta: float) -> void:
 	if mode == "placed":
 		cannon_scene.look_at(lookingat)
 		angle = cannon_scene.rotation
-		$Range/range_ring.visible = false
+		if not selected:
+			$Range/range_ring.visible = false
+		else:
+			$Range/range_ring.visible = true
 
 		for enemy in range_scene.get_overlapping_bodies():
 			if enemy is Enemy: pass
@@ -105,7 +108,8 @@ func _process(_delta: float) -> void:
 				enemies["first"] = [enemy, hyp]
 			elif (is_instance_valid(enemies["first"][0]) and 
 			enemies["first"][0] is Enemy and 
-			enemy.progress > enemies["first"][0].progress):
+			enemy.progress > enemies["first"][0].progress) and (
+				not enemies["first"][0].camo or enemies["first"][0].camo and sees_camo):
 				enemies["first"] = [enemy, hyp]
 			elif not is_instance_valid(enemies["first"][0]):
 				enemies["first"] = [enemy, hyp]
