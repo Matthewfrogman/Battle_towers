@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://csdtypqdl02hh" path="res://sheets/CaveTilemap.png" id="1_2fvdr"]
 [ext_resource type="Texture2D" uid="uid://cuc3gf3gcx4m5" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/4 Stone/4.png" id="2_g7x5b"]
-[ext_resource type="Script" path="res://Maps/map_2.gd" id="2_odt4x"]
+[ext_resource type="Script" uid="uid://dcg3u3ov0xsiq" path="res://Maps/map_2.gd" id="2_odt4x"]
 [ext_resource type="Texture2D" uid="uid://dbhb0t8fkvbv8" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/4 Stone/11.png" id="3_40lrr"]
 [ext_resource type="PackedScene" uid="uid://cnfjfb58e7bov" path="res://scenes/enemy_direction_collider.tscn" id="3_u8j2o"]
 [ext_resource type="Texture2D" uid="uid://bchuh76wdy748" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/4 Stone/16.png" id="4_87cfn"]
@@ -1078,3 +1078,5 @@ offset_left = 298.8889
 offset_top = 1.5463924
 offset_right = 338.8889
 offset_bottom = 24.546396
+
+[node name="NoBuildZone" type="Node2D" parent="." unique_id=77835659]
