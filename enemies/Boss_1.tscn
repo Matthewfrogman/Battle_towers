@@ -33,7 +33,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ws5w"]
-radius = 70.0
+radius = 58.0
 height = 140.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=2058883378]

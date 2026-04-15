@@ -277,7 +277,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3w75k"]
-radius = 82.0
+radius = 66.0
 height = 164.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=300668268]
@@ -286,7 +286,7 @@ height = 164.0
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_ib3gq")
 autoplay = "default"
-frame_progress = 0.99692804
+frame_progress = 0.5419566
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=838042166]
 shape = SubResource("CapsuleShape2D_3w75k")
