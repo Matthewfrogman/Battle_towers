@@ -33,6 +33,7 @@ animations = [{
 script = ExtResource("1_dk7ln")
 speed = 30
 hp = 125
+dmg_to_player = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2051384667]
 shape = SubResource("CapsuleShape2D_a3oi6")

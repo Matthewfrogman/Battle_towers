@@ -23,8 +23,8 @@ var outline_width := 5.0
 var corner_radius := 10.0
 var button_margin := 16
 
-var current_wave: int = 0
-var wave: int = 1
+@export var current_wave: int = 0
+@export var wave: int = 1
 
 var _scenes := {}
 var _spawner: Node2D
@@ -148,52 +148,52 @@ const WAVES: Array = [
 	[["tank", 30]],
 	[["basic", 25], ["speeder", 45], ["tank", 5]],
 
-	[["basic", 20], ["tank", 20], ["camo", 10]],
-	[["speeder", 35], ["camo", 15]],
-	[["tank", 30]],
-	[["basic", 25], ["speeder", 25], ["camo", 20]],
-	[["basic", 30], ["tank", 20]],
+	#[["basic", 20], ["tank", 20], ["camo", 10]],
+	#[["speeder", 35], ["camo", 15]],
+	#[["tank", 30]],
+	#[["basic", 25], ["speeder", 25], ["camo", 20]],
+	#[["basic", 30], ["tank", 20]],
 
-	[["tank", 35], ["camo", 20]],
-	[["speeder", 50]],
-	[["basic", 40], ["tank", 25]],
-	[["camo", 40]],
-	[["tank", 40], ["speeder", 40]],
+	#[["tank", 35], ["camo", 20]],
+	#[["speeder", 50]],
+	#[["basic", 40], ["tank", 25]],
+	#[["camo", 40]],
+	#[["tank", 40], ["speeder", 40]],
 
-	[["basic", 50]],
-	[["tank", 45]],
-	[["speeder", 60]],
-	[["camo", 50]],
-	[["basic", 40], ["tank", 40]],
+	#[["basic", 50]],
+	#[["tank", 45]],
+	#[["speeder", 60]],
+	#[["camo", 50]],
+	#[["basic", 40], ["tank", 40]],
 
-	[["speeder", 70]],
-	[["camo", 60]],
-	[["tank", 55]],
-	[["basic", 60], ["speeder", 40]],
-	[["tank", 60], ["camo", 40]],
+	#[["speeder", 70]],
+	#[["camo", 60]],
+	#[["tank", 55]],
+	#[["basic", 60], ["speeder", 40]],
+	#[["tank", 60], ["camo", 40]],
 
-	[["speeder", 80]],
-	[["camo", 70]],
-	[["tank", 70]],
-	[["basic", 80]],
-	[["tank", 80], ["camo", 60]],
+	#[["speeder", 80]],
+	#[["camo", 70]],
+	#[["tank", 70]],
+	#[["basic", 80]],
+	#[["tank", 80], ["camo", 60]],
 
-	[["speeder", 90]],
-	[["camo", 80]],
-	[["tank", 85]],
-	[["basic", 100]],
-	[["tank", 90], ["camo", 70]],
+	#[["speeder", 90]],
+	#[["camo", 80]],
+	#[["tank", 85]],
+	#[["basic", 100]],
+	#[["tank", 90], ["camo", 70]],
 
-	[["speeder", 100]],
-	[["camo", 100]],
-	[["tank", 100]],
-	[["basic", 120]],
-	[["tank", 120]],
+	#[["speeder", 100]],
+	#[["camo", 100]],
+	#[["tank", 100]],
+	#[["basic", 120]],
+	#[["tank", 120]],
 
-	[["speeder", 120]],
-	[["camo", 120]],
-	[["tank", 130]],
-	[["basic", 140]],
+	#[["speeder", 120]],
+	#[["camo", 120]],
+	#[["tank", 130]],
+	#[["basic", 140]],
 
 	[["boss", 1]]
 ]
@@ -245,6 +245,10 @@ func _on_wave_finished() -> void:
 		wave = 1
 		_auto_mode = false
 		_set_outline(outline_normal)
+		return
+
+	if _auto_mode:
+		_launch_current_wave()
 
 func _spawn_next() -> void:
 	var type: String = _spawn_queue.pop_front()

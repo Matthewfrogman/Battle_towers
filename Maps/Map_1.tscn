@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bpasimqt0hjpa" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/1 Tiles/FieldsTileset.png" id="2_yqntx"]
 [ext_resource type="Texture2D" uid="uid://cg8o1agawjihe" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/5 Grass/1.png" id="3_3l7mr"]
 [ext_resource type="Texture2D" uid="uid://eds2x3rp56xq" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Tree1.png" id="4_4an23"]
-[ext_resource type="Script" uid="uid://fdkt2esy035t" path="res://Maps/map_1.gd" id="4_pum3p"]
+[ext_resource type="Script" path="res://Maps/map_1.gd" id="4_pum3p"]
 [ext_resource type="Texture2D" uid="uid://c881lr1oi5qff" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/7 Decor/Tree2.png" id="6_n74g1"]
 [ext_resource type="Texture2D" uid="uid://cddi5b1lxnwah" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/9 Bush/1.png" id="7_y04xp"]
 [ext_resource type="Texture2D" uid="uid://ierikeg3b2dq" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/8 Camp/1.png" id="8_o5bvu"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://cpantiukf4nhx" path="res://scenes/end_area_collider.tscn" id="30_cufw0"]
 [ext_resource type="PackedScene" uid="uid://bekds5usu03lj" path="res://EnemySpawner/enemy_spawner.tscn" id="30_pum3p"]
 [ext_resource type="PackedScene" uid="uid://bassaekmhxqic" path="res://scenes/hp_counter.tscn" id="32_hrqd3"]
+[ext_resource type="PackedScene" uid="uid://cvj160dymtppm" path="res://scenes/wave_counter.tscn" id="33_d4add"]
 [ext_resource type="PackedScene" uid="uid://bulfkm3x86i3l" path="res://Towers/no_build_zone.tscn" id="33_gac6i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aiixn"]
@@ -423,7 +424,7 @@ scale = Vector2(-0.879, 0.227)
 send_direction = 1
 
 [node name="enemy_direction_collider" parent="." unique_id=127310141 instance=ExtResource("28_yqntx")]
-position = Vector2(202.0833, 89.87343)
+position = Vector2(205.55554, 91.13925)
 rotation = 0.7853982
 scale = Vector2(0.839, 0.257)
 send_direction = 4
@@ -440,14 +441,14 @@ scale = Vector2(0.996, 0.207)
 send_direction = 1
 
 [node name="enemy_direction_collider5" parent="." unique_id=1948394320 instance=ExtResource("28_yqntx")]
-position = Vector2(367.0139, 89.02953)
-rotation = 0.7853982
-scale = Vector2(0.849, 0.282)
+position = Vector2(369.09714, 90.295364)
+rotation = 1.1588986
+scale = Vector2(0.9, 0.299)
 send_direction = 4
 
 [node name="enemy_direction_collider6" parent="." unique_id=41188123 instance=ExtResource("28_yqntx")]
-position = Vector2(347.2222, 229.95782)
-rotation = 0.7853982
+position = Vector2(354.1667, 238.81859)
+rotation = 0.28797933
 scale = Vector2(0.756, 0.202)
 send_direction = 1
 
@@ -922,6 +923,13 @@ offset_top = 17.29958
 offset_right = 320.2083
 offset_bottom = 40.299583
 
+[node name="WaveCounter" parent="." unique_id=1049581642 instance=ExtResource("33_d4add")]
+z_index = 1
+offset_left = 303.0
+offset_top = 38.66
+offset_right = 343.0
+offset_bottom = 61.66
+
 [node name="NoBuilding" type="Node2D" parent="." unique_id=549241840]
 
 [node name="NoBuildZone" parent="NoBuilding" unique_id=1270061029 instance=ExtResource("33_gac6i")]
@@ -944,7 +952,7 @@ rotation = -1.5766921
 scale = Vector2(6.5885115, 1.6148157)
 
 [node name="NoBuildZone5" parent="NoBuilding" unique_id=1368164457 instance=ExtResource("33_gac6i")]
-position = Vector2(318.05554, 96.20253)
+position = Vector2(320.1389, 96.62447)
 scale = Vector2(4.961991, 1.6148157)
 
 [node name="NoBuildZone6" parent="NoBuilding" unique_id=1725675700 instance=ExtResource("33_gac6i")]

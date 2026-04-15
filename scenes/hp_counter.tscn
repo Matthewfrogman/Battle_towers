@@ -1,17 +1,8 @@
 [gd_scene format=3 uid="uid://bassaekmhxqic"]
 
 [ext_resource type="Script" uid="uid://dvlk7pvpkf0fc" path="res://scenes/hp_counter.gd" id="1_b2caa"]
-[ext_resource type="Script" uid="uid://vn7j111e7jw0" path="res://scenes/WaveCounter.gd" id="2_ddbto"]
 
 [node name="HPCounter" type="Label" unique_id=637118537]
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("1_b2caa")
-
-[node name="Label" type="Label" parent="." unique_id=1628733002]
-layout_mode = 0
-offset_left = 22.0
-offset_top = 26.0
-offset_right = 62.0
-offset_bottom = 49.0
-script = ExtResource("2_ddbto")

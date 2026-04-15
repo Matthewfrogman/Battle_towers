@@ -5,11 +5,8 @@ extends Label
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	update_wave_label()
 
 func update_wave_label():
-	#pass
-	text = "Wave: " + str(67)
+	text = "Wave: " + str(get_parent().get_node("EnemySpawner").current_wave)

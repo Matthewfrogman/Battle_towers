@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cvj160dymtppm"]
+
+[ext_resource type="Script" uid="uid://bcdt5c7x0dse4" path="res://scenes/wave_counter.gd" id="1_se632"]
+
+[node name="WaveCounter" type="Label" unique_id=1049581642]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_se632")
