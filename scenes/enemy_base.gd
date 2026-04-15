@@ -1,5 +1,8 @@
 extends CharacterBody2D
 class_name Enemy
+
+@onready var debuff_texture = get_node("Debuff")
+
 @export var speed = 35
 @export var max_hp: int
 @export var hp = 100
@@ -15,6 +18,11 @@ func _ready():
 	max_hp = hp
 
 func _process(delta):
+	if debuffed: 
+		print("wiguogaieurbgawib")
+		debuff_texture.visible = true
+	else: debuff_texture.visible = false
+	
 	progress += 1 * delta
 	if direction == 1: # Right
 		position.x += delta * speed
@@ -43,6 +51,7 @@ func debuff(debuff_dmg: int, interval: float, intervals: int):
 	#creates a debuff on the enemy if it doesnt have one already
 	if debuffed == true:
 		return null
+	debuffed = true
 	for i in intervals:
 		await get_tree().create_timer(interval).timeout
 		hp -= debuff_dmg
