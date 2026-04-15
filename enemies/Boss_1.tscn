@@ -1,5 +1,6 @@
-[gd_scene format=3 uid="uid://bcgcrw104pb7m"]
+[gd_scene format=3 uid="uid://b2ymqppeohqaq"]
 
+[ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://scenes/enemy_base.gd" id="1_eusoj"]
 [ext_resource type="Texture2D" uid="uid://l70k8odw81qn" path="res://Map1_assets/claudio-silva-robot-2-walk (1).png" id="1_w6rkk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eusoj"]
@@ -36,6 +37,10 @@ radius = 70.0
 height = 140.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=2058883378]
+script = ExtResource("1_eusoj")
+speed = 10
+hp = 5000
+dmg_to_player = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1784368160]
 scale = Vector2(0.3, 0.3)

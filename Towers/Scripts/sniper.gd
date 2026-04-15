@@ -13,7 +13,8 @@ func _process(_delta: float) -> void:
 			await get_tree().create_timer(0.1).timeout
 			muzzle_sprite.visible = false
 
-func upgrade(path: int):
+func upgrade(upg_path: int):
 	#based on the path given
 	#store 
+	#upg_path is the number of the path that will be upgraded
 	pass

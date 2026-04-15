@@ -32,9 +32,20 @@ var lookingat: Vector2
 var mode: String = "hover"
 var target: String = "first"
 var angle: float = 0
-var path: int = 0
+var path: Array = [0, 0, 0]
 #will contain the enemies with the four+ target attacks
 var enemies = {"first": 0, "closest": 0, "last": 0, "strongest": 0}
+
+func can_place(pos):
+	var space = get_world_2d().direct_space_state
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = pos
+	query.collide_with_areas = true
+	var result = space.intersect_point(query)
+	for r in result:
+		if r.collider.is_in_group("no_build"):
+			return false
+	return true
 
 func _ready() -> void:
 	timer.wait_time = cooldown
@@ -46,9 +57,13 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
-				if mode == "hover": mode = "placed"
+				if mode == "hover":
+					if can_place(get_global_mouse_position()):
+						mode = "placed"
+						modulate = Color(1,1,1,1)
+					else:
+						modulate = Color(1,0.5,0.5,1)
 				else:
-					#if the mouse is close enough, set selected to true
 					var madj = mpos[0] - global_position.x
 					var mopp = mpos[1] - global_position.y
 					var mhyp = (madj**2 + mopp**2)**0.5
@@ -67,15 +82,11 @@ func _process(_delta: float) -> void:
 			
 			var adj = global_position.x - enemy.global_position.x
 			var opp = global_position.y - enemy.global_position.y
-			#angle = atan2(-opp, -adj)
-			#whichever hyp is lowest, thats the closest enemy
 			var hyp = (adj**2 + opp**2)**0.5
 			
 			if target == "first" and enemies["first"] is Array and is_instance_valid(enemies["first"][0]):
 				lookingat = enemies["first"][0].global_position
 			
-			#replaces the null enemy value, or the previous enemy, or 
-			#if the enemy is dead
 			if enemies["first"] is int: 
 				enemies["first"] = [enemy, hyp]
 			elif (is_instance_valid(enemies["first"][0]) and 
@@ -91,24 +102,24 @@ func _process(_delta: float) -> void:
 		else: 
 			sees_enemy = false
 			if timer.time_left <= 0.1:
-				#pauses so the cooldown doesnt get to low
 				timer.paused = true
 		
 		if canshoot and sees_enemy: shoot(bullet_speed, "angled", projectiles)
 	else:
 		position = get_global_mouse_position()
+		if can_place(position):
+			modulate = Color(1,1,1,1)
+		else:
+			modulate = Color(1,0.5,0.5,1)
 
 func shoot(speed: int, angle_mode: String, bnum: int):
-	#shoot controls the direction and amount of each bullet
 	if angle_mode == "straight":
-		#doesn't do anything with multiple projectiles rn
 		bulletShoot(Vector2(speed*cos(angle), speed*sin(angle)))
 		
 	if angle_mode == "angled":
 		if not bnum == 0: bulletShoot(Vector2(speed*cos(angle), speed*sin(angle)))
 		var aIncrement = 0
 		for i in bnum-1:
-			#error for integer division
 			if i > (bnum-1)/2.0-1:
 				aIncrement = -bullet_spread*(i+1-((bnum-1)/2.0))
 			else:
@@ -116,7 +127,6 @@ func shoot(speed: int, angle_mode: String, bnum: int):
 			bulletShoot(Vector2(speed*cos(angle+aIncrement), speed*sin(angle+aIncrement)))
 
 func bulletShoot(move: Vector2):
-	#instantiated bullets and gives them the correct stats
 	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
 	bullet.global_position = marker_scene.global_position
@@ -130,5 +140,4 @@ func _timer_timeout() -> void:
 	canshoot = true
 
 func upgrade(path: int):
-	#overwritten by extended classes
 	pass
