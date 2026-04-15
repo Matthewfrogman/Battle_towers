@@ -12,3 +12,8 @@ func _process(_delta: float) -> void:
 			canshoot = false
 			await get_tree().create_timer(0.1).timeout
 			muzzle_sprite.visible = false
+
+func upgrade(path: int):
+	#based on the path given
+	#store 
+	pass
