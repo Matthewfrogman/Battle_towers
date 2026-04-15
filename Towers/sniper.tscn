@@ -16,6 +16,7 @@ load_path = "res://.godot/imported/muzzle-flashes.png-091ccd84a33ba98103991dc8e3
 
 [node name="Tower" unique_id=598119214 instance=ExtResource("1_s4nn4")]
 script = ExtResource("2_s4nn4")
+sees_camo = null
 cooldown = 2.0
 bullet_spread = 0.0
 attack_range = 1000

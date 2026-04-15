@@ -7,8 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bs885t7hk4eqn" path="res://Towers/Images/camo_head.png" id="5_8r1wq"]
 [ext_resource type="Texture2D" uid="uid://csqiuxmrj13mo" path="res://Towers/Images/speedtower.png" id="6_ajxib"]
 [ext_resource type="Texture2D" uid="uid://bna63qbsmfinq" path="res://Towers/Images/speedtower_guns.png" id="7_y6sft"]
-[ext_resource type="Script" uid="uid://dkspbanfbcqvp" path="res://scenes/control.gd" id="8_y6sft"]
+[ext_resource type="Script" path="res://scenes/control.gd" id="8_y6sft"]
 [ext_resource type="Texture2D" uid="uid://byxfvnhcq7bj3" path="res://Towers/Images/tesla.png" id="9_m4ofw"]
+[ext_resource type="Texture2D" uid="uid://dwij5ve3e7ojh" path="res://Towers/Images/sniper_base.png" id="10_1v8qu"]
+[ext_resource type="Texture2D" uid="uid://deuno3awvnj2j" path="res://Towers/Images/sniper_gun.png" id="11_44xle"]
 
 [node name="Control" type="Control" unique_id=1070400202]
 layout_mode = 3
@@ -47,8 +49,8 @@ scale = Vector2(0.404, 0.253)
 texture = ExtResource("2_1l46r")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ShopUI/cannon" unique_id=2052660228]
-position = Vector2(240, 58.000004)
-scale = Vector2(0.404, 0.253)
+position = Vector2(241, 53.000004)
+scale = Vector2(0.37387496, 0.360875)
 texture = ExtResource("3_032fp")
 
 [node name="camo_tower" type="Node2D" parent="ShopUI" unique_id=821899877]
@@ -84,3 +86,15 @@ position = Vector2(0, 1)
 position = Vector2(239.99998, 300)
 scale = Vector2(0.095, 0.095000006)
 texture = ExtResource("9_m4ofw")
+
+[node name="sniper" type="Node2D" parent="ShopUI" unique_id=2017023624]
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopUI/sniper" unique_id=345759381]
+position = Vector2(247, 107)
+scale = Vector2(0.24055417, 0.24055412)
+texture = ExtResource("10_1v8qu")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ShopUI/sniper" unique_id=105430699]
+position = Vector2(259, 120)
+scale = Vector2(0.1890743, 0.1890743)
+texture = ExtResource("11_44xle")

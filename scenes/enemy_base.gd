@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Enemy
 @export var speed = 35
+@export var max_hp: int
 @export var hp = 100
 @export var direction = 1
 @export var dmg_to_player = 50
@@ -9,7 +10,7 @@ class_name Enemy
 var progress: int = 0
 
 func _ready():
-	pass
+	max_hp = hp
 
 func _process(delta):
 	progress += 1 * delta

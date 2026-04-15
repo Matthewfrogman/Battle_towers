@@ -8,7 +8,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	update_hp_label()
-	
-func update_hp_label():
-	text = "❤️Health: " + str(get_parent().player_hp)
+	update_wave_label()
+
+func update_wave_label():
+	#pass
+	text = "Wave: " + str(67)
