@@ -13,7 +13,7 @@ bullet_spread = 0.05
 attack_range = 10
 attack = 10
 bullet_speed = 200
-pierce = 10
+pierce = 0
 bullet_scene = ExtResource("3_5l8tq")
 
 [node name="Footprint" parent="." index="1" unique_id=2093572891]

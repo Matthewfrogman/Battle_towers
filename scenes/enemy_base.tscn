@@ -31,6 +31,7 @@ animations = [{
 
 [node name="enemy" type="CharacterBody2D" unique_id=1334610211]
 script = ExtResource("1_fr7lv")
+speed = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1671414404]
 shape = SubResource("CapsuleShape2D_sw0xa")

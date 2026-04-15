@@ -31,7 +31,7 @@ animations = [{
 
 [node name="speeder_body" type="CharacterBody2D" unique_id=2128506826]
 script = ExtResource("1_70fql")
-speed = 45
+speed = 55
 hp = 75
 dmg_to_player = 3
 

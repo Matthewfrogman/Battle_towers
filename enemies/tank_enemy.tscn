@@ -32,7 +32,7 @@ animations = [{
 [node name="Tank_enemy" type="CharacterBody2D" unique_id=1919435059]
 script = ExtResource("1_dk7ln")
 speed = 30
-hp = 125
+hp = 200
 dmg_to_player = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2051384667]

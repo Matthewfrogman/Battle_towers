@@ -96,7 +96,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phgsi"]
-radius = 68.0
+radius = 61.0
 height = 188.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1080303871]

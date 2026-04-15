@@ -15,11 +15,14 @@ radius = 29.427877
 [node name="Tower" unique_id=598119214 instance=ExtResource("1_d3qwo")]
 script = ExtResource("2_p54iu")
 sees_camo = true
-cooldown = 3.0
+cooldown = 1.5
 attack_range = 10
+attack = 6
+bullet_speed = 150
+pierce = 0
 bullet_scene = ExtResource("3_p54iu")
 
-[node name="Footprint" parent="." index="0" unique_id=2093572891]
+[node name="Footprint" parent="." index="1" unique_id=2093572891]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_d3qwo")
 
