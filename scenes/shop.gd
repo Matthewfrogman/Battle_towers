@@ -25,7 +25,7 @@ func _ready():
 
 	# Money label
 	var label = $Panel/MoneyLabel
-	label.text = "Money: $5000"
+	label.text = "Money: $650"
 	label.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
 	label.offset_left = 10
 	label.offset_top = 10
