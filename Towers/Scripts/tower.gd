@@ -5,64 +5,36 @@ class_name Tower extends Area2D
 @onready var cannon_scene = get_node("Cannon")
 @onready var marker_scene = get_node("Cannon/Marker2D")
 var nobuildscene: PackedScene = preload("res://Towers/no_build_zone.tscn")
-
-# Attributes
+# VVV things that'll change between towers VVV
+#the radius of where it can shoot
 @export var sees_camo: bool = false
-@export var cooldown: float = 1.0
+#time between attacks
+@export var cooldown: float = 5.0
+#angle in radians between bullets
 @export var bullet_spread: float = 0.1
-@export var attack_range: float = 2.0
+@export var attack_range: int
 @export var attack: int = 5
-@export var bullet_speed: int = 400
+@export var bullet_speed: int = 100
+#the amount of enemies the bullet can pass through before it expires
 @export var pierce: int = 1
+#num of bullets. this number should ALWAYS be odd so it looks good.
 @export var projectiles: int = 1
+#a reference to the bullet/projectile it instantiates
 @export var bullet_scene: PackedScene
 
-# Upgrade Data
-var path: Array = [0, 0, 0]
-const _MAX_TIERS: int = 5
-const _MAX_MAJOR: int = 2
-
-var upgrade_names = [
-	["Quick Loader", "Twin Barrels", "Rapid Fire", "Overclocked", "Bullet Storm"],
-	["Long Sight", "High Ground", "Signal Flare", "Advanced Radar", "Global Coverage"],
-	["Heavy Slugs", "Pointy Tips", "Depleted Uranium", "Armor Piercing", "Behemoth"]
-]
-
-var upgrade_costs = [
-	[200, 450, 1200, 3500, 12000],
-	[150, 300, 900, 2500, 9000],
-	[250, 400, 1100, 3200, 15000]
-]
-
 var selected: bool = false
-var canshoot: bool = true
-var sees_enemy: bool = false
+var canshoot: bool = false
+var sees_enemy: bool
 var mpos: Vector2
-var lookingat: Vector2 = Vector2.ZERO
+#the position of the enemy its looking at V
+var lookingat: Vector2
+#either hover or placed. If its hovering itll follow the mouse, otherwise itll shoot
 var mode: String = "hover"
 var target: String = "first"
 var angle: float = 0
-var _panel: CanvasLayer = null
-
-# Optimization variables
-var target_refresh_rate: float = 0.1
-var target_timer: float = 0.0
-var current_best_target: Node2D = null
-
-# Target shop node based on your screenshot
-var shop_node = null
-
-func _ready() -> void:
-	shop_node = get_tree().root.find_child("ShopUI", true, false)
-	
-	timer.wait_time = cooldown
-	timer.one_shot = true
-	if not timer.timeout.is_connected(_timer_timeout):
-		timer.timeout.connect(_timer_timeout)
-		
-	range_scene.scale = Vector2(attack_range, attack_range)
-	if has_node("Range/range_ring"):
-		$Range/range_ring.scale = Vector2(1,1) * (attack_range * 0.06)
+var path: Array = [0, 0, 0]
+#will contain the enemies with the four+ target attacks
+var enemies = {"first": 0, "closest": 0, "last": 0, "strongest": 0}
 
 func can_place(pos):
 	var space = get_world_2d().direct_space_state
@@ -71,199 +43,132 @@ func can_place(pos):
 	query.collide_with_areas = true
 	var result = space.intersect_point(query)
 	for r in result:
-		if r.collider.is_in_group("no_build") and r.collider.get_parent() != self:
+		if r.collider.is_in_group("no_build"):
 			return false
 	return true
 
-func can_upgrade(p: int) -> bool:
-	var idx = p - 1
-	if path[idx] >= _MAX_TIERS: return false
-	if shop_node:
-		if shop_node.money < upgrade_costs[idx][path[idx]]: 
-			return false 
-	var major_count = 0
-	for i in range(3):
-		if i != idx and path[i] >= 2:
-			major_count += 1
-	if path[idx] >= 2 and major_count >= _MAX_MAJOR:
-		return false
-	return true
+func _ready() -> void:
+	lookingat = Vector2(100000, 0)
+	timer.wait_time = cooldown
+	mode = "hover"
+	global_position = get_global_mouse_position()
+	range_scene.scale = Vector2(attack_range, attack_range)
+	$Range/range_ring.scale *= attack_range*0.0607
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		mpos = get_global_mouse_position()
-		
-		if mode == "hover":
-			if can_place(mpos):
-				mode = "placed"
-				modulate = Color(1,1,1,1)
-				# LAG FIX: Check if nbz already exists before instantiating
-				if get_node_or_null("NoBuildZone") == null:
-					var nbz = nobuildscene.instantiate()
-					nbz.name = "NoBuildZone"
-					add_child(nbz)
-			return
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				if mode == "hover":
+					if can_place(get_global_mouse_position()):
+						mode = "placed"
+						modulate = Color(1,1,1,1)
+						# FIXED LAG: Instantiate the zone ONLY ONCE here
+						var nobuildzone = nobuildscene.instantiate()
+						add_child(nobuildzone)
+					else:
+						modulate = Color(1,0.5,0.5,1)
+				else:
+					var madj = mpos[0] - global_position.x
+					var mopp = mpos[1] - global_position.y
+					var mhyp = (madj**2 + mopp**2)**0.5
+					if mhyp <= 50: selected = !selected
+					else:
+						selected = false
+	elif event.is_action_pressed("test_1"):
+		upgrade(1)
+		print(path)
+		if not upgrade(1) == null:
+			print("upgrade oned")
+	elif event.is_action_pressed("test_2"):
+		upgrade(2)
+		print("upgrade twoed")
+	elif event.is_action_pressed("test_3"):
+		upgrade(3)
+		print("upgrade threed")
 
-		var dist = global_position.distance_to(mpos)
-		if dist <= 50:
-			selected = !selected
-			if selected: _build_panel()
-			else: _hide_panel()
-		else:
-			var vp_width = get_viewport().get_visible_rect().size.x
-			if selected and mpos.x < (vp_width - 210):
-				_hide_panel()
+func _process(_delta: float) -> void:
+	mpos = get_global_mouse_position()
 
-func _process(delta: float) -> void:
-	if mode == "hover":
-		global_position = get_global_mouse_position()
-		modulate = Color(1,1,1,1) if can_place(global_position) else Color(1,0.5,0.5,1)
-		return
-
-	if has_node("Range/range_ring"):
-		$Range/range_ring.visible = selected
-	
-	# LAG FIX: Don't search for targets every frame. Search every 0.1s.
-	target_timer += delta
-	if target_timer >= target_refresh_rate:
-		target_timer = 0.0
-		_find_target()
-
-	if is_instance_valid(current_best_target):
-		lookingat = current_best_target.global_position
+	if mode == "placed":
 		cannon_scene.look_at(lookingat)
 		angle = cannon_scene.rotation
-		sees_enemy = true
-		if canshoot:
-			shoot(bullet_speed, "angled", projectiles)
+		if not selected:
+			$Range/range_ring.visible = false
+		else:
+			$Range/range_ring.visible = true
+
+		for enemy in range_scene.get_overlapping_bodies():
+			if enemy is Enemy: pass
+			else: break
+			
+			var adj = global_position.x - enemy.global_position.x
+			var opp = global_position.y - enemy.global_position.y
+			var hyp = (adj**2 + opp**2)**0.5
+			
+			if target == "first" and enemies["first"] is Array and is_instance_valid(enemies["first"][0]):
+				lookingat = enemies["first"][0].global_position
+			
+			if enemies["first"] is int: 
+				enemies["first"] = [enemy, hyp]
+			elif (is_instance_valid(enemies["first"][0]) and 
+			enemies["first"][0] is Enemy and 
+			enemy.progress > enemies["first"][0].progress) and (
+				not enemies["first"][0].camo or enemies["first"][0].camo and sees_camo):
+				enemies["first"] = [enemy, hyp]
+			elif not is_instance_valid(enemies["first"][0]):
+				enemies["first"] = [enemy, hyp]
+		
+		if len(range_scene.get_overlapping_bodies()) > 0: 
+			sees_enemy = true
+			timer.paused = false
+		else: 
+			sees_enemy = false
+			if timer.time_left <= 0.1:
+				timer.paused = true
+		
+		if canshoot and sees_enemy: shoot(bullet_speed, "angled", projectiles)
 	else:
-		sees_enemy = false
+		position = get_global_mouse_position()
+		if can_place(position):
+			modulate = Color(1,1,1,1)
+		else:
+			modulate = Color(1,0.5,0.5,1)
 
-func _find_target():
-	var targets = range_scene.get_overlapping_bodies()
-	var best_target = null
-	var highest_prog = -1.0
-	
-	for t in targets:
-		if not is_instance_valid(t): continue
+func shoot(speed: int, angle_mode: String, bnum: int):
+	if angle_mode == "straight":
+		bulletShoot(Vector2(speed*cos(angle), speed*sin(angle)))
 		
-		var prog = t.get("progress")
-		if prog == null: prog = t.get("progress_ratio")
-		
-		if prog != null:
-			if !t.get("camo") or (t.get("camo") and sees_camo):
-				if prog > highest_prog:
-					highest_prog = prog
-					best_target = t
-	
-	current_best_target = best_target
+	if angle_mode == "angled":
+		if not bnum == 0: bulletShoot(Vector2(speed*cos(angle), speed*sin(angle)))
+		var aIncrement = 0
+		for i in bnum-1:
+			if i > (bnum-1)/2.0-1:
+				aIncrement = -bullet_spread*(i+1-((bnum-1)/2.0))
+			else:
+				aIncrement = bullet_spread*(i+1)
+			bulletShoot(Vector2(speed*cos(angle+aIncrement), speed*sin(angle+aIncrement)))
 
-func shoot(speed: int, _angle_mode: String, bnum: int):
+func bulletShoot(move: Vector2):
+	var bullet = bullet_scene.instantiate()
+	add_child(bullet)
+	bullet.global_position = marker_scene.global_position
+	bullet.damage = attack
+	bullet.move = move
+	bullet.pierce = pierce
+	bullet.sees_camo = sees_camo
 	canshoot = false
-	timer.start(cooldown)
-	bulletShoot(Vector2.from_angle(angle) * speed)
-	if bnum > 1:
-		var side_count = (bnum - 1) / 2
-		for i in range(1, side_count + 1):
-			bulletShoot(Vector2.from_angle(angle + (bullet_spread * i)) * speed)
-			bulletShoot(Vector2.from_angle(angle - (bullet_spread * i)) * speed)
-
-func bulletShoot(velocity: Vector2):
-	if bullet_scene == null: return
-	var b = bullet_scene.instantiate()
-	get_tree().current_scene.add_child(b) 
-	b.global_position = marker_scene.global_position
-	if "damage" in b: b.damage = attack
-	if "move" in b: b.move = velocity
-	if "velocity" in b: b.velocity = velocity
-	if "pierce" in b: b.pierce = pierce
-	if "sees_camo" in b: b.sees_camo = sees_camo
+	timer.wait_time = cooldown
 
 func _timer_timeout() -> void:
 	canshoot = true
 
-func _build_panel() -> void:
-	if _panel: _panel.queue_free()
-	_panel = CanvasLayer.new()
-	_panel.layer = 10
-	add_child(_panel)
-	var vp_size = get_viewport().get_visible_rect().size
-	var bg = ColorRect.new()
-	bg.color = Color(0.12, 0.12, 0.12, 0.95)
-	bg.size = Vector2(210, vp_size.y)
-	bg.position = Vector2(vp_size.x - 210, 0)
-	_panel.add_child(bg)
-	for i in range(3):
-		var y_off = 60 + (i * 130)
-		var btn = Button.new()
-		btn.name = "Btn%d" % i
-		btn.size = Vector2(190, 60)
-		btn.position = bg.position + Vector2(10, y_off)
-		btn.pressed.connect(func(): _do_upgrade(i + 1))
-		_panel.add_child(btn)
-		for j in range(_MAX_TIERS):
-			var pip = ColorRect.new()
-			pip.name = "Pip%d_%d" % [i, j]
-			pip.size = Vector2(30, 6)
-			pip.position = bg.position + Vector2(10 + (j * 38), y_off + 75)
-			_panel.add_child(pip)
-	_refresh_panel()
+func upgrade(path: int):
+	#gets replaced by the real towers, here for convenience
+	#FIX THIS
+	#timer.wait_time = cooldown
+	pass
 
-func _refresh_panel() -> void:
-	if !_panel: return
-	var colors = [Color(0.2, 0.6, 1.0), Color(0.4, 0.8, 0.2), Color(1.0, 0.4, 0.2)]
-	for i in range(3):
-		var tier = path[i]
-		var btn = _panel.get_node_or_null("Btn%d" % i)
-		if not btn: continue
-		if tier < _MAX_TIERS:
-			var cost = upgrade_costs[i][tier]
-			var upg_name = upgrade_names[i][tier]
-			btn.text = "%s\nCost: $%d" % [upg_name, cost]
-			btn.disabled = not can_upgrade(i + 1)
-		else:
-			btn.text = "MAXED"
-			btn.disabled = true
-		for j in range(_MAX_TIERS):
-			var pip = _panel.get_node_or_null("Pip%d_%d" % [i, j])
-			if pip:
-				pip.color = colors[i] if j < tier else Color(0.2, 0.2, 0.2)
-
-func _do_upgrade(p: int):
-	var idx = p - 1
-	if not can_upgrade(p): return
-	if shop_node:
-		shop_node.money -= upgrade_costs[idx][path[idx]]
-	path[idx] += 1
-	apply_upgrade_effects(p, path[idx])
-	_refresh_panel()
-
-func apply_upgrade_effects(p_idx, tier):
-	match p_idx:
-		1:
-			if tier == 1: cooldown *= 0.8
-			if tier == 2: projectiles += 2
-			if tier == 3: cooldown *= 0.7
-			if tier == 4: projectiles += 2
-			if tier == 5: cooldown *= 0.4
-		2:
-			if tier == 1: attack_range += 0.5
-			if tier == 2: attack_range += 0.5
-			if tier == 3: sees_camo = true
-			if tier == 4: attack_range += 1.0
-			if tier == 5: pierce += 15
-		3:
-			if tier == 1: attack += 2
-			if tier == 2: pierce += 2
-			if tier == 3: attack += 5
-			if tier == 4: attack += 10
-			if tier == 5: attack += 30
-	range_scene.scale = Vector2(attack_range, attack_range)
-	if has_node("Range/range_ring"):
-		$Range/range_ring.scale = Vector2(1,1) * (attack_range * 0.06)
-
-func _hide_panel() -> void:
-	if _panel:
-		_panel.queue_free()
-		_panel = null
-	selected = false
+func upg_attack(enemy: Enemy):
+	#gets replaced by the real towers, here for convenience
+	pass
