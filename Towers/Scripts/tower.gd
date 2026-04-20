@@ -12,6 +12,7 @@ var nobuildscene: PackedScene = preload("res://Towers/no_build_zone.tscn")
 @export var cooldown: float = 5.0
 #angle in radians between bullets
 @export var bullet_spread: float = 0.1
+#IF THIS IS ZERO NOTHING WILL WORK VVV
 @export var attack_range: int
 @export var attack: int = 5
 @export var bullet_speed: int = 100
