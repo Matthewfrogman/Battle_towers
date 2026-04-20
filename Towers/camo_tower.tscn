@@ -15,6 +15,7 @@ radius = 29.427877
 [node name="Camo" unique_id=598119214 instance=ExtResource("1_d3qwo")]
 script = ExtResource("2_d3qwo")
 sees_camo = true
+attack_range = 10
 bullet_scene = ExtResource("3_p54iu")
 
 [node name="Footprint" parent="." index="1" unique_id=2093572891]
