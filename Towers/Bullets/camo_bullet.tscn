@@ -2,6 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://dxugluqdqx6w5" path="res://Towers/Bullets/bullet.tscn" id="1_7d2ii"]
 [ext_resource type="Script" uid="uid://bk3gi6ouhk4xy" path="res://Towers/Bullets/camo_bullet.gd" id="2_u48ug"]
+[ext_resource type="Texture2D" uid="uid://2v8vq5akd1re" path="res://Towers/Bullets/Images/camo_ball.png" id="3_tkgh2"]
 
 [node name="Bullet" unique_id=901331464 instance=ExtResource("1_7d2ii")]
 script = ExtResource("2_u48ug")
+
+[node name="Sprite2D" parent="." index="0" unique_id=2013745526]
+position = Vector2(1.1920929e-07, -0.4999997)
+scale = Vector2(0.14173228, 0.13709676)
+texture = ExtResource("3_tkgh2")
