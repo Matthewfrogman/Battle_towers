@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dyrw5ab6av1a5"]
+
+[ext_resource type="PackedScene" uid="uid://dxugluqdqx6w5" path="res://Towers/Bullets/bullet.tscn" id="1_7d2ii"]
+[ext_resource type="Script" uid="uid://bk3gi6ouhk4xy" path="res://Towers/Bullets/camo_bullet.gd" id="2_u48ug"]
+
+[node name="Bullet" unique_id=901331464 instance=ExtResource("1_7d2ii")]
+script = ExtResource("2_u48ug")

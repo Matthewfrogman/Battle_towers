@@ -1,10 +1,16 @@
 class_name Bullet extends Area2D
+
+var path: Array = [0, 0, 0]
 var move: Vector2
 var damage: int
 var pierce: int
 var sees_camo: bool
 var lifetime: float = 0.0
 const MAX_LIFETIME: float = 10.0
+
+func upg_bullet(enemy: Enemy):
+	#keep for inheritance overwriting
+	pass
 
 func _process(delta: float) -> void:
 	position += Vector2(move[0]*delta, move[1]*delta)

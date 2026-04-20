@@ -151,6 +151,7 @@ func shoot(speed: int, angle_mode: String, bnum: int):
 func bulletShoot(move: Vector2):
 	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
+	bullet.path = path
 	bullet.global_position = marker_scene.global_position
 	bullet.damage = attack
 	bullet.move = move

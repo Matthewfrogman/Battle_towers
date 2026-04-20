@@ -14,8 +14,10 @@ radius = 25.079872
 [node name="Tower" unique_id=598119214 instance=ExtResource("1_0cntj")]
 cooldown = 0.5
 attack_range = 10
-attack = 7
-bullet_speed = 300
+attack = 10
+bullet_speed = 200
+pierce = 0
+projectiles = 3
 bullet_scene = ExtResource("2_wuvjc")
 
 [node name="Footprint" parent="." index="1" unique_id=2093572891]
