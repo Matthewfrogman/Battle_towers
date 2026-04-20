@@ -34,7 +34,7 @@ func upg_attack(enemy: Enemy):
 		enemy.hp -= roundi(enemy.max_hp/50.0)
 	if path[1] == 2:
 		#gives the enemy a debuff
-		enemy.debuff(2, 0.1, 5, false)
+		enemy.debuff("fire", 2, 0.1, 5, false)
 	if path[2] == 2:
 		#deals more damage if the enemy is camo
 		if enemy.camo == true:

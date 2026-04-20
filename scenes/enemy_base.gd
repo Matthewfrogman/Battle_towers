@@ -19,7 +19,6 @@ func _ready():
 
 func _process(delta):
 	if debuffed: 
-		print("wiguogaieurbgawib")
 		debuff_texture.visible = true
 	else: debuff_texture.visible = false
 	
@@ -47,7 +46,7 @@ func die():
 		ui_nodes[0].add_money(20)
 	queue_free()
 
-func debuff(debuff_dmg: int, interval: float, intervals: int, camo_remove: bool):
+func debuff(debuff_type: String, debuff_dmg: int, interval: float, intervals: int, camo_remove: bool):
 	#creates a debuff on the enemy if it doesnt have one already
 	if debuffed == true:
 		return null
