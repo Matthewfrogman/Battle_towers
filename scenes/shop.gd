@@ -110,3 +110,7 @@ func update_money_label():
 func add_money(amount):
 	money += amount
 	update_money_label()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("test_4"):
+		add_money(5000)
