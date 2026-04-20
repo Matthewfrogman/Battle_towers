@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b2ymqppeohqaq"]
 
-[ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://scenes/enemy_base.gd" id="1_eusoj"]
+[ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://Enemies/enemy_base.gd" id="1_eusoj"]
 [ext_resource type="Texture2D" uid="uid://l70k8odw81qn" path="res://Map1_assets/claudio-silva-robot-2-walk (1).png" id="1_w6rkk"]
 [ext_resource type="Texture2D" uid="uid://k88om2ff3sjt" path="res://Enemies/Images/Debuff.png" id="3_pfvy5"]
 

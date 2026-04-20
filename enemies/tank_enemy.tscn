@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0c7nkqq8nfaj"]
 
-[ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://scenes/enemy_base.gd" id="1_dk7ln"]
+[ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://Enemies/enemy_base.gd" id="1_dk7ln"]
 [ext_resource type="Texture2D" uid="uid://ce51hquxkyy16" path="res://Map1_assets/Tank.png" id="1_xv40v"]
 [ext_resource type="Texture2D" uid="uid://k88om2ff3sjt" path="res://Enemies/Images/Debuff.png" id="3_58050"]
 

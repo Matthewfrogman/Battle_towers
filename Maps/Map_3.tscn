@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bomybsv33nyjl"]
 
 [ext_resource type="Texture2D" uid="uid://4ct1llpse2uv" path="res://sheets/Robot Warfare Asset Pack 24-11-21/Robot Warfare Asset Pack 22-11-24/Tileset/tileset_arranged.png" id="1_24ala"]
-[ext_resource type="Script" path="res://Maps/map_3.gd" id="2_j67qv"]
+[ext_resource type="Script" uid="uid://sfw6qvi7uqd2" path="res://Maps/map_3.gd" id="2_j67qv"]
 [ext_resource type="Texture2D" uid="uid://cmwwgmby8mjk0" path="res://sheets/Robot Warfare Asset Pack 24-11-21/Robot Warfare Asset Pack 22-11-24/Obstacles and Objects/obstacles-and-objects.png" id="2_r4fia"]
 [ext_resource type="Texture2D" uid="uid://ckdgqfhn4yrpa" path="res://sheets/Robot Warfare Asset Pack 24-11-21/Robot Warfare Asset Pack 22-11-24/Effects/small-fragments.png" id="3_adcqa"]
 [ext_resource type="Texture2D" uid="uid://w4pjx32vfghk" path="res://sheets/Robot Warfare Asset Pack 24-11-21/Robot Warfare Asset Pack 22-11-24/Effects/smoke.png" id="4_14663"]
@@ -10,9 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://cnfjfb58e7bov" path="res://scenes/enemy_direction_collider.tscn" id="7_ggagh"]
 [ext_resource type="PackedScene" uid="uid://bkq4uuhdd0nop" path="res://scenes/edc_splitte_Map3.tscn" id="8_ggagh"]
 [ext_resource type="PackedScene" uid="uid://bekds5usu03lj" path="res://EnemySpawner/enemy_spawner.tscn" id="10_j67qv"]
-[ext_resource type="PackedScene" uid="uid://bulfkm3x86i3l" path="res://Towers/no_build_zone.tscn" id="11_xi3ud"]
-[ext_resource type="PackedScene" uid="uid://bassaekmhxqic" path="res://scenes/hp_counter.tscn" id="12_qvadu"]
-[ext_resource type="PackedScene" uid="uid://cvj160dymtppm" path="res://scenes/wave_counter.tscn" id="13_b4naw"]
+[ext_resource type="PackedScene" path="res://Towers/no_build_zone.tscn" id="11_xi3ud"]
+[ext_resource type="PackedScene" uid="uid://55fdroowqy2k" path="res://scenes/hp_counter.tscn" id="12_qvadu"]
+[ext_resource type="PackedScene" path="res://scenes/wave_counter.tscn" id="13_b4naw"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ud3xj"]
 texture = ExtResource("1_24ala")

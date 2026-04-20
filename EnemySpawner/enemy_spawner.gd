@@ -1,6 +1,6 @@
 extends Node2D
 
-const PATH_BASIC   = "res://scenes/enemy_base.tscn"
+const PATH_BASIC   = "res://enemies/enemy_base.tscn"
 const PATH_SPEEDER = "res://enemies/speeder_body.tscn"
 const PATH_TANK    = "res://enemies/tank_enemy.tscn"
 const PATH_CAMO    = "res://enemies/camo_enemy.tscn"
