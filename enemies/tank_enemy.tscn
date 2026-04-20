@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://scenes/enemy_base.gd" id="1_dk7ln"]
 [ext_resource type="Texture2D" uid="uid://ce51hquxkyy16" path="res://Map1_assets/Tank.png" id="1_xv40v"]
+[ext_resource type="Texture2D" uid="uid://k88om2ff3sjt" path="res://Enemies/Images/Debuff.png" id="3_58050"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3oi6"]
 radius = 22.0
@@ -43,3 +44,8 @@ position = Vector2(2, -6.9999995)
 scale = Vector2(1.8, 1.8)
 sprite_frames = SubResource("SpriteFrames_ifx1b")
 autoplay = "default"
+
+[node name="Debuff" type="Sprite2D" parent="." unique_id=574134806]
+visible = false
+scale = Vector2(3, 3)
+texture = ExtResource("3_58050")

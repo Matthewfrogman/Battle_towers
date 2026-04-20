@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://k88om2ff3sjt"
-path="res://.godot/imported/Debuff.png-210ad581ba59d14bbb34ca3bfbc5f613.ctex"
+path="res://.godot/imported/Debuff.png-3f0b24189472b8f15d615abfaa724c80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Images/Debuff.png"
-dest_files=["res://.godot/imported/Debuff.png-210ad581ba59d14bbb34ca3bfbc5f613.ctex"]
+source_file="res://Enemies/Images/Debuff.png"
+dest_files=["res://.godot/imported/Debuff.png-3f0b24189472b8f15d615abfaa724c80.ctex"]
 
 [params]
 
