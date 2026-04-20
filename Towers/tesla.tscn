@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bq18tu1f2sxmi"]
 
 [ext_resource type="PackedScene" uid="uid://c86a6pav5hv4v" path="res://Towers/tower.tscn" id="1_58jxk"]
-[ext_resource type="Script" uid="uid://cads5qf172tum" path="res://Towers/basic_tower.gd" id="2_gjwx0"]
+[ext_resource type="Script" uid="uid://cads5qf172tum" path="res://Towers/Scripts/basic_tower.gd" id="2_gjwx0"]
 [ext_resource type="Texture2D" uid="uid://csqiuxmrj13mo" path="res://Towers/Images/speedtower.png" id="3_akdh4"]
 [ext_resource type="Texture2D" uid="uid://byxfvnhcq7bj3" path="res://Towers/Images/tesla.png" id="4_f6kqh"]
 
@@ -14,8 +14,9 @@ radius = 22.0
 [node name="Tower" unique_id=598119214 instance=ExtResource("1_58jxk")]
 script = ExtResource("2_gjwx0")
 cooldown = 3.0
+attack_range = 3
 
-[node name="Footprint" parent="." index="0" unique_id=2093572891]
+[node name="Footprint" parent="." index="1" unique_id=2093572891]
 position = Vector2(22, -5)
 shape = SubResource("RectangleShape2D_d3qwo")
 

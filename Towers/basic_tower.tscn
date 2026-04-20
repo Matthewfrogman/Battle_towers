@@ -10,7 +10,7 @@
 script = ExtResource("2_3uhwj")
 cooldown = 1.0
 bullet_spread = 0.2
-attack_range = 10
+attack_range = 5
 attack = 50
 bullet_speed = 200
 pierce = 0

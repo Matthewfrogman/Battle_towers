@@ -13,6 +13,7 @@ radius = 25.079872
 
 [node name="Tower" unique_id=598119214 instance=ExtResource("1_0cntj")]
 cooldown = 0.5
+attack_range = 5
 attack = 10
 bullet_speed = 200
 pierce = 0
