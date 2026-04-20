@@ -10,14 +10,14 @@ func upgrade(upg_path: int):
 			pierce += 1
 		if path[upg_path-1] == 2:
 			pierce += 2
-	elif upg_path == 1:
+	elif upg_path == 2:
 		if path[upg_path-1] == 1:
 			projectiles += 2
 		if path[upg_path-1] == 2:
 			projectiles += 2
-	elif upg_path == 1:
+	elif upg_path == 3:
 		if path[upg_path-1] == 1:
-			cooldown -= 0.5
+			cooldown -= 0.25
 		if path[upg_path-1] == 2:
 			cooldown -= 0.25
 	return "its real"

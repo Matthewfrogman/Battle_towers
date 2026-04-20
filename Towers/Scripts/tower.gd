@@ -157,6 +157,7 @@ func bulletShoot(move: Vector2):
 	bullet.pierce = pierce
 	bullet.sees_camo = sees_camo
 	canshoot = false
+	timer.wait_time = cooldown
 
 func _timer_timeout() -> void:
 	canshoot = true
