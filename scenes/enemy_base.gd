@@ -47,7 +47,7 @@ func die():
 		ui_nodes[0].add_money(20)
 	queue_free()
 
-func debuff(debuff_dmg: int, interval: float, intervals: int):
+func debuff(debuff_dmg: int, interval: float, intervals: int, camo_remove: bool):
 	#creates a debuff on the enemy if it doesnt have one already
 	if debuffed == true:
 		return null
