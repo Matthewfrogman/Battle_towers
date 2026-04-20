@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c86a6pav5hv4v" path="res://Towers/tower.tscn" id="1_d3qwo"]
 [ext_resource type="Script" uid="uid://cwn82ib6fniot" path="res://Towers/Scripts/camo_tower.gd" id="2_d3qwo"]
 [ext_resource type="Texture2D" uid="uid://cm84n0bvn8tkb" path="res://Towers/Images/camo_base.png" id="3_kwly8"]
-[ext_resource type="PackedScene" uid="uid://dyrw5ab6av1a5" path="res://Towers/Bullets/camo_bullet.tscn" id="3_p54iu"]
+[ext_resource type="PackedScene" uid="uid://bykqnehxqsnsn" path="res://Towers/Bullets/fireball.tscn" id="3_p54iu"]
 [ext_resource type="Texture2D" uid="uid://bs885t7hk4eqn" path="res://Towers/Images/camo_head.png" id="4_gensx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3qwo"]
