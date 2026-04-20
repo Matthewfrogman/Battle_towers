@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1rwx8yeqt5mx"]
 
-[ext_resource type="Script" uid="uid://b14aj8mwe02uh" path="res://scenes/retry_button.gd" id="1_uurjc"]
-[ext_resource type="Script" uid="uid://0p8leltyjb15" path="res://scenes/button_2.gd" id="1_ylnw1"]
+[ext_resource type="Script" uid="uid://b14aj8mwe02uh" path="res://scenes/deathscene/retry_button.gd" id="1_uurjc"]
+[ext_resource type="Script" uid="uid://0p8leltyjb15" path="res://scenes/deathscene/button_2.gd" id="1_ylnw1"]
 
 [node name="deathscreen" type="Control" unique_id=1569556438]
 process_mode = 3
