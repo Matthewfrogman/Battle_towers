@@ -48,6 +48,7 @@ z_index = 1
 texture = ExtResource("2_0orgu")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2" unique_id=847180495]
+amount = 2
 lifetime = 1.5
 speed_scale = 2.0
 randomness = 0.5
