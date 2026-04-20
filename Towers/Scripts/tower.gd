@@ -164,12 +164,12 @@ func bulletShoot(move: Vector2):
 func _timer_timeout() -> void:
 	canshoot = true
 
-func upgrade(path: int):
+func upgrade(upg_path: int):
 	#gets replaced by the real towers, here for convenience
-	#FIX THIS
-	#timer.wait_time = cooldown
-	pass
+	#this print statement should never really be called
+	print(upg_path)
 
 func upg_attack(enemy: Enemy):
 	#gets replaced by the real towers, here for convenience
-	pass
+	#this print statement should never really be called
+	print(enemy)

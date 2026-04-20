@@ -54,5 +54,6 @@ func debuff(debuff_type: String, debuff_dmg: int, interval: float, intervals: in
 	for i in intervals:
 		await get_tree().create_timer(interval).timeout
 		hp -= debuff_dmg
+	debuffed = false
 	if debuff_type == "fire" and camo_remove:
 		pass
