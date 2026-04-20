@@ -436,7 +436,7 @@ scale = Vector2(0.856, 0.227)
 
 [node name="enemy_direction_collider4" parent="." unique_id=1810959571 instance=ExtResource("28_yqntx")]
 position = Vector2(263.96802, 84.70642)
-rotation = -0.7853982
+rotation = -0.56036586
 scale = Vector2(0.996, 0.207)
 send_direction = 1
 
