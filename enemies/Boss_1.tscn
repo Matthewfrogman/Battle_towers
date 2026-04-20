@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://scenes/enemy_base.gd" id="1_eusoj"]
 [ext_resource type="Texture2D" uid="uid://l70k8odw81qn" path="res://Map1_assets/claudio-silva-robot-2-walk (1).png" id="1_w6rkk"]
+[ext_resource type="Texture2D" uid="uid://k88om2ff3sjt" path="res://Enemies/Images/Debuff.png" id="3_pfvy5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eusoj"]
 atlas = ExtResource("1_w6rkk")
@@ -36,7 +37,7 @@ animations = [{
 radius = 41.0
 height = 108.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=2058883378]
+[node name="Boss" type="CharacterBody2D" unique_id=2058883378]
 script = ExtResource("1_eusoj")
 speed = 10
 hp = 15000
@@ -51,3 +52,8 @@ frame_progress = 0.026630012
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=750358474]
 position = Vector2(-2, -7)
 shape = SubResource("CapsuleShape2D_0ws5w")
+
+[node name="Debuff" type="Sprite2D" parent="." unique_id=1217622608]
+visible = false
+scale = Vector2(3, 3)
+texture = ExtResource("3_pfvy5")

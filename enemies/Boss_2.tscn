@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://scenes/enemy_base.gd" id="1_qj7a1"]
 [ext_resource type="Texture2D" uid="uid://crocd51y1metf" path="res://Map1_assets/Boss_2.png" id="1_r1ygt"]
+[ext_resource type="Texture2D" uid="uid://k88om2ff3sjt" path="res://Enemies/Images/Debuff.png" id="3_bai1j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qj7a1"]
 atlas = ExtResource("1_r1ygt")
@@ -281,7 +282,7 @@ animations = [{
 radius = 45.0
 height = 164.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=300668268]
+[node name="Boss" type="CharacterBody2D" unique_id=300668268]
 script = ExtResource("1_qj7a1")
 speed = 15
 hp = 20000
@@ -294,3 +295,8 @@ frame_progress = 0.5419566
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=838042166]
 shape = SubResource("CapsuleShape2D_3w75k")
+
+[node name="Debuff" type="Sprite2D" parent="." unique_id=988008799]
+visible = false
+scale = Vector2(3, 3)
+texture = ExtResource("3_bai1j")
