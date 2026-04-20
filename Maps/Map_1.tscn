@@ -408,7 +408,7 @@ animations = [{
 }]
 
 [node name="Map_1" type="TileMap" unique_id=832691158 groups=["no_build"]]
-position = Vector2(0, -37)
+position = Vector2(-6, -39.000004)
 scale = Vector2(2.88, 2.37)
 tile_set = SubResource("TileSet_a55ak")
 format = 2
@@ -435,7 +435,7 @@ rotation = -0.7853982
 scale = Vector2(0.856, 0.227)
 
 [node name="enemy_direction_collider4" parent="." unique_id=1810959571 instance=ExtResource("28_yqntx")]
-position = Vector2(264.23608, 90.29535)
+position = Vector2(263.96802, 84.70642)
 rotation = -0.7853982
 scale = Vector2(0.996, 0.207)
 send_direction = 1
@@ -947,7 +947,7 @@ rotation = -0.009821057
 scale = Vector2(5.3102684, 1.6148157)
 
 [node name="NoBuildZone4" parent="NoBuilding" unique_id=1360101602 instance=ExtResource("33_gac6i")]
-position = Vector2(271.87497, 146.4135)
+position = Vector2(271.52774, 146.4135)
 rotation = -1.5766921
 scale = Vector2(6.5885115, 1.6148157)
 
