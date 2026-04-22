@@ -36,14 +36,14 @@ func upgrade(upg_path: int):
 	path[upg_path-1] += 1
 	if upg_path == 1:
 		if path[upg_path-1] == 1:
-			attack += 10
+			attack += 25
 		if path[upg_path-1] == 2:
-			attack += 15
+			attack += 50
 	elif upg_path == 2:
 		if path[upg_path-1] == 1:
-			cooldown -= 0.5
-		if path[upg_path-1] == 2:
 			cooldown -= 1.0
+		if path[upg_path-1] == 2:
+			cooldown -= 1.5
 	elif upg_path == 3:
 		if path[upg_path-1] == 1:
 			sees_camo = true
