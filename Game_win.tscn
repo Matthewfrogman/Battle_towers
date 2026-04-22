@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bclt46tw2dkat"]
+
+[node name="Control" type="Control" unique_id=1898711812]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Win_screen" type="Label" parent="." unique_id=741563374]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 238.0
+offset_right = 852.0
+offset_bottom = 391.0
+theme_override_font_sizes/font_size = 63
+text = "You Win!"
+horizontal_alignment = 1
+vertical_alignment = 1

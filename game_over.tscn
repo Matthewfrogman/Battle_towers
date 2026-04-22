@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dj6oyh06ghveb"]
+
+[node name="Control" type="Control" unique_id=1710933715]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game_over" type="Label" parent="." unique_id=249711000]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 290.0
+offset_right = 709.0
+offset_bottom = 359.0
+theme_override_font_sizes/font_size = 50
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
