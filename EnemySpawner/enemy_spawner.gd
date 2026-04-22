@@ -236,6 +236,8 @@ const WAVES: Array = [
 
 	[["boss", 1]]
 ]
+#matt's possible oopise
+
 
 func _launch_current_wave() -> void:
 	start_wave(current_wave)
