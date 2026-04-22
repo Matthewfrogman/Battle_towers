@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var money = 6500
+var money = 650
 var tower_scenes = {
 	"Basic":  "res://Towers/basic_tower.tscn",
 	"Sniper": "res://Towers/sniper.tscn",
@@ -140,6 +140,11 @@ func _on_tower_button_pressed(tower_name: String) -> void:
 	tower.global_position = tower.get_global_mouse_position()
 	if upgrade_panel:
 		upgrade_panel.register_tower(tower)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_4:
+			add_money(5000)
 
 func update_money_label() -> void:
 	if money_label:
