@@ -140,7 +140,7 @@ func _process(delta: float) -> void:
 	_handle_spawning(delta)
 
 const WAVES: Array = [
-	[["camo", 20]],
+	[["basic", 20]],
 	[["basic", 35]],
 	[["basic", 30], ["speeder", 5]],
 	[["basic", 35], ["speeder", 15]],

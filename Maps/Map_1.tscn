@@ -416,6 +416,7 @@ layer_0/tile_data = PackedInt32Array(65536, 655361, 8, 131072, 655361, 8, 196608
 script = ExtResource("4_pum3p")
 
 [node name="CanvasLayer" parent="." unique_id=444425766 instance=ExtResource("29_yqntx")]
+anchors_preset = 0
 
 [node name="enemy_direction_collider2" parent="." unique_id=283984963 instance=ExtResource("28_yqntx")]
 position = Vector2(179.86111, 239.24055)
