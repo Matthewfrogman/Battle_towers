@@ -6,24 +6,53 @@ var name_label: Label
 var path_sections: Array = []
 var flash_tween: Tween
 
+var tooltip_panel: Panel
+var tooltip_label: Label
+
 func _ready() -> void:
+	_build_tooltip()
 	_build_panel()
 	hide()
 	_connect_existing_towers()
 
+func _build_tooltip() -> void:
+	tooltip_panel = Panel.new()
+	tooltip_panel.visible = false
+	tooltip_panel.z_index = 10
+
+	var bg = StyleBoxFlat.new()
+	bg.bg_color = Color(0.1, 0.1, 0.1, 0.95)
+	bg.border_width_left   = 1
+	bg.border_width_right  = 1
+	bg.border_width_top    = 1
+	bg.border_width_bottom = 1
+	bg.border_color = Color(0.45, 0.45, 0.45, 1)
+	bg.set_content_margin_all(8)
+	tooltip_panel.add_theme_stylebox_override("panel", bg)
+	add_child(tooltip_panel)
+
+	tooltip_label = Label.new()
+	tooltip_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	tooltip_label.add_theme_font_size_override("font_size", 11)
+	tooltip_label.add_theme_color_override("font_color", Color(0.9, 0.9, 0.9))
+	tooltip_panel.add_child(tooltip_label)
+
 func _build_panel() -> void:
 	panel = Panel.new()
-	panel.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
-	panel.offset_left   = -260
-	panel.offset_top    = 10
+	panel.anchor_left   = 1.0
+	panel.anchor_top    = 0.5
+	panel.anchor_right  = 1.0
+	panel.anchor_bottom = 0.5
+	panel.offset_left   = -255
+	panel.offset_top    = -185
 	panel.offset_right  = -10
-	panel.offset_bottom = 360
+	panel.offset_bottom = 185
 
 	var bg = StyleBoxFlat.new()
 	bg.bg_color = Color(0.15, 0.15, 0.15, 0.9)
-	bg.border_width_left = 1
-	bg.border_width_right = 1
-	bg.border_width_top = 1
+	bg.border_width_left   = 1
+	bg.border_width_right  = 1
+	bg.border_width_top    = 1
 	bg.border_width_bottom = 1
 	bg.border_color = Color(0.35, 0.35, 0.35, 1)
 	bg.set_content_margin_all(8)
@@ -32,9 +61,9 @@ func _build_panel() -> void:
 
 	var vbox = VBoxContainer.new()
 	vbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	vbox.offset_left = 8
-	vbox.offset_top = 8
-	vbox.offset_right = -8
+	vbox.offset_left   = 8
+	vbox.offset_top    = 8
+	vbox.offset_right  = -8
 	vbox.offset_bottom = -8
 	vbox.add_theme_constant_override("separation", 6)
 	panel.add_child(vbox)
@@ -43,7 +72,7 @@ func _build_panel() -> void:
 	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	name_label.add_theme_font_size_override("font_size", 14)
 	vbox.add_child(name_label)
-	
+
 	var sep = HSeparator.new()
 	vbox.add_child(sep)
 
@@ -57,10 +86,28 @@ func _build_path_section(parent: VBoxContainer, path_idx: int) -> Dictionary:
 	path_vbox.add_theme_constant_override("separation", 2)
 	parent.add_child(path_vbox)
 
+	# Header row: label on left, pip dashes on right
+	var header_hbox = HBoxContainer.new()
+	header_hbox.add_theme_constant_override("separation", 4)
+	path_vbox.add_child(header_hbox)
+
 	var path_label = Label.new()
 	path_label.text = "Path %d" % (path_idx + 1)
 	path_label.add_theme_font_size_override("font_size", 12)
-	path_vbox.add_child(path_label)
+	path_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header_hbox.add_child(path_label)
+
+	# Two pip dashes
+	var pips: Array = []
+	for _i in 2:
+		var pip = Panel.new()
+		pip.custom_minimum_size = Vector2(18, 6)
+		var pip_style = StyleBoxFlat.new()
+		pip_style.bg_color = Color(0.3, 0.3, 0.3, 1)
+		pip_style.set_corner_radius_all(2)
+		pip.add_theme_stylebox_override("panel", pip_style)
+		header_hbox.add_child(pip)
+		pips.append(pip)
 
 	var btns: Array = []
 	for tier in 2:
@@ -70,11 +117,74 @@ func _build_path_section(parent: VBoxContainer, path_idx: int) -> Dictionary:
 		btn.add_theme_font_size_override("font_size", 11)
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.clip_text = true
+		btn.mouse_entered.connect(_on_btn_hover_enter.bind(path_idx, tier, btn))
+		btn.mouse_exited.connect(_on_btn_hover_exit)
 		btn.pressed.connect(_on_upgrade_pressed.bind(path_idx, tier, btn))
 		path_vbox.add_child(btn)
 		btns.append(btn)
 
-	return {"label": path_label, "btns": btns}
+	return {"label": path_label, "btns": btns, "pips": pips}
+
+func _update_pips(section: Dictionary, tier_bought: int) -> void:
+	var pips: Array = section["pips"]
+	for i in pips.size():
+		var pip: Panel = pips[i]
+		var pip_style = StyleBoxFlat.new()
+		pip_style.set_corner_radius_all(2)
+		if i < tier_bought:
+			pip_style.bg_color = Color(0.2, 0.75, 0.2, 1)
+		else:
+			pip_style.bg_color = Color(0.3, 0.3, 0.3, 1)
+		pip.add_theme_stylebox_override("panel", pip_style)
+
+func _on_btn_hover_enter(path_idx: int, tier: int, btn: Button) -> void:
+	if current_tower == null:
+		return
+	if tier != current_tower.path[path_idx]:
+		return
+	var data = current_tower.get_upgrade_data()
+	var upgrade_info = data[path_idx][tier]
+	var desc: String = upgrade_info.get("desc", "")
+	if desc == "":
+		tooltip_panel.visible = false
+		return
+
+	const TOOLTIP_W = 200
+	const PADDING    = 6
+
+	tooltip_label.text = desc
+	tooltip_label.custom_minimum_size = Vector2(TOOLTIP_W - PADDING * 2, 0)
+	tooltip_label.size = Vector2(TOOLTIP_W - PADDING * 2, 0)
+
+	tooltip_panel.visible = true
+	tooltip_panel.size = Vector2(TOOLTIP_W, 60)
+	tooltip_label.position = Vector2(PADDING, PADDING)
+	tooltip_label.size = Vector2(TOOLTIP_W - PADDING * 2, 0)
+
+	_position_tooltip_deferred.call_deferred(btn, TOOLTIP_W, PADDING)
+
+func _position_tooltip_deferred(btn: Button, tooltip_w: int, padding: int) -> void:
+	if not tooltip_panel.visible:
+		return
+
+	var label_h = tooltip_label.get_minimum_size().y
+	var panel_h = label_h + padding * 2
+	tooltip_panel.size = Vector2(tooltip_w, panel_h)
+	tooltip_label.size = Vector2(tooltip_w - padding * 2, label_h)
+
+	var btn_global   = btn.get_global_rect()
+	var panel_global = panel.get_global_rect()
+
+	var tx = panel_global.position.x - tooltip_w - 8
+	var ty = btn_global.position.y + (btn_global.size.y / 2.0) - (panel_h / 2.0)
+
+	var vp_h = get_viewport().get_visible_rect().size.y
+	ty = clamp(ty, 4, vp_h - panel_h - 4)
+
+	tooltip_panel.position = Vector2(tx, ty)
+
+func _on_btn_hover_exit() -> void:
+	tooltip_panel.visible = false
 
 func _connect_existing_towers() -> void:
 	for node in get_tree().get_nodes_in_group("towers"):
@@ -96,6 +206,7 @@ func _on_tower_selected(tower: Tower) -> void:
 
 func _on_tower_deselected() -> void:
 	current_tower = null
+	tooltip_panel.visible = false
 	hide()
 
 func _refresh() -> void:
@@ -109,20 +220,20 @@ func _refresh() -> void:
 		var section = path_sections[p]
 		var path_data = data[p]
 
+		_update_pips(section, tier_bought)
+
 		for t in 2:
 			var btn: Button = section["btns"][t]
 			var upgrade_info = path_data[t]
-			var cost_str = "$%d" % upgrade_info["cost"]
 
 			if t < tier_bought:
-				btn.text = "[Done] %s" % upgrade_info["name"]
-				btn.disabled = true
+				btn.visible = false
 			elif t == tier_bought:
-				btn.text = "%s - %s" % [upgrade_info["name"], cost_str]
+				btn.visible = true
 				btn.disabled = false
+				btn.text = "%s - $%d" % [upgrade_info["name"], upgrade_info["cost"]]
 			else:
-				btn.text = "[Locked] %s - %s" % [upgrade_info["name"], cost_str]
-				btn.disabled = true
+				btn.visible = false
 
 func _on_upgrade_pressed(path_idx: int, tier: int, btn: Button) -> void:
 	if current_tower == null:
@@ -131,6 +242,7 @@ func _on_upgrade_pressed(path_idx: int, tier: int, btn: Button) -> void:
 		return
 	var success = current_tower.try_upgrade(path_idx)
 	if success:
+		tooltip_panel.visible = false
 		_refresh()
 	else:
 		_flash_insufficient(btn)
