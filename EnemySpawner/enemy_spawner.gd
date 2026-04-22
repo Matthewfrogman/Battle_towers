@@ -148,27 +148,27 @@ const WAVES: Array = [
 	[["tank", 30]],
 	[["basic", 25], ["speeder", 45], ["tank", 5]],
 
-	# wave 11
-	#[["basic", 20], ["tank", 20], ["camo", 10]],
-	# wave 12
-	#[["speeder", 35], ["camo", 15]],
-	# wave 13
-	#[["tank", 30]],
-	# wave 14
-	#[["basic", 25], ["speeder", 25], ["camo", 20]],
-	# wave 15
-	#[["basic", 30], ["tank", 20]],
+	 #wave 11
+	[["basic", 20], ["tank", 20], ["camo", 10]],
+	 #wave 12
+	[["speeder", 35], ["camo", 15]],
+	 #wave 13
+	[["tank", 30]],
+	 #wave 14
+	[["basic", 25], ["speeder", 25], ["camo", 20]],
+	 #wave 15
+	[["basic", 30], ["tank", 20]],
 
 	# wave 16
-	#[["tank", 35], ["camo", 20]],
+	[["tank", 35], ["camo", 20]],
 	# wave 17
-	#[["speeder", 50]],
+	[["speeder", 50]],
 	# wave 18
-	#[["basic", 40], ["tank", 25]],
+	[["basic", 40], ["tank", 25]],
 	# wave 19
-	#[["camo", 40]],
+	[["camo", 40]],
 	# wave 20
-	#[["tank", 40], ["speeder", 40]],
+	[["tank", 40], ["speeder", 40]],
 
 	# wave 21
 	#[["basic", 50]],
