@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c0gt8k8pm2jnc"]
 
 [ext_resource type="PackedScene" uid="uid://c86a6pav5hv4v" path="res://Towers/tower.tscn" id="1_0cntj"]
-[ext_resource type="Script" uid="uid://speed1script001" path="res://Towers/Scripts/speed_tower.gd" id="2_speed"]
+[ext_resource type="Script" uid="uid://4f60yp64jvyq" path="res://Towers/Scripts/speed_tower.gd" id="2_speed"]
 [ext_resource type="PackedScene" uid="uid://bykqnehxqsnsn" path="res://Towers/Bullets/fireball.tscn" id="2_wuvjc"]
 [ext_resource type="Texture2D" uid="uid://csqiuxmrj13mo" path="res://Towers/Images/speedtower.png" id="3_wuvjc"]
 [ext_resource type="Texture2D" uid="uid://bna63qbsmfinq" path="res://Towers/Images/speedtower_guns.png" id="4_y48k1"]
@@ -19,7 +19,6 @@ attack_range = 5
 attack = 10
 bullet_speed = 200
 pierce = 0
-projectiles = 3
 bullet_scene = ExtResource("2_wuvjc")
 
 [node name="Footprint" parent="." index="1" unique_id=2093572891]

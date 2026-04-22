@@ -16,7 +16,9 @@ var tower_costs = {
 	"Tesla":  1250
 }
 
-var fast_forward   = false
+var speed_index   = 0
+var speed_levels  = [1.0, 2.0, 4.0]
+var speed_labels  = ["Speed: Normal", "Speed: Fast", "Speed: Ultra"]
 var shop_collapsed = false
 var ff_button: Button
 var toggle_btn: Button
@@ -32,7 +34,6 @@ func _ready() -> void:
 	_spawn_upgrade_panel()
 
 func _build_ui() -> void:
-	# Money label — always visible, top-left, just plain text with a shadow
 	money_label = Label.new()
 	money_label.text = "Money: $%d" % money
 	money_label.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
@@ -47,13 +48,15 @@ func _build_ui() -> void:
 	money_label.add_theme_constant_override("shadow_offset_y", 1)
 	add_child(money_label)
 
-	# Shop panel — plain dark rectangle
 	shop_panel = Panel.new()
-	shop_panel.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
+	shop_panel.anchor_left   = 0.0
+	shop_panel.anchor_top    = 0.0
+	shop_panel.anchor_right  = 0.0
+	shop_panel.anchor_bottom = 1.0
 	shop_panel.offset_left   = 0
 	shop_panel.offset_top    = 28
 	shop_panel.offset_right  = SHOP_W
-	shop_panel.offset_bottom = 28 + 5 * 52 + 50
+	shop_panel.offset_bottom = 0
 	var bg = StyleBoxFlat.new()
 	bg.bg_color = Color(0.15, 0.15, 0.15, 0.9)
 	bg.border_width_right  = 1
@@ -63,14 +66,14 @@ func _build_ui() -> void:
 	shop_panel.add_theme_stylebox_override("panel", bg)
 	add_child(shop_panel)
 
-	var vbox = VBoxContainer.new()
-	vbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	vbox.offset_left   = 6
-	vbox.offset_top    = 6
-	vbox.offset_right  = -6
-	vbox.offset_bottom = -6
-	vbox.add_theme_constant_override("separation", 4)
-	shop_panel.add_child(vbox)
+	var outer = VBoxContainer.new()
+	outer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	outer.offset_left   = 6
+	outer.offset_top    = 6
+	outer.offset_right  = -6
+	outer.offset_bottom = -6
+	outer.add_theme_constant_override("separation", 4)
+	shop_panel.add_child(outer)
 
 	for tower_name in tower_scenes.keys():
 		var cost = tower_costs[tower_name]
@@ -80,22 +83,28 @@ func _build_ui() -> void:
 		btn.add_theme_font_size_override("font_size", 13)
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.pressed.connect(_on_tower_button_pressed.bind(tower_name))
-		vbox.add_child(btn)
+		outer.add_child(btn)
+
+	var spacer = Control.new()
+	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	outer.add_child(spacer)
 
 	var sep = HSeparator.new()
-	vbox.add_child(sep)
+	outer.add_child(sep)
 
 	ff_button = Button.new()
-	ff_button.text = "Speed: Normal"
+	ff_button.text = speed_labels[0]
 	ff_button.custom_minimum_size = Vector2(0, 32)
 	ff_button.add_theme_font_size_override("font_size", 12)
 	ff_button.pressed.connect(_on_ff_pressed)
-	vbox.add_child(ff_button)
+	outer.add_child(ff_button)
 
-	# Collapse toggle button
 	toggle_btn = Button.new()
 	toggle_btn.text = "<"
-	toggle_btn.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
+	toggle_btn.anchor_left   = 0.0
+	toggle_btn.anchor_top    = 0.0
+	toggle_btn.anchor_right  = 0.0
+	toggle_btn.anchor_bottom = 0.0
 	toggle_btn.offset_left   = SHOP_W
 	toggle_btn.offset_top    = 34
 	toggle_btn.offset_right  = SHOP_W + 16
@@ -110,9 +119,9 @@ func _on_toggle_pressed() -> void:
 	toggle_btn.text = ">" if shop_collapsed else "<"
 
 func _on_ff_pressed() -> void:
-	fast_forward = !fast_forward
-	Engine.time_scale = 2.0 if fast_forward else 1.0
-	ff_button.text = "Speed: Fast" if fast_forward else "Speed: Normal"
+	speed_index = (speed_index + 1) % speed_levels.size()
+	Engine.time_scale = speed_levels[speed_index]
+	ff_button.text = speed_labels[speed_index]
 
 func _on_tower_button_pressed(tower_name: String) -> void:
 	var cost = tower_costs[tower_name]
@@ -143,10 +152,6 @@ func add_money(amount: int) -> void:
 func spend_money(amount: int) -> void:
 	money -= amount
 	update_money_label()
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("test_4"):
-		add_money(5000)
 
 func _spawn_upgrade_panel() -> void:
 	var script = load("res://scenes/upgrade_panel.gd")
