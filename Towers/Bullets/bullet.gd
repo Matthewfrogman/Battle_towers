@@ -10,7 +10,7 @@ const MAX_LIFETIME: float = 10.0
 
 func upg_bullet(enemy: Enemy):
 	#keep for inheritance overwriting
-	pass
+	print(enemy)
 
 func _process(delta: float) -> void:
 	position += Vector2(move[0]*delta, move[1]*delta)

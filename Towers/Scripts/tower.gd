@@ -99,19 +99,29 @@ func _process(_delta: float) -> void:
 			var adj = global_position.x - enemy.global_position.x
 			var opp = global_position.y - enemy.global_position.y
 			var hyp = (adj**2 + opp**2)**0.5
+			
 			if target == "first" and enemies["first"] is Array and is_instance_valid(enemies["first"][0]):
 				lookingat = enemies["first"][0].global_position
+				
 			if enemies["first"] is int:
-				enemies["first"] = [enemy, hyp]
-			elif (is_instance_valid(enemies["first"][0]) and
-			enemies["first"][0] is Enemy and
+				if not enemy.camo or enemy.camo and sees_camo:
+					enemies["first"] = [enemy, hyp]
+			
+			#if the enemy is valid(not dead), and its an enemy, and the progress is greater than the one 
+			#thats current in the first place, and either its not camo, or it is camo and the tower can see it
+			#replace its spot
+			elif (is_instance_valid(enemies["first"][0]) and enemies["first"][0] is Enemy and
 			enemy.progress > enemies["first"][0].progress) and (
 				not enemies["first"][0].camo or enemies["first"][0].camo and sees_camo):
+				
 				enemies["first"] = [enemy, hyp]
+				
 			elif not is_instance_valid(enemies["first"][0]):
 				enemies["first"] = [enemy, hyp]
-
-		if len(range_scene.get_overlapping_bodies()) > 0:
+			
+		#possible rework it so that 
+		#if len(range_scene.get_overlapping_bodies()) > 0:
+		if enemies["first"] is Array:
 			sees_enemy = true
 			timer.paused = false
 		else:
@@ -124,6 +134,7 @@ func _process(_delta: float) -> void:
 				hitscan()
 			else:
 				shoot(bullet_speed, "angled", projectiles)
+		
 	else:
 		position = get_global_mouse_position()
 		if can_place(position):
