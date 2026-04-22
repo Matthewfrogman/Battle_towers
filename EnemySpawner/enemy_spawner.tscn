@@ -4,3 +4,5 @@
 
 [node name="EnemySpawner" type="Node2D" unique_id=433532294]
 script = ExtResource("1_t8uj2")
+
+[connection signal="boss_wave_completed" from="." to="." method="_on_boss_wave_completed"]

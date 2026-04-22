@@ -152,26 +152,26 @@ const WAVES: Array = [
 	[["basic", 25], ["speeder", 45], ["tank", 5]],
 
 	 #wave 11
-	[["basic", 20], ["tank", 20], ["camo", 10]],
+	#[["basic", 20], ["tank", 20], ["camo", 10]],
 	 #wave 12
-	[["speeder", 35], ["camo", 15]],
+	#[["speeder", 35], ["camo", 15]],
 	 #wave 13
-	[["tank", 30]],
+	#[["tank", 30]],
 	 #wave 14
-	[["basic", 25], ["speeder", 25], ["camo", 20]],
+	#[["basic", 25], ["speeder", 25], ["camo", 20]],
 	 #wave 15
-	[["basic", 30], ["tank", 20]],
+	#[["basic", 30], ["tank", 20]],
 
 	# wave 16
-	[["tank", 35], ["camo", 20]],
+	#[["tank", 35], ["camo", 20]],
 	# wave 17
-	[["speeder", 50]],
+	#[["speeder", 50]],
 	# wave 18
-	[["basic", 40], ["tank", 25]],
+	#[["basic", 40], ["tank", 25]],
 	# wave 19
-	[["camo", 40]],
+	#[["camo", 40]],
 	# wave 20
-	[["tank", 40], ["speeder", 40]],
+	#[["tank", 40], ["speeder", 40]],
 
 	# wave 21
 	#[["basic", 50]],
@@ -289,9 +289,10 @@ func _on_wave_finished() -> void:
 	current_wave += 1
 	wave = current_wave + 1
 
-	if is_boss_wave:
-		boss_wave_completed.emit()
+	#if is_boss_wave:
+		#boss_wave_completed.emit()
 
+	
 	if current_wave >= WAVES.size():
 		current_wave = 0
 		wave = 1
@@ -325,3 +326,6 @@ func _on_enemy_died() -> void:
 
 	if _auto_mode and not _spawning and _spawn_queue.is_empty() and _alive_enemies == 0:
 		_launch_current_wave()
+
+func _on_boss_wave_completed() -> void:
+	get_tree().change_scene_to_file("res://Game_win.tscn")
