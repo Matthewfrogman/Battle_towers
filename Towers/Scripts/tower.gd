@@ -88,39 +88,49 @@ func _process(_delta: float) -> void:
 	if mode == "placed":
 		cannon_scene.look_at(lookingat)
 		angle = cannon_scene.rotation
-		if not selected:
-			$Range/range_ring.visible = false
-		else:
-			$Range/range_ring.visible = true
-
+		$Range/range_ring.visible = selected
+		
+		var enemy_list = []
+		
+		enemy_list.clear()
 		for enemy in range_scene.get_overlapping_bodies():
-			if enemy is Enemy: pass
-			else: break
+			if not enemy is Enemy: continue
+			#create a list, that resets before this loop is run, that will add
+			#every single enemy thats currently in the loop
+			#at the very beginning of the loop, if the first enemy isnt in the list
+			#it is removed
+			
 			var adj = global_position.x - enemy.global_position.x
 			var opp = global_position.y - enemy.global_position.y
 			var hyp = (adj**2 + opp**2)**0.5
 			
+			enemy_list.append(enemy)
+			
+			print(enemy_list)
 			if target == "first" and enemies["first"] is Array and is_instance_valid(enemies["first"][0]):
-				lookingat = enemies["first"][0].global_position
-				
+				if not enemy_list.has(enemies["first"][0]):
+					
+					enemies["first"] = 0
+				else:
+					lookingat = enemies["first"][0].global_position
+			
+			#replaces the initial value with the first enemy that shows up, as long as it can see it
 			if enemies["first"] is int:
 				if not enemy.camo or enemy.camo and sees_camo:
 					enemies["first"] = [enemy, hyp]
 			
 			#if the enemy is valid(not dead), and its an enemy, and the progress is greater than the one 
 			#thats current in the first place, and either its not camo, or it is camo and the tower can see it
-			#replace its spot
-			elif (is_instance_valid(enemies["first"][0]) and enemies["first"][0] is Enemy and
-			enemy.progress > enemies["first"][0].progress) and (
-				not enemies["first"][0].camo or enemies["first"][0].camo and sees_camo):
-				
+			elif is_instance_valid(enemies["first"][0]) and (enemies["first"][0] is Enemy and
+			enemy.progress > enemies["first"][0].progress and 
+ 			not enemies["first"][0].camo or enemies["first"][0].camo and sees_camo):
+				#replace its spot
 				enemies["first"] = [enemy, hyp]
 				
 			elif not is_instance_valid(enemies["first"][0]):
 				enemies["first"] = [enemy, hyp]
-			
-		#possible rework it so that 
-		#if len(range_scene.get_overlapping_bodies()) > 0:
+		
+		#print(enemies["first"])
 		if enemies["first"] is Array:
 			sees_enemy = true
 			timer.paused = false
