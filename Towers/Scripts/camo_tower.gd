@@ -11,8 +11,8 @@ func get_upgrade_data() -> Array:
 			{"name": "Overdrive",        "cost": 950,  "desc": "Pushes the mechanism past its limits."}
 		],
 		[
-			{"name": "Thermal Lens",     "cost": 600,  "desc": "Allows targeting of camo enemies."},
-			{"name": "Full Spectrum",    "cost": 1100, "desc": "Greatly increases range as well."}
+			{"name": "Thermal Lens",     "cost": 600,  "desc": "Range is increased for maximum efficiency."},
+			{"name": "Full Spectrum",    "cost": 1100, "desc": "Greatly increases range."}
 		],
 	]
 
@@ -32,7 +32,7 @@ func upgrade(upg_path: int):
 			cooldown -= 1.0
 	elif upg_path == 3:
 		if path[upg_path-1] == 1:
-			sees_camo = true
+			attack_range += 1
 		elif path[upg_path-1] == 2:
 			attack_range += 3
 	return "its real"

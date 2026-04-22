@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var money = 650
+var money = 6500
 var tower_scenes = {
 	"Basic":  "res://Towers/basic_tower.tscn",
 	"Sniper": "res://Towers/sniper.tscn",
