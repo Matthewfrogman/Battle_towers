@@ -1,5 +1,8 @@
 extends Node2D
 
+# --- Signal added here ---
+signal boss_wave_completed
+
 const PATH_BASIC   = "res://enemies/enemy_base.tscn"
 const PATH_SPEEDER = "res://enemies/speeder_body.tscn"
 const PATH_TANK    = "res://enemies/tank_enemy.tscn"
@@ -236,8 +239,6 @@ const WAVES: Array = [
 
 	[["boss", 1]]
 ]
-#matt's possible oopise
-
 
 func _launch_current_wave() -> void:
 	start_wave(current_wave)
@@ -278,8 +279,18 @@ func _handle_spawning(delta: float) -> void:
 	_spawn_timer = spawn_interval
 
 func _on_wave_finished() -> void:
+	# Detect if the wave just finished was a boss wave
+	var is_boss_wave = false
+	for group in WAVES[current_wave]:
+		if group[0] == "boss":
+			is_boss_wave = true
+			break
+			
 	current_wave += 1
 	wave = current_wave + 1
+
+	if is_boss_wave:
+		boss_wave_completed.emit()
 
 	if current_wave >= WAVES.size():
 		current_wave = 0
