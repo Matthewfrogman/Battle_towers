@@ -35,4 +35,4 @@ func upgrade(upg_path: int):
 			attack += 5
 		elif path[upg_path-1] == 2:
 			attack += 10
-	return "its real"
+	return
