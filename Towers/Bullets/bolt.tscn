@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://uap6qkgl51if"]
+
+[ext_resource type="PackedScene" uid="uid://dxugluqdqx6w5" path="res://Towers/Bullets/bullet.tscn" id="1_awcic"]
+[ext_resource type="Texture2D" uid="uid://kynv1r7v7glh" path="res://Towers/Bullets/Images/bolt.png" id="2_uc1y0"]
+
+[node name="Bolt" unique_id=901331464 instance=ExtResource("1_awcic")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=2013745526]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_uc1y0")
