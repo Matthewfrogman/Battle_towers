@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bclt46tw2dkat"]
 
 [node name="Control" type="Control" unique_id=1898711812]
+top_level = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -9,6 +10,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Win_screen" type="Label" parent="." unique_id=741563374]
+top_level = true
 layout_mode = 0
 offset_left = 321.0
 offset_top = 238.0

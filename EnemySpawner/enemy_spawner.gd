@@ -289,8 +289,8 @@ func _on_wave_finished() -> void:
 	current_wave += 1
 	wave = current_wave + 1
 
-	#if is_boss_wave:
-		#boss_wave_completed.emit()
+	if is_boss_wave:
+		boss_wave_completed.emit()
 
 	
 	if current_wave >= WAVES.size():
