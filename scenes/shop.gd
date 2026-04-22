@@ -116,6 +116,7 @@ func _build_ui() -> void:
 func _on_toggle_pressed() -> void:
 	shop_collapsed = !shop_collapsed
 	shop_panel.visible = !shop_collapsed
+	get_node("../SpriteLayer").visible = !get_node("../SpriteLayer").visible
 	toggle_btn.text = ">" if shop_collapsed else "<"
 
 func _on_ff_pressed() -> void:
