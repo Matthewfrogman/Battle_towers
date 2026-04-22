@@ -2,16 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k88om2ff3sjt"
-path="res://.godot/imported/Debuff.png-210ad581ba59d14bbb34ca3bfbc5f613.ctex"
-metadata={
-"vram_texture": false
-}
+uid="uid://og2tv5ck70l7"
+valid=false
 
 [deps]
 
-source_file="res://enemies/Images/Debuff.png"
-dest_files=["res://.godot/imported/Debuff.png-210ad581ba59d14bbb34ca3bfbc5f613.ctex"]
+source_file="res://icon.svg"
 
 [params]
 
@@ -38,3 +34,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
