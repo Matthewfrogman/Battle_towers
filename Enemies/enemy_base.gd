@@ -31,8 +31,9 @@ func _process(delta):
 		position.x -= delta * speed
 	elif direction == 4: # Down
 		position.y += delta * speed
-	if hp <= 100:
-		modulate = Color(hp / 100.0, hp / 100.0, hp / 100.0)
+	if hp <= max_hp:
+		var ratio = float(hp) / float(max_hp)
+		modulate = Color(ratio, ratio, ratio)
 	if hp <= 0:
 		die()
 

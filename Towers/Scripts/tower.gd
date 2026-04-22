@@ -20,8 +20,13 @@ var nobuildscene: PackedScene = preload("res://Towers/no_build_zone.tscn")
 @export var pierce: int = 1
 #num of bullets. this number should ALWAYS be odd so it looks good.
 @export var projectiles: int = 1
-#a reference to the bullet/projectile it instantiates
+#a reference to the bullet/projectile it instantiates (not needed if sniper = true)
 @export var bullet_scene: PackedScene
+#if true, skips the bullet scene and instantly damages enemies (hitscan)
+@export var sniper: bool = false
+
+signal tower_selected(tower)
+signal tower_deselected
 
 var selected: bool = false
 var canshoot: bool = false
@@ -54,9 +59,17 @@ func _ready() -> void:
 	mode = "hover"
 	global_position = get_global_mouse_position()
 	range_scene.scale = Vector2(attack_range, attack_range)
-	$Range/range_ring.scale *= attack_range*0.0607
+	
+	# Calibrate ring to match the actual collision circle radius exactly.
+	var tex_size = $Range/range_ring.texture.get_size()
+	var col_shape = $Range/CollisionShape2D.shape
+	if col_shape is CircleShape2D:
+		var target_diam = col_shape.radius * 2.0
+		$Range/range_ring.scale = Vector2(target_diam / tex_size.x, target_diam / tex_size.y)
+	else:
+		$Range/range_ring.scale = Vector2(0.1, 0.1)
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
@@ -64,7 +77,6 @@ func _input(event: InputEvent) -> void:
 					if can_place(get_global_mouse_position()):
 						mode = "placed"
 						modulate = Color(1,1,1,1)
-						# FIXED LAG: Instantiate the zone ONLY ONCE here
 						var nobuildzone = nobuildscene.instantiate()
 						add_child(nobuildzone)
 					else:
@@ -73,20 +85,15 @@ func _input(event: InputEvent) -> void:
 					var madj = mpos[0] - global_position.x
 					var mopp = mpos[1] - global_position.y
 					var mhyp = (madj**2 + mopp**2)**0.5
-					if mhyp <= 50: selected = !selected
+					var was_selected = selected
+					if mhyp <= 50:
+						selected = !selected
 					else:
 						selected = false
-	elif event.is_action_pressed("test_1"):
-		upgrade(1)
-		print(path)
-		if not upgrade(1) == null:
-			print("upgrade oned")
-	elif event.is_action_pressed("test_2"):
-		upgrade(2)
-		print("upgrade twoed")
-	elif event.is_action_pressed("test_3"):
-		upgrade(3)
-		print("upgrade threed")
+					if selected and not was_selected:
+						tower_selected.emit(self)
+					elif not selected and was_selected:
+						tower_deselected.emit()
 
 func _process(_delta: float) -> void:
 	mpos = get_global_mouse_position()
@@ -128,7 +135,11 @@ func _process(_delta: float) -> void:
 			if timer.time_left <= 0.1:
 				timer.paused = true
 		
-		if canshoot and sees_enemy: shoot(bullet_speed, "angled", projectiles)
+		if canshoot and sees_enemy:
+			if sniper:
+				hitscan()
+			else:
+				shoot(bullet_speed, "angled", projectiles)
 	else:
 		position = get_global_mouse_position()
 		if can_place(position):
@@ -151,6 +162,9 @@ func shoot(speed: int, angle_mode: String, bnum: int):
 			bulletShoot(Vector2(speed*cos(angle+aIncrement), speed*sin(angle+aIncrement)))
 
 func bulletShoot(move: Vector2):
+	if bullet_scene == null:
+		push_error("bullet_scene is not assigned on tower: " + name + ". Assign it in the Inspector.")
+		return
 	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
 	bullet.global_position = marker_scene.global_position
@@ -161,15 +175,73 @@ func bulletShoot(move: Vector2):
 	canshoot = false
 	timer.wait_time = cooldown
 
+func hitscan():
+	var targets: Array = []
+	for body in range_scene.get_overlapping_bodies():
+		if body is Enemy:
+			if body.camo and not sees_camo:
+				continue
+			targets.append(body)
+	
+	targets.sort_custom(func(a, b): return a.progress > b.progress)
+	
+	var hits = 0
+	for enemy in targets:
+		if hits >= pierce:
+			break
+		if is_instance_valid(enemy):
+			enemy.lose_hp(attack)
+			upg_attack(enemy)
+			hits += 1
+	
+	canshoot = false
+	timer.wait_time = cooldown
+
 func _timer_timeout() -> void:
 	canshoot = true
 
+# --- Upgrade system ---
+
+# Override in each tower to describe upgrade paths.
+# Returns Array of 3 paths, each path is Array of 2 dicts:
+#   { "name": String, "cost": int, "desc": String }
+func get_upgrade_data() -> Array:
+	return [
+		[{"name": "Upgrade 1-1", "cost": 500, "desc": "Improves the tower."},
+		 {"name": "Upgrade 1-2", "cost": 900, "desc": "Further improvement."}],
+		[{"name": "Upgrade 2-1", "cost": 500, "desc": "Improves the tower."},
+		 {"name": "Upgrade 2-2", "cost": 900, "desc": "Further improvement."}],
+		[{"name": "Upgrade 3-1", "cost": 500, "desc": "Improves the tower."},
+		 {"name": "Upgrade 3-2", "cost": 900, "desc": "Further improvement."}],
+	]
+
+# Called by the upgrade panel. Checks money, deducts, applies upgrade.
+# Returns true on success, false if too expensive or already maxed.
+func try_upgrade(path_idx: int) -> bool:
+	var data = get_upgrade_data()
+	var tier = path[path_idx]
+	if tier >= 2:
+		return false
+	var cost = data[path_idx][tier]["cost"]
+	var shop_nodes = get_tree().get_nodes_in_group("shop_ui")
+	if shop_nodes.is_empty():
+		return false
+	var shop = shop_nodes[0]
+	if shop.money < cost:
+		return false
+	shop.spend_money(cost)
+	upgrade(path_idx + 1)
+	refresh_range_ring()
+	return true
+
+# Recalculates the range collision area scale after attack_range changes.
+# The ring's local scale is fixed — it's already correct relative to the
+# collision circle. Only the parent (range_scene) scale needs updating.
+func refresh_range_ring() -> void:
+	range_scene.scale = Vector2(attack_range, attack_range)
+
 func upgrade(upg_path: int):
-	#gets replaced by the real towers, here for convenience
-	#this print statement should never really be called
 	print(upg_path)
 
-func upg_attack(enemy: Enemy):
-	#gets replaced by the real towers, here for convenience
-	#this print statement should never really be called
-	print(enemy)
+func upg_attack(_enemy: Enemy):
+	pass

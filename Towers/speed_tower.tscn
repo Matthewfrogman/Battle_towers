@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c0gt8k8pm2jnc"]
 
 [ext_resource type="PackedScene" uid="uid://c86a6pav5hv4v" path="res://Towers/tower.tscn" id="1_0cntj"]
+[ext_resource type="Script" uid="uid://speed1script001" path="res://Towers/Scripts/speed_tower.gd" id="2_speed"]
 [ext_resource type="PackedScene" uid="uid://bykqnehxqsnsn" path="res://Towers/Bullets/fireball.tscn" id="2_wuvjc"]
 [ext_resource type="Texture2D" uid="uid://csqiuxmrj13mo" path="res://Towers/Images/speedtower.png" id="3_wuvjc"]
 [ext_resource type="Texture2D" uid="uid://bna63qbsmfinq" path="res://Towers/Images/speedtower_guns.png" id="4_y48k1"]
@@ -12,6 +13,7 @@ size = Vector2(47, 45)
 radius = 25.079872
 
 [node name="Tower" unique_id=598119214 instance=ExtResource("1_0cntj")]
+script = ExtResource("2_speed")
 cooldown = 0.5
 attack_range = 5
 attack = 10

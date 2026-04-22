@@ -32,7 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://cpantiukf4nhx" path="res://scenes/end_area_collider.tscn" id="30_cufw0"]
 [ext_resource type="PackedScene" uid="uid://bekds5usu03lj" path="res://EnemySpawner/enemy_spawner.tscn" id="30_pum3p"]
 [ext_resource type="PackedScene" uid="uid://bassaekmhxqic" path="res://scenes/hp_counter.tscn" id="32_hrqd3"]
-[ext_resource type="PackedScene" path="res://scenes/wave_counter.tscn" id="33_d4add"]
+[ext_resource type="PackedScene" uid="uid://cvj160dymtppm" path="res://scenes/wave_counter.tscn" id="33_d4add"]
 [ext_resource type="PackedScene" uid="uid://bulfkm3x86i3l" path="res://Towers/no_build_zone.tscn" id="33_gac6i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aiixn"]
@@ -937,7 +937,7 @@ position = Vector2(86.11112, 96.20253)
 scale = Vector2(11.878657, 1.6148157)
 
 [node name="NoBuildZone2" parent="NoBuilding" unique_id=1322629870 instance=ExtResource("33_gac6i")]
-position = Vector2(192.70831, 162.02531)
+position = Vector2(192.01389, 161.6034)
 rotation = 1.5782913
 scale = Vector2(7.6726494, 1.6148157)
 
