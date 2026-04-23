@@ -14,6 +14,7 @@ const PATH_BOSS3   = "res://enemies/Boss_3.tscn"
 
 @export_enum("boss1", "boss2", "boss3") var selected_boss: String = "boss1"
 @export var spawner_path: NodePath
+@export var enemy_paths: Array[NodePath] = []
 
 var spawn_interval: float = 0.4
 
@@ -27,6 +28,7 @@ var button_margin := 16
 
 @export var current_wave: int = 0
 @export var wave: int = 1
+var displayed_wave: int = 1
 
 var _scenes := {}
 var _spawner: Node2D
@@ -45,6 +47,7 @@ var _style_press: StyleBoxFlat
 
 var _wave_click_count: int = 0
 var _alive_enemies: int = 0
+var _last_wave_was_boss: bool = false
 
 func _ready() -> void:
 	randomize()
@@ -151,96 +154,54 @@ const WAVES: Array = [
 	[["tank", 30]],
 	[["basic", 25], ["speeder", 45], ["tank", 5]],
 
-	 #wave 11
-	#[["basic", 20], ["tank", 20], ["camo", 10]],
-	 #wave 12
-	#[["speeder", 35], ["camo", 15]],
-	 #wave 13
-	#[["tank", 30]],
-	 #wave 14
-	#[["basic", 25], ["speeder", 25], ["camo", 20]],
-	 #wave 15
-	#[["basic", 30], ["tank", 20]],
-
+	 # wave 11
+	[["basic", 20], ["tank", 20], ["camo", 10]],
+	 # wave 12
+	[["speeder", 35], ["camo", 15]],
+	 # wave 13
+	[["tank", 30]],
+	 # wave 14
+	[["basic", 25], ["speeder", 25], ["camo", 20]],
+	 # wave 15
+	[["basic", 30], ["tank", 20]],
 	# wave 16
-	#[["tank", 35], ["camo", 20]],
+	[["tank", 35], ["camo", 20]],
 	# wave 17
-	#[["speeder", 50]],
+	[["speeder", 50]],
 	# wave 18
-	#[["basic", 40], ["tank", 25]],
+	[["basic", 40], ["tank", 25]],
 	# wave 19
-	#[["camo", 40]],
+	[["camo", 40]],
 	# wave 20
-	#[["tank", 40], ["speeder", 40]],
-
+	[["tank", 40], ["speeder", 40]],
 	# wave 21
-	#[["basic", 50]],
+	[["basic", 50]],
 	# wave 22
-	#[["tank", 45]],
+	[["tank", 45]],
 	# wave 23
-	#[["speeder", 60]],
+	[["speeder", 60]],
 	# wave 24
-	#[["camo", 50]],
+	[["camo", 50]],
 	# wave 25
-	#[["basic", 40], ["tank", 40]],
-
+	[["basic", 40], ["tank", 40]],
 	# wave 26
-	#[["speeder", 70]],
+	[["speeder", 70]],
 	# wave 27
-	#[["camo", 60]],
+	[["camo", 60]],
 	# wave 28
-	#[["tank", 55]],
+	[["tank", 55]],
 	# wave 29
-	#[["basic", 60], ["speeder", 40]],
+	[["basic", 60], ["speeder", 40]],
 	# wave 30
-	#[["tank", 60], ["camo", 40]],
+	[["tank", 60], ["camo", 40]],
 
-	# wave 31
-	#[["speeder", 80]],
-	# wave 32
-	#[["camo", 70]],
-	# wave 33
-	#[["tank", 70]],
-	# wave 34
-	#[["basic", 80]],
-	# wave 35
-	#[["tank", 80], ["camo", 60]],
-
-	# wave 36
-	#[["speeder", 90]],
-	# wave 37
-	#[["camo", 80]],
-	# wave 38
-	#[["tank", 85]],
-	# wave 39
-	#[["basic", 100]],
-	# wave 40
-	#[["tank", 90], ["camo", 70]],
-
-	# wave 41
-	#[["speeder", 100]],
-	# wave 42
-	#[["camo", 100]],
-	# wave 43
-	#[["tank", 100]],
-	# wave 44
-	#[["basic", 120]],
-	# wave 45
-	#[["tank", 120]],
-
-	# wave 46
-	#[["speeder", 120]],
-	# wave 47
-	#[["camo", 120]],
-	# wave 48
-	#[["tank", 130]],
-	# wave 49
-	#[["basic", 140]],
-
+	# wave 31 - BOSS
 	[["boss", 1]]
 ]
 
 func _launch_current_wave() -> void:
+	displayed_wave = current_wave + 1
+	wave = current_wave + 1
 	start_wave(current_wave)
 
 func start_wave(wave_index: int) -> void:
@@ -276,22 +237,31 @@ func _handle_spawning(delta: float) -> void:
 		return
 
 	_spawn_next()
-	_spawn_timer = spawn_interval
+	if current_wave >= 14:
+		_spawn_timer = 0.2
+	elif current_wave < 2:
+		_spawn_timer = 0.8
+	else:
+		_spawn_timer = spawn_interval
 
 func _on_wave_finished() -> void:
-	# Detect if the wave just finished was a boss wave
-	var is_boss_wave = false
+	# Check if the wave that just finished spawning was a boss wave.
+	_last_wave_was_boss = false
 	for group in WAVES[current_wave]:
 		if group[0] == "boss":
-			is_boss_wave = true
+			_last_wave_was_boss = true
 			break
 			
 	current_wave += 1
-	wave = current_wave + 1
-
-	if is_boss_wave:
-		boss_wave_completed.emit()
-
+	
+	var shop_nodes = get_tree().get_nodes_in_group("shop_ui")
+	if not shop_nodes.is_empty():
+		shop_nodes[0].add_money(100)
+		
+	var machines = get_tree().get_nodes_in_group("money_machine")
+	for m in machines:
+		if m.has_method("gain_money"):
+			m.gain_money()
 	
 	if current_wave >= WAVES.size():
 		current_wave = 0
@@ -300,7 +270,7 @@ func _on_wave_finished() -> void:
 		_set_outline(outline_normal)
 		return
 
-	if _auto_mode and _alive_enemies == 0:
+	if _auto_mode and _alive_enemies == 0 and not _last_wave_was_boss:
 		_launch_current_wave()
 
 func _spawn_next() -> void:
@@ -313,6 +283,14 @@ func _spawn_next() -> void:
 	var spawn_pos = _spawner_start_pos + Vector2(0, y_offset)
 
 	var instance = _scenes[type].instantiate()
+	
+	var hp_mult = 1.0 + (current_wave * 0.15)
+	if not instance.get("boss"):
+		if "max_hp" in instance:
+			instance.max_hp = int(instance.max_hp * hp_mult)
+		if "hp" in instance:
+			instance.hp = int(instance.hp * hp_mult)
+
 	get_tree().get_root().add_child(instance)
 	instance.global_position = spawn_pos
 
@@ -323,6 +301,15 @@ func _on_enemy_died() -> void:
 	_alive_enemies -= 1
 	if _alive_enemies < 0:
 		_alive_enemies = 0
+
+	# If this was a boss wave and all enemies are gone, trigger the win
+	# (only if it was killed by towers, not just reaching the end).
+	if _last_wave_was_boss and _alive_enemies == 0 and not _spawning:
+		var map = get_parent()
+		if map.get("player_hp") != null and map.player_hp <= 0:
+			return # Player died, don't trigger win!
+		boss_wave_completed.emit()
+		return
 
 	if _auto_mode and not _spawning and _spawn_queue.is_empty() and _alive_enemies == 0:
 		_launch_current_wave()

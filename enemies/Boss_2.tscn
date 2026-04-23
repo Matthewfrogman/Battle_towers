@@ -279,13 +279,15 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3w75k"]
-radius = 45.0
+radius = 61.11093
 height = 164.0
 
 [node name="Boss" type="CharacterBody2D" unique_id=300668268]
 script = ExtResource("1_qj7a1")
-speed = 15
-hp = 20000
+speed = 10
+hp = 150000
+dmg_to_player = 101
+boss = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1808934838]
 scale = Vector2(0.3, 0.3)
@@ -294,6 +296,7 @@ autoplay = "default"
 frame_progress = 0.5419566
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=838042166]
+scale = Vector2(0.4000004, 0.32000077)
 shape = SubResource("CapsuleShape2D_3w75k")
 
 [node name="Debuff" type="Sprite2D" parent="." unique_id=988008799]

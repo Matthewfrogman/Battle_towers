@@ -39,9 +39,10 @@ height = 108.0
 
 [node name="Boss" type="CharacterBody2D" unique_id=2058883378]
 script = ExtResource("1_eusoj")
-speed = 10
-hp = 15000
+speed = 32
+hp = 90000
 dmg_to_player = 100
+boss = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1784368160]
 scale = Vector2(0.3, 0.3)
@@ -51,6 +52,7 @@ frame_progress = 0.026630012
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=750358474]
 position = Vector2(-2, -7)
+scale = Vector2(0.479999, 0.44000036)
 shape = SubResource("CapsuleShape2D_0ws5w")
 
 [node name="Debuff" type="Sprite2D" parent="." unique_id=1217622608]

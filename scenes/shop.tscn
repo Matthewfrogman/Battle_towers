@@ -7,15 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://dnufllpevmtkr" path="res://Towers/Images/Firecracker_Base.png" id="5_44xle"]
 [ext_resource type="Texture2D" uid="uid://cm84n0bvn8tkb" path="res://Towers/Images/camo_base.png" id="7_24it5"]
 [ext_resource type="Texture2D" uid="uid://bs885t7hk4eqn" path="res://Towers/Images/camo_head.png" id="8_7mqwv"]
-[ext_resource type="Script" uid="uid://dkspbanfbcqvp" path="res://scenes/control.gd" id="8_y6sft"]
 [ext_resource type="Texture2D" uid="uid://dwij5ve3e7ojh" path="res://Towers/Images/sniper_base.png" id="9_gobkm"]
 [ext_resource type="Texture2D" uid="uid://deuno3awvnj2j" path="res://Towers/Images/sniper_gun.png" id="10_j14q8"]
+[ext_resource type="Texture2D" uid="uid://dhbafh3dsnm4u" path="res://Towers/Images/money_machine.png" id="11_1v8qu"]
 [ext_resource type="Texture2D" uid="uid://byxfvnhcq7bj3" path="res://Towers/Images/tesla.png" id="11_5u241"]
 
 [node name="Control" type="Control" unique_id=1070400202]
 layout_mode = 3
+anchors_preset = 0
 
-@@ -17,3 +26,50 @@ script = ExtResource("8_y6sft")
 [node name="ShopUI" type="CanvasLayer" parent="." unique_id=444425766]
 unique_name_in_owner = true
 script = ExtResource("1_lx5au")
@@ -66,3 +66,8 @@ texture = ExtResource("4_2fc2m")
 position = Vector2(62.47708, -83.81592)
 scale = Vector2(1.9054649, 1.1793022)
 texture = ExtResource("4_1v8qu")
+
+[node name="MoneyMachine" type="Sprite2D" parent="SpriteLayer" unique_id=1782139465]
+position = Vector2(124.99999, 298)
+scale = Vector2(0.11999999, 0.11999998)
+texture = ExtResource("11_1v8qu")

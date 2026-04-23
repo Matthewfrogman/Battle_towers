@@ -13,7 +13,11 @@ config_version=5
 config/name="Battle_Towers"
 run/main_scene="uid://7vd1hu60bn7b"
 config/features=PackedStringArray("4.6", "Forward Plus")
-<<<<<<<Updatedupstreamrun/main_scene="uid://6hkgvxmj0xvq"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
 
 [global_group]
 

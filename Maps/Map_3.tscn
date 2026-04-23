@@ -10,10 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://cnfjfb58e7bov" path="res://scenes/enemy_direction_collider.tscn" id="7_ggagh"]
 [ext_resource type="PackedScene" uid="uid://bkq4uuhdd0nop" path="res://scenes/edc_splitte_Map3.tscn" id="8_ggagh"]
 [ext_resource type="PackedScene" uid="uid://bekds5usu03lj" path="res://EnemySpawner/enemy_spawner.tscn" id="10_j67qv"]
-[ext_resource type="PackedScene" path="res://Towers/no_build_zone.tscn" id="11_xi3ud"]
-[ext_resource type="PackedScene" uid="uid://55fdroowqy2k" path="res://scenes/hp_counter.tscn" id="12_qvadu"]
-[ext_resource type="PackedScene" path="res://scenes/wave_counter.tscn" id="13_b4naw"]
-
+[ext_resource type="PackedScene" uid="uid://bulfkm3x86i3l" path="res://Towers/no_build_zone.tscn" id="11_xi3ud"]
+[ext_resource type="PackedScene" uid="uid://bassaekmhxqic" path="res://scenes/hp_counter.tscn" id="12_qvadu"]
+[ext_resource type="PackedScene" uid="uid://cvj160dymtppm" path="res://scenes/wave_counter.tscn" id="13_b4naw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ud3xj"]
 texture = ExtResource("1_24ala")
@@ -523,15 +522,15 @@ scale = Vector2(0.235, 0.995)
 send_direction = 4
 
 [node name="enemy_direction_collider2" parent="." unique_id=61129167 instance=ExtResource("7_ggagh")]
-position = Vector2(430.18872, 321.60492)
-rotation = -0.7853982
-scale = Vector2(1.14, 0.3)
+position = Vector2(435.37738, 314.8148)
+rotation = -0.3441821
+scale = Vector2(1.14, 0.2490997)
 send_direction = 3
 
 [node name="enemy_direction_collider3" parent="." unique_id=1227469939 instance=ExtResource("7_ggagh")]
-position = Vector2(245.28307, 322.83957)
-rotation = 0.7853982
-scale = Vector2(1.13, 0.27)
+position = Vector2(237.73587, 315.4321)
+rotation = 0.3969464
+scale = Vector2(1.13, 0.14081118)
 send_direction = 1
 
 [node name="enemy_direction_collider4" parent="." unique_id=79870989 instance=ExtResource("7_ggagh")]
@@ -540,6 +539,7 @@ scale = Vector2(0.12, 1)
 send_direction = 4
 
 [node name="CanvasLayer" parent="." unique_id=444425766 instance=ExtResource("5_r4fia")]
+anchors_preset = 0
 
 [node name="EDC_splitter" parent="." unique_id=847203412 instance=ExtResource("8_ggagh")]
 position = Vector2(246.69814, 98.14815)
