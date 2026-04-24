@@ -1,9 +1,9 @@
 extends Control
 
-const TITLE_TEXT    = "Battle Towers"
+const TITLE_TEXT	= "Battle Towers"
 const BREATHE_SCALE = 0.03
 const BREATHE_SPEED = 1.8
-const BG_IMAGE      = "res://scenes/mapsforselect/mainmenuart/pathway_image.jpg"
+const BG_IMAGE	  = "res://scenes/mapsforselect/mainmenuart/pathway_image.jpg"
 const BUTTON_IMAGE  = "res://scenes/mapsforselect/mainmenuart/button.png"
 
 var title_label: Label
@@ -13,7 +13,7 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
 	# Background
-	if ResourceLoader.exists(BG_IMAGE):
+	if ResourceLoader.exists(BG_IMAGE) or ResourceLoader.exists(BG_IMAGE + ".import"):
 		var bg := TextureRect.new()
 		bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		bg.texture = load(BG_IMAGE)
@@ -84,10 +84,10 @@ func _ready() -> void:
 	credits.text = "Logan K  ·  Kyiden C  ·  Jacob C  ·  Jacob D  ·  Matthew H"
 	credits.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	credits.anchor_left   = 0.0
-	credits.anchor_top    = 1.0
+	credits.anchor_top	= 1.0
 	credits.anchor_right  = 1.0
 	credits.anchor_bottom = 1.0
-	credits.offset_top    = -30
+	credits.offset_top	= -30
 	credits.offset_bottom = -6
 	credits.add_theme_font_size_override("font_size", 12)
 	credits.add_theme_color_override("font_color", Color(0.7, 0.7, 0.7, 0.6))
@@ -99,31 +99,31 @@ func _make_button(label_text: String) -> Button:
 	btn.custom_minimum_size = Vector2(230, 56)
 	btn.clip_contents = false
 
-	if ResourceLoader.exists(BUTTON_IMAGE):
+	if ResourceLoader.exists(BUTTON_IMAGE) or ResourceLoader.exists(BUTTON_IMAGE + ".import"):
 		var tex := load(BUTTON_IMAGE)
 		var style := StyleBoxTexture.new()
 		style.texture = tex
 		style.texture_margin_left   = 8
 		style.texture_margin_right  = 8
-		style.texture_margin_top    = 8
+		style.texture_margin_top	= 8
 		style.texture_margin_bottom = 8
 		btn.add_theme_stylebox_override("normal",  style)
 		btn.add_theme_stylebox_override("hover",   style)
 		btn.add_theme_stylebox_override("pressed", style)
 		btn.add_theme_stylebox_override("focus",   StyleBoxEmpty.new())
 		btn.add_theme_font_size_override("font_size", 26)
-		btn.add_theme_color_override("font_color",         Color(0.0, 0.357, 0.137, 1.0))
+		btn.add_theme_color_override("font_color",		 Color(0.0, 0.357, 0.137, 1.0))
 		btn.add_theme_color_override("font_outline_color", Color(0, 0, 0))
 		btn.add_theme_constant_override("outline_size", 3)
 	else:
 		var s := StyleBoxFlat.new()
-		s.bg_color     = Color(0.1, 0.1, 0.1)
+		s.bg_color	 = Color(0.1, 0.1, 0.1)
 		s.border_color = Color(0.6, 0.6, 0.6)
 		s.set_border_width_all(2)
 		s.set_corner_radius_all(10)
 		btn.add_theme_stylebox_override("normal", s)
 		var sh := s.duplicate() as StyleBoxFlat
-		sh.bg_color     = Color(0.2, 0.2, 0.2)
+		sh.bg_color	 = Color(0.2, 0.2, 0.2)
 		sh.border_color = Color(0.8, 0.8, 0.8)
 		btn.add_theme_stylebox_override("hover", sh)
 		var sp := s.duplicate() as StyleBoxFlat

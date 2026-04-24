@@ -12,24 +12,24 @@ const MAP_SCENES = [
 	"res://Maps/Map_2.tscn",
 	"res://Maps/Map_3.tscn"
 ]
-const BG_IMAGE     = "res://scenes/mapsforselect/mainmenuart/pathway_image.jpg"
+const BG_IMAGE	 = "res://scenes/mapsforselect/mainmenuart/pathway_image.jpg"
 const BUTTON_IMAGE = "res://scenes/mapsforselect/mainmenuart/button.png"
 const BREATHE_SCALE = 0.03
 const BREATHE_SPEED = 1.8
 
 var current_index := 0
 var title_label:  Label
-var map_image:    TextureRect
+var map_image:	TextureRect
 var map_name_lbl: Label
 var map_sub_lbl:  Label
-var index_lbl:    Label
+var index_lbl:	Label
 var breathe_time  := 0.0
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
 	# Background
-	if ResourceLoader.exists(BG_IMAGE):
+	if ResourceLoader.exists(BG_IMAGE) or ResourceLoader.exists(BG_IMAGE + ".import"):
 		var bg := TextureRect.new()
 		bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		bg.texture = load(BG_IMAGE)
@@ -120,7 +120,7 @@ func _ready() -> void:
 	map_image.custom_minimum_size = Vector2(280, 175)
 	map_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	map_image.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
-	if ResourceLoader.exists(MAP_IMAGES[current_index]):
+	if ResourceLoader.exists(MAP_IMAGES[current_index]) or ResourceLoader.exists(MAP_IMAGES[current_index] + ".import"):
 		map_image.texture = load(MAP_IMAGES[current_index])
 	frame.add_child(map_image)
 
@@ -153,31 +153,31 @@ func _make_button(label_text: String) -> Button:
 	var btn := Button.new()
 	btn.text = label_text
 	btn.custom_minimum_size = Vector2(220, 54)
-	if ResourceLoader.exists(BUTTON_IMAGE):
+	if ResourceLoader.exists(BUTTON_IMAGE) or ResourceLoader.exists(BUTTON_IMAGE + ".import"):
 		var tex := load(BUTTON_IMAGE)
 		var style := StyleBoxTexture.new()
 		style.texture = tex
 		style.texture_margin_left   = 8
 		style.texture_margin_right  = 8
-		style.texture_margin_top    = 8
+		style.texture_margin_top	= 8
 		style.texture_margin_bottom = 8
 		btn.add_theme_stylebox_override("normal",  style)
 		btn.add_theme_stylebox_override("hover",   style)
 		btn.add_theme_stylebox_override("pressed", style)
 		btn.add_theme_stylebox_override("focus",   StyleBoxEmpty.new())
 		btn.add_theme_font_size_override("font_size", 26)
-		btn.add_theme_color_override("font_color",         Color(0.0, 0.415, 0.121, 1.0))
+		btn.add_theme_color_override("font_color",		 Color(0.0, 0.415, 0.121, 1.0))
 		btn.add_theme_color_override("font_outline_color", Color(0, 0, 0))
 		btn.add_theme_constant_override("outline_size", 3)
 	else:
 		var s := StyleBoxFlat.new()
-		s.bg_color     = Color(0.1, 0.1, 0.1)
+		s.bg_color	 = Color(0.1, 0.1, 0.1)
 		s.border_color = Color(0.6, 0.6, 0.6)
 		s.set_border_width_all(2)
 		s.set_corner_radius_all(10)
 		btn.add_theme_stylebox_override("normal", s)
 		var sh := s.duplicate() as StyleBoxFlat
-		sh.bg_color     = Color(0.2, 0.2, 0.2)
+		sh.bg_color	 = Color(0.2, 0.2, 0.2)
 		sh.border_color = Color(0.8, 0.8, 0.8)
 		btn.add_theme_stylebox_override("hover", sh)
 		var sp := s.duplicate() as StyleBoxFlat
@@ -192,25 +192,25 @@ func _make_arrow(label_text: String) -> Button:
 	var btn := Button.new()
 	btn.text = label_text
 	btn.custom_minimum_size = Vector2(52, 52)
-	if ResourceLoader.exists(BUTTON_IMAGE):
+	if ResourceLoader.exists(BUTTON_IMAGE) or ResourceLoader.exists(BUTTON_IMAGE + ".import"):
 		var tex := load(BUTTON_IMAGE)
 		var style := StyleBoxTexture.new()
 		style.texture = tex
 		style.texture_margin_left   = 8
 		style.texture_margin_right  = 8
-		style.texture_margin_top    = 8
+		style.texture_margin_top	= 8
 		style.texture_margin_bottom = 8
 		btn.add_theme_stylebox_override("normal",  style)
 		btn.add_theme_stylebox_override("hover",   style)
 		btn.add_theme_stylebox_override("pressed", style)
 		btn.add_theme_stylebox_override("focus",   StyleBoxEmpty.new())
 		btn.add_theme_font_size_override("font_size", 28)
-		btn.add_theme_color_override("font_color",         Color(0.0, 0.391, 0.004, 1.0))
+		btn.add_theme_color_override("font_color",		 Color(0.0, 0.391, 0.004, 1.0))
 		btn.add_theme_color_override("font_outline_color", Color(0, 0, 0))
 		btn.add_theme_constant_override("outline_size", 3)
 	else:
 		var s := StyleBoxFlat.new()
-		s.bg_color     = Color(0.1, 0.1, 0.1)
+		s.bg_color	 = Color(0.1, 0.1, 0.1)
 		s.border_color = Color(0.6, 0.6, 0.6)
 		s.set_border_width_all(2)
 		s.set_corner_radius_all(10)
@@ -227,11 +227,11 @@ func _make_arrow(label_text: String) -> Button:
 	return btn
 
 func _update_map_display() -> void:
-	if ResourceLoader.exists(MAP_IMAGES[current_index]):
+	if ResourceLoader.exists(MAP_IMAGES[current_index]) or ResourceLoader.exists(MAP_IMAGES[current_index] + ".import"):
 		map_image.texture = load(MAP_IMAGES[current_index])
 	map_name_lbl.text = MAPS[current_index]
 	map_sub_lbl.text  = MAP_SUBTITLES[current_index]
-	index_lbl.text    = "%d / %d" % [current_index + 1, MAPS.size()]
+	index_lbl.text	= "%d / %d" % [current_index + 1, MAPS.size()]
 
 func _on_hover(btn: Button, hovering: bool) -> void:
 	var target_scale := 1.10 if hovering else 1.0
@@ -258,9 +258,11 @@ func _on_right() -> void:
 
 func _on_play() -> void:
 	var scene_path: String = MAP_SCENES[current_index]
-	if ResourceLoader.exists(scene_path):
+	if ResourceLoader.exists(scene_path) or ResourceLoader.exists(scene_path + ".remap"):
 		get_tree().change_scene_to_file(scene_path)
 	else:
+		# Fallback just in case
+		get_tree().change_scene_to_file(scene_path)
 		push_warning("Map scene not found: " + scene_path)
 
 func _on_back() -> void:

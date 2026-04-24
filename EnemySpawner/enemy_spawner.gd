@@ -3,14 +3,14 @@ extends Node2D
 # --- Signal added here ---
 signal boss_wave_completed
 
-const PATH_BASIC   = "res://enemies/enemy_base.tscn"
-const PATH_SPEEDER = "res://enemies/speeder_body.tscn"
-const PATH_TANK    = "res://enemies/tank_enemy.tscn"
-const PATH_CAMO    = "res://enemies/camo_enemy.tscn"
+const PATH_BASIC   = "res://Enemies/enemy_base.tscn"
+const PATH_SPEEDER = "res://Enemies/speeder_body.tscn"
+const PATH_TANK	= "res://Enemies/tank_enemy.tscn"
+const PATH_CAMO	= "res://Enemies/camo_enemy.tscn"
 
-const PATH_BOSS    = "res://enemies/Boss_1.tscn"
-const PATH_BOSS2   = "res://enemies/Boss_2.tscn"
-const PATH_BOSS3   = "res://enemies/Boss_3.tscn"
+const PATH_BOSS	= "res://Enemies/Boss_1.tscn"
+const PATH_BOSS2   = "res://Enemies/Boss_2.tscn"
+const PATH_BOSS3   = "res://Enemies/Boss_3.tscn"
 
 @export_enum("boss1", "boss2", "boss3") var selected_boss: String = "boss1"
 @export var spawner_path: NodePath
@@ -72,10 +72,9 @@ func _try_load_scenes() -> void:
 	}
 
 	for key in paths:
-		if ResourceLoader.exists(paths[key]):
-			_scenes[key] = load(paths[key])
-		else:
-			_scenes[key] = null
+		# Directly load scenes because ResourceLoader.exists might fail in exported builds 
+		# for .tscn files (they become .remap).
+		_scenes[key] = load(paths[key])
 
 func _build_button() -> void:
 	_btn = Button.new()

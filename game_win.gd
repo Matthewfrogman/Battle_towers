@@ -27,7 +27,7 @@ func _ready() -> void:
 	canvas.add_child(root_ctrl)
 
 	# Background
-	if ResourceLoader.exists(BG_IMAGE):
+	if ResourceLoader.exists(BG_IMAGE) or ResourceLoader.exists(BG_IMAGE + ".import"):
 		var bg := TextureRect.new()
 		bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		bg.texture = load(BG_IMAGE)
@@ -125,15 +125,15 @@ func _make_button(lbl: String) -> Button:
 	btn.custom_minimum_size = Vector2(190, 54)
 
 	var s := StyleBoxFlat.new()
-	s.bg_color        = Color(0.1, 0.1, 0.1)
-	s.border_color    = Color(0.6, 0.6, 0.6)
+	s.bg_color		= Color(0.1, 0.1, 0.1)
+	s.border_color	= Color(0.6, 0.6, 0.6)
 	s.set_border_width_all(2)
 	s.set_corner_radius_all(10)
 	s.set_content_margin_all(8)
 	btn.add_theme_stylebox_override("normal", s)
 
 	var sh := s.duplicate() as StyleBoxFlat
-	sh.bg_color     = Color(0.2, 0.2, 0.2)
+	sh.bg_color	 = Color(0.2, 0.2, 0.2)
 	sh.border_color = Color(0.8, 0.8, 0.8)
 	btn.add_theme_stylebox_override("hover", sh)
 
