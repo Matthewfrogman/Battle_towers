@@ -1,5 +1,9 @@
 extends Control
 
+@export var appear_sound: AudioStream
+@export var appear_sound_volume: float = 0.0
+@export var click_sound: AudioStream
+@export var click_sound_volume: float = 0.0
 const MAIN_MENU = "res://scenes/main_menu.tscn"
 const BG_IMAGE  = "res://scenes/mapsforselect/mainmenuart/pathway_image.jpg"
 
@@ -7,6 +11,16 @@ var _breathe_time := 0.0
 var _title_label: Label
 
 func _ready() -> void:
+	if appear_sound:
+		var audio = AudioStreamPlayer.new()
+		audio.stream = appear_sound
+		audio.volume_db = appear_sound_volume
+		audio.bus = "Master"
+		audio.process_mode = Node.PROCESS_MODE_ALWAYS
+		get_tree().root.call_deferred("add_child", audio)
+		audio.play()
+		audio.finished.connect(audio.queue_free)
+
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
 	# Orphaned towers/enemies are parented to root and survive scene changes.
@@ -159,10 +173,23 @@ func _process(delta: float) -> void:
 	_title_label.scale = Vector2(s, s)
 	_title_label.pivot_offset = _title_label.size / 2.0
 
+func _play_click_sound() -> void:
+	if click_sound:
+		var audio = AudioStreamPlayer.new()
+		audio.stream = click_sound
+		audio.volume_db = click_sound_volume
+		audio.bus = "Master"
+		audio.process_mode = Node.PROCESS_MODE_ALWAYS
+		get_tree().root.add_child(audio)
+		audio.play()
+		audio.finished.connect(audio.queue_free)
+
 func _on_menu() -> void:
+	_play_click_sound()
 	Engine.time_scale = 1.0
 	get_tree().change_scene_to_file(MAIN_MENU)
 
 func _on_quit() -> void:
+	_play_click_sound()
 	Engine.time_scale = 1.0
 	get_tree().quit()

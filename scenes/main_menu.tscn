@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://7vd1hu60bn7b"]
 
-[ext_resource type="Script" uid="uid://bdt15md122bom" path="res://scenes/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://6hkgvxmj0xvq" path="res://scenes/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="AudioStream" uid="uid://dcon541j5thjm" path="res://audio/uiclick.mp3" id="2_ekxnf"]
 
 [node name="MainMenu" type="Control" unique_id=1587199492]
 layout_mode = 3
@@ -8,3 +9,5 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_l6cm7")
+click_sound = ExtResource("2_ekxnf")
+click_sound_volume = 3.0

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cfamatig7kjw2"]
 
 [ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://Enemies/enemy_base.gd" id="1_fr7lv"]
+[ext_resource type="AudioStream" uid="uid://dfs0pphm2jdlu" path="res://audio/newenemydeath.MP3" id="2_mmkw6"]
 [ext_resource type="Texture2D" uid="uid://cusxjs3mawfhx" path="res://Map1_assets/basic.png" id="2_sw0xa"]
 [ext_resource type="Texture2D" uid="uid://k88om2ff3sjt" path="res://Enemies/Images/Debuff.png" id="3_j1ss0"]
 
@@ -33,6 +34,8 @@ animations = [{
 [node name="enemy" type="CharacterBody2D" unique_id=1334610211]
 script = ExtResource("1_fr7lv")
 speed = 40
+death_sound = ExtResource("2_mmkw6")
+death_sound_volume = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1671414404]
 shape = SubResource("CapsuleShape2D_sw0xa")

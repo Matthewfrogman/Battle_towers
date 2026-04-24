@@ -1,5 +1,9 @@
 extends Control
 
+@export var appear_sound: AudioStream
+@export var appear_sound_volume: float = 0.0
+@export var click_sound: AudioStream
+@export var click_sound_volume: float = 0.0
 const MAPS = ["Map 1", "Map 2", "Map 3"]
 const MAP_SUBTITLES = ["The Plains", "The Volcano", "The Cyber Grid"]
 const MAP_IMAGES = [
@@ -26,6 +30,16 @@ var index_lbl:	Label
 var breathe_time  := 0.0
 
 func _ready() -> void:
+	if appear_sound:
+		var audio = AudioStreamPlayer.new()
+		audio.stream = appear_sound
+		audio.volume_db = appear_sound_volume
+		audio.bus = "Master"
+		audio.process_mode = Node.PROCESS_MODE_ALWAYS
+		get_tree().root.call_deferred("add_child", audio)
+		audio.play()
+		audio.finished.connect(audio.queue_free)
+
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
 	# Background
@@ -248,15 +262,29 @@ func _process(delta: float) -> void:
 	title_label.scale = Vector2(s, s)
 	title_label.pivot_offset = title_label.size / 2.0
 
+func _play_click_sound() -> void:
+	if click_sound:
+		var audio = AudioStreamPlayer.new()
+		audio.stream = click_sound
+		audio.volume_db = click_sound_volume
+		audio.bus = "Master"
+		audio.process_mode = Node.PROCESS_MODE_ALWAYS
+		get_tree().root.add_child(audio)
+		audio.play()
+		audio.finished.connect(audio.queue_free)
+
 func _on_left() -> void:
+	_play_click_sound()
 	current_index = (current_index - 1 + MAPS.size()) % MAPS.size()
 	_update_map_display()
 
 func _on_right() -> void:
+	_play_click_sound()
 	current_index = (current_index + 1) % MAPS.size()
 	_update_map_display()
 
 func _on_play() -> void:
+	_play_click_sound()
 	var scene_path: String = MAP_SCENES[current_index]
 	if ResourceLoader.exists(scene_path) or ResourceLoader.exists(scene_path + ".remap"):
 		get_tree().change_scene_to_file(scene_path)
@@ -266,4 +294,5 @@ func _on_play() -> void:
 		push_warning("Map scene not found: " + scene_path)
 
 func _on_back() -> void:
+	_play_click_sound()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

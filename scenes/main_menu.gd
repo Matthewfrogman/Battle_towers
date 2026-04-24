@@ -1,5 +1,9 @@
 extends Control
 
+@export var appear_sound: AudioStream
+@export var appear_sound_volume: float = 0.0
+@export var click_sound: AudioStream
+@export var click_sound_volume: float = 0.0
 const TITLE_TEXT	= "Battle Towers"
 const BREATHE_SCALE = 0.03
 const BREATHE_SPEED = 1.8
@@ -10,6 +14,16 @@ var title_label: Label
 var breathe_time := 0.0
 
 func _ready() -> void:
+	if appear_sound:
+		var audio = AudioStreamPlayer.new()
+		audio.stream = appear_sound
+		audio.volume_db = appear_sound_volume
+		audio.bus = "Master"
+		audio.process_mode = Node.PROCESS_MODE_ALWAYS
+		get_tree().root.call_deferred("add_child", audio)
+		audio.play()
+		audio.finished.connect(audio.queue_free)
+
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
 	# Background
@@ -149,8 +163,21 @@ func _process(delta: float) -> void:
 	title_label.scale = Vector2(s, s)
 	title_label.pivot_offset = title_label.size / 2.0
 
+func _play_click_sound() -> void:
+	if click_sound:
+		var audio = AudioStreamPlayer.new()
+		audio.stream = click_sound
+		audio.volume_db = click_sound_volume
+		audio.bus = "Master"
+		audio.process_mode = Node.PROCESS_MODE_ALWAYS
+		get_tree().root.add_child(audio)
+		audio.play()
+		audio.finished.connect(audio.queue_free)
+
 func _on_play_pressed() -> void:
+	_play_click_sound()
 	get_tree().change_scene_to_file("res://scenes/map_select.tscn")
 
 func _on_exit_pressed() -> void:
+	_play_click_sound()
 	get_tree().quit()

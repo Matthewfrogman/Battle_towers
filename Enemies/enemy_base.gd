@@ -10,6 +10,8 @@ class_name Enemy
 @export var dmg_to_player = 1
 @export var camo: bool = false
 @export var boss: bool = false
+@export var death_sound: AudioStream
+@export var death_sound_volume: float = 0.0
 # progress tracks how long the enemy has been alive — higher = further along the track
 var progress: float = 0.0
 # checks to see if the enemy is debuffed or not before applying one
@@ -54,6 +56,14 @@ func die():
 	var ui_nodes = get_tree().get_nodes_in_group("shop_ui")
 	if ui_nodes.size() > 0:
 		ui_nodes[0].add_money(20)
+	if death_sound:
+		var audio = AudioStreamPlayer.new()
+		audio.stream = death_sound
+		audio.volume_db = death_sound_volume
+		audio.bus = "Master"
+		get_tree().root.add_child(audio)
+		audio.play()
+		audio.finished.connect(audio.queue_free)
 	queue_free()
 
 func slow(duration: float) -> void:

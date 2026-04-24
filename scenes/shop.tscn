@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://7c5fgd6cuy2o"]
 
 [ext_resource type="Script" uid="uid://1ab0bg0ycdun" path="res://scenes/shop.gd" id="1_lx5au"]
+[ext_resource type="AudioStream" uid="uid://ca2e8plqk4qmc" path="res://audio/moneysound.mp3" id="2_44xle"]
 [ext_resource type="Texture2D" uid="uid://fqy2ybb60teh" path="res://Towers/Images/Firecracker_Cannon.png" id="3_032fp"]
 [ext_resource type="Texture2D" uid="uid://bna63qbsmfinq" path="res://Towers/Images/speedtower_guns.png" id="4_1v8qu"]
 [ext_resource type="Texture2D" uid="uid://csqiuxmrj13mo" path="res://Towers/Images/speedtower.png" id="4_2fc2m"]
@@ -19,6 +20,10 @@ anchors_preset = 0
 [node name="ShopUI" type="CanvasLayer" parent="." unique_id=444425766]
 unique_name_in_owner = true
 script = ExtResource("1_lx5au")
+buy_sound = ExtResource("2_44xle")
+buy_sound_volume = 3.0
+sell_sound = ExtResource("2_44xle")
+sell_sound_volume = 3.0
 
 [node name="SpriteLayer" type="CanvasLayer" parent="." unique_id=1809462757]
 

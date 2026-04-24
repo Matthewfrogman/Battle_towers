@@ -1,5 +1,10 @@
 extends CanvasLayer
 
+@export var buy_sound: AudioStream
+@export var buy_sound_volume: float = 0.0
+@export var sell_sound: AudioStream
+@export var sell_sound_volume: float = 0.0
+
 var money = 650
 var tower_scenes = {
 	"Basic":  "res://Towers/basic_tower.tscn",
@@ -144,6 +149,14 @@ func _on_tower_button_pressed(tower_name: String) -> void:
 	tower.total_cost = cost
 	get_tree().root.add_child(tower)
 	tower.global_position = tower.get_global_mouse_position()
+	if buy_sound:
+		var audio = AudioStreamPlayer.new()
+		audio.stream = buy_sound
+		audio.volume_db = buy_sound_volume
+		audio.bus = "Master"
+		get_tree().root.add_child(audio)
+		audio.play()
+		audio.finished.connect(audio.queue_free)
 	if upgrade_panel:
 		upgrade_panel.register_tower(tower)
 

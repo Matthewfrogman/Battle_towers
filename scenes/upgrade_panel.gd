@@ -286,6 +286,14 @@ func _on_sell_pressed() -> void:
 	var shop_nodes = get_tree().get_nodes_in_group("shop_ui")
 	if not shop_nodes.is_empty():
 		shop_nodes[0].add_money(sell_val)
+		if "sell_sound" in shop_nodes[0] and shop_nodes[0].sell_sound:
+			var audio = AudioStreamPlayer.new()
+			audio.stream = shop_nodes[0].sell_sound
+			audio.volume_db = shop_nodes[0].sell_sound_volume
+			audio.bus = "Master"
+			get_tree().root.add_child(audio)
+			audio.play()
+			audio.finished.connect(audio.queue_free)
 	current_tower.queue_free()
 	current_tower = null
 	hide()
