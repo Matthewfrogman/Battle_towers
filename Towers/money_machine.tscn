@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b5m7kq8j4r6p2"]
+
+[ext_resource type="PackedScene" uid="uid://c86a6pav5hv4v" path="res://Towers/tower.tscn" id="1_money"]
+[ext_resource type="Script" uid="uid://dgs548mjfo1li" path="res://Towers/Scripts/money_machine.gd" id="2_money"]
+[ext_resource type="Texture2D" uid="uid://dhbafh3dsnm4u" path="res://Towers/Images/money_machine.png" id="3_money"]
+
+[node name="MoneyMachine" unique_id=1548376003 instance=ExtResource("1_money")]
+scale = Vector2(0.24, 0.24000022)
+script = ExtResource("2_money")
+display_name = "Money Machine"
+cooldown = 999.0
+attack = 0
+
+[node name="CollisionShape2D" parent="Range" parent_id_path=PackedInt32Array(2002503009) index="0" unique_id=1624539430]
+scale = Vector2(2.3333328, 3.8333304)
+
+[node name="Base" type="Sprite2D" parent="." index="3" unique_id=1438474488]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_money")
+
+[node name="Cannon" parent="." index="4" unique_id=1115548727]
+visible = false

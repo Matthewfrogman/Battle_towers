@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://Enemies/enemy_base.gd" id="1_eusoj"]
 [ext_resource type="Texture2D" uid="uid://l70k8odw81qn" path="res://Map1_assets/claudio-silva-robot-2-walk (1).png" id="1_w6rkk"]
+[ext_resource type="AudioStream" uid="uid://dfs0pphm2jdlu" path="res://audio/newenemydeath.MP3" id="2_vgd8y"]
 [ext_resource type="Texture2D" uid="uid://k88om2ff3sjt" path="res://Enemies/Images/Debuff.png" id="3_pfvy5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eusoj"]
@@ -39,9 +40,12 @@ height = 108.0
 
 [node name="Boss" type="CharacterBody2D" unique_id=2058883378]
 script = ExtResource("1_eusoj")
-speed = 10
-hp = 15000
+speed = 32
+hp = 90000
 dmg_to_player = 100
+boss = true
+death_sound = ExtResource("2_vgd8y")
+death_sound_volume = 5.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1784368160]
 scale = Vector2(0.3, 0.3)
@@ -51,6 +55,7 @@ frame_progress = 0.026630012
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=750358474]
 position = Vector2(-2, -7)
+scale = Vector2(0.479999, 0.44000036)
 shape = SubResource("CapsuleShape2D_0ws5w")
 
 [node name="Debuff" type="Sprite2D" parent="." unique_id=1217622608]

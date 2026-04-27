@@ -5,6 +5,7 @@ var panel: Panel
 var name_label: Label
 var path_sections: Array = []
 var flash_tween: Tween
+var sell_btn: Button
 
 var tooltip_panel: Panel
 var tooltip_label: Label
@@ -43,10 +44,10 @@ func _build_panel() -> void:
 	panel.anchor_top    = 0.5
 	panel.anchor_right  = 1.0
 	panel.anchor_bottom = 0.5
-	panel.offset_left   = -255
-	panel.offset_top    = -185
+	panel.offset_left   = -265
+	panel.offset_top    = -240
 	panel.offset_right  = -10
-	panel.offset_bottom = 185
+	panel.offset_bottom = 240
 
 	var bg = StyleBoxFlat.new()
 	bg.bg_color = Color(0.15, 0.15, 0.15, 0.9)
@@ -81,6 +82,32 @@ func _build_panel() -> void:
 		var section = _build_path_section(vbox, p)
 		path_sections.append(section)
 
+	var sep2 = HSeparator.new()
+	vbox.add_child(sep2)
+
+	sell_btn = Button.new()
+	sell_btn.custom_minimum_size = Vector2(0, 36)
+	sell_btn.text = "Sell"
+	sell_btn.add_theme_font_size_override("font_size", 13)
+	
+	var sb = StyleBoxFlat.new()
+	sb.bg_color = Color(0.6, 0.15, 0.15)
+	sb.border_color = Color(0.8, 0.2, 0.2)
+	sb.set_border_width_all(1)
+	sb.set_corner_radius_all(6)
+	sell_btn.add_theme_stylebox_override("normal", sb)
+
+	var sb_h = sb.duplicate() as StyleBoxFlat
+	sb_h.bg_color = Color(0.75, 0.2, 0.2)
+	sell_btn.add_theme_stylebox_override("hover", sb_h)
+
+	var sb_p = sb.duplicate() as StyleBoxFlat
+	sb_p.bg_color = Color(0.4, 0.1, 0.1)
+	sell_btn.add_theme_stylebox_override("pressed", sb_p)
+
+	sell_btn.pressed.connect(_on_sell_pressed)
+	vbox.add_child(sell_btn)
+
 func _build_path_section(parent: VBoxContainer, path_idx: int) -> Dictionary:
 	var path_vbox = VBoxContainer.new()
 	path_vbox.add_theme_constant_override("separation", 2)
@@ -97,11 +124,11 @@ func _build_path_section(parent: VBoxContainer, path_idx: int) -> Dictionary:
 	path_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header_hbox.add_child(path_label)
 
-	# Two pip dashes
+	# Three pip dashes
 	var pips: Array = []
-	for _i in 2:
+	for _i in 3:
 		var pip = Panel.new()
-		pip.custom_minimum_size = Vector2(18, 6)
+		pip.custom_minimum_size = Vector2(14, 6)
 		var pip_style = StyleBoxFlat.new()
 		pip_style.bg_color = Color(0.3, 0.3, 0.3, 1)
 		pip_style.set_corner_radius_all(2)
@@ -110,9 +137,9 @@ func _build_path_section(parent: VBoxContainer, path_idx: int) -> Dictionary:
 		pips.append(pip)
 
 	var btns: Array = []
-	for tier in 2:
+	for tier in 3:
 		var btn = Button.new()
-		btn.custom_minimum_size = Vector2(0, 36)
+		btn.custom_minimum_size = Vector2(0, 34)
 		btn.text = "..."
 		btn.add_theme_font_size_override("font_size", 11)
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
@@ -212,7 +239,10 @@ func _on_tower_deselected() -> void:
 func _refresh() -> void:
 	if current_tower == null:
 		return
-	name_label.text = current_tower.name.replace("_", " ").to_upper()
+	# Prefer the explicit display_name export; fall back to node name with trailing digits stripped.
+	var raw: String = current_tower.display_name if current_tower.display_name != "" \
+		else current_tower.name.rstrip("0123456789").replace("_", " ").strip_edges()
+	name_label.text = raw.to_upper()
 	var data = current_tower.get_upgrade_data()
 
 	for p in 3:
@@ -222,18 +252,51 @@ func _refresh() -> void:
 
 		_update_pips(section, tier_bought)
 
-		for t in 2:
+		var any_tier3 = current_tower.path.any(func(t): return t >= 3)
+
+		for t in 3:
 			var btn: Button = section["btns"][t]
+			if t >= path_data.size():
+				btn.visible = false
+				continue
 			var upgrade_info = path_data[t]
 
 			if t < tier_bought:
 				btn.visible = false
 			elif t == tier_bought:
 				btn.visible = true
-				btn.disabled = false
-				btn.text = "%s - $%d" % [upgrade_info["name"], upgrade_info["cost"]]
+				# Block tier 3 if another path already has tier 3
+				if t == 2 and any_tier3 and current_tower.path[p] < 3:
+					btn.disabled = true
+					btn.text = "[LOCKED] %s - $%d" % [upgrade_info["name"], upgrade_info["cost"]]
+				else:
+					btn.disabled = false
+					btn.text = "%s - $%d" % [upgrade_info["name"], upgrade_info["cost"]]
 			else:
 				btn.visible = false
+
+	if current_tower and current_tower.get("total_cost") != null:
+		var sell_val = int(current_tower.total_cost * 0.75)
+		sell_btn.text = "Sell ($%d)" % sell_val
+
+func _on_sell_pressed() -> void:
+	if current_tower == null:
+		return
+	var sell_val = int(current_tower.total_cost * 0.75)
+	var shop_nodes = get_tree().get_nodes_in_group("shop_ui")
+	if not shop_nodes.is_empty():
+		shop_nodes[0].add_money(sell_val)
+		if "sell_sound" in shop_nodes[0] and shop_nodes[0].sell_sound:
+			var audio = AudioStreamPlayer.new()
+			audio.stream = shop_nodes[0].sell_sound
+			audio.volume_db = shop_nodes[0].sell_sound_volume
+			audio.bus = "Master"
+			get_tree().root.add_child(audio)
+			audio.play()
+			audio.finished.connect(audio.queue_free)
+	current_tower.queue_free()
+	current_tower = null
+	hide()
 
 func _on_upgrade_pressed(path_idx: int, tier: int, btn: Button) -> void:
 	if current_tower == null:
@@ -250,8 +313,6 @@ func _on_upgrade_pressed(path_idx: int, tier: int, btn: Button) -> void:
 func _flash_insufficient(btn: Button) -> void:
 	if flash_tween and flash_tween.is_running():
 		flash_tween.kill()
-	var orig_col = Color.WHITE
-	btn.add_theme_color_override("font_color", Color.RED)
 	flash_tween = create_tween()
-	flash_tween.tween_interval(0.35)
-	flash_tween.tween_callback(func(): btn.add_theme_color_override("font_color", orig_col))
+	flash_tween.tween_property(btn, "modulate", Color(1, 0.2, 0.2, 1), 0.05)
+	flash_tween.tween_property(btn, "modulate", Color.WHITE, 0.3)

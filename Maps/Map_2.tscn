@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://csdtypqdl02hh" path="res://sheets/CaveTilemap.png" id="1_2fvdr"]
 [ext_resource type="Texture2D" uid="uid://cuc3gf3gcx4m5" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/4 Stone/4.png" id="2_g7x5b"]
-[ext_resource type="Script" path="res://Maps/map_2.gd" id="2_odt4x"]
+[ext_resource type="Script" uid="uid://dcg3u3ov0xsiq" path="res://Maps/map_2.gd" id="2_odt4x"]
 [ext_resource type="Texture2D" uid="uid://dbhb0t8fkvbv8" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/4 Stone/11.png" id="3_40lrr"]
 [ext_resource type="PackedScene" uid="uid://cnfjfb58e7bov" path="res://scenes/enemy_direction_collider.tscn" id="3_u8j2o"]
 [ext_resource type="Texture2D" uid="uid://bchuh76wdy748" path="res://sheets/free-fields-tileset-pixel-art-for-tower-defense/2 Objects/4 Stone/16.png" id="4_87cfn"]
@@ -109,17 +109,18 @@ layer_0/tile_data = PackedInt32Array(0, 0, 1, 65536, 0, 2, 131072, 65536, 134217
 script = ExtResource("2_odt4x")
 
 [node name="CanvasLayer" parent="." unique_id=444425766 instance=ExtResource("18_g7x5b")]
+anchors_preset = 0
 
 [node name="enemy_direction_collider" parent="." unique_id=283984963 instance=ExtResource("3_u8j2o")]
 position = Vector2(101.851845, 76.804115)
-rotation = -0.7853982
-scale = Vector2(0.235, 0.82)
+rotation = -0.61845773
+scale = Vector2(0.235, 1.3471442)
 send_direction = 4
 
 [node name="enemy_direction_collider2" parent="." unique_id=472476854 instance=ExtResource("3_u8j2o")]
-position = Vector2(78.518524, 197.93814)
-rotation = 0.7853982
-scale = Vector2(0.94, 0.18)
+position = Vector2(82.96296, 202.57729)
+rotation = 0.5137124
+scale = Vector2(1.2353667, 0.18)
 send_direction = 1
 
 [node name="enemy_direction_collider3" parent="." unique_id=1029629524 instance=ExtResource("3_u8j2o")]
@@ -128,19 +129,19 @@ rotation = 0.7853982
 scale = Vector2(0.19, 1)
 
 [node name="enemy_direction_collider4" parent="." unique_id=1102371470 instance=ExtResource("3_u8j2o")]
-position = Vector2(205.92592, 66.49485)
-rotation = -0.7853982
-scale = Vector2(1, 0.34)
+position = Vector2(207.4074, 70.10308)
+rotation = -0.6304017
+scale = Vector2(1, 0.21013357)
 send_direction = 1
 
 [node name="enemy_direction_collider5" parent="." unique_id=1639327789 instance=ExtResource("3_u8j2o")]
-position = Vector2(328.88892, 72.680405)
+position = Vector2(327.03705, 74.22679)
 rotation = -0.7853982
-scale = Vector2(0.29, 1)
+scale = Vector2(0.12646556, 1)
 send_direction = 4
 
 [node name="enemy_direction_collider6" parent="." unique_id=514269167 instance=ExtResource("3_u8j2o")]
-position = Vector2(185.18517, 261.85565)
+position = Vector2(183.33331, 265.46387)
 rotation = 0.7853982
 scale = Vector2(0.33, 1)
 send_direction = 4

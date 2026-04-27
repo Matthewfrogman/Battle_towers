@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://Enemies/enemy_base.gd" id="1_dk7ln"]
 [ext_resource type="Texture2D" uid="uid://ce51hquxkyy16" path="res://Map1_assets/Tank.png" id="1_xv40v"]
+[ext_resource type="AudioStream" uid="uid://dfs0pphm2jdlu" path="res://audio/newenemydeath.MP3" id="2_mwpbi"]
 [ext_resource type="Texture2D" uid="uid://k88om2ff3sjt" path="res://Enemies/Images/Debuff.png" id="3_58050"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3oi6"]
@@ -35,6 +36,8 @@ script = ExtResource("1_dk7ln")
 speed = 30
 hp = 200
 dmg_to_player = 5
+death_sound = ExtResource("2_mwpbi")
+death_sound_volume = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2051384667]
 shape = SubResource("CapsuleShape2D_a3oi6")

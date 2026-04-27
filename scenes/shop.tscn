@@ -1,19 +1,78 @@
 [gd_scene format=3 uid="uid://7c5fgd6cuy2o"]
 
 [ext_resource type="Script" uid="uid://1ab0bg0ycdun" path="res://scenes/shop.gd" id="1_lx5au"]
-[ext_resource type="Script" uid="uid://dkspbanfbcqvp" path="res://scenes/control.gd" id="8_y6sft"]
+[ext_resource type="AudioStream" uid="uid://ca2e8plqk4qmc" path="res://audio/moneysound.mp3" id="2_44xle"]
+[ext_resource type="Texture2D" uid="uid://fqy2ybb60teh" path="res://Towers/Images/Firecracker_Cannon.png" id="3_032fp"]
+[ext_resource type="Texture2D" uid="uid://bna63qbsmfinq" path="res://Towers/Images/speedtower_guns.png" id="4_1v8qu"]
+[ext_resource type="Texture2D" uid="uid://csqiuxmrj13mo" path="res://Towers/Images/speedtower.png" id="4_2fc2m"]
+[ext_resource type="Texture2D" uid="uid://dnufllpevmtkr" path="res://Towers/Images/Firecracker_Base.png" id="5_44xle"]
+[ext_resource type="Texture2D" uid="uid://cm84n0bvn8tkb" path="res://Towers/Images/camo_base.png" id="7_24it5"]
+[ext_resource type="Texture2D" uid="uid://bs885t7hk4eqn" path="res://Towers/Images/camo_head.png" id="8_7mqwv"]
+[ext_resource type="Texture2D" uid="uid://dwij5ve3e7ojh" path="res://Towers/Images/sniper_base.png" id="9_gobkm"]
+[ext_resource type="Texture2D" uid="uid://deuno3awvnj2j" path="res://Towers/Images/sniper_gun.png" id="10_j14q8"]
+[ext_resource type="Texture2D" uid="uid://dhbafh3dsnm4u" path="res://Towers/Images/money_machine.png" id="11_1v8qu"]
+[ext_resource type="Texture2D" uid="uid://byxfvnhcq7bj3" path="res://Towers/Images/tesla.png" id="11_5u241"]
 
 [node name="Control" type="Control" unique_id=1070400202]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 40.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("8_y6sft")
+anchors_preset = 0
 
 [node name="ShopUI" type="CanvasLayer" parent="." unique_id=444425766]
 unique_name_in_owner = true
 script = ExtResource("1_lx5au")
+buy_sound = ExtResource("2_44xle")
+buy_sound_volume = 3.0
+sell_sound = ExtResource("2_44xle")
+sell_sound_volume = 3.0
+
+[node name="SpriteLayer" type="CanvasLayer" parent="." unique_id=1809462757]
+
+[node name="tesla" type="Sprite2D" parent="SpriteLayer" unique_id=1031563354]
+position = Vector2(124, 268)
+scale = Vector2(0.08884615, 0.097233556)
+texture = ExtResource("11_5u241")
+
+[node name="sniper" type="Sprite2D" parent="SpriteLayer" unique_id=1136965627]
+position = Vector2(135, 103.00001)
+scale = Vector2(0.26743543, 0.21826304)
+texture = ExtResource("9_gobkm")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteLayer/sniper" unique_id=1696112646]
+position = Vector2(41.13141, 68.72441)
+scale = Vector2(0.8956105, 1.0857418)
+texture = ExtResource("10_j14q8")
+
+[node name="camo" type="Sprite2D" parent="SpriteLayer" unique_id=807903929]
+position = Vector2(120.00001, 155.00002)
+scale = Vector2(0.14971663, 0.13729267)
+texture = ExtResource("7_24it5")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteLayer/camo" unique_id=1459805454]
+position = Vector2(31.901802, -6.661933)
+scale = Vector2(1.5625001, 1.5542371)
+texture = ExtResource("8_7mqwv")
+
+[node name="basic" type="Sprite2D" parent="SpriteLayer" unique_id=750863403]
+position = Vector2(126.99999, 57)
+scale = Vector2(0.5312498, 0.44531253)
+texture = ExtResource("5_44xle")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteLayer/basic" unique_id=2130593234]
+position = Vector2(-4.7683716e-07, -1.66893e-06)
+scale = Vector2(0.76660144, 0.939453)
+texture = ExtResource("3_032fp")
+
+[node name="speed" type="Sprite2D" parent="SpriteLayer" unique_id=1167036516]
+position = Vector2(124.99999, 210)
+scale = Vector2(0.13834225, 0.12616876)
+texture = ExtResource("4_2fc2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteLayer/speed" unique_id=1131773219]
+position = Vector2(62.47708, -83.81592)
+scale = Vector2(1.9054649, 1.1793022)
+texture = ExtResource("4_1v8qu")
+
+[node name="MoneyMachine" type="Sprite2D" parent="SpriteLayer" unique_id=1782139465]
+position = Vector2(124.99999, 298)
+scale = Vector2(0.11999999, 0.11999998)
+texture = ExtResource("11_1v8qu")

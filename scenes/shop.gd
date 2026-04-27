@@ -1,19 +1,26 @@
 extends CanvasLayer
 
+@export var buy_sound: AudioStream
+@export var buy_sound_volume: float = 0.0
+@export var sell_sound: AudioStream
+@export var sell_sound_volume: float = 0.0
+
 var money = 650
 var tower_scenes = {
 	"Basic":  "res://Towers/basic_tower.tscn",
 	"Sniper": "res://Towers/sniper.tscn",
 	"Camo":   "res://Towers/camo_tower.tscn",
 	"Speed":  "res://Towers/speed_tower.tscn",
-	"Tesla":  "res://Towers/tesla.tscn"
+	"Tesla":  "res://Towers/tesla.tscn",
+	"Money":  "res://Towers/money_machine.tscn"
 }
 var tower_costs = {
 	"Basic":  200,
 	"Sniper": 800,
 	"Camo":   1000,
 	"Speed":  250,
-	"Tesla":  1250
+	"Tesla":  1250,
+	"Money":  1300
 }
 
 var speed_index   = 0
@@ -25,6 +32,8 @@ var toggle_btn: Button
 var shop_panel: Panel
 var money_label: Label
 var upgrade_panel = null
+
+var typed_secret: String = ""
 
 const SHOP_W = 160
 
@@ -116,6 +125,7 @@ func _build_ui() -> void:
 func _on_toggle_pressed() -> void:
 	shop_collapsed = !shop_collapsed
 	shop_panel.visible = !shop_collapsed
+	get_node("../SpriteLayer").visible = !get_node("../SpriteLayer").visible
 	toggle_btn.text = ">" if shop_collapsed else "<"
 
 func _on_ff_pressed() -> void:
@@ -136,8 +146,17 @@ func _on_tower_button_pressed(tower_name: String) -> void:
 	var tower_scene = load(tower_path)
 	var tower = tower_scene.instantiate()
 	tower.add_to_group("towers")
+	tower.total_cost = cost
 	get_tree().root.add_child(tower)
 	tower.global_position = tower.get_global_mouse_position()
+	if buy_sound:
+		var audio = AudioStreamPlayer.new()
+		audio.stream = buy_sound
+		audio.volume_db = buy_sound_volume
+		audio.bus = "Master"
+		get_tree().root.add_child(audio)
+		audio.play()
+		audio.finished.connect(audio.queue_free)
 	if upgrade_panel:
 		upgrade_panel.register_tower(tower)
 
@@ -145,6 +164,21 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_4:
 			add_money(5000)
+		var char_str = OS.get_keycode_string(event.keycode).to_lower()
+		if char_str.length() == 1:
+			typed_secret += char_str
+			if typed_secret.length() > 10:
+				typed_secret = typed_secret.substr(1)
+			if typed_secret.ends_with("speed"):
+				if speed_levels.size() < 4:
+					speed_levels.append(10.0)
+					speed_labels.append("Speed: 10x")
+					print("Unlocked 10x speed!")
+			elif typed_secret.ends_with("boss"):
+				var spawner = get_tree().root.find_child("EnemySpawner", true, false)
+				if spawner:
+					spawner.current_wave = 29
+					print("Skipped to Wave 30 (Boss is 31)")
 
 func update_money_label() -> void:
 	if money_label:

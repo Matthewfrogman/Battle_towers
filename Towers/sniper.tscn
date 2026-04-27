@@ -16,10 +16,11 @@ load_path = "res://.godot/imported/muzzle-flashes.png-091ccd84a33ba98103991dc8e3
 
 [node name="Sniper" unique_id=598119214 instance=ExtResource("1_s4nn4")]
 script = ExtResource("2_s4nn4")
-cooldown = 2.0
+display_name = "Sniper"
+cooldown = 3.0
 bullet_spread = 0.0
 attack_range = 1000
-attack = 50
+attack = 60
 bullet_speed = 0
 pierce = 0
 projectiles = 0

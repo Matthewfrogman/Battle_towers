@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dormthxby0qn1" path="res://Enemies/enemy_base.gd" id="1_dambi"]
 [ext_resource type="Texture2D" uid="uid://c1xroswpi1dua" path="res://Map1_assets/boss_3.png" id="1_k1oge"]
+[ext_resource type="AudioStream" uid="uid://dfs0pphm2jdlu" path="res://audio/newenemydeath.MP3" id="2_avkmi"]
 [ext_resource type="Texture2D" uid="uid://k88om2ff3sjt" path="res://Enemies/Images/Debuff.png" id="3_2l1tu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dambi"]
@@ -101,9 +102,14 @@ radius = 61.0
 height = 188.0
 
 [node name="Boss" type="CharacterBody2D" unique_id=1080303871]
+scale = Vector2(0.76, 0.76)
 script = ExtResource("1_dambi")
-speed = 15
-hp = 25000
+speed = 24
+hp = 110000
+dmg_to_player = 100
+boss = true
+death_sound = ExtResource("2_avkmi")
+death_sound_volume = 5.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=45721686]
 scale = Vector2(0.5, 0.5)
@@ -111,6 +117,7 @@ sprite_frames = SubResource("SpriteFrames_lo7n1")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=238132328]
+scale = Vector2(0.47368425, 0.36842108)
 shape = SubResource("CapsuleShape2D_phgsi")
 
 [node name="Debuff" type="Sprite2D" parent="." unique_id=1002187240]

@@ -14,8 +14,9 @@ radius = 25.079872
 
 [node name="Speed" unique_id=598119214 instance=ExtResource("1_0cntj")]
 script = ExtResource("2_speed")
-cooldown = 0.5
-attack_range = 5
+display_name = "Speed Tower"
+cooldown = 0.25
+attack_range = 6
 attack = 10
 bullet_speed = 200
 pierce = 0
